@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
+    let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +25,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func func func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        var speed = CLLocationSpeed()
+    }
+    }
 
 }
 
