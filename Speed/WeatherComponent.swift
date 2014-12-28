@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class WeatherComponent {
+    let currentWeatherServiceUrl = "http//api.openweathermap.org/data/2.5/weather"
+    
+    init() {
+        let manager = AFHTTPRequestOperationManager()
+        
+    }
+    
+}

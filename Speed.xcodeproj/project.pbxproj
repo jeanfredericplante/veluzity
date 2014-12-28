@@ -17,9 +17,7 @@
 		7EC245881A507DEF005F2FEA /* LocationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245861A507DEF005F2FEA /* LocationComponent.swift */; };
 		7EC2458A1A507E05005F2FEA /* WeatherComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245891A507E05005F2FEA /* WeatherComponent.swift */; };
 		7EC2458B1A507E05005F2FEA /* WeatherComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245891A507E05005F2FEA /* WeatherComponent.swift */; };
-		7EC2458D1A507E1E005F2FEA /* WeatherComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458C1A507E1E005F2FEA /* WeatherComponentTests.swift */; };
 		7EC2458E1A507E1E005F2FEA /* WeatherComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458C1A507E1E005F2FEA /* WeatherComponentTests.swift */; };
-		7EC245901A507E34005F2FEA /* LocationComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458F1A507E34005F2FEA /* LocationComponentTests.swift */; };
 		7EC245911A507E34005F2FEA /* LocationComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458F1A507E34005F2FEA /* LocationComponentTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -229,10 +227,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EC2458A1A507E05005F2FEA /* WeatherComponent.swift in Sources */,
-				7EC2458D1A507E1E005F2FEA /* WeatherComponentTests.swift in Sources */,
 				7EC245671A4F486D005F2FEA /* ViewController.swift in Sources */,
 				7EC245871A507DEF005F2FEA /* LocationComponent.swift in Sources */,
-				7EC245901A507E34005F2FEA /* LocationComponentTests.swift in Sources */,
 				7EC245651A4F486D005F2FEA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
