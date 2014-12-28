@@ -16,8 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jE-ee-Pue">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jE-ee-Pue">
                                 <rect key="frame" x="178" y="250" width="244" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="244" id="rCF-SA-ple"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="60"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -25,8 +28,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="0jE-ee-Pue" secondAttribute="centerY" id="MDS-NJ-5BD"/>
-                            <constraint firstAttribute="centerX" secondItem="0jE-ee-Pue" secondAttribute="centerX" id="PAO-T7-koc"/>
+                            <constraint firstItem="0jE-ee-Pue" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="CWi-fr-nPN"/>
+                            <constraint firstItem="0jE-ee-Pue" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kEx-H0-1hY"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0jE-ee-Pue" secondAttribute="bottom" constant="206" id="tWa-GT-ApC"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
