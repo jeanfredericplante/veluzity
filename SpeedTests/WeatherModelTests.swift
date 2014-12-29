@@ -1,13 +1,16 @@
 import UIKit
 import XCTest
 
-class WeatherModelTests: XCTestCase {
+class WeatherModelTests: XCTestCase, WeatherUpdateDelegate {
     
+    var weatherupdatedExpectation: XCTestExpectation?
+    var wm: WeatherModel = WeatherModel()
+  
     override func setUp() {
         super.setUp()
         var parisLatitude = 48.856
         var parisLongitude = 2.3508
-        wc = WeatherComponent()
+
     }
     
     override func tearDown() {
@@ -16,8 +19,12 @@ class WeatherModelTests: XCTestCase {
     }
     
     func testTemperature() {
-        XCTAssertTrue(wc.getTemperature(parisLatitude,parisLongiture) < 200, "Paris shouldn't be that hot")
-        XCTAssertTrue(wc.getTemperature(parisLatitude,parisLongiture) > 0, "Paris shouldn't be that cold")
+        weatherupdatedExpectation = expectationWithDescription("expect the weather to be udpated")
+        wm.getWeatherFromAPI()
+               
+        waitForExpectationsWithTimeout(5) { (error) -> Void in
+            XCTAssertNil("timeout")
+        }
     }
     
     
@@ -27,5 +34,14 @@ class WeatherModelTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func updatedTemperature(temperature: Float)
+    {
+        weatherupdatedExpectation!.fulfill()
+        XCTAssertTrue(wm.temperature() < 200, "Paris shouldn't be that hot")
+        XCTAssertTrue(wm.temperature() > 0, "Paris shouldn't be that cold")
+    }
+ 
+    
     
 }
