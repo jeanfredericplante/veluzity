@@ -21,9 +21,10 @@ class WeatherModelTests: XCTestCase, WeatherUpdateDelegate {
     func testTemperature() {
         weatherupdatedExpectation = expectationWithDescription("expect the weather to be udpated")
         wm.getWeatherFromAPI()
+        wm.myDelegate = self
                
-        waitForExpectationsWithTimeout(5) { (error) -> Void in
-            XCTAssertNil("timeout")
+        waitForExpectationsWithTimeout(5) { (error) in
+            XCTAssertNil(error, "got a timeout when pulling the temperature")
         }
     }
     
@@ -37,9 +38,10 @@ class WeatherModelTests: XCTestCase, WeatherUpdateDelegate {
     
     func updatedTemperature(temperature: Float)
     {
+        println("updatedtemp func in test")
         weatherupdatedExpectation!.fulfill()
-        XCTAssertTrue(wm.temperature() < 200, "Paris shouldn't be that hot")
-        XCTAssertTrue(wm.temperature() > 0, "Paris shouldn't be that cold")
+        XCTAssertTrue(temperature < 100, "Paris shouldn't be that hot")
+        XCTAssertTrue(temperature > -20, "Paris shouldn't be that cold")
     }
  
     

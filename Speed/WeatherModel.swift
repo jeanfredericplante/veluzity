@@ -13,11 +13,12 @@ protocol WeatherUpdateDelegate {
 }
 
 class WeatherModel: NSObject, NSURLConnectionDelegate {
-    let currentWeatherServiceUrl = "http//api.openweathermap.org/data/2.5/weather"
+    let currentWeatherServiceUrl = "http://api.openweathermap.org/data/2.5/weather"
     var lastReadTemperatureCelsius: Float
     var currentLatitude: Float
     var currentLongitude: Float
     var weatherResponseData: NSMutableData
+    var myDelegate:WeatherUpdateDelegate?
     
     override init() {
         weatherResponseData = NSMutableData()
@@ -39,6 +40,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     {
         var requestURL = currentWeatherServiceUrl + "?lat=" + currentLatitude.description +
         "&lon=" + currentLongitude.description
+        println("url: \(requestURL.debugDescription)")
         let request = NSURLRequest(URL: NSURL(string: requestURL)!)
         
         
@@ -62,8 +64,10 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
             var weatherMain: NSDictionary? = weatherInfo["main"] as NSDictionary?
             var temperatureKelvin: Float? = weatherMain?["temp"] as Float?
             if temperatureKelvin != nil {
-                self.lastReadTemperatureCelsius = temperatureKelvin!
-                println("temperature update to \(lastReadTemperatureCelsius.description)")
+                self.lastReadTemperatureCelsius = temperatureKelvin! - 273.15
+                self.myDelegate?.updatedTemperature(self.temperature())
+
+                println("temperature updated to \(lastReadTemperatureCelsius.description)")
             }
         } else {
             println("invalid json: \(error?.localizedDescription)")
