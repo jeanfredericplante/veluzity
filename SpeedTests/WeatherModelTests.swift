@@ -1,7 +1,7 @@
 import UIKit
 import XCTest
 
-class WeatherComponentTests: XCTestCase {
+class WeatherModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
