@@ -1,5 +1,6 @@
 import UIKit
 import XCTest
+import CoreLocation
 
 class WeatherModelTests: XCTestCase, WeatherUpdateDelegate {
     
@@ -29,7 +30,10 @@ class WeatherModelTests: XCTestCase, WeatherUpdateDelegate {
     }
     
     func testIfIShouldUpdateTheWeather() {
-        
+        wm.setPosition(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448))
+        XCTAssertFalse(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"shouldn't need to update weather when we didn't move")
+        XCTAssertFalse(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680222, longitude: -117.179632)),"shouldn't need to update weather so close")
+        XCTAssertTrue(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.688816, longitude: -117.178230)),"should update the weather past 500m")
     }
     
     

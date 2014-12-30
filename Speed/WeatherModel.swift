@@ -15,6 +15,7 @@ protocol WeatherUpdateDelegate {
 
 class WeatherModel: NSObject, NSURLConnectionDelegate {
     let currentWeatherServiceUrl = "http://api.openweathermap.org/data/2.5/weather"
+    let minDistanceToUpdateWeather:Double = 150 // distance to travel before we bug openweathermap again
     var lastReadTemperatureCelsius: Double
     var coordinates: CLLocationCoordinate2D
 //    var currentLatitude: Double
@@ -28,13 +29,28 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         coordinates = CLLocationCoordinate2D(latitude: 48, longitude: 3)
     }
     
-    func setPosition(coordinates: CLLocationCoordinate2D) -> Void {
-        self.coordinates = coordinates
+    func setPosition(newCoordinates: CLLocationCoordinate2D) -> Void {
+        self.coordinates = newCoordinates
+    }
+    
+    func shouldUpdateWeather(newCoordinates: CLLocationCoordinate2D) -> Bool {
+        
+        var lastUpdateLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        var newLocation = CLLocation(latitude: newCoordinates.latitude, longitude: newCoordinates.longitude)
+        var distance = newLocation.distanceFromLocation(lastUpdateLocation)
+        if distance > minDistanceToUpdateWeather {
+            return true
+        } else {
+            return false
+        }
+        
     }
     
     func temperature() -> Double {
         return lastReadTemperatureCelsius
     }
+    
+    
         
     func getWeatherFromAPI()
     {
