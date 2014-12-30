@@ -35,7 +35,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     func temperature() -> Double {
         return lastReadTemperatureCelsius
     }
-    
+        
     func getWeatherFromAPI()
     {
         var requestURL = currentWeatherServiceUrl + "?lat=" + coordinates.latitude.description +

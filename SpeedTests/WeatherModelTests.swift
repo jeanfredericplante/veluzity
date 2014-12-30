@@ -28,6 +28,10 @@ class WeatherModelTests: XCTestCase, WeatherUpdateDelegate {
         }
     }
     
+    func testIfIShouldUpdateTheWeather() {
+        
+    }
+    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
