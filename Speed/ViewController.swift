@@ -12,6 +12,8 @@ import CoreLocation
 class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDelegate {
 
     @IBOutlet weak var speedDisplay: UILabel!
+    @IBOutlet weak var tempDisplay: UILabel!
+    
     let userLocation = LocationModel()
     let locationWeather = WeatherModel()
     
@@ -44,6 +46,7 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
     
     func updatedTemperature(temperature: Double) {
         println("I got the temperature of \(temperature)")
+        tempDisplay.text = NSString(format: "%.1f °C",locationWeather.temperature())
     }
  
 }
