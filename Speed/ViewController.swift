@@ -9,14 +9,16 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, LocationUpdateDelegate {
+class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDelegate {
 
     @IBOutlet weak var speedDisplay: UILabel!
     let userLocation = LocationModel()
+    let locationWeather = WeatherModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userLocation.delegate = self
+        locationWeather.myDelegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +28,22 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     
     func didUpdateLocation() {
         var speedInKmh = userLocation.speed * 3.6
+        
+        // Updates display
         speedDisplay.text = NSString(format: "%.1f", speedInKmh)
+        
+        // Updates weather model location
+        if (userLocation.coordinates != nil) {
+            locationWeather.setPosition(userLocation.coordinates!)
+        }
+        
+        // Request update of the weather
+        locationWeather.getWeatherFromAPI()
+        
+    }
+    
+    func updatedTemperature(temperature: Double) {
+        println("I got the temperature of \(temperature)")
     }
  
 }

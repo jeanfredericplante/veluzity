@@ -36,7 +36,7 @@ class WeatherModelTests: XCTestCase, WeatherUpdateDelegate {
         }
     }
     
-    func updatedTemperature(temperature: Float)
+    func updatedTemperature(temperature: Double)
     {
         println("updatedtemp func in test")
         weatherupdatedExpectation!.fulfill()

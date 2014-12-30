@@ -7,39 +7,39 @@
 //
 
 import UIKit
+import CoreLocation
 
 protocol WeatherUpdateDelegate {
-    func updatedTemperature(temperature: Float)
+    func updatedTemperature(temperature: Double)
 }
 
 class WeatherModel: NSObject, NSURLConnectionDelegate {
     let currentWeatherServiceUrl = "http://api.openweathermap.org/data/2.5/weather"
-    var lastReadTemperatureCelsius: Float
-    var currentLatitude: Float
-    var currentLongitude: Float
+    var lastReadTemperatureCelsius: Double
+    var coordinates: CLLocationCoordinate2D
+//    var currentLatitude: Double
+//    var currentLongitude: Double
     var weatherResponseData: NSMutableData
     var myDelegate: WeatherUpdateDelegate?
     
     override init() {
         weatherResponseData = NSMutableData()
         lastReadTemperatureCelsius = 20
-        currentLatitude = 48
-        currentLongitude = 3
+        coordinates = CLLocationCoordinate2D(latitude: 48, longitude: 3)
     }
     
-    func setPosition(latitude: Float, longitude: Float) -> Void {
-        currentLongitude = longitude
-        currentLatitude = latitude
+    func setPosition(coordinates: CLLocationCoordinate2D) -> Void {
+        self.coordinates = coordinates
     }
     
-    func temperature() -> Float {
+    func temperature() -> Double {
         return lastReadTemperatureCelsius
     }
     
     func getWeatherFromAPI()
     {
-        var requestURL = currentWeatherServiceUrl + "?lat=" + currentLatitude.description +
-        "&lon=" + currentLongitude.description
+        var requestURL = currentWeatherServiceUrl + "?lat=" + coordinates.latitude.description +
+        "&lon=" + coordinates.longitude.description
         println("url: \(requestURL.debugDescription)")
         let request = NSURLRequest(URL: NSURL(string: requestURL)!)
         
@@ -62,7 +62,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         var weatherInfo: NSDictionary = NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSDictionary
         if (error == nil) {
             var weatherMain: NSDictionary? = weatherInfo["main"] as NSDictionary?
-            var temperatureKelvin: Float? = weatherMain?["temp"] as Float?
+            var temperatureKelvin: Double? = weatherMain?["temp"] as Double?
             if temperatureKelvin != nil {
                 self.lastReadTemperatureCelsius = temperatureKelvin! - 273.15
                 self.myDelegate?.updatedTemperature(self.temperature())
