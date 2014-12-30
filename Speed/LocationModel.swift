@@ -9,5 +9,11 @@
 import UIKit
 
 class LocationModel: NSObject {
-   
+    var speed: Float = 0.0 // speed in m/s
+    var heading: String? // North/East/West/South
+    
+    
+    
+    
+    
 }

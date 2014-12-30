@@ -16,7 +16,7 @@
 		7EC2458A1A507E05005F2FEA /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245891A507E05005F2FEA /* WeatherModel.swift */; };
 		7EC2458B1A507E05005F2FEA /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245891A507E05005F2FEA /* WeatherModel.swift */; };
 		7EC2458E1A507E1E005F2FEA /* WeatherModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458C1A507E1E005F2FEA /* WeatherModelTests.swift */; };
-		7EC245911A507E34005F2FEA /* LocationComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458F1A507E34005F2FEA /* LocationComponentTests.swift */; };
+		7EC245911A507E34005F2FEA /* LocationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */; };
 		7ECAE10A1A50E8F700AB9A5C /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */; };
 		7ECAE10B1A50E8F700AB9A5C /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */; };
 /* End PBXBuildFile section */
@@ -44,7 +44,7 @@
 		7EC2457A1A4F486D005F2FEA /* SpeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTests.swift; sourceTree = "<group>"; };
 		7EC245891A507E05005F2FEA /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		7EC2458C1A507E1E005F2FEA /* WeatherModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModelTests.swift; sourceTree = "<group>"; };
-		7EC2458F1A507E34005F2FEA /* LocationComponentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationComponentTests.swift; sourceTree = "<group>"; };
+		7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModelTests.swift; sourceTree = "<group>"; };
 		7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,7 +112,7 @@
 			children = (
 				7EC2457A1A4F486D005F2FEA /* SpeedTests.swift */,
 				7EC2458C1A507E1E005F2FEA /* WeatherModelTests.swift */,
-				7EC2458F1A507E34005F2FEA /* LocationComponentTests.swift */,
+				7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */,
 				7EC245781A4F486D005F2FEA /* Supporting Files */,
 			);
 			path = SpeedTests;
@@ -241,7 +241,7 @@
 				7EC2458B1A507E05005F2FEA /* WeatherModel.swift in Sources */,
 				7EC2457B1A4F486D005F2FEA /* SpeedTests.swift in Sources */,
 				7ECAE10B1A50E8F700AB9A5C /* LocationModel.swift in Sources */,
-				7EC245911A507E34005F2FEA /* LocationComponentTests.swift in Sources */,
+				7EC245911A507E34005F2FEA /* LocationModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

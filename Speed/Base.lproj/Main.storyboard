@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,11 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jE-ee-Pue">
-                                <rect key="frame" x="178" y="250" width="244" height="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYp-fI-a1e">
+                                <rect key="frame" x="16" y="20" width="183" height="43"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="244" id="rCF-SA-ple"/>
+                                    <constraint firstAttribute="height" constant="43" id="hWy-LX-IMb"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="24C" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWE-Xm-xi2">
+                                <rect key="frame" x="16" y="507" width="67" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="123.0 km/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jE-ee-Pue">
+                                <rect key="frame" x="148" y="225" width="305" height="150"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="60"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -28,9 +41,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0jE-ee-Pue" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="CWi-fr-nPN"/>
-                            <constraint firstItem="0jE-ee-Pue" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kEx-H0-1hY"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0jE-ee-Pue" secondAttribute="bottom" constant="206" id="tWa-GT-ApC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UWE-Xm-xi2" secondAttribute="bottom" constant="8" id="1md-hw-lTv"/>
+                            <constraint firstAttribute="centerX" secondItem="0jE-ee-Pue" secondAttribute="centerX" constant="-0.5" id="8Qp-5h-Rjb"/>
+                            <constraint firstAttribute="centerX" secondItem="uYp-fI-a1e" secondAttribute="centerX" constant="192.5" id="L5V-MD-BGT"/>
+                            <constraint firstAttribute="centerX" secondItem="0jE-ee-Pue" secondAttribute="centerX" constant="-0.5" id="PC5-3V-y5A"/>
+                            <constraint firstItem="uYp-fI-a1e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="UgV-LV-Huy"/>
+                            <constraint firstAttribute="centerY" secondItem="0jE-ee-Pue" secondAttribute="centerY" id="fIo-6K-c86"/>
+                            <constraint firstItem="uYp-fI-a1e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="nMi-Qf-qr6"/>
+                            <constraint firstItem="UWE-Xm-xi2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="oQn-Zq-LMY"/>
+                            <constraint firstAttribute="centerY" secondItem="0jE-ee-Pue" secondAttribute="centerY" id="t95-Jg-mIC"/>
                         </constraints>
                     </view>
                     <toolbarItems/>

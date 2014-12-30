@@ -1,7 +1,7 @@
 import UIKit
 import XCTest
 
-class LocationComponentTests: XCTestCase {
+class LocationModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
