@@ -9,17 +9,14 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, LocationUpdateDelegate {
 
     @IBOutlet weak var speedDisplay: UILabel!
+    let userLocation = LocationModel()
     
-    let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
+        userLocation.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,15 +24,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var speed = manager.location.speed
-        var speedInKmh = speed * 3.6
-    
-        println("speed:" + speed.description)
-        println("speed (km/h):" + speedInKmh.description)
-        
+    func didUpdateLocation() {
+        var speedInKmh = userLocation.speed * 3.6
         speedDisplay.text = NSString(format: "%.1f", speedInKmh)
     }
-
+ 
 }
 

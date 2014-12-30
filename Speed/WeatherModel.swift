@@ -18,7 +18,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     var currentLatitude: Float
     var currentLongitude: Float
     var weatherResponseData: NSMutableData
-    var myDelegate:WeatherUpdateDelegate?
+    var myDelegate: WeatherUpdateDelegate?
     
     override init() {
         weatherResponseData = NSMutableData()
