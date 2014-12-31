@@ -15,13 +15,12 @@ protocol WeatherUpdateDelegate {
 
 class WeatherModel: NSObject, NSURLConnectionDelegate {
     let currentWeatherServiceUrl = "http://api.openweathermap.org/data/2.5/weather"
-    let minDistanceToUpdateWeather:Double = 150 // distance to travel before we bug openweathermap again
-    var maxTimeBetweenUpdates: NSTimeInterval = 300 // Maximum time between updates
+    
+    var minDistanceToUpdateWeather:Double = 500 // distance to travel before we bug openweathermap again in meters
+    var maxTimeBetweenUpdates: NSTimeInterval = 300 // maximum time between updates in seconds
     var lastReadTemperatureCelsius: Double
     var lastUpdateTime: NSDate?
     var coordinates: CLLocationCoordinate2D
-//    var currentLatitude: Double
-//    var currentLongitude: Double
     var weatherResponseData: NSMutableData
     var myDelegate: WeatherUpdateDelegate?
     
@@ -37,6 +36,10 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     
     func setUpdateTime(time: NSTimeInterval) {
         self.maxTimeBetweenUpdates = time
+    }
+    
+    func setUpdateDistance(distance: Double) {
+        self.minDistanceToUpdateWeather = distance
     }
     
     func shouldUpdateWeather(newCoordinates: CLLocationCoordinate2D) -> Bool {
@@ -93,7 +96,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
             var temperatureKelvin: Double? = weatherMain?["temp"] as Double?
             if temperatureKelvin != nil {
                 self.lastReadTemperatureCelsius = temperatureKelvin! - 273.15
-                self.lastUpdateTime = NSDate()
+                self.lastUpdateTime = NSDate() // now
                 self.myDelegate?.updatedTemperature(self.temperature())
 
                 println("temperature updated to \(lastReadTemperatureCelsius.description)")

@@ -36,11 +36,15 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
         
         // Updates weather model location
         if (userLocation.coordinates != nil) {
-            locationWeather.setPosition(userLocation.coordinates!)
+            if locationWeather.shouldUpdateWeather(userLocation.coordinates!) {
+                // only update location if the weather will be updated
+                locationWeather.setPosition(userLocation.coordinates!)
+                // Request update of the weather
+                locationWeather.getWeatherFromAPI()
+            }
         }
         
-        // Request update of the weather
-        locationWeather.getWeatherFromAPI()
+
         
     }
     
