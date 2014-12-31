@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import AddressBook
 
 protocol LocationUpdateDelegate {
     func didUpdateLocation()
@@ -52,8 +53,12 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
                 println("reverse location failed")
             } else {
                 if placemarks.count > 0 {
-                    println("this is the placemark location \(placemarks[0].name)")
-                    self.streetName = placemarks[0].name
+                    var placemark: CLPlacemark = placemarks[0] as CLPlacemark
+                    var newName = placemark.addressDictionary[kABPersonAddressStreetKey] as CFString?
+                    if newName != nil {
+                        self.streetName = newName
+                    }
+                    println("this is the placemark location \(self.streetName!)")
                     self.delegate?.didUpdateLocation()
                 }
             }
