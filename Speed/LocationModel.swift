@@ -19,7 +19,9 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
     var coordinates: CLLocationCoordinate2D?
     var heading: String? // North/East/West/South
     let locationManager = CLLocationManager()
+    let locationGeoCoder = CLGeocoder()
     var delegate: LocationUpdateDelegate?
+    var streetName: String?
     
     override init() {
         super.init()
@@ -37,13 +39,26 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         self.speed = manager.location.speed
         self.coordinates = manager.location.coordinate
-        
+        self.getStreetName(manager.location)
         println("speed (m/s):" + self.speed.description)
         self.delegate?.didUpdateLocation()
         
     }
-
     
     
-   
+    func getStreetName(location: CLLocation) {
+        locationGeoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
+            if error != nil {
+                println("reverse location failed")
+            } else {
+                if placemarks.count > 0 {
+                    println("this is the placemark location \(placemarks[0].name)")
+                    self.streetName = placemarks[0].name
+                    self.delegate?.didUpdateLocation()
+                }
+            }
+        }
+        
+    }
+    
 }

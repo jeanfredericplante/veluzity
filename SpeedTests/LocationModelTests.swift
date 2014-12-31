@@ -22,6 +22,10 @@ class LocationModelTests: XCTestCase {
         XCTAssert(true, "Pass")
     }
     
+    func testReverseGeocoding() {
+        
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock() {

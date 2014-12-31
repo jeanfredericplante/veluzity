@@ -13,6 +13,7 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
 
     @IBOutlet weak var speedDisplay: UILabel!
     @IBOutlet weak var tempDisplay: UILabel!
+    @IBOutlet weak var locationDisplay: UILabel!
     
     let userLocation = LocationModel()
     let locationWeather = WeatherModel()
@@ -33,6 +34,7 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
         
         // Updates display
         speedDisplay.text = NSString(format: "%.1f km/h", speedInKmh)
+        locationDisplay.text = userLocation.streetName
         
         // Updates weather model location
         if (userLocation.coordinates != nil) {
