@@ -32,7 +32,7 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
         var speedInKmh = userLocation.speed * 3.6
         
         // Updates display
-        speedDisplay.text = NSString(format: "%.1f", speedInKmh)
+        speedDisplay.text = NSString(format: "%.1f km/h", speedInKmh)
         
         // Updates weather model location
         if (userLocation.coordinates != nil) {

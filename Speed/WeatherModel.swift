@@ -16,7 +16,9 @@ protocol WeatherUpdateDelegate {
 class WeatherModel: NSObject, NSURLConnectionDelegate {
     let currentWeatherServiceUrl = "http://api.openweathermap.org/data/2.5/weather"
     let minDistanceToUpdateWeather:Double = 150 // distance to travel before we bug openweathermap again
+    var maxTimeBetweenUpdates: NSTimeInterval = 300 // Maximum time between updates
     var lastReadTemperatureCelsius: Double
+    var lastUpdateTime: NSDate?
     var coordinates: CLLocationCoordinate2D
 //    var currentLatitude: Double
 //    var currentLongitude: Double
@@ -33,17 +35,27 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         self.coordinates = newCoordinates
     }
     
+    func setUpdateTime(time: NSTimeInterval) {
+        self.maxTimeBetweenUpdates = time
+    }
+    
     func shouldUpdateWeather(newCoordinates: CLLocationCoordinate2D) -> Bool {
         
         var lastUpdateLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
         var newLocation = CLLocation(latitude: newCoordinates.latitude, longitude: newCoordinates.longitude)
         var distance = newLocation.distanceFromLocation(lastUpdateLocation)
-        if distance > minDistanceToUpdateWeather {
+        var shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh: Bool
+        if (lastUpdateTime? == nil) {
+            shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh = true
+        } else {
+            shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh =
+                lastUpdateTime!.timeIntervalSinceNow < -maxTimeBetweenUpdates // timeSinceInterval will be negative
+        }
+        if (distance > minDistanceToUpdateWeather) || shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh {
             return true
         } else {
             return false
         }
-        
     }
     
     func temperature() -> Double {
@@ -81,6 +93,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
             var temperatureKelvin: Double? = weatherMain?["temp"] as Double?
             if temperatureKelvin != nil {
                 self.lastReadTemperatureCelsius = temperatureKelvin! - 273.15
+                self.lastUpdateTime = NSDate()
                 self.myDelegate?.updatedTemperature(self.temperature())
 
                 println("temperature updated to \(lastReadTemperatureCelsius.description)")

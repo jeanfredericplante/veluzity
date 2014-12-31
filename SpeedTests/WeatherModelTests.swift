@@ -29,7 +29,22 @@ class WeatherModelTests: XCTestCase, WeatherUpdateDelegate {
         }
     }
     
+
+
     func testIfIShouldUpdateTheWeather() {
+        wm.setPosition(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448))
+        // tests based on time
+        wm.setUpdateTime(100)
+        wm.lastUpdateTime = nil
+        XCTAssertTrue(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"should update the first time because we never updated")
+        wm.lastUpdateTime = NSDate()
+        XCTAssertFalse(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"should not update the first time because we just updated")
+        wm.lastUpdateTime = NSDate(timeInterval: -600, sinceDate: NSDate())
+        XCTAssertTrue(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"should update because we've not updated in a long time")
+        
+        
+        // tests based on location
+        wm.lastUpdateTime = NSDate()
         wm.setPosition(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448))
         XCTAssertFalse(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"shouldn't need to update weather when we didn't move")
         XCTAssertFalse(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680222, longitude: -117.179632)),"shouldn't need to update weather so close")
