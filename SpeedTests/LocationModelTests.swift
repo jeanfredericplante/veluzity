@@ -42,11 +42,17 @@ class LocationModelTests: XCTestCase {
         cardHeading = lm.getCardinalDirectionFromHeading(23)
         XCTAssertTrue(cardHeading=="NE", "heading should be north east")
 
-        cardHeading = lm.getCardinalDirectionFromHeading(90)
+        cardHeading = lm.getCardinalDirectionFromHeading(70)
         XCTAssertTrue(cardHeading=="E", "heading should be  east")
         
-        cardHeading = lm.getCardinalDirectionFromHeading(170)
+        cardHeading = lm.getCardinalDirectionFromHeading(90)
+        XCTAssertTrue(cardHeading=="E", "heading should be  east")
+   
+        cardHeading = lm.getCardinalDirectionFromHeading(115)
         XCTAssertTrue(cardHeading=="SE", "heading should be south east")
+        
+        cardHeading = lm.getCardinalDirectionFromHeading(170)
+        XCTAssertTrue(cardHeading=="S", "heading should be south ")
         
         cardHeading = lm.getCardinalDirectionFromHeading(180)
         XCTAssertTrue(cardHeading=="S", "heading should be south")
@@ -59,9 +65,12 @@ class LocationModelTests: XCTestCase {
         
         cardHeading = lm.getCardinalDirectionFromHeading(270)
         XCTAssertTrue(cardHeading=="W", "heading should be west")
-        
-        cardHeading = lm.getCardinalDirectionFromHeading(355)
+       
+        cardHeading = lm.getCardinalDirectionFromHeading(325)
         XCTAssertTrue(cardHeading=="NW", "heading should be north west")
+   
+        cardHeading = lm.getCardinalDirectionFromHeading(355)
+        XCTAssertTrue(cardHeading=="N", "heading should be north ")
         
     }
     

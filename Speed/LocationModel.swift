@@ -68,16 +68,33 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
     
     func getHeading()-> String {
         if course != nil {
-            return NSString(format: "%.0f°",self.course!) }
+            var cardHeading = getCardinalDirectionFromHeading(self.course!)
+            return NSString(format: "%.0f° %@",self.course!, cardHeading) }
         else {
             return "--"
         }
     }
     
     func getCardinalDirectionFromHeading(course: Double) -> String {
-        var modCourse = course%360
+        var modCourse = Int(round(course%360))
         switch modCourse   {
-        case 0:
+        case 0...22:
+            return "N"
+        case 23...67:
+            return "NE"
+        case 68...112:
+            return "E"
+        case 113...157:
+            return "SE"
+        case 158...202:
+            return "S"
+        case 203...247:
+            return "SW"
+        case 248...292:
+            return "W"
+        case 293...337:
+            return "NW"
+        case 338...360:
             return "N"
         default:
             return "--"
