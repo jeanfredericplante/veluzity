@@ -79,7 +79,8 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
         switch modCourse   {
         case 0:
             return "N"
-        case 1:
+        default:
+            return "--"
         }
     }
     
