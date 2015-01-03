@@ -18,7 +18,7 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
     var speed: Double = 0.0 // speed in m/s
     var altitude: Double = 0.0 // altitude in meters
     var coordinates: CLLocationCoordinate2D?
-    var heading: String? // North/East/West/South
+    var course: String? // North/East/West/South
     let locationManager = CLLocationManager()
     let locationGeoCoder = CLGeocoder()
     var delegate: LocationUpdateDelegate?
@@ -45,7 +45,7 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
         self.delegate?.didUpdateLocation()
         
     }
-    
+        
     
     func getStreetName(location: CLLocation) {
         locationGeoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
