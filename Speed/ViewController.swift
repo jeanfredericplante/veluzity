@@ -17,11 +17,17 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
     
     let userLocation = LocationModel()
     let locationWeather = WeatherModel()
+    var defaults: NSUserDefaults!
+    var isMph: Bool = true
+    var isFahrenheit: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userLocation.delegate = self
         locationWeather.myDelegate = self
+        defaults = NSUserDefaults.standardUserDefaults()
+        isMph = defaults.boolForKey("isMph")
+        isFahrenheit = !defaults.boolForKey("isCelsius")
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,10 +36,20 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
     }
     
     func didUpdateLocation() {
-        var speedInKmh = userLocation.speed * 3.6
+        defaults = NSUserDefaults.standardUserDefaults()
+        isMph = defaults.boolForKey("isMph")
+        isFahrenheit = !defaults.boolForKey("isCelsius")
+
+        //Updates speed in display
+        if isMph {
+            var localizedSpeed = userLocation.speed * 2.23694
+            speedDisplay.text = NSString(format: "%.1f mph", localizedSpeed)
+        } else {
+            var localizedSpeed = userLocation.speed * 3.6
+            speedDisplay.text = NSString(format: "%.1f km/h", localizedSpeed)
+        }
         
         // Updates display
-        speedDisplay.text = NSString(format: "%.1f km/h", speedInKmh)
         locationDisplay.text = userLocation.streetName
         
         // Updates weather model location
@@ -50,9 +66,16 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
         
     }
     
+
     func updatedTemperature(temperature: Double) {
         println("I got the temperature of \(temperature)")
-        tempDisplay.text = NSString(format: "%.1f °C",locationWeather.temperature())
+
+        if !isFahrenheit {
+            tempDisplay.text = NSString(format: "%.1f °C",locationWeather.temperature())
+        } else
+        {
+            tempDisplay.text = NSString(format: "%.1f °F",locationWeather.temperatureFahrenheit())
+        }
     }
  
 }

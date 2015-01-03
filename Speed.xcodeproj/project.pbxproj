@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E15C11F1A570C080000BEDA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7E15C11E1A570C080000BEDA /* Settings.bundle */; };
 		7EC245651A4F486D005F2FEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245641A4F486D005F2FEA /* AppDelegate.swift */; };
 		7EC245671A4F486D005F2FEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245661A4F486D005F2FEA /* ViewController.swift */; };
 		7EC2456A1A4F486D005F2FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EC245681A4F486D005F2FEA /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E15C11E1A570C080000BEDA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7EC2455F1A4F486D005F2FEA /* Speed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Speed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EC245631A4F486D005F2FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EC245641A4F486D005F2FEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				7EC245641A4F486D005F2FEA /* AppDelegate.swift */,
 				7EC245661A4F486D005F2FEA /* ViewController.swift */,
 				7EC245681A4F486D005F2FEA /* Main.storyboard */,
+				7E15C11E1A570C080000BEDA /* Settings.bundle */,
 				7EC2456B1A4F486D005F2FEA /* Images.xcassets */,
 				7EC2456D1A4F486D005F2FEA /* LaunchScreen.xib */,
 				7EC245621A4F486D005F2FEA /* Supporting Files */,
@@ -206,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E15C11F1A570C080000BEDA /* Settings.bundle in Resources */,
 				7EC2456A1A4F486D005F2FEA /* Main.storyboard in Resources */,
 				7EC2456F1A4F486D005F2FEA /* LaunchScreen.xib in Resources */,
 				7EC2456C1A4F486D005F2FEA /* Images.xcassets in Resources */,

@@ -65,6 +65,10 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         return lastReadTemperatureCelsius
     }
     
+    func temperatureFahrenheit() -> Double {
+        return lastReadTemperatureCelsius*9/5+32
+    }
+    
     
         
     func getWeatherFromAPI()
