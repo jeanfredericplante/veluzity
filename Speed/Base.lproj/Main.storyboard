@@ -43,27 +43,55 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2t-dQ-Odo">
+                                <rect key="frame" x="299" y="236" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UWE-Xm-xi2" secondAttribute="bottom" constant="8" symbolic="YES" id="1BE-N5-Fip"/>
+                            <constraint firstItem="0jE-ee-Pue" firstAttribute="top" secondItem="M2t-dQ-Odo" secondAttribute="bottom" constant="8" id="3fG-xc-HEm"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0jE-ee-Pue" secondAttribute="bottom" constant="222" id="AlD-Hq-82Y"/>
                             <constraint firstItem="jCq-5v-Upo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="EPU-XQ-5KP"/>
                             <constraint firstItem="UWE-Xm-xi2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Kac-i7-KDj"/>
+                            <constraint firstItem="M2t-dQ-Odo" firstAttribute="trailing" secondItem="0jE-ee-Pue" secondAttribute="trailing" constant="-49" id="MAI-LJ-df5"/>
                             <constraint firstItem="jCq-5v-Upo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="11" id="PVx-8s-S38"/>
                             <constraint firstItem="jCq-5v-Upo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Shh-7c-uDm"/>
+                            <constraint firstItem="M2t-dQ-Odo" firstAttribute="leading" secondItem="0jE-ee-Pue" secondAttribute="leading" constant="89" id="ghg-Zd-kd8"/>
+                            <constraint firstItem="M2t-dQ-Odo" firstAttribute="centerX" secondItem="0jE-ee-Pue" secondAttribute="centerX" constant="20" id="q7R-cW-swY"/>
                             <constraint firstItem="0jE-ee-Pue" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sQo-Un-AyF"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="headingDisplay" destination="M2t-dQ-Odo" id="WTC-lq-Ndq"/>
                         <outlet property="locationDisplay" destination="jCq-5v-Upo" id="i8v-zh-3uO"/>
                         <outlet property="speedDisplay" destination="0jE-ee-Pue" id="ZJo-O5-qlC"/>
                         <outlet property="tempDisplay" destination="UWE-Xm-xi2" id="nfw-JR-vdL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="50x-QW-vve">
+            <objects>
+                <viewController id="wtZ-KI-yjS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Ag-5S-bnS"/>
+                        <viewControllerLayoutGuide type="bottom" id="QfA-bK-2hn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FFP-Or-Ye3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="llc-0V-Mjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>

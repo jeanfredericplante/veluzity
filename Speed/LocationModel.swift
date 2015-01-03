@@ -64,7 +64,15 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
                 }
             }
         }
-        
     }
+    
+    func getHeading()-> String {
+        if course != nil {
+            return NSString(format: "%.0f°",self.course!) }
+        else {
+            return "--"
+        }
+    }
+    
     
 }
