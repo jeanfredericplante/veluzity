@@ -3,7 +3,7 @@ import XCTest
 
 class LocationModelTests: XCTestCase {
     
-    
+    var lm = LocationModel()
     
     override func setUp() {
         super.setUp()
@@ -23,6 +23,39 @@ class LocationModelTests: XCTestCase {
     }
     
     func testReverseGeocoding() {
+        
+    }
+    
+    func testCardinalDirection() {
+        var cardHeading = lm.getCardinalDirectionFromHeading(360)
+        XCTAssertTrue(cardHeading=="N", "heading should be north")
+        
+        cardHeading = lm.getCardinalDirectionFromHeading(0)
+        XCTAssertTrue(cardHeading=="N", "heading should be north")
+        
+        cardHeading = lm.getCardinalDirectionFromHeading(10)
+        XCTAssertTrue(cardHeading=="NE", "heading should be north east")
+
+        cardHeading = lm.getCardinalDirectionFromHeading(90)
+        XCTAssertTrue(cardHeading=="E", "heading should be  east")
+        
+        cardHeading = lm.getCardinalDirectionFromHeading(170)
+        XCTAssertTrue(cardHeading=="SE", "heading should be south east")
+        
+        cardHeading = lm.getCardinalDirectionFromHeading(180)
+        XCTAssertTrue(cardHeading=="S", "heading should be south")
+        
+        cardHeading = lm.getCardinalDirectionFromHeading(180+360)
+        XCTAssertTrue(cardHeading=="S", "heading should be south")
+        
+        cardHeading = lm.getCardinalDirectionFromHeading(235)
+        XCTAssertTrue(cardHeading=="SW", "heading should be south west")
+        
+        cardHeading = lm.getCardinalDirectionFromHeading(270)
+        XCTAssertTrue(cardHeading=="W", "heading should be west")
+        
+        cardHeading = lm.getCardinalDirectionFromHeading(355)
+        XCTAssertTrue(cardHeading=="NW", "heading should be north west")
         
     }
     

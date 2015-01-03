@@ -74,5 +74,14 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    func getCardinalDirectionFromHeading(course: Double) -> String {
+        var modCourse = course%360
+        switch modCourse   {
+        case 0:
+            return "N"
+        case 1:
+        }
+    }
+    
     
 }
