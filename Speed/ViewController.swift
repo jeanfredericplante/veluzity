@@ -45,6 +45,8 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
         if isMph {
             var localizedSpeed = userLocation.speed * 2.23694
             speedDisplay.text = NSString(format: "%.1f mph", localizedSpeed)
+            speedDisplay.attributedText
+            
         } else {
             var localizedSpeed = userLocation.speed * 3.6
             speedDisplay.text = NSString(format: "%.1f km/h", localizedSpeed)
@@ -77,6 +79,14 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
         } else
         {
             tempDisplay.text = NSString(format: "%.1f °F",locationWeather.temperatureFahrenheit())
+        }
+    }
+    
+    func getAttributedSpeedUnit()-> NSAttributedString {
+        if isMph {
+            
+        } else {
+            
         }
     }
  
