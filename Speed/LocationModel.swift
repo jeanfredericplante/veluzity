@@ -28,6 +28,7 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
         super.init()
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        self.locationManager.activityType = CLActivityType.AutomotiveNavigation
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
     }
