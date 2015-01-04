@@ -41,18 +41,10 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
         isMph = defaults.boolForKey("isMph")
         isFahrenheit = !defaults.boolForKey("isCelsius")
 
-        //Updates speed in display
-        if isMph {
-            var localizedSpeed = userLocation.speed * 2.23694
-            speedDisplay.text = NSString(format: "%.1f mph", localizedSpeed)
-            speedDisplay.attributedText
-            
-        } else {
-            var localizedSpeed = userLocation.speed * 3.6
-            speedDisplay.text = NSString(format: "%.1f km/h", localizedSpeed)
-        }
+     
         
         // Updates display
+        speedDisplay.attributedText = self.getAttributedSpeedText()
         locationDisplay.text = userLocation.streetName
         headingDisplay.text = userLocation.getHeading()
         
@@ -82,13 +74,27 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
         }
     }
     
-    func getAttributedSpeedUnit()-> NSAttributedString {
+    func getAttributedSpeedText()-> NSAttributedString {
+        var attributedUnitString: NSAttributedString
+        var unitFontSize: CGFloat = round(speedDisplay.font.pointSize / 2)
+        var unitFont = speedDisplay.font.fontWithSize(unitFontSize)
+        var speedFont = speedDisplay.font
+        var localizedSpeed: Double!
+        var unitText: String!
         if isMph {
+            localizedSpeed = userLocation.speed * 2.23694
+            unitText = "mph"
             
         } else {
-            
+            localizedSpeed = userLocation.speed * 3.6
+            unitText = "kmh"
         }
+        var speedText = NSString(format: "%.1f", localizedSpeed)
+        var speedAttrText = NSMutableAttributedString(string: speedText, attributes: [NSFontAttributeName: speedFont])
+        var unitAttrText = NSMutableAttributedString(string:"mph",attributes: [NSFontAttributeName: unitFont])
+        speedAttrText.appendAttributedString(unitAttrText)
+        return speedAttrText
     }
- 
+    
 }
 
