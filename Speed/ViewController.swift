@@ -75,7 +75,6 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
     }
     
     func getAttributedSpeedText()-> NSAttributedString {
-        var attributedUnitString: NSAttributedString
         var unitFontSize: CGFloat = round(speedDisplay.font.pointSize / 2)
         var unitFont = speedDisplay.font.fontWithSize(unitFontSize)
         var speedFont = speedDisplay.font
@@ -91,7 +90,7 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
         }
         var speedText = NSString(format: "%.1f", localizedSpeed)
         var speedAttrText = NSMutableAttributedString(string: speedText, attributes: [NSFontAttributeName: speedFont])
-        var unitAttrText = NSMutableAttributedString(string:"mph",attributes: [NSFontAttributeName: unitFont])
+        var unitAttrText = NSMutableAttributedString(string: unitText, attributes: [NSFontAttributeName: unitFont])
         speedAttrText.appendAttributedString(unitAttrText)
         return speedAttrText
     }
