@@ -2,7 +2,7 @@ import UIKit
 import XCTest
 import CoreLocation
 
-class WeatherModelTests: XCTestCase, WeatherUpdateDelegate {
+class WeatherModelTests: XCTestCase {
     
     var weatherupdatedExpectation: XCTestExpectation?
     var wm: WeatherModel = WeatherModel()
@@ -22,8 +22,15 @@ class WeatherModelTests: XCTestCase, WeatherUpdateDelegate {
     func testTemperature() {
         weatherupdatedExpectation = expectationWithDescription("expect the weather to be udpated")
         wm.getWeatherFromAPI()
-        wm.myDelegate = self
-               
+        wm.temperatureUpdated = { wm in
+            println("completion closure func in test")
+            self.weatherupdatedExpectation!.fulfill()
+            var temperature = wm.temperature()
+            XCTAssertTrue(temperature < 100, "Paris shouldn't be that hot")
+            XCTAssertTrue(temperature > -20, "Paris shouldn't be that cold")
+
+        }
+        
         waitForExpectationsWithTimeout(5) { (error) in
             XCTAssertNil(error, "got a timeout when pulling the temperature")
         }
