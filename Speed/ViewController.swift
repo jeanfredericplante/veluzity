@@ -28,10 +28,11 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         defaults = NSUserDefaults.standardUserDefaults()
         isMph = defaults.boolForKey("isMph")
         isFahrenheit = !defaults.boolForKey("isCelsius")
-        locationWeather.temperatureUpdated = {lw in
+        
+        // completion closure, temperature updated
+        locationWeather.temperatureUpdated = { lw in
             println("I got the temperature of \(lw.temperature())")
             self.didUpdateWeather()
-            
         }
     }
 
