@@ -178,7 +178,7 @@
 				TargetAttributes = {
 					7EC2455E1A4F486D005F2FEA = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = ZQEHFBD5JZ;
 					};
 					7EC245731A4F486D005F2FEA = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -363,9 +363,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -373,9 +376,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4340e365-bc1d-4b0c-8482-32f4709acf20";
 			};
 			name = Release;
 		};
