@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDelegate {
+class ViewController: UIViewController, LocationUpdateDelegate {
 
     @IBOutlet weak var speedDisplay: UILabel!
     @IBOutlet weak var tempDisplay: UILabel!
@@ -25,10 +25,15 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
     override func viewDidLoad() {
         super.viewDidLoad()
         userLocation.delegate = self
-        locationWeather.myDelegate = self
         defaults = NSUserDefaults.standardUserDefaults()
         isMph = defaults.boolForKey("isMph")
         isFahrenheit = !defaults.boolForKey("isCelsius")
+        
+        // completion closure, temperature updated
+        locationWeather.temperatureUpdated = { lw in
+            println("I got the temperature of \(lw.temperature())")
+            self.didUpdateWeather()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,9 +62,15 @@ class ViewController: UIViewController, LocationUpdateDelegate, WeatherUpdateDel
                 locationWeather.getWeatherFromAPI()
             }
         }
-        
-
-        
+     }
+    
+    func didUpdateWeather() {
+        if !self.isFahrenheit {
+            self.tempDisplay.text = NSString(format: "%.1f °C",locationWeather.temperature())
+        } else
+        {
+            self.tempDisplay.text = NSString(format: "%.1f °F",locationWeather.temperatureFahrenheit())
+        }
     }
     
 

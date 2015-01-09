@@ -9,11 +9,11 @@
 import UIKit
 import CoreLocation
 
-protocol WeatherUpdateDelegate {
-    func updatedTemperature(temperature: Double)
-}
 
 class WeatherModel: NSObject, NSURLConnectionDelegate {
+    // create update delegate type
+    typealias WeatherUpdateDelegate = (WeatherModel) -> ()
+    
     let currentWeatherServiceUrl = "http://api.openweathermap.org/data/2.5/weather"
     
     var minDistanceToUpdateWeather:Double = 500 // distance to travel before we bug openweathermap again in meters
@@ -22,7 +22,8 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     var lastUpdateTime: NSDate?
     var coordinates: CLLocationCoordinate2D
     var weatherResponseData: NSMutableData
-    var myDelegate: WeatherUpdateDelegate?
+    var temperatureUpdated: WeatherUpdateDelegate?
+    
     
     override init() {
         weatherResponseData = NSMutableData()
@@ -101,8 +102,8 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
             if temperatureKelvin != nil {
                 self.lastReadTemperatureCelsius = temperatureKelvin! - 273.15
                 self.lastUpdateTime = NSDate() // now
-                self.myDelegate?.updatedTemperature(self.temperature())
-
+                self.temperatureUpdated!(self)
+                
                 println("temperature updated to \(lastReadTemperatureCelsius.description)")
             }
         } else {
