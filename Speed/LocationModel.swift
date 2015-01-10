@@ -70,11 +70,11 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
     }
     
     func getHeading()-> String {
-        if course != nil {
+        if course != nil && course >= 0  {
             var cardHeading = getCardinalDirectionFromHeading(self.course!)
             return NSString(format: "%.0f° %@",self.course!, cardHeading) }
         else {
-            return "--"
+            return ""
         }
     }
     
