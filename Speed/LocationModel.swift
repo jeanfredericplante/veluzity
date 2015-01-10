@@ -56,9 +56,11 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
             } else {
                 if placemarks.count > 0 {
                     var placemark: CLPlacemark = placemarks[0] as CLPlacemark
-                    var newName = placemark.addressDictionary[kABPersonAddressStreetKey] as CFString?
+                    var newName = placemark.thoroughfare
                     if newName != nil {
                         self.streetName = newName
+                    } else {
+                        self.streetName = "--"
                     }
                     println("this is the placemark location \(self.streetName!)")
                     self.delegate?.didUpdateLocation()
