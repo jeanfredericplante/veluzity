@@ -60,7 +60,7 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
                     if newName != nil {
                         self.streetName = newName
                     } else {
-                        self.streetName = "--"
+                        self.streetName = ""
                     }
                     println("this is the placemark location \(self.streetName!)")
                     self.delegate?.didUpdateLocation()
@@ -100,7 +100,7 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
         case 338...360:
             return "N"
         default:
-            return "--"
+            return ""
         }
     }
     
