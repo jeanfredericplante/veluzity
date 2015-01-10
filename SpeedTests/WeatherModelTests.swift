@@ -66,6 +66,11 @@ class WeatherModelTests: XCTestCase {
         }
     }
     
+    func testBogusJsonDoesntBreakThings() {
+        var json = NSData()
+        wm.parseAndUpdateModelWithJsonFromAPI(NSData())
+    }
+    
     func updatedTemperature(temperature: Double)
     {
         println("updatedtemp func in test")

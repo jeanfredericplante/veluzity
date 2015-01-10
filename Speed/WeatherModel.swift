@@ -94,10 +94,10 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     }
     
     func parseAndUpdateModelWithJsonFromAPI(json: NSData) {
-        var error: NSError?
-        var weatherInfo: NSDictionary = NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSDictionary
-        if (error == nil) {
-            var weatherMain: NSDictionary? = weatherInfo["main"] as NSDictionary?
+        var myError: NSError?
+        var weatherInfo: NSDictionary? = NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.MutableContainers, error: &myError) as NSDictionary?
+        if (myError == nil) {
+            var weatherMain: NSDictionary? = weatherInfo?["main"] as NSDictionary?
             var temperatureKelvin: Double? = weatherMain?["temp"] as Double?
             if temperatureKelvin != nil {
                 self.lastReadTemperatureCelsius = temperatureKelvin! - 273.15
@@ -107,7 +107,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
                 println("temperature updated to \(lastReadTemperatureCelsius.description)")
             }
         } else {
-            println("invalid json: \(error?.localizedDescription)")
+            println("invalid json: \(myError?.localizedDescription)")
         }
     }
     

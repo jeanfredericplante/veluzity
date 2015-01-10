@@ -18,6 +18,8 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     
     let userLocation = LocationModel()
     let locationWeather = WeatherModel()
+    let device : UIDevice = UIDevice.currentDevice()
+    let nc = NSNotificationCenter.defaultCenter()
     var defaults: NSUserDefaults!
     var isMph: Bool = true
     var isFahrenheit: Bool = true
@@ -34,6 +36,14 @@ class ViewController: UIViewController, LocationUpdateDelegate {
             println("I got the temperature of \(lw.temperature())")
             self.didUpdateWeather()
         }
+        
+        // updates sleep mode
+        self.updateSleepMode()
+        
+        // adds obsever on battery charging state
+        nc.addObserver(self, selector: "deviceBatteryStateChanged", name: UIDeviceBatteryStateDidChangeNotification, object: device)
+
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,6 +73,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
             }
         }
      }
+    
     
     func didUpdateWeather() {
         if !self.isFahrenheit {
@@ -105,6 +116,17 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         speedAttrText.appendAttributedString(unitAttrText)
         return speedAttrText
     }
+    
+    // Utilities, should move to device helper function
+    
+    func deviceBatteryStateChanged() {
+        updateSleepMode()
+    }
+    
+    func updateSleepMode() {
+        var currentBatteryState = device.batteryState;
+        UIApplication.sharedApplication().idleTimerDisabled = currentBatteryState == .Charging
+   }
     
 }
 
