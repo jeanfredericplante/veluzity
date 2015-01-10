@@ -9,12 +9,20 @@
 import UIKit
 import CoreLocation
 
+@objc // makes protocol available from Objective C
+protocol ViewControllerDelegate {
+    optional func togglePreferencePane()
+}
+
+
 class ViewController: UIViewController, LocationUpdateDelegate {
 
     @IBOutlet weak var speedDisplay: UILabel!
     @IBOutlet weak var tempDisplay: UILabel!
     @IBOutlet weak var locationDisplay: UILabel!
     @IBOutlet weak var headingDisplay: UILabel!
+    
+    @IBOutlet weak var preferenceButton: UIButton!
     
     let userLocation = LocationModel()
     let locationWeather = WeatherModel()
@@ -23,6 +31,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     var defaults: NSUserDefaults!
     var isMph: Bool = true
     var isFahrenheit: Bool = true
+    var delegate: ViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
