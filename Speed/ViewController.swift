@@ -102,6 +102,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         var speedFont = speedDisplay.font
         var localizedSpeed: Double!
         var unitText: String!
+        var speedText: String!
         if isMph {
             localizedSpeed = userLocation.speed * 2.23694
             unitText = "mph"
@@ -110,7 +111,11 @@ class ViewController: UIViewController, LocationUpdateDelegate {
             localizedSpeed = userLocation.speed * 3.6
             unitText = "kmh"
         }
-        var speedText = NSString(format: "%.1f", localizedSpeed)
+        if localizedSpeed >= 0 {
+            speedText = NSString(format: "%.1f", localizedSpeed)
+        } else {
+            speedText = "--"
+        }
         var speedAttrText = NSMutableAttributedString(string: speedText, attributes: [NSFontAttributeName: speedFont])
         var unitAttrText = NSMutableAttributedString(string: unitText, attributes: [NSFontAttributeName: unitFont])
         speedAttrText.appendAttributedString(unitAttrText)
