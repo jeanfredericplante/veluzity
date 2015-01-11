@@ -18,7 +18,12 @@ class ContainerViewController: UIViewController, ViewControllerDelegate {
     
     var mainViewController: ViewController!
     var mainViewNavigationController: UINavigationController!
-    var currentState: SlideOutState = SlideOutState.PreferenceCollapsed
+    var currentState: SlideOutState = SlideOutState.PreferenceCollapsed {
+        didSet {
+            let shouldShowShadow = currentState != .PreferenceCollapsed
+            showShadowForMainView(shouldShowShadow)
+        }
+    }
     var preferencePaneController : PreferencePaneController?
     
     let preferencePanelExpandedOffset: CGFloat = -60
@@ -26,6 +31,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainViewController = UIStoryboard.mainViewController()
+        mainViewController.view.layer.shadowOffset = CGSize(width: 0,height: 3)
         mainViewController.delegate = self
         
         // wraps main view in a navigation controller
@@ -77,12 +83,21 @@ class ContainerViewController: UIViewController, ViewControllerDelegate {
         preferenceController.didMoveToParentViewController(self)
     }
     
+    // TODO: check out the completion closure format
     func animateMainViewYPosition(#targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0,
             options: .CurveEaseInOut,
             animations: {
                 self.mainViewController.view.frame.origin.y = targetPosition
             }, completion: completion)
+    }
+    
+    func showShadowForMainView(shouldShowShadow: Bool) {
+        if (shouldShowShadow){
+            mainViewController.view.layer.shadowOpacity = 0.8
+        } else {
+            mainViewController.view.layer.shadowOpacity = 0
+        }
     }
     
 }
