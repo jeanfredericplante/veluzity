@@ -14,7 +14,7 @@ enum SlideOutState {
     case PreferenceCollapsed
 }
 
-class ContainerViewController: UIViewController, ViewControllerDelegate, PreferencePaneControllerDelegate {
+class ContainerViewController: UIViewController, ViewControllerDelegate, PreferencePaneControllerDelegate, UIGestureRecognizerDelegate {
     
     var mainViewController: ViewController!
     var mainViewNavigationController: UINavigationController!
@@ -30,6 +30,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mainViewController = UIStoryboard.mainViewController()
         mainViewController.view.layer.shadowOffset = CGSize(width: 0,height: 3)
         mainViewController.delegate = self
@@ -40,6 +41,11 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         addChildViewController(mainViewController)
         
         mainViewController.didMoveToParentViewController(self)
+        
+        // adds tap gesture detection
+        let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
+        mainViewController.view.addGestureRecognizer(touchGestureRecognizer)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,6 +111,13 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
             mainViewController.view.layer.shadowOpacity = 0.8
         } else {
             mainViewController.view.layer.shadowOpacity = 0
+        }
+    }
+    
+    // MARK: Gesture recognizer
+    func handleTapGesture(sender: UITapGestureRecognizer) {
+        if sender.state == .Ended {
+            togglePreferencePane()
         }
     }
     
