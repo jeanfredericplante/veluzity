@@ -8,11 +8,20 @@
 
 import UIKit
 
+@objc
+protocol PreferencePaneControllerDelegate {
+    optional func preferenceUpdated()
+}
+
 
 class PreferencePaneController: UIViewController {
+    var defaults: NSUserDefaults!
+    var delegate: PreferencePaneControllerDelegate?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        defaults = NSUserDefaults.standardUserDefaults()
 
         // Do any additional setup after loading the view.
     }
@@ -24,8 +33,27 @@ class PreferencePaneController: UIViewController {
     
 
     // MARK: Buttons
-
-      
+    @IBAction func metricPressed(sender: AnyObject) {
+        setPreferenceAsMetric()
+        delegate?.preferenceUpdated?()
+    }
+  
+    @IBAction func imperialPressed(sender: AnyObject) {
+        setPreferenceAsImperial()
+        delegate?.preferenceUpdated?()
+    }
+    
+    func setPreferenceAsMetric() {
+        defaults.setBool(false, forKey: "isMph")
+        defaults.setBool(true, forKey: "isCelsius")
+        defaults.synchronize()
+    }
+    
+    func setPreferenceAsImperial() {
+        defaults.setBool(true, forKey: "isMph")
+        defaults.setBool(false, forKey: "isCelsius")
+        defaults.synchronize()
+    }
 
     
 }

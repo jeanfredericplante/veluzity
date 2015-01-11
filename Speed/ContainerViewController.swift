@@ -14,7 +14,7 @@ enum SlideOutState {
     case PreferenceCollapsed
 }
 
-class ContainerViewController: UIViewController, ViewControllerDelegate {
+class ContainerViewController: UIViewController, ViewControllerDelegate, PreferencePaneControllerDelegate {
     
     var mainViewController: ViewController!
     var mainViewNavigationController: UINavigationController!
@@ -56,11 +56,19 @@ class ContainerViewController: UIViewController, ViewControllerDelegate {
         animatePreferencePane(shouldExpand: notAlreadyExpanded)
     }
     
+    // MARK: PreferencePaneController delegate method
+    func preferenceUpdated() {
+        mainViewController.didUpdateLocation()
+        mainViewController.didUpdateWeather()
+    }
+    
     // MARK: Container view management method
     func addPreferencePaneViewController() {
         if preferencePaneController == nil {
             preferencePaneController = UIStoryboard.preferencePaneController()
             addChildPreferencePaneController(preferencePaneController!)
+            preferencePaneController!.delegate = self
+            
         }
     }
     func animatePreferencePane(#shouldExpand: Bool) {

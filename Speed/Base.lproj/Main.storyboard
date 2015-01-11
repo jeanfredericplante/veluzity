@@ -23,6 +23,9 @@
                                     <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="metricPressed:" destination="EoH-KH-Mxk" eventType="touchUpInside" id="Esv-tb-VZI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7d-Ar-fTp">
                                 <rect key="frame" x="521" y="550" width="63" height="30"/>
@@ -30,9 +33,12 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="imperialPressed:" destination="EoH-KH-Mxk" eventType="touchUpInside" id="xKw-mh-3h5"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="q7d-Ar-fTp" firstAttribute="trailing" secondItem="RRu-wk-6rZ" secondAttribute="trailingMargin" id="05g-89-miK"/>
                             <constraint firstItem="XSr-hc-dag" firstAttribute="top" secondItem="Op6-7d-0ds" secondAttribute="bottom" constant="20" id="BDj-v0-QNM"/>
