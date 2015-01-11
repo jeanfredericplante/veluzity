@@ -26,7 +26,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
     }
     var preferencePaneController : PreferencePaneController?
     
-    let preferencePanelExpandedOffset: CGFloat = -60
+    let preferencePanelExpandedOffset: CGFloat = -50
     
     override func viewDidLoad() {
         super.viewDidLoad()

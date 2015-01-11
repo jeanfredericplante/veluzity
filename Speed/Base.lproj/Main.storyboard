@@ -17,33 +17,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Op6-7d-0ds">
-                                <rect key="frame" x="16" y="550" width="46" height="30"/>
-                                <state key="normal" title="Metric">
-                                    <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="metricPressed:" destination="EoH-KH-Mxk" eventType="touchUpInside" id="Esv-tb-VZI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7d-Ar-fTp">
-                                <rect key="frame" x="521" y="550" width="63" height="30"/>
-                                <state key="normal" title="Imperial">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="imperialPressed:" destination="EoH-KH-Mxk" eventType="touchUpInside" id="xKw-mh-3h5"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OcS-WK-RrU">
+                                <rect key="frame" x="159" y="168" width="300" height="432"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Op6-7d-0ds">
+                                        <rect key="frame" x="8" y="201" width="46" height="30"/>
+                                        <state key="normal" title="Metric">
+                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="metricPressed:" destination="EoH-KH-Mxk" eventType="touchUpInside" id="Esv-tb-VZI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7d-Ar-fTp">
+                                        <rect key="frame" x="229" y="201" width="63" height="30"/>
+                                        <state key="normal" title="Imperial">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="imperialPressed:" destination="EoH-KH-Mxk" eventType="touchUpInside" id="xKw-mh-3h5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="q7d-Ar-fTp" firstAttribute="trailing" secondItem="OcS-WK-RrU" secondAttribute="trailingMargin" id="0II-SH-MI0"/>
+                                    <constraint firstItem="Op6-7d-0ds" firstAttribute="leading" secondItem="OcS-WK-RrU" secondAttribute="leading" constant="8" id="B2w-bV-a7W"/>
+                                    <constraint firstAttribute="centerX" secondItem="q7d-Ar-fTp" secondAttribute="centerX" constant="-110" id="Bk1-bA-QyR"/>
+                                    <constraint firstAttribute="height" constant="50" id="J92-Iz-miO"/>
+                                    <constraint firstItem="Op6-7d-0ds" firstAttribute="centerY" secondItem="q7d-Ar-fTp" secondAttribute="centerY" id="m0g-dc-sam"/>
+                                    <constraint firstItem="Op6-7d-0ds" firstAttribute="centerY" secondItem="OcS-WK-RrU" secondAttribute="centerY" id="o4N-hp-PDs"/>
+                                    <constraint firstAttribute="trailing" secondItem="q7d-Ar-fTp" secondAttribute="trailing" constant="8" id="qAK-RQ-TKI"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Bk1-bA-QyR"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="q7d-Ar-fTp" firstAttribute="trailing" secondItem="RRu-wk-6rZ" secondAttribute="trailingMargin" id="05g-89-miK"/>
-                            <constraint firstItem="XSr-hc-dag" firstAttribute="top" secondItem="Op6-7d-0ds" secondAttribute="bottom" constant="20" id="BDj-v0-QNM"/>
-                            <constraint firstItem="q7d-Ar-fTp" firstAttribute="centerY" secondItem="Op6-7d-0ds" secondAttribute="centerY" id="QoM-iZ-ZtL"/>
-                            <constraint firstItem="Op6-7d-0ds" firstAttribute="leading" secondItem="RRu-wk-6rZ" secondAttribute="leadingMargin" id="vbX-qK-Cer"/>
+                            <constraint firstItem="XSr-hc-dag" firstAttribute="top" secondItem="OcS-WK-RrU" secondAttribute="bottom" id="9Nz-kD-Fwa"/>
+                            <constraint firstAttribute="trailing" secondItem="OcS-WK-RrU" secondAttribute="trailing" id="NRV-1f-rPd"/>
+                            <constraint firstItem="OcS-WK-RrU" firstAttribute="leading" secondItem="RRu-wk-6rZ" secondAttribute="leading" id="lEW-hS-uqs"/>
                         </constraints>
                     </view>
                 </viewController>
