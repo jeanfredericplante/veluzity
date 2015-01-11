@@ -8,10 +8,17 @@
 
 import UIKit
 
+enum SlideOutState {
+    case PreferenceExpanded
+    case PreferenceCollapsed
+}
+
 class ContainerViewController: UIViewController, ViewControllerDelegate {
     
     var mainViewController: ViewController!
     var mainViewNavigationController: UINavigationController!
+    var currentState: SlideOutState = SlideOutState.PreferenceCollapsed
+    var preferencePaneController : PreferencePaneController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +36,33 @@ class ContainerViewController: UIViewController, ViewControllerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: ViewController delegate method
+    func togglePreferencePane() {
+        let notAlreadyExpanded = (currentState != SlideOutState.PreferenceExpanded)
+        if notAlreadyExpanded {
+            addPreferencePaneViewController()
+        }
+        animatePreferencePane(shouldExpand: notAlreadyExpanded)
+    }
+    
+    // MARK: Container view management method
+    func addPreferencePaneViewController() {
+        if preferencePaneController == nil {
+            preferencePaneController = UIStoryboard.preferencePaneController()
+            addChildPreferencePaneController(preferencePaneController!)
+        }
+    }
+    func animatePreferencePane(#shouldExpand: Bool) {
+        // # is to have the external parameter name match the variable name
+        
+    }
+    
+    func addChildPreferencePaneController(preferenceController: PreferencePaneController) {
+        view.insertSubview(preferenceController.view, atIndex: 0)
+        addChildViewController(preferenceController)
+        preferenceController.didMoveToParentViewController(self)
     }
  }
 

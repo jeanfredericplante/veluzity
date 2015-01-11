@@ -22,8 +22,6 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     @IBOutlet weak var locationDisplay: UILabel!
     @IBOutlet weak var headingDisplay: UILabel!
     
-    @IBOutlet weak var preferenceButton: UIButton!
-    
     let userLocation = LocationModel()
     let locationWeather = WeatherModel()
     let device : UIDevice = UIDevice.currentDevice()
@@ -123,7 +121,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         if localizedSpeed >= 0 {
             speedText = NSString(format: "%.1f", localizedSpeed)
         } else {
-            speedText = "--"
+            speedText = "0"
         }
         var speedAttrText = NSMutableAttributedString(string: speedText, attributes: [NSFontAttributeName: speedFont])
         var unitAttrText = NSMutableAttributedString(string: unitText, attributes: [NSFontAttributeName: unitFont])
@@ -131,7 +129,15 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         return speedAttrText
     }
     
-    // Utilities, should move to device helper function
+    // MARK: Button actions
+    
+    @IBAction func preferencesTapped(sender: AnyObject) {
+        delegate?.togglePreferencePane?()
+    }
+    
+    
+    // MARK: Utilities
+    // TODO: Move to helper class?
     
     func deviceBatteryStateChanged() {
         updateSleepMode()
