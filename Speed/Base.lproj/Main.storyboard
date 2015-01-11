@@ -17,25 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCO-dx-u9m">
-                                <rect key="frame" x="16" y="550" width="72" height="30"/>
-                                <state key="normal" title="°C, KM/H">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Op6-7d-0ds">
+                                <rect key="frame" x="16" y="550" width="46" height="30"/>
+                                <state key="normal" title="Metric">
+                                    <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtf-tU-GgI">
-                                <rect key="frame" x="528" y="550" width="56" height="30"/>
-                                <state key="normal" title="°F, MPH">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7d-Ar-fTp">
+                                <rect key="frame" x="521" y="550" width="63" height="30"/>
+                                <state key="normal" title="Imperial">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bCO-dx-u9m" firstAttribute="centerY" secondItem="rtf-tU-GgI" secondAttribute="centerY" id="ImU-ih-ANR"/>
-                            <constraint firstItem="bCO-dx-u9m" firstAttribute="leading" secondItem="RRu-wk-6rZ" secondAttribute="leadingMargin" id="SkW-oR-EWR"/>
-                            <constraint firstItem="XSr-hc-dag" firstAttribute="top" secondItem="bCO-dx-u9m" secondAttribute="bottom" constant="20" id="XEj-j1-Mzb"/>
-                            <constraint firstItem="rtf-tU-GgI" firstAttribute="trailing" secondItem="RRu-wk-6rZ" secondAttribute="trailingMargin" id="mVA-VX-dWj"/>
+                            <constraint firstItem="q7d-Ar-fTp" firstAttribute="trailing" secondItem="RRu-wk-6rZ" secondAttribute="trailingMargin" id="05g-89-miK"/>
+                            <constraint firstItem="XSr-hc-dag" firstAttribute="top" secondItem="Op6-7d-0ds" secondAttribute="bottom" constant="20" id="BDj-v0-QNM"/>
+                            <constraint firstItem="q7d-Ar-fTp" firstAttribute="centerY" secondItem="Op6-7d-0ds" secondAttribute="centerY" id="QoM-iZ-ZtL"/>
+                            <constraint firstItem="Op6-7d-0ds" firstAttribute="leading" secondItem="RRu-wk-6rZ" secondAttribute="leadingMargin" id="vbX-qK-Cer"/>
                         </constraints>
                     </view>
                 </viewController>
