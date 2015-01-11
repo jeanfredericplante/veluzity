@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 enum SlideOutState {
     case PreferenceExpanded
@@ -19,6 +20,8 @@ class ContainerViewController: UIViewController, ViewControllerDelegate {
     var mainViewNavigationController: UINavigationController!
     var currentState: SlideOutState = SlideOutState.PreferenceCollapsed
     var preferencePaneController : PreferencePaneController?
+    
+    let preferencePanelExpandedOffset: CGFloat = -60
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +59,16 @@ class ContainerViewController: UIViewController, ViewControllerDelegate {
     }
     func animatePreferencePane(#shouldExpand: Bool) {
         // # is to have the external parameter name match the variable name
-        
+        if (shouldExpand) {
+            currentState = .PreferenceExpanded
+            animateMainViewYPosition(targetPosition:  preferencePanelExpandedOffset)
+        } else {
+            animateMainViewYPosition(targetPosition: 0) { finished in
+                self.currentState = .PreferenceCollapsed
+                self.preferencePaneController!.view.removeFromSuperview()
+                self.preferencePaneController = nil
+            }
+        }
     }
     
     func addChildPreferencePaneController(preferenceController: PreferencePaneController) {
@@ -64,7 +76,16 @@ class ContainerViewController: UIViewController, ViewControllerDelegate {
         addChildViewController(preferenceController)
         preferenceController.didMoveToParentViewController(self)
     }
- }
+    
+    func animateMainViewYPosition(#targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0,
+            options: .CurveEaseInOut,
+            animations: {
+                self.mainViewController.view.frame.origin.y = targetPosition
+            }, completion: completion)
+    }
+    
+}
 
 private extension UIStoryboard {
     class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()) }
