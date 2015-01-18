@@ -24,6 +24,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     @IBOutlet weak var headingDisplay: UILabel!
     @IBOutlet weak var weatherView: UIView!
     @IBOutlet weak var speedUnit: UILabel!
+    @IBOutlet weak var weatherIcon: UIImageView!
     
     
     let userLocation = LocationModel()
@@ -96,6 +97,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         {
             self.tempDisplay.text = NSString(format: "%.1f °F",locationWeather.temperatureFahrenheit())
         }
+        weatherIcon.image = locationWeather.getWeatherIconImage()
     }
     
     

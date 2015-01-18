@@ -71,6 +71,27 @@ class WeatherModelTests: XCTestCase {
         wm.parseAndUpdateModelWithJsonFromAPI(NSData())
     }
     
+    func testWeatherReturnsAnIcon() {
+        weatherupdatedExpectation = expectationWithDescription("expect the weather to be udpated")
+        wm.getWeatherFromAPI()
+        wm.temperatureUpdated = { wm in
+            println("completion closure func in test")
+            var weatherIcon = wm.getWeatherIcon()
+            println("my weather icon is \(weatherIcon)")
+            XCTAssertNotNil(weatherIcon, "I should get an icon")
+            
+            var weatherDescription = wm.getWeatherDescription()
+            println("my weather description is \(weatherDescription)")
+            XCTAssertNotNil(weatherDescription, "I should get a weather description")
+            self.weatherupdatedExpectation!.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(5) { (error) in
+            XCTAssertNil(error, "got a timeout when pulling the temperature")
+        }
+
+    }
+    
     func updatedTemperature(temperature: Double)
     {
         println("updatedtemp func in test")
@@ -78,6 +99,8 @@ class WeatherModelTests: XCTestCase {
         XCTAssertTrue(temperature < 100, "Paris shouldn't be that hot")
         XCTAssertTrue(temperature > -20, "Paris shouldn't be that cold")
     }
+    
+    
  
     
     

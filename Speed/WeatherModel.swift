@@ -9,6 +9,41 @@
 import UIKit
 import CoreLocation
 
+enum WeatherIcon: String {
+    case ClearSky = "01d"
+    case FewClouds = "02d"
+    case ScatteredClouds = "03d"
+    case BrokenClouds = "04d"
+    case ShowerRain = "09d"
+    case Rain = "10d"
+    case ThunderStorm = "11d"
+    case Snow = "13d"
+    case Mist = "50d"
+    
+    case ClearSkyNight = "01n"
+    case FewCloudsNight = "02n"
+    case ScatteredCloudsNight = "03n"
+    case BrokenCloudsNight = "04n"
+    case ShowerRainNight = "09n"
+    case RainNight = "10n"
+    case ThunderStormNight = "11n"
+    case SnowNight = "13n"
+    case MistNight = "50n"
+    
+    func simpleDescription() -> String {
+        switch self {
+        default:
+            return String(self.rawValue)
+        }
+    }
+    
+    func fileName() -> String {
+        switch self {
+        default:
+            return String(self.rawValue)+".png"
+        }
+    }
+}
 
 class WeatherModel: NSObject, NSURLConnectionDelegate {
     // create update delegate type
@@ -16,6 +51,8 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     
     let currentWeatherServiceUrl = "http://api.openweathermap.org/data/2.5/weather"
     
+    var weatherIcon: String! = nil
+    var weatherDescription: String! = nil
     var minDistanceToUpdateWeather:Double = 500 // distance to travel before we bug openweathermap again in meters
     var maxTimeBetweenUpdates: NSTimeInterval = 300 // maximum time between updates in seconds
     var lastReadTemperatureCelsius: Double
@@ -70,6 +107,23 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         return lastReadTemperatureCelsius*9/5+32
     }
     
+    func getWeatherIcon() -> String {
+        return self.weatherIcon
+    }
+    func getWeatherIconImage() -> UIImage {
+        let wi = WeatherIcon(rawValue: self.weatherIcon)
+        if wi == nil {
+            return UIImage()
+        } else {
+            var imageName: String = wi!.rawValue + ".png"
+            return UIImage(named: imageName)!
+        }
+    }
+    
+    
+    func getWeatherDescription() -> String {
+        return self.weatherDescription
+    }
     
         
     func getWeatherFromAPI()
@@ -99,6 +153,9 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         if (myError == nil) {
             var weatherMain: NSDictionary? = weatherInfo?["main"] as NSDictionary?
             var temperatureKelvin: Double? = weatherMain?["temp"] as Double?
+            var weatherDescr: NSDictionary? = weatherInfo?["weather"]?[0] as NSDictionary?
+            self.weatherDescription = weatherDescr?["description"] as String?
+            self.weatherIcon = weatherDescr?["icon"] as String?
             if temperatureKelvin != nil {
                 self.lastReadTemperatureCelsius = temperatureKelvin! - 273.15
                 self.lastUpdateTime = NSDate() // now
@@ -106,6 +163,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
                 
                 println("temperature updated to \(lastReadTemperatureCelsius.description)")
             }
+            
         } else {
             println("invalid json: \(myError?.localizedDescription)")
         }
