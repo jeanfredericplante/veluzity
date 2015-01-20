@@ -25,6 +25,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     @IBOutlet weak var weatherView: UIView!
     @IBOutlet weak var speedUnit: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var velocityMeter: SpeedMeter!
     
     
     let userLocation = LocationModel()
@@ -77,6 +78,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         speedUnit.text = getSpeedUnitText()
         locationDisplay.text = userLocation.streetName
         headingDisplay.text = userLocation.getHeading()
+        velocityMeter.speed = getLocalizedSpeed()
         
         // Updates weather model location
         if (userLocation.coordinates != nil) {
@@ -124,15 +126,22 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         return speedAttrText
     }
     
-    func getSpeedWithPreferencesUnit() -> String {
+    
+    func getLocalizedSpeed() -> Double {
         var localizedSpeed: Double!
-        var speedText: String!
-
+        
         if isMph {
             localizedSpeed = userLocation.speed * 2.23694
         } else {
             localizedSpeed = userLocation.speed * 3.6
         }
+        return localizedSpeed
+    }
+    
+    func getSpeedWithPreferencesUnit() -> String {
+        var speedText: String!
+        var localizedSpeed = getLocalizedSpeed()
+        
         if localizedSpeed >= 0 {
             speedText = NSString(format: "%.1f", localizedSpeed)
         } else {

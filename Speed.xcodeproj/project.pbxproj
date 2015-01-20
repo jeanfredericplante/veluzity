@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7E105D771A6357D70043B668 /* ViewWithTransparentText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E105D761A6357D70043B668 /* ViewWithTransparentText.swift */; };
 		7E15C11F1A570C080000BEDA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7E15C11E1A570C080000BEDA /* Settings.bundle */; };
+		7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */; };
 		7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */; };
 		7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417D01A618DC400BE639B /* PreferencePaneController.swift */; };
 		7EC245651A4F486D005F2FEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245641A4F486D005F2FEA /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		7E105D761A6357D70043B668 /* ViewWithTransparentText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWithTransparentText.swift; sourceTree = "<group>"; };
 		7E15C11E1A570C080000BEDA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedMeter.swift; sourceTree = "<group>"; };
 		7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		7EA417D01A618DC400BE639B /* PreferencePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencePaneController.swift; sourceTree = "<group>"; };
 		7EC2455F1A4F486D005F2FEA /* Speed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Speed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +102,7 @@
 				7EA417D01A618DC400BE639B /* PreferencePaneController.swift */,
 				7EC245661A4F486D005F2FEA /* ViewController.swift */,
 				7EC245681A4F486D005F2FEA /* Main.storyboard */,
+				7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */,
 				7E15C11E1A570C080000BEDA /* Settings.bundle */,
 				7EC2456B1A4F486D005F2FEA /* Images.xcassets */,
 				7EC2456D1A4F486D005F2FEA /* LaunchScreen.xib */,
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ECAE10A1A50E8F700AB9A5C /* LocationModel.swift in Sources */,
+				7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */,
 				7EC2458A1A507E05005F2FEA /* WeatherModel.swift in Sources */,
 				7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */,
 				7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */,

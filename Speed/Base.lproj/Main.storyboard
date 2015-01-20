@@ -67,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SC7-rj-awP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="351" y="1143"/>
+            <point key="canvasLocation" x="377" y="1179"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -102,13 +102,39 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="100"/>
                                         </variation>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKy-ed-X8q" userLabel="speedMeter" customClass="SpeedMeter" customModule="Speed" customModuleProvider="target">
+                                        <rect key="frame" x="229" y="74" width="100" height="100"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="trackImage" value="angular"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="trackBorderWidth">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                <real key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maximumSpeed">
+                                                <real key="value" value="120"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="speed">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="150" y="45" width="250" height="250"/>
+                                        </variation>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="tJw-Yg-Iyh" firstAttribute="leading" secondItem="fKy-ed-X8q" secondAttribute="trailing" constant="-77" id="1CZ-s6-HGy"/>
                                     <constraint firstItem="tJw-Yg-Iyh" firstAttribute="centerX" secondItem="dua-Pv-iez" secondAttribute="centerX" id="7F5-i7-xYW"/>
                                     <constraint firstAttribute="centerY" secondItem="0jE-ee-Pue" secondAttribute="centerY" constant="61.5" id="7fT-0C-QVq"/>
+                                    <constraint firstItem="tJw-Yg-Iyh" firstAttribute="centerY" secondItem="fKy-ed-X8q" secondAttribute="centerY" id="Jo3-SA-zpk"/>
+                                    <constraint firstItem="tJw-Yg-Iyh" firstAttribute="centerX" secondItem="fKy-ed-X8q" secondAttribute="centerX" id="NEL-fB-llU"/>
                                     <constraint firstAttribute="bottom" secondItem="tJw-Yg-Iyh" secondAttribute="bottom" constant="59" id="P0f-AD-9l8"/>
                                     <constraint firstItem="tJw-Yg-Iyh" firstAttribute="top" secondItem="0jE-ee-Pue" secondAttribute="bottom" constant="8" id="QA9-W7-YMq"/>
+                                    <constraint firstItem="tJw-Yg-Iyh" firstAttribute="top" secondItem="fKy-ed-X8q" secondAttribute="bottom" constant="-68" id="Sk4-UL-V1i"/>
                                     <constraint firstItem="0jE-ee-Pue" firstAttribute="top" secondItem="dua-Pv-iez" secondAttribute="top" constant="-20" id="XbD-lI-s4o"/>
                                     <constraint firstItem="0jE-ee-Pue" firstAttribute="centerX" secondItem="tJw-Yg-Iyh" secondAttribute="centerX" constant="0.5" id="mTf-QG-750"/>
                                 </constraints>
@@ -263,6 +289,7 @@
                         <outlet property="speedDisplay" destination="0jE-ee-Pue" id="ZJo-O5-qlC"/>
                         <outlet property="speedUnit" destination="tJw-Yg-Iyh" id="CAG-Or-Um2"/>
                         <outlet property="tempDisplay" destination="UWE-Xm-xi2" id="nfw-JR-vdL"/>
+                        <outlet property="velocityMeter" destination="fKy-ed-X8q" id="G1p-qu-EHQ"/>
                         <outlet property="weatherIcon" destination="m0n-eS-i98" id="6jf-3o-RlS"/>
                         <outlet property="weatherView" destination="b2y-KI-HeR" id="Wrz-jb-bSM"/>
                     </connections>
@@ -289,15 +316,9 @@
             </objects>
             <point key="canvasLocation" x="994" y="488"/>
         </scene>
-        <!--AV Player View Controller-->
-        <scene sceneID="ELv-2k-OWZ">
-            <objects>
-                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="zLA-fv-DNL" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nSc-xp-ZUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="10d" width="50" height="50"/>
+        <image name="angular" width="300" height="299"/>
     </resources>
 </document>
