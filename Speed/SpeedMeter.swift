@@ -28,9 +28,11 @@ import UIKit
         return self.constants.contentView
     }
     
-    @IBInspectable var speed: Double = 0.000001 {
+    @IBInspectable var speed: Double = 0.0 {
         didSet { setNeedsDisplay() }
     }
+    
+
     
     @IBInspectable var trackImage: UIImage? {
         didSet { setNeedsDisplay() }
@@ -45,7 +47,11 @@ import UIKit
         // start angle referenced from the south of the circle
         didSet { setNeedsDisplay() }
     }
-    
+ 
+    @IBInspectable var minimumSpeed: Double = 1.0 {
+        didSet { setNeedsDisplay() }
+    }
+
     @IBInspectable var maximumSpeed: Double = 120.0 {
         didSet { setNeedsDisplay() }
     }
@@ -73,30 +79,28 @@ import UIKit
  
         // start angle referenced from the south of the circle
         let startAngleRadians = CGFloat(degreesToRadians(startAngle+90))
-
         let maximumAngleRadians = degreesToRadians(360 - 2*startAngle)
         let speedCurve = UIBezierPath()
         let speedRect = CGRectMake(innerRect.minX, innerRect.minY, CGRectGetWidth(innerRect), CGRectGetHeight(innerRect))
         let centerCurve = CGPoint(x:speedRect.midX, y: speedRect.midY)
         let radius = speedRect.width / 2.0
-        let speedAngle = CGFloat(speed / maximumSpeed) * maximumAngleRadians
+        
+        // there is a minimum for the meter, and set the max to what can be hit
+        var displaySpeed = min(max(minimumSpeed, speed), maximumSpeed)
+        
+        let speedAngle = CGFloat(displaySpeed / maximumSpeed) * maximumAngleRadians
         let endAngleRadians = CGFloat(startAngleRadians+speedAngle)
         
-        speedCurve.lineWidth = 3
         speedCurve.addArcWithCenter(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: endAngleRadians, clockwise: true)
-        speedCurve.addArcWithCenter(centerCurve, radius: radius*0.8, startAngle: endAngleRadians, endAngle: startAngleRadians, clockwise: false)
+        speedCurve.addArcWithCenter(centerCurve, radius: radius-trackBorderWidth,  startAngle: endAngleRadians, endAngle: startAngleRadians, clockwise: false)
         speedCurve.closePath()
         speedCurve.addClip()
         
-        if trackImage != nil {
-            trackImage!.drawInRect(innerRect)
-        } else {
-            UIColor.blueColor().setFill()
-            speedCurve.fill()
-        }
-        
-        UIColor.whiteColor().setStroke()
-        speedCurve.stroke()
+        trackImage!.drawInRect(innerRect)
+
+//        speedCurve.lineWidth = 3
+//        UIColor.whiteColor().setStroke()
+//        speedCurve.stroke()
         
     }
     

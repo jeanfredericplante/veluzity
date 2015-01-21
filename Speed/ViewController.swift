@@ -135,18 +135,15 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         } else {
             localizedSpeed = userLocation.speed * 3.6
         }
+        
+        if localizedSpeed < 0 { localizedSpeed = 0 }
         return localizedSpeed
     }
     
     func getSpeedWithPreferencesUnit() -> String {
         var speedText: String!
         var localizedSpeed = getLocalizedSpeed()
-        
-        if localizedSpeed >= 0 {
-            speedText = NSString(format: "%.1f", localizedSpeed)
-        } else {
-            speedText = "0"
-        }
+        speedText = NSString(format: "%.1f", localizedSpeed)
         return speedText
     }
     
