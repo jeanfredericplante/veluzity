@@ -115,7 +115,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         if wi == nil {
             return UIImage()
         } else {
-            var imageName: String = wi!.rawValue + ".png"
+            var imageName: String = wi!.rawValue + "Color.png"
             return UIImage(named: imageName)!
         }
     }

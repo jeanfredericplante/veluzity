@@ -214,7 +214,7 @@
                                             </mask>
                                         </variation>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10d" translatesAutoresizingMaskIntoConstraints="NO" id="m0n-eS-i98">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10dColor" translatesAutoresizingMaskIntoConstraints="NO" id="m0n-eS-i98">
                                         <rect key="frame" x="244" y="0.0" width="71" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="71" id="7aX-I8-wS8"/>
@@ -317,7 +317,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="10d" width="50" height="50"/>
+        <image name="10dColor" width="65" height="65"/>
         <image name="DirectionColor" width="53" height="54"/>
         <image name="bluegradient" width="300" height="300"/>
     </resources>
