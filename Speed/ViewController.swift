@@ -45,7 +45,8 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         defaults = NSUserDefaults.standardUserDefaults()
         isMph = defaults.boolForKey("isMph")
         isFahrenheit = !defaults.boolForKey("isCelsius")
-        SpeedViewsHelper.setImageAndTextColor(view: headingView, color: UIColor.redColor())
+        SpeedViewsHelper.setImageAndTextColor(view: headingView,
+            color: SpeedViewsHelper.getHeadingColor())
         
         // completion closure, temperature updated
         locationWeather.temperatureUpdated = { lw in
@@ -80,7 +81,10 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         speedDisplay.text = getSpeedWithPreferencesUnit()
         speedUnit.text = getSpeedUnitText()
         locationDisplay.text = userLocation.streetName
-        headingDisplay.attributedText = SpeedViewsHelper.headingViewFormattedText(userLocation.getHeadingDegrees(), cardinality: userLocation.getCardinalDirection(), font: headingDisplay.font)
+        headingDisplay.attributedText = SpeedViewsHelper.headingViewFormattedText(
+            userLocation.getHeadingDegrees(),
+            cardinality: userLocation.getCardinalDirection(),
+            font: headingDisplay.font)
         velocityMeter.speed = getLocalizedSpeed()
         
         // Updates weather model location

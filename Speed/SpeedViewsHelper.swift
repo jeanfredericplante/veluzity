@@ -9,7 +9,23 @@
 import UIKit
 struct Constants {
     static let fontRatio: CGFloat = 0.5
+    enum viewColors {
+        case Speed, Location, Heading, Weather
+        func toHex() -> Int {
+            switch self {
+            case Weather:
+                return 0xCCFF66
+            case Location:
+                return 0x12FFF7
+            case Heading:
+                return 0x7EFFBB
+            default:
+                return 0xFFFFFF
+            }
+        }
+    }
 }
+
 class SpeedViewsHelper {
    
     
@@ -52,7 +68,6 @@ class SpeedViewsHelper {
             return bigAttrText
     }
     
-    
     // MARK: views specific function
     class func headingViewFormattedText(degrees: Double!, cardinality: String!, font: UIFont) -> NSAttributedString {
         var degreesText: String = ""
@@ -64,6 +79,27 @@ class SpeedViewsHelper {
             cardinalDirection = cardinality
         }
         return textWithTwoFontSizes(degreesText, smallText: cardinalDirection, font: font, ratio: Constants.fontRatio)
+    }
+    
+    class func getWeatherColor() -> UIColor {
+        return hexToUIColor(Constants.viewColors.Weather.toHex())
+    }
+    
+    class func getHeadingColor() -> UIColor {
+        return hexToUIColor(Constants.viewColors.Heading.toHex())
+    }
+    
+    class func getLocationColor() -> UIColor {
+        return hexToUIColor(Constants.viewColors.Location.toHex())
+    }
+    
+    
+    class func hexToUIColor(hexValue: Int) -> UIColor {
+        var red   = CGFloat((hexValue & 0xFF0000) >> 16)   / 255.0
+        var green = CGFloat((hexValue & 0x00FF00) >> 8)    / 255.0
+        var blue  = CGFloat(hexValue & 0x0000FF)           / 255.0
+        
+        return UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
 }
 

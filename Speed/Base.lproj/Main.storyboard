@@ -153,7 +153,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-IA-Mt8" userLabel="headingView">
-                                <rect key="frame" x="27" y="365" width="546" height="70"/>
+                                <rect key="frame" x="21" y="365" width="552" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="350 °N" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2t-dQ-Odo">
                                         <rect key="frame" x="63" y="0.0" width="182" height="63"/>
@@ -172,7 +172,7 @@
                                     <constraint firstItem="M2t-dQ-Odo" firstAttribute="top" secondItem="Sf3-IA-Mt8" secondAttribute="top" id="ekI-SH-GT7"/>
                                     <constraint firstItem="cGI-jv-dtz" firstAttribute="leading" secondItem="Sf3-IA-Mt8" secondAttribute="leading" id="hcr-0e-YaX"/>
                                     <constraint firstItem="cGI-jv-dtz" firstAttribute="centerY" secondItem="M2t-dQ-Odo" secondAttribute="centerY" constant="3.5" id="omF-iN-Sjl"/>
-                                    <constraint firstItem="M2t-dQ-Odo" firstAttribute="leading" secondItem="cGI-jv-dtz" secondAttribute="trailing" constant="10" id="r72-3R-hNl"/>
+                                    <constraint firstItem="M2t-dQ-Odo" firstAttribute="leading" secondItem="cGI-jv-dtz" secondAttribute="trailing" constant="10" id="r72-3R-hNl" userLabel="iconToText"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -181,10 +181,10 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hee-Pm-0Iw" userLabel="addressView">
-                                <rect key="frame" x="27" y="435" width="537" height="70"/>
+                                <rect key="frame" x="21" y="435" width="543" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rancho Bernardo Dr" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jCq-5v-Upo">
-                                        <rect key="frame" x="0.0" y="2" width="537" height="71"/>
+                                        <rect key="frame" x="0.0" y="2" width="543" height="71"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="60"/>
                                         <color key="textColor" red="0.49411764705882355" green="1" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -198,7 +198,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-KI-HeR" userLabel="weatherView">
-                                <rect key="frame" x="27" y="505" width="546" height="70"/>
+                                <rect key="frame" x="21" y="505" width="552" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100.3 °C" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UWE-Xm-xi2">
                                         <rect key="frame" x="0.0" y="0.0" width="234" height="70"/>
@@ -271,7 +271,7 @@
                             <constraint firstItem="dua-Pv-iez" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="NEb-EP-uPB"/>
                             <constraint firstItem="dua-Pv-iez" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="ScE-H2-yWj"/>
                             <constraint firstItem="hee-Pm-0Iw" firstAttribute="leading" secondItem="b2y-KI-HeR" secondAttribute="leading" id="T7B-FW-zco"/>
-                            <constraint firstItem="Sf3-IA-Mt8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="11" id="cA8-Uq-aZz"/>
+                            <constraint firstItem="Sf3-IA-Mt8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="cA8-Uq-aZz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dua-Pv-iez" secondAttribute="trailing" constant="5" id="cTu-Kn-8im"/>
                             <constraint firstItem="b2y-KI-HeR" firstAttribute="height" secondItem="hee-Pm-0Iw" secondAttribute="height" id="cq1-I8-JkN"/>
                             <constraint firstItem="E2S-2M-EEi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="11" id="hLo-kb-akN"/>
