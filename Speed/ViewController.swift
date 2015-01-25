@@ -38,7 +38,6 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     var isMph: Bool = true
     var isFahrenheit: Bool = true
     var delegate: ViewControllerDelegate?
-    var headingInfoZone: InfoViewWithIcon?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +45,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         defaults = NSUserDefaults.standardUserDefaults()
         isMph = defaults.boolForKey("isMph")
         isFahrenheit = !defaults.boolForKey("isCelsius")
-        headingInfoZone = InfoViewWithIcon(view: headingView, textColor: UIColor.redColor())
+        SpeedViewsHelper.setImageAndTextColor(view: headingView, color: UIColor.redColor())
         
         // completion closure, temperature updated
         locationWeather.temperatureUpdated = { lw in
