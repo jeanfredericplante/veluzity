@@ -154,17 +154,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-IA-Mt8" userLabel="headingView">
                                 <rect key="frame" x="27" y="365" width="546" height="70"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="350 °N" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2t-dQ-Odo">
-                                        <rect key="frame" x="0.0" y="-2" width="182" height="71"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="350 °N" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2t-dQ-Odo">
+                                        <rect key="frame" x="63" y="-2" width="182" height="69"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="60"/>
                                         <color key="textColor" red="0.070588235294117646" green="1" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="DirectionColor" translatesAutoresizingMaskIntoConstraints="NO" id="cGI-jv-dtz">
+                                        <rect key="frame" x="0.0" y="1" width="53" height="69"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="M2t-dQ-Odo" secondAttribute="centerY" constant="1.5" id="JM6-Bn-ZSw"/>
-                                    <constraint firstItem="M2t-dQ-Odo" firstAttribute="leading" secondItem="Sf3-IA-Mt8" secondAttribute="leading" id="dtW-nO-ds7"/>
+                                    <constraint firstAttribute="bottom" secondItem="cGI-jv-dtz" secondAttribute="bottom" id="Fmd-lF-lto"/>
+                                    <constraint firstAttribute="centerY" secondItem="M2t-dQ-Odo" secondAttribute="centerY" constant="3.5" id="NIa-6b-iEX"/>
+                                    <constraint firstItem="cGI-jv-dtz" firstAttribute="leading" secondItem="Sf3-IA-Mt8" secondAttribute="leading" id="hcr-0e-YaX"/>
+                                    <constraint firstItem="cGI-jv-dtz" firstAttribute="height" secondItem="M2t-dQ-Odo" secondAttribute="height" id="hx0-Ag-0nC"/>
+                                    <constraint firstItem="cGI-jv-dtz" firstAttribute="centerY" secondItem="M2t-dQ-Odo" secondAttribute="centerY" constant="3.5" id="omF-iN-Sjl"/>
+                                    <constraint firstItem="M2t-dQ-Odo" firstAttribute="leading" secondItem="cGI-jv-dtz" secondAttribute="trailing" constant="10" id="r72-3R-hNl"/>
+                                    <constraint firstItem="cGI-jv-dtz" firstAttribute="top" secondItem="Sf3-IA-Mt8" secondAttribute="top" constant="3" id="yBx-bG-hh5"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="yBx-bG-hh5"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hee-Pm-0Iw" userLabel="addressView">
                                 <rect key="frame" x="27" y="435" width="537" height="70"/>
@@ -285,9 +298,9 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="headingDisplay" destination="M2t-dQ-Odo" id="WTC-lq-Ndq"/>
+                        <outlet property="headingView" destination="Sf3-IA-Mt8" id="6Ga-7k-JVh"/>
                         <outlet property="locationDisplay" destination="jCq-5v-Upo" id="i8v-zh-3uO"/>
                         <outlet property="speedDisplay" destination="0jE-ee-Pue" id="ZJo-O5-qlC"/>
                         <outlet property="speedUnit" destination="tJw-Yg-Iyh" id="CAG-Or-Um2"/>
@@ -304,6 +317,7 @@
     </scenes>
     <resources>
         <image name="10d" width="50" height="50"/>
+        <image name="DirectionColor" width="53" height="54"/>
         <image name="bluegradient" width="300" height="300"/>
     </resources>
 </document>

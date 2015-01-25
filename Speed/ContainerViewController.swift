@@ -33,6 +33,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         
         mainViewController = UIStoryboard.mainViewController()
         mainViewController.view.layer.shadowOffset = CGSize(width: 0,height: 3)
+
         mainViewController.delegate = self
         
         // wraps main view in a navigation controller

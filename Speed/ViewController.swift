@@ -26,6 +26,8 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     @IBOutlet weak var speedUnit: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var velocityMeter: SpeedMeter!
+    @IBOutlet weak var headingView: UIView!
+    
     
     
     let userLocation = LocationModel()
@@ -36,6 +38,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     var isMph: Bool = true
     var isFahrenheit: Bool = true
     var delegate: ViewControllerDelegate?
+    var headingInfoZone: InfoViewWithIcon?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +46,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         defaults = NSUserDefaults.standardUserDefaults()
         isMph = defaults.boolForKey("isMph")
         isFahrenheit = !defaults.boolForKey("isCelsius")
+        headingInfoZone = InfoViewWithIcon(view: headingView, textColor: UIColor.redColor())
         
         // completion closure, temperature updated
         locationWeather.temperatureUpdated = { lw in
