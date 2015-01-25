@@ -24,6 +24,8 @@ import UIKit
     
     let constants = Constants()
     
+    // MARK: Declare inspectable variables
+    
     @IBInspectable var contentView: UIView {
         return self.constants.contentView
     }
@@ -32,14 +34,13 @@ import UIKit
         didSet { setNeedsDisplay() }
     }
     
-
     
     @IBInspectable var trackImage: UIImage? {
         didSet { setNeedsDisplay() }
     }
 
     
-    @IBInspectable var trackBorderWidth: CGFloat = 15 {
+    @IBInspectable var trackBorderWidth: CGFloat = 6 {
         didSet { setNeedsDisplay() }
     }
     
@@ -56,6 +57,8 @@ import UIKit
         didSet { setNeedsDisplay() }
     }
     
+    
+    // MARK: override methods
     
     required override init(frame: CGRect) {
         super.init(frame: frame)
@@ -81,6 +84,7 @@ import UIKit
         let startAngleRadians = CGFloat(degreesToRadians(startAngle+90))
         let maximumAngleRadians = degreesToRadians(360 - 2*startAngle)
         let speedCurve = UIBezierPath()
+        let speedBackground = UIBezierPath()
         let speedRect = CGRectMake(innerRect.minX, innerRect.minY, CGRectGetWidth(innerRect), CGRectGetHeight(innerRect))
         let centerCurve = CGPoint(x:speedRect.midX, y: speedRect.midY)
         let radius = speedRect.width / 2.0
@@ -90,7 +94,17 @@ import UIKit
         
         let speedAngle = CGFloat(displaySpeed / maximumSpeed) * maximumAngleRadians
         let endAngleRadians = CGFloat(startAngleRadians+speedAngle)
+        let maxAngleRadians = CGFloat(startAngleRadians+maximumAngleRadians)
         
+        // create background arc
+        speedBackground.addArcWithCenter(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: maxAngleRadians, clockwise: true)
+        speedBackground.addArcWithCenter(centerCurve, radius: radius-trackBorderWidth,  startAngle: maxAngleRadians, endAngle: startAngleRadians, clockwise: false)
+        speedBackground.closePath()
+        speedBackground.addClip()
+        
+        trackImage!.drawInRect(innerRect, blendMode: kCGBlendModeNormal, alpha: 0.1)
+        
+        // create speed arc
         speedCurve.addArcWithCenter(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: endAngleRadians, clockwise: true)
         speedCurve.addArcWithCenter(centerCurve, radius: radius-trackBorderWidth,  startAngle: endAngleRadians, endAngle: startAngleRadians, clockwise: false)
         speedCurve.closePath()
@@ -98,9 +112,6 @@ import UIKit
         
         trackImage!.drawInRect(innerRect)
 
-//        speedCurve.lineWidth = 3
-//        UIColor.whiteColor().setStroke()
-//        speedCurve.stroke()
         
     }
     

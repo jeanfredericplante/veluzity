@@ -46,6 +46,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
         mainViewController.view.addGestureRecognizer(touchGestureRecognizer)
         
+        
     }
 
     override func didReceiveMemoryWarning() {

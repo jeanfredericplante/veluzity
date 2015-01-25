@@ -76,6 +76,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E00F5BB1A746443007C3992 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E105D761A6357D70043B668 /* ViewWithTransparentText.swift */,
+				7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		7E00F5BC1A7465FE007C3992 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */,
+				7EA417D01A618DC400BE639B /* PreferencePaneController.swift */,
+				7EC245661A4F486D005F2FEA /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7E00F5BD1A74666F007C3992 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7EC245891A507E05005F2FEA /* WeatherModel.swift */,
+				7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		7EC245561A4F486D005F2FEA = {
 			isa = PBXGroup;
 			children = (
@@ -98,18 +126,14 @@
 			isa = PBXGroup;
 			children = (
 				7EC245641A4F486D005F2FEA /* AppDelegate.swift */,
-				7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */,
-				7EA417D01A618DC400BE639B /* PreferencePaneController.swift */,
-				7EC245661A4F486D005F2FEA /* ViewController.swift */,
+				7E00F5BB1A746443007C3992 /* Views */,
+				7E00F5BC1A7465FE007C3992 /* Controllers */,
+				7E00F5BD1A74666F007C3992 /* Models */,
 				7EC245681A4F486D005F2FEA /* Main.storyboard */,
-				7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */,
 				7E15C11E1A570C080000BEDA /* Settings.bundle */,
 				7EC2456B1A4F486D005F2FEA /* Images.xcassets */,
 				7EC2456D1A4F486D005F2FEA /* LaunchScreen.xib */,
 				7EC245621A4F486D005F2FEA /* Supporting Files */,
-				7EC245891A507E05005F2FEA /* WeatherModel.swift */,
-				7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */,
-				7E105D761A6357D70043B668 /* ViewWithTransparentText.swift */,
 			);
 			path = Speed;
 			sourceTree = "<group>";
