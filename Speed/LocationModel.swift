@@ -69,13 +69,24 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func getHeading()-> String {
+    func getHeading() -> String {
         if course != nil && course >= 0  {
             var cardHeading = getCardinalDirectionFromHeading(self.course!)
             return NSString(format: "%.0f° %@",self.course!, cardHeading) }
         else {
             return ""
         }
+    }
+    
+    func getCardinalDirection() -> String {
+        if course != nil && course >= 0  {
+            return getCardinalDirectionFromHeading(self.course!)}
+        else {
+            return ""
+        }
+    }
+    func getHeadingDegrees() -> Double {
+        return self.course!
     }
     
     func getCardinalDirectionFromHeading(course: Double) -> String {

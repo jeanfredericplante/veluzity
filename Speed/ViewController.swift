@@ -80,7 +80,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         speedDisplay.text = getSpeedWithPreferencesUnit()
         speedUnit.text = getSpeedUnitText()
         locationDisplay.text = userLocation.streetName
-        headingDisplay.text = userLocation.getHeading()
+        headingDisplay.attributedText = SpeedViewsHelper.headingViewFormattedText(userLocation.getHeadingDegrees(), cardinality: userLocation.getCardinalDirection(), font: headingDisplay.font)
         velocityMeter.speed = getLocalizedSpeed()
         
         // Updates weather model location

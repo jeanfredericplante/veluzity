@@ -7,8 +7,11 @@
 //
 
 import UIKit
-
+struct Constants {
+    static let fontRatio: CGFloat = 0.5
+}
 class SpeedViewsHelper {
+   
     
     
     class func setImageAndTextColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
@@ -37,6 +40,30 @@ class SpeedViewsHelper {
                 
             }
         }
+    }
+    
+    class func textWithTwoFontSizes(bigText: String, smallText: String,
+        font: UIFont, ratio: CGFloat) -> NSAttributedString {
+            var smallFontSize: CGFloat = round(font.pointSize * ratio)
+            var smallFont = font.fontWithSize(smallFontSize)
+            var bigAttrText = NSMutableAttributedString(string: bigText, attributes: [NSFontAttributeName: font])
+            var smallAttrText = NSMutableAttributedString(string: smallText, attributes: [NSFontAttributeName: smallFont])
+            bigAttrText.appendAttributedString(smallAttrText)
+            return bigAttrText
+    }
+    
+    
+    // MARK: views specific function
+    class func headingViewFormattedText(degrees: Double!, cardinality: String!, font: UIFont) -> NSAttributedString {
+        var degreesText: String = ""
+        var cardinalDirection: String = ""
+        if degrees != nil && degrees >= 0  {
+            degreesText = NSString(format: "%.0f°", degrees!) }
+        
+        if cardinality != nil {
+            cardinalDirection = cardinality
+        }
+        return textWithTwoFontSizes(degreesText, smallText: cardinalDirection, font: font, ratio: Constants.fontRatio)
     }
 }
 
