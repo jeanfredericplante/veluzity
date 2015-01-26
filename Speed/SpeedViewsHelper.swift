@@ -73,13 +73,26 @@ class SpeedViewsHelper {
         var degreesText: String = ""
         var cardinalDirection: String = ""
         if degrees != nil && degrees >= 0  {
-            degreesText = NSString(format: "%.0f°", degrees!) }
+            degreesText = NSString(format: "%.0f° ", degrees!) }
         
         if cardinality != nil {
             cardinalDirection = cardinality
         }
         return textWithTwoFontSizes(degreesText, smallText: cardinalDirection, font: font, ratio: Constants.fontRatio)
     }
+    
+    
+    class func weatherViewFormattedText(temperature: Double!, description: String! = nil, font: UIFont) -> NSAttributedString {
+        var temperatureText: String = ""
+        var descriptionText: String = ""
+        
+        if temperature != nil { temperatureText = NSString(format: "%.0f° ", temperature!) }
+        if description != nil { descriptionText = description }
+        
+        return textWithTwoFontSizes(temperatureText, smallText: description, font: font, ratio: Constants.fontRatio)
+    }
+    
+    
     
     class func getWeatherColor() -> UIColor {
         return hexToUIColor(Constants.viewColors.Weather.toHex())

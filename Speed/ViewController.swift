@@ -27,6 +27,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var velocityMeter: SpeedMeter!
     @IBOutlet weak var headingView: UIView!
+    @IBOutlet weak var addressView: UIView!
     
     
     
@@ -45,8 +46,14 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         defaults = NSUserDefaults.standardUserDefaults()
         isMph = defaults.boolForKey("isMph")
         isFahrenheit = !defaults.boolForKey("isCelsius")
+        
+        // initial style for views
         SpeedViewsHelper.setImageAndTextColor(view: headingView,
             color: SpeedViewsHelper.getHeadingColor())
+        SpeedViewsHelper.setImageAndTextColor(view: weatherView,
+            color: SpeedViewsHelper.getWeatherColor())
+        SpeedViewsHelper.setImageAndTextColor(view: addressView,
+            color: SpeedViewsHelper.getLocationColor())
         
         // completion closure, temperature updated
         locationWeather.temperatureUpdated = { lw in
@@ -100,38 +107,32 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     
     
     func didUpdateWeather() {
+        var temperature: Double
         if !self.isFahrenheit {
-            self.tempDisplay.text = NSString(format: "%.1f °C",locationWeather.temperature())
-        } else
-        {
-            self.tempDisplay.text = NSString(format: "%.1f °F",locationWeather.temperatureFahrenheit())
+            temperature = locationWeather.temperature()
+        } else {
+            temperature = locationWeather.temperatureFahrenheit()
         }
+        tempDisplay.attributedText = SpeedViewsHelper.weatherViewFormattedText(temperature,
+            description: locationWeather.getWeatherDescription(), font: tempDisplay.font)
         weatherIcon.image = locationWeather.getWeatherIconImage()
+        SpeedViewsHelper.setImageAndTextColor(view: weatherView,
+            color: SpeedViewsHelper.getWeatherColor())
+    
     }
     
-    
+    // TODO: DRY the temp string function
     func updatedTemperature(temperature: Double) {
         println("I got the temperature of \(temperature)")
         
         if !isFahrenheit {
-            tempDisplay.text = NSString(format: "%.1f °C",locationWeather.temperature())
+            self.tempDisplay.text = NSString(format: "%.1f°",locationWeather.temperature())
         } else
         {
-            tempDisplay.text = NSString(format: "%.1f °F",locationWeather.temperatureFahrenheit())
+            self.tempDisplay.text = NSString(format: "%.1f°",locationWeather.temperatureFahrenheit())
         }
     }
     
-    func getAttributedSpeedText()-> NSAttributedString {
-        var unitFontSize: CGFloat = round(speedDisplay.font.pointSize / 2)
-        var unitFont = speedDisplay.font.fontWithSize(unitFontSize)
-        var speedFont = speedDisplay.font
-        var unitText = getSpeedUnitText()
-        var speedText = getSpeedWithPreferencesUnit()
-        var speedAttrText = NSMutableAttributedString(string: speedText, attributes: [NSFontAttributeName: speedFont])
-        var unitAttrText = NSMutableAttributedString(string: unitText, attributes: [NSFontAttributeName: unitFont])
-        speedAttrText.appendAttributedString(unitAttrText)
-        return speedAttrText
-    }
     
     
     func getLocalizedSpeed() -> Double {
