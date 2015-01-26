@@ -89,7 +89,7 @@ class SpeedViewsHelper {
         if temperature != nil { temperatureText = NSString(format: "%.0f° ", temperature!) }
         if description != nil { descriptionText = description }
         
-        return textWithTwoFontSizes(temperatureText, smallText: description, font: font, ratio: Constants.fontRatio)
+        return textWithTwoFontSizes(temperatureText, smallText: description, font: font, ratio: 0.4)
     }
     
     
