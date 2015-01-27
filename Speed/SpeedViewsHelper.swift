@@ -40,7 +40,8 @@ class SpeedViewsHelper {
     
     class func setLabelsColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
         if view != nil {
-            let allLabels = view.subviews.filter({$0.isKindOfClass(UILabel)}) as [UILabel]
+            let allSubviews = view.subviews
+            let allLabels = allSubviews.filter({$0.isKindOfClass(UILabel)}) as [UILabel]
             for textLabel in allLabels {
                 textLabel.textColor = color
             }
@@ -72,13 +73,16 @@ class SpeedViewsHelper {
     class func headingViewFormattedText(degrees: Double!, cardinality: String!, font: UIFont) -> NSAttributedString {
         var degreesText: String = ""
         var cardinalDirection: String = ""
-        if degrees != nil && degrees >= 0  {
-            degreesText = NSString(format: "%.0f° ", degrees!) }
-        
-        if cardinality != nil {
+        if degrees != nil && degrees >= 0  && cardinality != nil
+        {
+            degreesText = NSString(format: "%.0f° ", degrees!)
             cardinalDirection = cardinality
+            return textWithTwoFontSizes(degreesText, smallText: cardinalDirection, font: font, ratio: Constants.fontRatio)
+
+        } else {
+            return textWithTwoFontSizes("N/A", smallText: "", font: font, ratio: Constants.fontRatio)
         }
-        return textWithTwoFontSizes(degreesText, smallText: cardinalDirection, font: font, ratio: Constants.fontRatio)
+        
     }
     
     
@@ -86,10 +90,19 @@ class SpeedViewsHelper {
         var temperatureText: String = ""
         var descriptionText: String = ""
         
-        if temperature != nil { temperatureText = NSString(format: "%.0f° ", temperature!) }
+        if temperature != nil { temperatureText = NSString(format: "%.0f°", temperature!) }
         if description != nil { descriptionText = description }
         
         return textWithTwoFontSizes(temperatureText, smallText: description, font: font, ratio: 0.4)
+    }
+    
+    class func cityAndStateText(city: String?, state: String?) -> String {
+        if let stateName = state {
+            if let cityName = city {
+                return cityName + ", " + stateName
+            }
+        }
+        return ""
     }
     
     

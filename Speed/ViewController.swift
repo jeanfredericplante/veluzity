@@ -21,6 +21,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     @IBOutlet weak var speedDisplay: UILabel!
     @IBOutlet weak var tempDisplay: UILabel!
     @IBOutlet weak var locationDisplay: UILabel!
+    @IBOutlet weak var locationSubtextDisplay: UILabel!
     @IBOutlet weak var headingDisplay: UILabel!
     @IBOutlet weak var weatherView: UIView!
     @IBOutlet weak var speedUnit: UILabel!
@@ -88,6 +89,8 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         speedDisplay.text = getSpeedWithPreferencesUnit()
         speedUnit.text = getSpeedUnitText()
         locationDisplay.text = userLocation.streetName
+        locationSubtextDisplay.text = SpeedViewsHelper.cityAndStateText(userLocation.cityName,
+            state: userLocation.stateName)
         headingDisplay.attributedText = SpeedViewsHelper.headingViewFormattedText(
             userLocation.getHeadingDegrees(),
             cardinality: userLocation.getCardinalDirection(),
@@ -151,7 +154,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     func getSpeedWithPreferencesUnit() -> String {
         var speedText: String!
         var localizedSpeed = getLocalizedSpeed()
-        speedText = NSString(format: "%.1f", localizedSpeed)
+        speedText = NSString(format: "%.0f", localizedSpeed)
         return speedText
     }
     

@@ -23,6 +23,8 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
     let locationGeoCoder = CLGeocoder()
     var delegate: LocationUpdateDelegate?
     var streetName: String?
+    var cityName: String?
+    var stateName: String?
     
     override init() {
         super.init()
@@ -56,18 +58,17 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
             } else {
                 if placemarks.count > 0 {
                     var placemark: CLPlacemark = placemarks[0] as CLPlacemark
-                    var newName = placemark.thoroughfare
-                    if newName != nil {
-                        self.streetName = newName
-                    } else {
-                        self.streetName = ""
-                    }
+                    self.streetName = placemark.thoroughfare
+                    self.cityName = placemark.locality
+                    self.stateName = placemark.administrativeArea
+
                     println("this is the placemark location \(self.streetName!)")
                     self.delegate?.didUpdateLocation()
                 }
             }
         }
     }
+    
     
     func getHeading() -> String {
         if course != nil && course >= 0  {
