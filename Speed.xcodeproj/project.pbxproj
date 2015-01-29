@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7E15C11F1A570C080000BEDA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7E15C11E1A570C080000BEDA /* Settings.bundle */; };
+		7E2320C41A78AED40097D2D8 /* ColorGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2320C31A78AED40097D2D8 /* ColorGradient.swift */; };
 		7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */; };
 		7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */; };
 		7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417D01A618DC400BE639B /* PreferencePaneController.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		7E15C11E1A570C080000BEDA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		7E2320C31A78AED40097D2D8 /* ColorGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorGradient.swift; sourceTree = "<group>"; };
 		7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedMeter.swift; sourceTree = "<group>"; };
 		7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		7EA417D01A618DC400BE639B /* PreferencePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencePaneController.swift; sourceTree = "<group>"; };
@@ -79,8 +81,10 @@
 		7E00F5BB1A746443007C3992 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7EC245681A4F486D005F2FEA /* Main.storyboard */,
 				7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */,
 				7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */,
+				7E2320C31A78AED40097D2D8 /* ColorGradient.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -125,14 +129,9 @@
 		7EC245611A4F486D005F2FEA /* Speed */ = {
 			isa = PBXGroup;
 			children = (
-				7EC245641A4F486D005F2FEA /* AppDelegate.swift */,
 				7E00F5BB1A746443007C3992 /* Views */,
 				7E00F5BC1A7465FE007C3992 /* Controllers */,
 				7E00F5BD1A74666F007C3992 /* Models */,
-				7EC245681A4F486D005F2FEA /* Main.storyboard */,
-				7E15C11E1A570C080000BEDA /* Settings.bundle */,
-				7EC2456B1A4F486D005F2FEA /* Images.xcassets */,
-				7EC2456D1A4F486D005F2FEA /* LaunchScreen.xib */,
 				7EC245621A4F486D005F2FEA /* Supporting Files */,
 			);
 			path = Speed;
@@ -141,6 +140,10 @@
 		7EC245621A4F486D005F2FEA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7EC245641A4F486D005F2FEA /* AppDelegate.swift */,
+				7E15C11E1A570C080000BEDA /* Settings.bundle */,
+				7EC2456B1A4F486D005F2FEA /* Images.xcassets */,
+				7EC2456D1A4F486D005F2FEA /* LaunchScreen.xib */,
 				7EC245631A4F486D005F2FEA /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E2320C41A78AED40097D2D8 /* ColorGradient.swift in Sources */,
 				7ECAE10A1A50E8F700AB9A5C /* LocationModel.swift in Sources */,
 				7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */,
 				7EC2458A1A507E05005F2FEA /* WeatherModel.swift in Sources */,

@@ -80,7 +80,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="ColorGradient" customModule="Speed" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -95,7 +95,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dua-Pv-iez" userLabel="speedView">
-                                <rect key="frame" x="21" y="20" width="558" height="558"/>
+                                <rect key="frame" x="21" y="25" width="558" height="558"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKy-ed-X8q" userLabel="speedMeter" customClass="SpeedMeter" customModule="Speed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="-10" width="558" height="568"/>
@@ -162,7 +162,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hee-Pm-0Iw" userLabel="addressView">
-                                <rect key="frame" x="16" y="578" width="548" height="2"/>
+                                <rect key="frame" x="16" y="583" width="548" height="1"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="LocationColor" translatesAutoresizingMaskIntoConstraints="NO" id="Dx3-N8-Hmz">
                                         <rect key="frame" x="0.0" y="-34" width="71" height="71"/>
@@ -178,8 +178,7 @@
                                                 <exclude reference="pJU-CR-ilT"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="42" width="40" height="40"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="cwE-wU-iiD"/>
                                                 <include reference="pJU-CR-ilT"/>
@@ -192,14 +191,11 @@
                                         <color key="textColor" red="0.49411764705882355" green="1" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Diego, California" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-lk-FaR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="San Diego, California" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-lk-FaR">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.4941176471" green="1" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="50" y="42" width="234" height="33"/>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -250,7 +246,6 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-IA-Mt8" userLabel="headingView">
-                                <rect key="frame" x="160" y="580" width="548" height="3"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="DirectionColor" translatesAutoresizingMaskIntoConstraints="NO" id="cGI-jv-dtz">
                                         <rect key="frame" x="-144" y="-34" width="71" height="71"/>
@@ -269,8 +264,7 @@
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="-144" y="28" width="65" height="65"/>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="-10" y="37" width="40" height="40"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="Ulg-fM-ExO"/>
                                                 <include reference="ZSR-CK-qQK"/>
@@ -282,9 +276,6 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="60"/>
                                         <color key="textColor" red="0.070588235294117646" green="1" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="40" y="22" width="182" height="71"/>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -306,7 +297,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-KI-HeR" userLabel="weatherView">
-                                <rect key="frame" x="26" y="583" width="548" height="2"/>
+                                <rect key="frame" x="26" y="584" width="548" height="1"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="12nColor" translatesAutoresizingMaskIntoConstraints="NO" id="m0n-eS-i98">
                                         <rect key="frame" x="-5" y="-34" width="71" height="71"/>
@@ -326,8 +317,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100.3 °C" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UWE-Xm-xi2">
-                                        <rect key="frame" x="-249" y="-34" width="234" height="71"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100.3 °C" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UWE-Xm-xi2">
+                                        <rect key="frame" x="-254" y="-34" width="234" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="88" id="lMR-PR-Yih"/>
                                         </constraints>
@@ -341,9 +332,6 @@
                                         </variation>
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="-254" y="24" width="234" height="71"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="40" y="26" width="234" height="71"/>
                                         </variation>
                                     </label>
                                 </subviews>
@@ -379,7 +367,7 @@
                                 </variation>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cGI-jv-dtz" firstAttribute="height" secondItem="m0n-eS-i98" secondAttribute="height" id="7AP-63-GpV"/>
                             <constraint firstItem="dua-Pv-iez" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="7Zr-5P-j8m">
@@ -424,6 +412,17 @@
                             <constraint firstItem="hee-Pm-0Iw" firstAttribute="height" secondItem="Sf3-IA-Mt8" secondAttribute="height" id="xeE-rw-qxv"/>
                             <constraint firstItem="b2y-KI-HeR" firstAttribute="top" secondItem="Sf3-IA-Mt8" secondAttribute="bottom" id="yvz-GY-SKK"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" red="0.29803922772407532" green="0.60000002384185791" blue="0.14117647707462311" alpha="1" colorSpace="deviceRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="stopColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="direction">
+                                <real key="value" value="321"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="IfC-rv-8Jh"/>
@@ -466,6 +465,7 @@
                         <outlet property="headingView" destination="Sf3-IA-Mt8" id="6Ga-7k-JVh"/>
                         <outlet property="locationDisplay" destination="jCq-5v-Upo" id="i8v-zh-3uO"/>
                         <outlet property="locationSubtextDisplay" destination="fqz-lk-FaR" id="6vz-aw-QQf"/>
+                        <outlet property="mainView" destination="8bC-Xf-vdC" id="haE-Xy-zE8"/>
                         <outlet property="speedDisplay" destination="0jE-ee-Pue" id="ZJo-O5-qlC"/>
                         <outlet property="speedUnit" destination="tJw-Yg-Iyh" id="CAG-Or-Um2"/>
                         <outlet property="tempDisplay" destination="UWE-Xm-xi2" id="nfw-JR-vdL"/>
