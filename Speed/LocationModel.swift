@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Jean Frederic Plante. All rights reserved.
 //
 
-import UIKit
+//import UIKit
 import CoreLocation
 import AddressBook
 

@@ -110,6 +110,8 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     func getWeatherIcon() -> String {
         return self.weatherIcon
     }
+    
+    // TODO: Shouldn't be any ui image here
     func getWeatherIconImage() -> UIImage {
         let wi = WeatherIcon(rawValue: self.weatherIcon)
         if wi == nil {
@@ -122,7 +124,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     
     
     func getWeatherDescription() -> String {
-        return self.weatherDescription
+        return self.weatherDescription.lowercaseString
     }
     
         

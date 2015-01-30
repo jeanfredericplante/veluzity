@@ -8,28 +8,20 @@
 
 import UIKit
 
+extension UIBezierPath {
+    func createArc(center: CGPoint, radius: CGFloat, startAngle: CGFloat, endAngle: CGFloat, width: CGFloat){
+        self.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        self.addArcWithCenter(center, radius: radius-width,  startAngle: endAngle, endAngle: startAngle, clockwise: false)
+        self.closePath()
+    }
+}
+
+
 @IBDesignable class SpeedMeter: UIView {
     
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-    // Drawing code
-    }
-    */
-    internal struct Constants {
-        var contentView:UIView = UIView()
-        var contentContainer:UIView = UIView()
-    }
-    
-    let constants = Constants()
     
     // MARK: Declare inspectable variables
-    
-    @IBInspectable var contentView: UIView {
-        return self.constants.contentView
-    }
-    
+
     @IBInspectable var speed: Double = 0.0 {
         didSet { setNeedsDisplay() }
     }
@@ -57,22 +49,36 @@ import UIKit
         didSet { setNeedsDisplay() }
     }
     
+    // Speedmeter structure
+    struct Meter {
+        var startAngleRadians: CGFloat
+        var maximumAngleRadians: CGFloat
+        var speedAngleRadians: CGFloat
+        var center: CGPoint
+        var radius: CGFloat
+        
+        var maxAngleRadians: CGFloat  {
+            get { return startAngleRadians+maximumAngleRadians }
+        }
+    }
+    
+    var sm = Meter(startAngleRadians: 0, maximumAngleRadians: 0, speedAngleRadians: 0, center: CGPoint(), radius: 0)
+    
     
     // MARK: override methods
     
     required override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(contentView)
+        setupMeter()
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.addSubview(contentView)
+        setupMeter()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.addSubview(contentView)
     }
     
     override func drawRect(rect: CGRect) {
@@ -97,24 +103,42 @@ import UIKit
         let maxAngleRadians = CGFloat(startAngleRadians+maximumAngleRadians)
         
         // create background arc
-        speedBackground.addArcWithCenter(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: maxAngleRadians, clockwise: true)
-        speedBackground.addArcWithCenter(centerCurve, radius: radius-trackBorderWidth,  startAngle: maxAngleRadians, endAngle: startAngleRadians, clockwise: false)
-        speedBackground.closePath()
+        speedBackground.createArc(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: maxAngleRadians, width: trackBorderWidth)
         speedBackground.addClip()
         
         trackImage!.drawInRect(innerRect, blendMode: kCGBlendModeNormal, alpha: 0.1)
         
         // create speed arc
-        speedCurve.addArcWithCenter(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: endAngleRadians, clockwise: true)
-        speedCurve.addArcWithCenter(centerCurve, radius: radius-trackBorderWidth,  startAngle: endAngleRadians, endAngle: startAngleRadians, clockwise: false)
-        speedCurve.closePath()
+        speedCurve.createArc(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: endAngleRadians, width: trackBorderWidth)
         speedCurve.addClip()
         
         trackImage!.drawInRect(innerRect)
-
         
     }
     
+    
+    
+    func setupMeter() {
+        let innerRect = CGRectInset(self.bounds, trackBorderWidth, trackBorderWidth)
+        sm.startAngleRadians = CGFloat(degreesToRadians(startAngle+90))
+        sm.maximumAngleRadians = degreesToRadians(360 - 2*startAngle)
+        sm.center = CGPoint(x:innerRect.midX, y: innerRect.midY)
+        sm.radius = innerRect.width / 2.0
+        
+        // there is a minimum for the meter, and set the max to what can be hit
+        var displaySpeed = min(max(minimumSpeed, speed), maximumSpeed)
+        
+        let speedAngle = CGFloat(displaySpeed / maximumSpeed) * sm.maximumAngleRadians
+        sm.speedAngleRadians  = CGFloat(sm.startAngleRadians+speedAngle)
+    }
+    
+    
+    
+    func setSpeedWithAnimation(speed: Double) {
+        
+    }
+    
+
     func degreesToRadians(degrees: Double) -> CGFloat {
         return CGFloat(degrees * M_PI / 180.0)
     }

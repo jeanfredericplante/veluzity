@@ -46,7 +46,8 @@ import UIKit
 
     var gradientDirectionRadians: Double {
         get {
-            return direction * M_PI / 180.0
+            // screen is oriented
+            return (direction + 90) * M_PI / 180.0
         }
     }
     

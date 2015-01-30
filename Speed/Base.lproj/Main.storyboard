@@ -140,7 +140,7 @@
                                                 <real key="value" value="120"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="speed">
-                                                <real key="value" value="121"/>
+                                                <real key="value" value="60"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -218,13 +218,13 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="FE5-xd-QLo"/>
                                         <exclude reference="yo5-0S-Tw3"/>
                                         <exclude reference="8TD-Xg-96g"/>
                                         <exclude reference="RLg-dH-9Y0"/>
                                         <exclude reference="Yu4-AA-Ybq"/>
                                         <exclude reference="lRz-Im-Ud2"/>
                                         <exclude reference="txg-Kw-YN3"/>
-                                        <exclude reference="FE5-xd-QLo"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact" misplaced="YES">
@@ -235,17 +235,17 @@
                                         <include reference="fqz-lk-FaR"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="FE5-xd-QLo"/>
                                         <include reference="yo5-0S-Tw3"/>
                                         <include reference="8TD-Xg-96g"/>
                                         <include reference="RLg-dH-9Y0"/>
                                         <include reference="Yu4-AA-Ybq"/>
                                         <include reference="lRz-Im-Ud2"/>
                                         <include reference="txg-Kw-YN3"/>
-                                        <include reference="FE5-xd-QLo"/>
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-IA-Mt8" userLabel="headingView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-IA-Mt8" userLabel="headingView">
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="DirectionColor" translatesAutoresizingMaskIntoConstraints="NO" id="cGI-jv-dtz">
                                         <rect key="frame" x="-144" y="-34" width="71" height="71"/>
@@ -420,18 +420,18 @@
                                 <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="direction">
-                                <real key="value" value="321"/>
+                                <real key="value" value="0.0"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="IfC-rv-8Jh"/>
-                                <exclude reference="WJ2-r3-nlT"/>
-                                <exclude reference="Qq4-gM-hlY"/>
+                                <exclude reference="TTO-0Q-Td4"/>
                                 <exclude reference="ntC-yS-sJA"/>
                                 <exclude reference="G4T-BS-eW2"/>
+                                <exclude reference="IfC-rv-8Jh"/>
+                                <exclude reference="WJ2-r3-nlT"/>
                                 <exclude reference="7l4-HF-0SG"/>
-                                <exclude reference="TTO-0Q-Td4"/>
+                                <exclude reference="Qq4-gM-hlY"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -441,20 +441,20 @@
                                 <include reference="WJ2-r3-nlT"/>
                                 <exclude reference="a5b-4a-oTs"/>
                                 <exclude reference="qOg-Pk-Iex"/>
-                                <include reference="Qq4-gM-hlY"/>
                                 <include reference="7l4-HF-0SG"/>
                                 <exclude reference="lMp-Uk-0bj"/>
+                                <include reference="Qq4-gM-hlY"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
+                                <include reference="TTO-0Q-Td4"/>
                                 <exclude reference="7Zr-5P-j8m"/>
                                 <include reference="ntC-yS-sJA"/>
                                 <exclude reference="7AP-63-GpV"/>
                                 <exclude reference="G4T-BS-eW2"/>
                                 <exclude reference="MTI-UA-aHB"/>
                                 <exclude reference="XfS-Ol-R3P"/>
-                                <include reference="TTO-0Q-Td4"/>
                             </mask>
                         </variation>
                     </view>
