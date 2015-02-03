@@ -59,7 +59,7 @@ import UIKit
         setColors()
         let frameWidth = self.frame.size.width
         let frameHeight = self.frame.size.height
-        let gradientWidth = max(self.frame.size.width, self.frame.size.height)
+        let gradientWidth = min(self.frame.size.width, self.frame.size.height)
         gradientLayer.frame = CGRectMake((self.frame.size.width-gradientWidth)/2,
             (self.frame.size.height-gradientWidth)/2, gradientWidth, gradientWidth)
          self.setNeedsDisplay()
