@@ -30,6 +30,10 @@ extension UIBezierPath {
     @IBInspectable var trackImage: UIImage? {
         didSet { setNeedsDisplay() }
     }
+    
+    @IBInspectable var trackColor: UIColor = UIColor.whiteColor() {
+        didSet { setNeedsDisplay() }
+    }
 
     
     @IBInspectable var trackBorderWidth: CGFloat = 6 {
@@ -105,13 +109,19 @@ extension UIBezierPath {
         // create background arc
         speedBackground.createArc(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: maxAngleRadians, width: trackBorderWidth)
         speedBackground.addClip()
-        
         trackImage!.drawInRect(innerRect, blendMode: kCGBlendModeNormal, alpha: 0.1)
         
         // create speed arc
-        speedCurve.createArc(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: endAngleRadians, width: trackBorderWidth)
-        speedCurve.addClip()
+        let animation = CABasicAnimation(keyPath: "path")
+        animation.duration = 2
         
+        speedCurve.createArc(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: endAngleRadians, width: trackBorderWidth)
+        trackColor.setFill()
+        speedCurve.fill()
+        animation.toValue = speedCurve.CGPath
+        animation.fillMode = kCAFillModeForwards
+        animation.removedOnCompletion = false
+        speedCurve.addClip()
         trackImage!.drawInRect(innerRect)
         
     }
@@ -124,12 +134,20 @@ extension UIBezierPath {
         sm.maximumAngleRadians = degreesToRadians(360 - 2*startAngle)
         sm.center = CGPoint(x:innerRect.midX, y: innerRect.midY)
         sm.radius = innerRect.width / 2.0
+        sm.speedAngleRadians = 0
         
+        updateSpeed()
+    }
+    
+    func updateSpeed() {
         // there is a minimum for the meter, and set the max to what can be hit
-        var displaySpeed = min(max(minimumSpeed, speed), maximumSpeed)
-        
+        let displaySpeed = min(max(minimumSpeed, speed), maximumSpeed)
         let speedAngle = CGFloat(displaySpeed / maximumSpeed) * sm.maximumAngleRadians
         sm.speedAngleRadians  = CGFloat(sm.startAngleRadians+speedAngle)
+    }
+    
+    func backgroundMeterPath() -> UIBezierPath {
+        return UIBezierPath()
     }
     
     

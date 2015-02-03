@@ -86,15 +86,6 @@ class SpeedViewsHelper {
     }
     
     
-    class func weatherViewFormattedText(temperature: Double!, description: String! = nil, font: UIFont) -> NSAttributedString {
-        var temperatureText: String = ""
-        var descriptionText: String = ""
-        
-        if temperature != nil { temperatureText = NSString(format: "%.0f°", temperature!) }
-        if description != nil { descriptionText = description }
-        
-        return textWithTwoFontSizes(temperatureText, smallText: description, font: font, ratio: 0.4)
-    }
     
     class func cityAndStateText(city: String?, state: String?) -> String {
         if let stateName = state {
@@ -105,6 +96,21 @@ class SpeedViewsHelper {
         return ""
     }
     
+    
+    class func weatherViewFormattedText(temperature: Double!, description: String! = nil, font: UIFont) -> NSAttributedString {
+        var temperatureText: String = ""
+        var descriptionText: String = ""
+        
+        if temperature != nil { temperatureText = NSString(format: "%.0f°", temperature!) }
+        if description != nil { descriptionText = description }
+        
+        return textWithTwoFontSizes(temperatureText, smallText: description, font: font, ratio: 0.4)
+    }
+    
+    class func getWeatherIconImage() -> UIImage? {
+        return nil
+    }
+
     
     
     class func getWeatherColor() -> UIColor {

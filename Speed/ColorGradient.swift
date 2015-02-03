@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable class ColorGradient: UIView {
     
+    var animationInProgress = false
     var gradientLayer = CAGradientLayer()
     
     @IBInspectable var startColor: UIColor = UIColor.blackColor() {
@@ -21,7 +22,7 @@ import UIKit
     }
     
     @IBInspectable var direction: Double = 0 {
-        didSet { setupView() }
+        didSet { setDirection() }
     }
     
     
@@ -29,21 +30,24 @@ import UIKit
     
     required override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.insertSublayer(gradientLayer, atIndex: 0)
+        
         setupView()
+
+        self.layer.insertSublayer(gradientLayer, atIndex: 0)
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.layer.insertSublayer(gradientLayer, atIndex: 0)
         setupView()
 
+        self.layer.insertSublayer(gradientLayer, atIndex: 0)
+        
     }
     
     
     
     
-
+    
     var gradientDirectionRadians: Double {
         get {
             // screen is oriented
@@ -52,18 +56,31 @@ import UIKit
     }
     
     private func setupView() {
-        let colors: Array = [ startColor.CGColor, stopColor.CGColor ]
-
-        gradientLayer.endPoint = CGPoint(x:transformCoordinate(cos(gradientDirectionRadians)),
-            y: transformCoordinate(sin(gradientDirectionRadians)))
-        gradientLayer.startPoint = getMirrorPoint(gradientLayer.endPoint)
-        gradientLayer.colors = colors
-        gradientLayer.frame = self.bounds
-        
-        self.setNeedsDisplay()
-
+        setColors()
+        let frameWidth = self.frame.size.width
+        let frameHeight = self.frame.size.height
+        let gradientWidth = max(self.frame.size.width, self.frame.size.height)
+        gradientLayer.frame = CGRectMake((self.frame.size.width-gradientWidth)/2,
+            (self.frame.size.height-gradientWidth)/2, gradientWidth, gradientWidth)
+         self.setNeedsDisplay()
     }
-
+    
+    private func setColors() {
+        let colors: Array = [ startColor.CGColor, stopColor.CGColor ]
+        gradientLayer.colors = colors
+        
+    }
+    
+    private func setDirection() {
+        let angle =  CGFloat(gradientDirectionRadians)
+        gradientLayer.transform = CATransform3DMakeRotation(angle, 0, 0, 1)
+    }
+    
+    override class func layerClass() -> AnyClass {
+        return CAGradientLayer.self
+    }
+    
+   
     private func transformCoordinate(x: Double) -> Double {
         return (x+1)/2
     }
@@ -71,5 +88,11 @@ import UIKit
     private func getMirrorPoint(p: CGPoint) -> CGPoint {
         return CGPoint(x: 1-p.x, y: 1-p.y)
     }
-
+    
+    private func setGradientStartAndEndPoint() {
+        gradientLayer.endPoint = CGPoint(x:transformCoordinate(cos(gradientDirectionRadians)),
+            y: transformCoordinate(sin(gradientDirectionRadians)))
+        gradientLayer.startPoint = getMirrorPoint(gradientLayer.endPoint)
+    }
+    
 }

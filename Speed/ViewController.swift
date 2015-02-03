@@ -18,7 +18,7 @@ protocol ViewControllerDelegate {
 class ViewController: UIViewController, LocationUpdateDelegate {
 
     
-    @IBOutlet var mainView: ColorGradient!
+    @IBOutlet weak var gradientView: ColorGradient!
     @IBOutlet weak var speedDisplay: UILabel!
     @IBOutlet weak var tempDisplay: UILabel!
     @IBOutlet weak var locationDisplay: UILabel!
@@ -85,7 +85,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         isFahrenheit = !defaults.boolForKey("isCelsius")
         
         // Updates background
-        mainView.direction = userLocation.getHeadingDegrees()
+        gradientView.direction = userLocation.getHeadingDegrees()
         
         // Updates displays
         speedDisplay.text = getSpeedWithPreferencesUnit()

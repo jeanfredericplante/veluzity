@@ -62,7 +62,7 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
                     self.cityName = placemark.locality
                     self.stateName = placemark.administrativeArea
 
-                    println("this is the placemark location \(self.streetName!)")
+                    println("this is the placemark location \(self.streetName?)")
                     self.delegate?.didUpdateLocation()
                 }
             }
