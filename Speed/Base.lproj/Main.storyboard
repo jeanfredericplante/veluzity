@@ -438,9 +438,9 @@
                             </constraint>
                             <constraint firstItem="E2S-2M-EEi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-9" id="wTd-9Y-p6A"/>
                             <constraint firstItem="hee-Pm-0Iw" firstAttribute="height" secondItem="Sf3-IA-Mt8" secondAttribute="height" id="xeE-rw-qxv"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="bottom" secondItem="GiW-4S-PCo" secondAttribute="bottom" id="ysB-M5-0bB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="bottom" secondItem="GiW-4S-PCo" secondAttribute="bottomMargin" id="ysB-M5-0bB"/>
                             <constraint firstItem="b2y-KI-HeR" firstAttribute="top" secondItem="Sf3-IA-Mt8" secondAttribute="bottom" id="yvz-GY-SKK"/>
-                            <constraint firstItem="GiW-4S-PCo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="top" id="yzX-mQ-a24"/>
+                            <constraint firstItem="GiW-4S-PCo" firstAttribute="topMargin" secondItem="y3c-jy-aDJ" secondAttribute="top" id="yzX-mQ-a24"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
