@@ -25,6 +25,10 @@ import UIKit
         didSet { setDirection() }
     }
     
+    @IBInspectable var speed: Double? {
+        didSet { setColors() }
+    }
+    
     
     // MARK: override methods
     
@@ -43,9 +47,6 @@ import UIKit
         self.layer.insertSublayer(gradientLayer, atIndex: 0)
         
     }
-    
-    
-    
     
     
     var gradientDirectionRadians: Double {
@@ -67,8 +68,12 @@ import UIKit
     }
     
     private func setColors() {
-        let colors: Array = [ startColor.CGColor, stopColor.CGColor ]
-        gradientLayer.colors = colors
+        if speed == nil {
+            let colors: Array = [ startColor.CGColor, stopColor.CGColor ]
+            gradientLayer.colors = colors
+        } else {
+            
+        }
         
     }
     
@@ -88,6 +93,28 @@ import UIKit
     
     private func getMirrorPoint(p: CGPoint) -> CGPoint {
         return CGPoint(x: 1-p.x, y: 1-p.y)
+    }
+    
+    private func speedToColor(speed: Double) -> (startColor: UIColor, endColor: UIColor) {
+        if speed < 0 {
+            return (UIColor.greenColor(), UIColor.whiteColor())
+        } else {
+            var endBrightness = 35/100
+	
+            return (UIColor.greenColor(), UIColor.whiteColor())
+        }
+    }
+    private func speedToHue(speed: Double) -> CGFloat? {
+        let speedHueLUT = [(0,120),(70,90),(90,0)] // speed mph, hue degrees
+        let firstBigger = speedHueLUT.filter{ (lutspeed,_) in lutspeed >= Int(speed) }.first
+        let lastSmaller = speedHueLUT.filter{ (lutspeed,_) in lutspeed <= Int(speed) }.last
+        if let (speed1, hue1) = firstBigger {
+            if let (speed2, hue2) = lastSmaller {
+                
+            }
+        }
+        
+        return nil
     }
     
     private func setGradientStartAndEndPoint() {

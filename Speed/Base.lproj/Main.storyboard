@@ -89,7 +89,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                        <color key="value" red="0.12941177189350128" green="0.54117649793624878" blue="0.34117648005485535" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="value" red="0.098039224743843079" green="0.34509804844856262" blue="0.15686275064945221" alpha="1" colorSpace="deviceRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="stopColor">
                                         <color key="value" red="0.14117647707462311" green="0.63529413938522339" blue="0.34509804844856262" alpha="1" colorSpace="deviceRGB"/>
