@@ -95,14 +95,20 @@ import UIKit
         return CGPoint(x: 1-p.x, y: 1-p.y)
     }
     
-    private func speedToColor(speed: Double) -> (startColor: UIColor, endColor: UIColor) {
+    private func speedToColor(speed: Double) -> (startColor: UIColor?, endColor: UIColor?) {
         if speed < 0 {
             return (UIColor.greenColor(), UIColor.whiteColor())
         } else {
-            let endBrightness = 35/100
-            let startBrightness = 60/100
-	
-            return (UIColor.greenColor(), UIColor.whiteColor())
+            let saturation = CGFloat(75/100)
+            let endBrightness = CGFloat(35/100)
+            let startBrightness = CGFloat(60/100)
+            if let hue = speedToHue(speed) {
+                let sc = UIColor(hue: hue, saturation: saturation, brightness: startBrightness, alpha: 1)
+                let ec = UIColor(hue: hue, saturation: saturation, brightness: endBrightness, alpha: 1)
+                return (sc, ec)
+            } else {
+                return (nil, nil)
+            }
         }
     }
     private func speedToHue(speed: Double) -> CGFloat? {
