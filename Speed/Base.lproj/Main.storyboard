@@ -452,14 +452,14 @@
                                 <exclude reference="dTr-oC-3Qf"/>
                                 <exclude reference="fAQ-rc-NfI"/>
                                 <exclude reference="yzX-mQ-a24"/>
-                                <exclude reference="IfC-rv-8Jh"/>
-                                <exclude reference="WJ2-r3-nlT"/>
                                 <exclude reference="TTO-0Q-Td4"/>
                                 <exclude reference="G4T-BS-eW2"/>
-                                <exclude reference="ntC-yS-sJA"/>
+                                <exclude reference="IfC-rv-8Jh"/>
+                                <exclude reference="WJ2-r3-nlT"/>
                                 <exclude reference="7l4-HF-0SG"/>
                                 <exclude reference="Qq4-gM-hlY"/>
                                 <exclude reference="ysB-M5-0bB"/>
+                                <exclude reference="ntC-yS-sJA"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -484,14 +484,14 @@
                                 <include reference="dTr-oC-3Qf"/>
                                 <exclude reference="fAQ-rc-NfI"/>
                                 <include reference="yzX-mQ-a24"/>
-                                <exclude reference="7Zr-5P-j8m"/>
                                 <include reference="TTO-0Q-Td4"/>
+                                <exclude reference="7Zr-5P-j8m"/>
                                 <exclude reference="7AP-63-GpV"/>
                                 <exclude reference="G4T-BS-eW2"/>
                                 <exclude reference="MTI-UA-aHB"/>
                                 <exclude reference="XfS-Ol-R3P"/>
-                                <include reference="ntC-yS-sJA"/>
                                 <include reference="ysB-M5-0bB"/>
+                                <include reference="ntC-yS-sJA"/>
                             </mask>
                         </variation>
                     </view>
@@ -524,6 +524,7 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-jb-Nm2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lce-go-O2i">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

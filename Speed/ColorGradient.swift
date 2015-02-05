@@ -99,23 +99,36 @@ import UIKit
         if speed < 0 {
             return (UIColor.greenColor(), UIColor.whiteColor())
         } else {
-            var endBrightness = 35/100
+            let endBrightness = 35/100
+            let startBrightness = 60/100
 	
             return (UIColor.greenColor(), UIColor.whiteColor())
         }
     }
     private func speedToHue(speed: Double) -> CGFloat? {
-        let speedHueLUT = [(0,120),(70,90),(90,0)] // speed mph, hue degrees
+        let speedHueLUT = [(0,120),(70,90),(90,0)] //	 speed mph, hue degrees
+        func degreesToHue(deg: Int) -> CGFloat {
+            let resAngle = Double(deg%361)
+            return CGFloat(resAngle/360.0)
+        }
         let firstBigger = speedHueLUT.filter{ (lutspeed,_) in lutspeed >= Int(speed) }.first
         let lastSmaller = speedHueLUT.filter{ (lutspeed,_) in lutspeed <= Int(speed) }.last
-        if let (speed1, hue1) = firstBigger {
-            if let (speed2, hue2) = lastSmaller {
-                
+        if let (s1, h1) = lastSmaller {
+            if let (s2, h2) = firstBigger {
+                if s2 > s1 {
+                    let slope = (h2 - h1) / (s2 - s1)
+                    let hueInterp = h1 + slope * (Int(speed) - s1)
+                    return degreesToHue(Int(hueInterp))
+                } else {
+                    return degreesToHue(h1)
+                }
             }
         }
         
         return nil
     }
+    
+    
     
     private func setGradientStartAndEndPoint() {
         gradientLayer.endPoint = CGPoint(x:transformCoordinate(cos(gradientDirectionRadians)),
