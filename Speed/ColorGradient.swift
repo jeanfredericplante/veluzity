@@ -14,11 +14,11 @@ import UIKit
     var gradientLayer = CAGradientLayer()
     
     @IBInspectable var startColor: UIColor = UIColor.blackColor() {
-        didSet { setupView() }
+        didSet { setColors() }
     }
     
     @IBInspectable var stopColor: UIColor = UIColor.grayColor() {
-        didSet { setupView() }
+        didSet { setColors() }
     }
     
     @IBInspectable var direction: Double = 0 {
@@ -26,7 +26,7 @@ import UIKit
     }
     
     @IBInspectable var speed: Double? {
-        didSet { setColors() }
+        didSet { setSpeed() }
     }
     
     
@@ -68,13 +68,8 @@ import UIKit
     }
     
     private func setColors() {
-        if speed == nil {
-            let colors: Array = [ startColor.CGColor, stopColor.CGColor ]
-            gradientLayer.colors = colors
-        } else {
-            
-        }
-        
+        let colors: Array = [ startColor.CGColor, stopColor.CGColor ]
+        gradientLayer.colors = colors
     }
     
     private func setDirection() {
@@ -95,24 +90,35 @@ import UIKit
         return CGPoint(x: 1-p.x, y: 1-p.y)
     }
     
-    private func speedToColor(speed: Double) -> (startColor: UIColor?, endColor: UIColor?) {
+    private func setSpeed() {
+        if let s = speed {
+            if let (sc,ec) = speedToColor(s) {
+                startColor = sc
+                stopColor = ec
+            }
+        }
+
+    }
+    
+    private func speedToColor(speed: Double) -> (startColor: UIColor, endColor: UIColor)? {
         if speed < 0 {
             return (UIColor.greenColor(), UIColor.whiteColor())
         } else {
-            let saturation = CGFloat(75/100)
-            let endBrightness = CGFloat(35/100)
-            let startBrightness = CGFloat(60/100)
+            let saturation = CGFloat(0.75)
+            let endBrightness = CGFloat(0.35)
+            let startBrightness = CGFloat(0.60)
             if let hue = speedToHue(speed) {
+                println("speed is \(speed) 75hue is \(hue)")
                 let sc = UIColor(hue: hue, saturation: saturation, brightness: startBrightness, alpha: 1)
                 let ec = UIColor(hue: hue, saturation: saturation, brightness: endBrightness, alpha: 1)
                 return (sc, ec)
             } else {
-                return (nil, nil)
+                return nil
             }
         }
     }
     private func speedToHue(speed: Double) -> CGFloat? {
-        let speedHueLUT = [(0,120),(70,90),(90,0)] //	 speed mph, hue degrees
+        let speedHueLUT = [(0,120),(30,90),(35,3),(200,0)] //	 speed mph, hue degrees
         func degreesToHue(deg: Int) -> CGFloat {
             let resAngle = Double(deg%361)
             return CGFloat(resAngle/360.0)
@@ -122,8 +128,8 @@ import UIKit
         if let (s1, h1) = lastSmaller {
             if let (s2, h2) = firstBigger {
                 if s2 > s1 {
-                    let slope = (h2 - h1) / (s2 - s1)
-                    let hueInterp = h1 + slope * (Int(speed) - s1)
+                    let slope = Double(h2 - h1) / Double(s2 - s1)
+                    let hueInterp = Double(h1) + slope * Double(Int(speed) - s1)
                     return degreesToHue(Int(hueInterp))
                 } else {
                     return degreesToHue(h1)

@@ -86,6 +86,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         
         // Updates background
         gradientView.direction = userLocation.getHeadingDegrees()
+        gradientView.speed = userLocation.speed
         
         // Updates displays
         speedDisplay.text = getSpeedWithPreferencesUnit()
