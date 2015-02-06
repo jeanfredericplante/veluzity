@@ -48,6 +48,10 @@ import UIKit
         
     }
     
+    override class func layerClass() -> AnyClass {
+        return CAGradientLayer.self
+    }
+
     
     var gradientDirectionRadians: Double {
         get {
@@ -55,6 +59,8 @@ import UIKit
             return (direction + 90) * M_PI / 180.0
         }
     }
+    
+    // MARK : private methods
     
     private func setupView() {
         setColors()
@@ -73,13 +79,12 @@ import UIKit
     }
     
     private func setDirection() {
+        CATransaction.setAnimationDuration(3)
+
         let angle =  CGFloat(gradientDirectionRadians)
         gradientLayer.transform = CATransform3DMakeRotation(angle, 0, 0, 1)
     }
     
-    override class func layerClass() -> AnyClass {
-        return CAGradientLayer.self
-    }
     
    
     private func transformCoordinate(x: Double) -> Double {
@@ -93,13 +98,14 @@ import UIKit
     private func setSpeed() {
         if let s = speed {
             if let (sc,ec) = speedToColor(s) {
+                CATransaction.setAnimationDuration(3)
                 startColor = sc
                 stopColor = ec
             }
         }
-
     }
     
+
     private func speedToColor(speed: Double) -> (startColor: UIColor, endColor: UIColor)? {
         if speed < 0 {
             return (UIColor.greenColor(), UIColor.whiteColor())
@@ -117,6 +123,7 @@ import UIKit
             }
         }
     }
+    
     private func speedToHue(speed: Double) -> CGFloat? {
         let speedHueLUT = [(0,120),(30,90),(35,3),(200,0)] //	 speed mph, hue degrees
         func degreesToHue(deg: Int) -> CGFloat {
@@ -136,10 +143,8 @@ import UIKit
                 }
             }
         }
-        
-        return nil
+         return nil
     }
-    
     
     
     private func setGradientStartAndEndPoint() {
