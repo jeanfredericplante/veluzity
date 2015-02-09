@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable class ColorGradient: UIView {
     
+    let AnimDuration = CFTimeInterval(3)
     var animationInProgress = false
     var gradientLayer = CAGradientLayer()
     
@@ -36,7 +37,6 @@ import UIKit
         super.init(frame: frame)
         
         setupView()
-
         self.layer.insertSublayer(gradientLayer, atIndex: 0)
     }
     
@@ -64,13 +64,9 @@ import UIKit
     
     private func setupView() {
         setColors()
-        let frameWidth = UIScreen.mainScreen().bounds.width
-        let frameHeight = UIScreen.mainScreen().bounds.height
-        let gradientWidth = sqrt(frameWidth*frameWidth+frameHeight*frameHeight)
-
-        gradientLayer.frame = CGRectMake((frameWidth-gradientWidth)/2,
-            (frameHeight-gradientWidth)/2, gradientWidth, gradientWidth)
-         self.setNeedsDisplay()
+        gradientLayer.frame = UIScreen.mainScreen().bounds
+        // not sure why self.frame not initialized properly. Uses mainScreen bounds instead
+        self.setNeedsDisplay()
     }
     
     private func setColors() {
@@ -79,10 +75,9 @@ import UIKit
     }
     
     private func setDirection() {
-        CATransaction.setAnimationDuration(3)
-
-        let angle =  CGFloat(gradientDirectionRadians)
-        gradientLayer.transform = CATransform3DMakeRotation(angle, 0, 0, 1)
+        CATransaction.setAnimationDuration(AnimDuration)
+        
+       setGradientStartAndEndPoint()
     }
     
     
@@ -98,9 +93,8 @@ import UIKit
     private func setSpeed() {
         if let s = speed {
             if let (sc,ec) = speedToColor(s) {
-                CATransaction.setAnimationDuration(3)
-                startColor = sc
-                stopColor = ec
+                CATransaction.setAnimationDuration(AnimDuration)
+                startColor = sc; stopColor = ec
             }
         }
     }
@@ -110,7 +104,7 @@ import UIKit
         if speed < 0 {
             return (UIColor.greenColor(), UIColor.whiteColor())
         } else {
-            let saturation = CGFloat(0.75)
+            let saturation = CGFloat(1)
             let endBrightness = CGFloat(0.35)
             let startBrightness = CGFloat(0.60)
             if let hue = speedToHue(speed) {
@@ -151,6 +145,20 @@ import UIKit
         gradientLayer.endPoint = CGPoint(x:transformCoordinate(cos(gradientDirectionRadians)),
             y: transformCoordinate(sin(gradientDirectionRadians)))
         gradientLayer.startPoint = getMirrorPoint(gradientLayer.endPoint)
+    }
+    
+    private func rotateGradientOfDirection() {
+        
+        
+        let angle =  CGFloat(gradientDirectionRadians)
+        let frameWidth = UIScreen.mainScreen().bounds.width
+        let frameHeight = UIScreen.mainScreen().bounds.height
+        let gradientWidth = sqrt(frameWidth*frameWidth+frameHeight*frameHeight)
+
+        gradientLayer.frame = CGRectMake((frameWidth-gradientWidth)/2,
+            (frameHeight-gradientWidth)/2, gradientWidth, gradientWidth)
+        gradientLayer.transform = CATransform3DMakeRotation(angle, 0, 0, 1)
+ 
     }
     
 }

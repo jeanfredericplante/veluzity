@@ -112,15 +112,11 @@ extension UIBezierPath {
         trackImage!.drawInRect(innerRect, blendMode: kCGBlendModeNormal, alpha: 0.1)
         
         // create speed arc
-        let animation = CABasicAnimation(keyPath: "path")
-        animation.duration = 2
+        CATransaction.setAnimationDuration(3)
         
         speedCurve.createArc(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: endAngleRadians, width: trackBorderWidth)
         trackColor.setFill()
         speedCurve.fill()
-        animation.toValue = speedCurve.CGPath
-        animation.fillMode = kCAFillModeForwards
-        animation.removedOnCompletion = false
         speedCurve.addClip()
         trackImage!.drawInRect(innerRect)
         
