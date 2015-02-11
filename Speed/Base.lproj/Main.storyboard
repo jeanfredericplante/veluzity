@@ -504,11 +504,11 @@
                                 <exclude reference="Mhz-Y7-zbG"/>
                                 <exclude reference="X6R-BA-X5a"/>
                                 <exclude reference="fAQ-rc-NfI"/>
+                                <exclude reference="ntC-yS-sJA"/>
+                                <exclude reference="G4T-BS-eW2"/>
                                 <exclude reference="IfC-rv-8Jh"/>
                                 <exclude reference="WJ2-r3-nlT"/>
                                 <exclude reference="TTO-0Q-Td4"/>
-                                <exclude reference="G4T-BS-eW2"/>
-                                <exclude reference="ntC-yS-sJA"/>
                                 <exclude reference="7l4-HF-0SG"/>
                                 <exclude reference="Qq4-gM-hlY"/>
                             </mask>
@@ -537,12 +537,12 @@
                                 <include reference="X6R-BA-X5a"/>
                                 <exclude reference="fAQ-rc-NfI"/>
                                 <exclude reference="7Zr-5P-j8m"/>
-                                <include reference="TTO-0Q-Td4"/>
+                                <include reference="ntC-yS-sJA"/>
                                 <exclude reference="7AP-63-GpV"/>
                                 <exclude reference="G4T-BS-eW2"/>
                                 <exclude reference="MTI-UA-aHB"/>
                                 <exclude reference="XfS-Ol-R3P"/>
-                                <include reference="ntC-yS-sJA"/>
+                                <include reference="TTO-0Q-Td4"/>
                             </mask>
                         </variation>
                     </view>
