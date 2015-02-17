@@ -11,7 +11,7 @@
         <!--Preference Pane-->
         <scene sceneID="oXq-Mw-Vdq">
             <objects>
-                <viewController storyboardIdentifier="PreferencePaneController" id="EoH-KH-Mxk" userLabel="Preference Pane" customClass="PreferencePaneController" customModule="Speed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PreferencePaneController" title="preference pane" id="EoH-KH-Mxk" userLabel="Preference Pane" customClass="PreferencePaneController" customModule="Speed" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jjE-Nn-vbj"/>
                         <viewControllerLayoutGuide type="bottom" id="XSr-hc-dag"/>
@@ -62,44 +62,51 @@
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="65" minValue="40" maxValue="80" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-8v-BE1">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="14" y="147" width="287" height="31"/>
-                                </variation>
                             </slider>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="geM-Vj-Cov">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="geM-Vj-Cov">
                                 <rect key="frame" x="-61" y="-14" width="123" height="29"/>
                                 <segments>
                                     <segment title="Celsius"/>
                                     <segment title="Farheneit"/>
                                 </segments>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="214" y="69" width="170" height="29"/>
-                                </variation>
                             </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4wZ-oR-ZJV">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="4wZ-oR-ZJV">
                                 <rect key="frame" x="-61" y="-14" width="123" height="29"/>
                                 <segments>
                                     <segment title="KM/H"/>
                                     <segment title="MP/H"/>
                                 </segments>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="214" y="28" width="170" height="29"/>
-                                </variation>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70 mp/h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FE-Mw-b8F">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="312" y="151" width="65" height="21"/>
-                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EL-hI-jvB">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="geM-Vj-Cov" firstAttribute="width" secondItem="4wZ-oR-ZJV" secondAttribute="width" id="1xJ-Ri-7EI"/>
+                            <constraint firstItem="geM-Vj-Cov" firstAttribute="top" secondItem="4wZ-oR-ZJV" secondAttribute="bottom" constant="21" id="1z2-Oc-Trv"/>
                             <constraint firstItem="XSr-hc-dag" firstAttribute="top" secondItem="OcS-WK-RrU" secondAttribute="bottom" id="9Nz-kD-Fwa"/>
+                            <constraint firstItem="xtG-8v-BE1" firstAttribute="centerY" secondItem="5FE-Mw-b8F" secondAttribute="centerY" constant="0.5" id="Bev-zj-jgu"/>
+                            <constraint firstItem="4wZ-oR-ZJV" firstAttribute="trailing" secondItem="RRu-wk-6rZ" secondAttribute="trailingMargin" id="Hj6-DN-9Bd"/>
+                            <constraint firstItem="3EL-hI-jvB" firstAttribute="top" secondItem="jjE-Nn-vbj" secondAttribute="bottom" constant="8" id="MLF-MR-4tW"/>
                             <constraint firstAttribute="trailing" secondItem="OcS-WK-RrU" secondAttribute="trailing" id="NRV-1f-rPd"/>
+                            <constraint firstItem="5FE-Mw-b8F" firstAttribute="leading" secondItem="xtG-8v-BE1" secondAttribute="trailing" constant="15" id="W7p-2Y-DbD"/>
+                            <constraint firstItem="4wZ-oR-ZJV" firstAttribute="centerX" secondItem="3EL-hI-jvB" secondAttribute="centerX" constant="22" id="X9i-kr-Pay"/>
+                            <constraint firstItem="4wZ-oR-ZJV" firstAttribute="leading" secondItem="RRu-wk-6rZ" secondAttribute="leadingMargin" constant="45" id="d3N-yW-KFs"/>
+                            <constraint firstItem="geM-Vj-Cov" firstAttribute="leading" secondItem="xtG-8v-BE1" secondAttribute="leading" id="eLI-LM-2jd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5FE-Mw-b8F" secondAttribute="trailing" constant="5" id="gvO-5O-C55"/>
                             <constraint firstItem="OcS-WK-RrU" firstAttribute="leading" secondItem="RRu-wk-6rZ" secondAttribute="leading" id="lEW-hS-uqs"/>
+                            <constraint firstItem="geM-Vj-Cov" firstAttribute="trailing" secondItem="4wZ-oR-ZJV" secondAttribute="trailing" id="vEF-21-U2V"/>
+                            <constraint firstItem="xtG-8v-BE1" firstAttribute="top" secondItem="geM-Vj-Cov" secondAttribute="bottom" constant="50" id="xJn-2O-har"/>
+                            <constraint firstItem="4wZ-oR-ZJV" firstAttribute="top" secondItem="3EL-hI-jvB" secondAttribute="bottom" constant="74" id="yyM-N5-7FC"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -107,6 +114,22 @@
                                 <exclude reference="geM-Vj-Cov"/>
                                 <exclude reference="4wZ-oR-ZJV"/>
                                 <exclude reference="5FE-Mw-b8F"/>
+                                <exclude reference="3EL-hI-jvB"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="MLF-MR-4tW"/>
+                                <exclude reference="W7p-2Y-DbD"/>
+                                <exclude reference="gvO-5O-C55"/>
+                                <exclude reference="Bev-zj-jgu"/>
+                                <exclude reference="xJn-2O-har"/>
+                                <exclude reference="Hj6-DN-9Bd"/>
+                                <exclude reference="X9i-kr-Pay"/>
+                                <exclude reference="d3N-yW-KFs"/>
+                                <exclude reference="yyM-N5-7FC"/>
+                                <exclude reference="1xJ-Ri-7EI"/>
+                                <exclude reference="1z2-Oc-Trv"/>
+                                <exclude reference="eLI-LM-2jd"/>
+                                <exclude reference="vEF-21-U2V"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -115,6 +138,22 @@
                                 <include reference="geM-Vj-Cov"/>
                                 <include reference="4wZ-oR-ZJV"/>
                                 <include reference="5FE-Mw-b8F"/>
+                                <include reference="3EL-hI-jvB"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="MLF-MR-4tW"/>
+                                <include reference="W7p-2Y-DbD"/>
+                                <include reference="gvO-5O-C55"/>
+                                <include reference="Bev-zj-jgu"/>
+                                <include reference="xJn-2O-har"/>
+                                <include reference="Hj6-DN-9Bd"/>
+                                <include reference="X9i-kr-Pay"/>
+                                <include reference="d3N-yW-KFs"/>
+                                <include reference="yyM-N5-7FC"/>
+                                <include reference="1xJ-Ri-7EI"/>
+                                <include reference="1z2-Oc-Trv"/>
+                                <include reference="eLI-LM-2jd"/>
+                                <include reference="vEF-21-U2V"/>
                             </mask>
                         </variation>
                     </view>
@@ -123,10 +162,10 @@
             </objects>
             <point key="canvasLocation" x="174" y="1671.75"/>
         </scene>
-        <!--View Controller-->
+        <!--dashboard-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Speed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="dashboard" id="BYZ-38-t0r" customClass="ViewController" customModule="Speed" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -137,13 +176,16 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GiW-4S-PCo" customClass="ColorGradient" customModule="Speed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                        <color key="value" red="0.098039224743843079" green="0.34509804844856262" blue="0.15686275064945221" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="value" red="0.1176470588" green="0.14117647059999999" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="stopColor">
-                                        <color key="value" red="0.14117647707462311" green="0.63529413938522339" blue="0.34509804844856262" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="value" red="0.29999999999999999" green="0.35999999999999999" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="direction">
+                                        <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -192,7 +234,6 @@
                                             <constraint firstAttribute="bottom" secondItem="0jE-ee-Pue" secondAttribute="bottom" constant="15" id="qCA-w2-jY7"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="trackImage" value="bluegradient"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="trackBorderWidth">
                                                 <real key="value" value="6"/>
                                             </userDefinedRuntimeAttribute>
@@ -205,6 +246,9 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="speed">
                                                 <real key="value" value="121"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
@@ -213,7 +257,7 @@
                                     <constraint firstAttribute="bottom" secondItem="fKy-ed-X8q" secondAttribute="bottom" id="8nD-eT-bT1"/>
                                     <constraint firstAttribute="trailing" secondItem="fKy-ed-X8q" secondAttribute="trailing" id="9Eo-HJ-eKc"/>
                                     <constraint firstAttribute="width" secondItem="dua-Pv-iez" secondAttribute="height" id="MPU-Dy-yJp"/>
-                                    <constraint firstItem="fKy-ed-X8q" firstAttribute="top" secondItem="dua-Pv-iez" secondAttribute="top" constant="-10" id="d5O-V7-g3G">
+                                    <constraint firstItem="fKy-ed-X8q" firstAttribute="top" relation="lessThanOrEqual" secondItem="dua-Pv-iez" secondAttribute="top" constant="-10" id="d5O-V7-g3G">
                                         <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                                     </constraint>
                                     <constraint firstItem="fKy-ed-X8q" firstAttribute="leading" secondItem="dua-Pv-iez" secondAttribute="leading" id="dKC-Df-5g7"/>
@@ -227,7 +271,7 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hee-Pm-0Iw" userLabel="addressView">
                                 <rect key="frame" x="16" y="578" width="548" height="2"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="LocationColor" translatesAutoresizingMaskIntoConstraints="NO" id="Dx3-N8-Hmz">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="LocationWhite" translatesAutoresizingMaskIntoConstraints="NO" id="Dx3-N8-Hmz">
                                         <rect key="frame" x="0.0" y="-34" width="71" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="43" id="cwE-wU-iiD">
@@ -241,8 +285,7 @@
                                                 <exclude reference="pJU-CR-ilT"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="42" width="40" height="40"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="cwE-wU-iiD"/>
                                                 <include reference="pJU-CR-ilT"/>
@@ -260,9 +303,6 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.4941176471" green="1" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="50" y="42" width="234" height="33"/>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -315,7 +355,7 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-IA-Mt8" userLabel="headingView">
                                 <rect key="frame" x="160" y="580" width="548" height="3"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="DirectionColor" translatesAutoresizingMaskIntoConstraints="NO" id="cGI-jv-dtz">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="DirectionWhite" translatesAutoresizingMaskIntoConstraints="NO" id="cGI-jv-dtz">
                                         <rect key="frame" x="-144" y="-34" width="71" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="54" id="Ulg-fM-ExO">
@@ -332,8 +372,7 @@
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="-144" y="28" width="65" height="65"/>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="-10" y="37" width="40" height="40"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="Ulg-fM-ExO"/>
                                                 <include reference="ZSR-CK-qQK"/>
@@ -345,9 +384,6 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="60"/>
                                         <color key="textColor" red="0.070588235294117646" green="1" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="40" y="22" width="182" height="71"/>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -404,9 +440,6 @@
                                         </variation>
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="-254" y="24" width="234" height="71"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="40" y="26" width="234" height="71"/>
                                         </variation>
                                     </label>
                                 </subviews>
@@ -540,9 +573,9 @@
                                 <include reference="ntC-yS-sJA"/>
                                 <exclude reference="7AP-63-GpV"/>
                                 <exclude reference="G4T-BS-eW2"/>
-                                <exclude reference="MTI-UA-aHB"/>
                                 <exclude reference="XfS-Ol-R3P"/>
                                 <include reference="TTO-0Q-Td4"/>
+                                <exclude reference="MTI-UA-aHB"/>
                             </mask>
                         </variation>
                     </view>
@@ -555,6 +588,7 @@
                         <outlet property="locationDisplay" destination="jCq-5v-Upo" id="i8v-zh-3uO"/>
                         <outlet property="locationSubtextDisplay" destination="fqz-lk-FaR" id="6vz-aw-QQf"/>
                         <outlet property="speedDisplay" destination="0jE-ee-Pue" id="ZJo-O5-qlC"/>
+                        <outlet property="speedMeter" destination="fKy-ed-X8q" id="uaj-8F-y1Q"/>
                         <outlet property="speedUnit" destination="tJw-Yg-Iyh" id="CAG-Or-Um2"/>
                         <outlet property="tempDisplay" destination="UWE-Xm-xi2" id="nfw-JR-vdL"/>
                         <outlet property="velocityMeter" destination="fKy-ed-X8q" id="G1p-qu-EHQ"/>
@@ -566,28 +600,10 @@
             </objects>
             <point key="canvasLocation" x="-133.5" y="387"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="A7t-j7-KaS">
-            <objects>
-                <viewController id="aph-Wf-Jwf" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5Qq-sv-R2Y"/>
-                        <viewControllerLayoutGuide type="bottom" id="FKl-jb-Nm2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lce-go-O2i">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VJS-Xl-dgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="12nColor" width="65" height="65"/>
-        <image name="DirectionColor" width="53" height="54"/>
-        <image name="LocationColor" width="43" height="65"/>
-        <image name="bluegradient" width="300" height="300"/>
+        <image name="DirectionWhite" width="65" height="65"/>
+        <image name="LocationWhite" width="65" height="65"/>
     </resources>
 </document>

@@ -30,6 +30,7 @@ class ViewController: UIViewController, LocationUpdateDelegate {
     @IBOutlet weak var velocityMeter: SpeedMeter!
     @IBOutlet weak var headingView: UIView!
     @IBOutlet weak var addressView: UIView!
+    @IBOutlet weak var speedMeter: SpeedMeter!
     
     
     
@@ -51,11 +52,13 @@ class ViewController: UIViewController, LocationUpdateDelegate {
         
         // initial style for views
         SpeedViewsHelper.setImageAndTextColor(view: headingView,
-            color: SpeedViewsHelper.getHeadingColor())
+            color: SpeedViewsHelper.getColorForElement(.Heading))
         SpeedViewsHelper.setImageAndTextColor(view: weatherView,
-            color: SpeedViewsHelper.getWeatherColor())
+            color: SpeedViewsHelper.getColorForElement(.Weather))
         SpeedViewsHelper.setImageAndTextColor(view: addressView,
-            color: SpeedViewsHelper.getLocationColor())
+            color: SpeedViewsHelper.getColorForElement(.Location))
+        SpeedViewsHelper.setImageAndTextColor(view: speedMeter,
+            color: SpeedViewsHelper.getColorForElement(.Speed))
         
         // completion closure, temperature updated
         locationWeather.temperatureUpdated = { lw in

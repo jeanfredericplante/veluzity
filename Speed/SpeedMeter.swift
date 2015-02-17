@@ -108,17 +108,23 @@ extension UIBezierPath {
         
         // create background arc
         speedBackground.createArc(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: maxAngleRadians, width: trackBorderWidth)
-        speedBackground.addClip()
-        trackImage!.drawInRect(innerRect, blendMode: kCGBlendModeNormal, alpha: 0.1)
+        if trackImage == nil {
+            trackColor.setFill()
+            speedBackground.fillWithBlendMode(kCGBlendModeNormal, alpha: 0.1)
+        } else {
+            speedBackground.addClip()
+            trackImage!.drawInRect(innerRect, blendMode: kCGBlendModeNormal, alpha: 0.1)
+        }
         
-        // create speed arc
-        CATransaction.setAnimationDuration(3)
-        
+        // create speed arc        
         speedCurve.createArc(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: endAngleRadians, width: trackBorderWidth)
-        trackColor.setFill()
-        speedCurve.fill()
-        speedCurve.addClip()
-        trackImage!.drawInRect(innerRect)
+        if trackImage == nil {
+            trackColor.setFill()
+            speedCurve.fill()
+        } else {
+            speedCurve.addClip()
+            trackImage!.drawInRect(innerRect)
+        }
         
     }
     

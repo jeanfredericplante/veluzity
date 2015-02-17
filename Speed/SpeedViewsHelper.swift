@@ -7,20 +7,28 @@
 //
 
 import UIKit
+
 struct Constants {
     static let fontRatio: CGFloat = 0.5
-    enum viewColors {
+    static let hasGradientBackground = true
+    enum ViewColors {
         case Speed, Location, Heading, Weather
         func toHex() -> Int {
-            switch self {
-            case Weather:
-                return 0xCCFF66
-            case Location:
-                return 0x12FFF7
-            case Heading:
-                return 0x7EFFBB
-            default:
-                return 0xFFFFFF
+            if hasGradientBackground {
+                return 0xFFFFFF // white foreground objects when there is a gradient
+            } else {
+                switch self {
+                case Weather:
+                    return 0xCCFF66
+                case Location:
+                    return 0x12FFF7
+                case Heading:
+                    return 0x7EFFBB
+                case Speed:
+                    return 0x40FFF8
+                default:
+                    return 0xFFFFFF
+                }
             }
         }
     }
@@ -112,17 +120,22 @@ class SpeedViewsHelper {
     }
 
     
+    // TODO: how to get rid of all that repetition
     
     class func getWeatherColor() -> UIColor {
-        return hexToUIColor(Constants.viewColors.Weather.toHex())
+        return hexToUIColor(Constants.ViewColors.Weather.toHex())
     }
     
     class func getHeadingColor() -> UIColor {
-        return hexToUIColor(Constants.viewColors.Heading.toHex())
+        return hexToUIColor(Constants.ViewColors.Heading.toHex())
     }
     
     class func getLocationColor() -> UIColor {
-        return hexToUIColor(Constants.viewColors.Location.toHex())
+        return hexToUIColor(Constants.ViewColors.Location.toHex())
+    }
+    
+    class func getColorForElement(e: Constants.ViewColors) -> UIColor {
+        return hexToUIColor(e.toHex())
     }
     
     
