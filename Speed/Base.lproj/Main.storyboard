@@ -293,14 +293,11 @@
                                         <color key="textColor" red="0.49411764705882355" green="1" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="San Diego, California" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.35000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-lk-FaR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="San Diego, California" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.35000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-lk-FaR">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.4941176471" green="1" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="88" y="45" width="154" height="21"/>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -455,7 +452,7 @@
                                     <constraint firstItem="m0n-eS-i98" firstAttribute="leading" secondItem="UWE-Xm-xi2" secondAttribute="trailing" constant="10" id="4Mi-QA-kyr"/>
                                     <constraint firstItem="m0n-eS-i98" firstAttribute="leading" secondItem="b2y-KI-HeR" secondAttribute="leadingMargin" id="6u9-sZ-1Q4"/>
                                     <constraint firstAttribute="centerY" secondItem="m0n-eS-i98" secondAttribute="centerY" constant="-0.5" id="6vF-w6-Qsm"/>
-                                    <constraint firstItem="m0n-eS-i98" firstAttribute="height" relation="lessThanOrEqual" secondItem="b2y-KI-HeR" secondAttribute="height" multiplier="0.3" id="NGD-RA-2sp">
+                                    <constraint firstItem="m0n-eS-i98" firstAttribute="height" relation="lessThanOrEqual" secondItem="b2y-KI-HeR" secondAttribute="height" multiplier="0.15" id="NGD-RA-2sp">
                                         <variation key="heightClass=regular-widthClass=compact" constant="40"/>
                                     </constraint>
                                     <constraint firstAttribute="centerY" secondItem="UWE-Xm-xi2" secondAttribute="centerY" id="RGT-5U-XTd"/>
