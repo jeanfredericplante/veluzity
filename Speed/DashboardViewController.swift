@@ -15,7 +15,7 @@ protocol ViewControllerDelegate {
 }
 
 
-class ViewController: UIViewController, LocationUpdateDelegate {
+class DashboardViewController: UIViewController, LocationUpdateDelegate {
 
     
     @IBOutlet weak var gradientView: ColorGradient!

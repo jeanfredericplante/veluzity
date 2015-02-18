@@ -76,13 +76,13 @@ import UIKit
     
     private func setDirection() {
         CATransaction.setAnimationDuration(AnimDuration)
-        
-       setGradientStartAndEndPoint()
+        setGradientStartAndEndPoint()
     }
     
     
    
     private func transformCoordinate(x: Double) -> Double {
+        // moves into the 0-1 coordinate sys
         return (x+1)/2
     }
     
@@ -101,25 +101,23 @@ import UIKit
     
 
     private func speedToColor(speed: Double) -> (startColor: UIColor, endColor: UIColor)? {
-        if speed < 0 {
-            return (UIColor.greenColor(), UIColor.whiteColor())
+        
+        let saturation = CGFloat(1)
+        let endBrightness = CGFloat(0.35)
+        let startBrightness = CGFloat(0.60)
+        if let hue = speedToHue(speed) {
+            println("speed is \(speed) 75hue is \(hue)")
+            let sc = UIColor(hue: hue, saturation: saturation, brightness: startBrightness, alpha: 1)
+            let ec = UIColor(hue: hue, saturation: saturation, brightness: endBrightness, alpha: 1)
+            return (sc, ec)
         } else {
-            let saturation = CGFloat(1)
-            let endBrightness = CGFloat(0.35)
-            let startBrightness = CGFloat(0.60)
-            if let hue = speedToHue(speed) {
-                println("speed is \(speed) 75hue is \(hue)")
-                let sc = UIColor(hue: hue, saturation: saturation, brightness: startBrightness, alpha: 1)
-                let ec = UIColor(hue: hue, saturation: saturation, brightness: endBrightness, alpha: 1)
-                return (sc, ec)
-            } else {
-                return nil
-            }
+            return nil
         }
+        
     }
     
     private func speedToHue(speed: Double) -> CGFloat? {
-        let speedHueLUT = [(0,120),(30,90),(35,3),(200,0)] //	 speed mph, hue degrees
+        let speedHueLUT = [(-20,120),(0,120),(30,90),(35,3),(200,0)] //	 speed mph, hue degrees
         func degreesToHue(deg: Int) -> CGFloat {
             let resAngle = Double(deg%361)
             return CGFloat(resAngle/360.0)

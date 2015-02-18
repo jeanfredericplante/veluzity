@@ -16,7 +16,7 @@ enum SlideOutState {
 
 class ContainerViewController: UIViewController, ViewControllerDelegate, PreferencePaneControllerDelegate, UIGestureRecognizerDelegate {
     
-    var mainViewController: ViewController!
+    var mainViewController: DashboardViewController!
     var mainViewNavigationController: UINavigationController!
     var currentState: SlideOutState = SlideOutState.PreferenceCollapsed {
         didSet {
@@ -128,8 +128,8 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
 private extension UIStoryboard {
     class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()) }
     
-    class func mainViewController() -> ViewController? {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("MainViewController") as? ViewController
+    class func mainViewController() -> DashboardViewController? {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("MainViewController") as? DashboardViewController
     }
     
     class func preferencePaneController() -> PreferencePaneController? {
