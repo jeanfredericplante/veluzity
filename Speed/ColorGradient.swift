@@ -117,7 +117,7 @@ import UIKit
     }
     
     private func speedToHue(speed: Double) -> CGFloat? {
-        let speedHueLUT = [(-20,120),(0,120),(30,90),(35,3),(200,0)] //	 speed mph, hue degrees
+        let speedHueLUT = [(-20,120),(0,120),(30,90),(35,3),(200,0)] //	 speed mps, hue degrees
         func degreesToHue(deg: Int) -> CGFloat {
             let resAngle = Double(deg%361)
             return CGFloat(resAngle/360.0)
@@ -138,6 +138,17 @@ import UIKit
          return nil
     }
     
+    private func speedToHSV(speed: Double) -> (hue: Int, sat: Int, val: Int)? {
+        let speedHueLUT = [(0,0x1e2432),(20,0x32d8de),(30,0xa9d71b),(35,0xe88c15),(200,0xf10638)]
+        // SpeedViewsHelper.hexToUIColor(<#hexValue: Int#>)
+        // speed mps, hue degrees
+        // can then reference color = speedToHSV(speed), color.hue, color.sat...
+        
+        
+        
+        
+        return nil
+    }
     
     private func setGradientStartAndEndPoint() {
         gradientLayer.endPoint = CGPoint(x:transformCoordinate(cos(gradientDirectionRadians)),
