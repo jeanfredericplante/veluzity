@@ -13,7 +13,27 @@ import UIKit
     let AnimDuration = CFTimeInterval(3)
     var animationInProgress = false
     var gradientLayer = CAGradientLayer()
-    
+    let speedHexLUT :[(Double, Int)] = [(0, 0x1e2432),
+    (3, 0x0b2051),
+    (6, 0x022c8e),
+    (9, 0x0955aa),
+    (11, 0x1875b6),
+    (14, 0x2ba8c7),
+    (17, 0x32d8de),
+    (20, 0x1bead4),
+    (23, 0x13ebb1),
+    (25, 0x0eee6d),
+    (27, 0x09df13),
+    (28, 0x75c113),
+    (29, 0xa9d71b),
+    (30, 0xe4c51c),
+    (32, 0xe9ad1c),
+    (35, 0xe88c15),
+    (37, 0xed6912),
+    (38, 0xed2d0d),
+    (200, 0xf10638)]
+
+  
     @IBInspectable var startColor: UIColor = UIColor.blackColor() {
         didSet { setColors() }
     }
@@ -116,8 +136,9 @@ import UIKit
         
     }
     
+    // TODO: need to obsolete
     private func speedToHue(speed: Double) -> CGFloat? {
-        let speedHueLUT = [(-20,120),(0,120),(30,90),(35,3),(200,0)] //	 speed mps, hue degrees
+        let speedHueLUT = [(0,120),(30,90),(35,3),(200,0)] //	 speed mps, hue degrees
         func degreesToHue(deg: Int) -> CGFloat {
             let resAngle = Double(deg%361)
             return CGFloat(resAngle/360.0)
@@ -134,20 +155,40 @@ import UIKit
                     return degreesToHue(h1)
                 }
             }
+            return degreesToHue(h1)
+        } else if let (s2, h2) = firstBigger {
+            return degreesToHue(h2)
         }
-         return nil
+        return nil
     }
     
-    private func speedToHSV(speed: Double) -> (hue: Int, sat: Int, val: Int)? {
-        let speedHueLUT = [(0,0x1e2432),(20,0x32d8de),(30,0xa9d71b),(35,0xe88c15),(200,0xf10638)]
-        // SpeedViewsHelper.hexToUIColor(<#hexValue: Int#>)
-        // speed mps, hue degrees
-        // can then reference color = speedToHSV(speed), color.hue, color.sat...
+    
+    private func speedToColor(speed: Double) -> UIColor {
+        let firstBigger = speedHexLUT.filter{ (lutspeed,_) in lutspeed >= speed }.first
+        let lastSmaller = speedHexLUT.filter{ (lutspeed,_) in lutspeed <= speed }.last
+        let location = (firstBigger, lastSmaller)
         
-        
-        
-        
-        return nil
+        switch location {
+        case (nil,.Some(let (s2,h2))):
+            return SpeedViewsHelper.hexToUIColor(h2)
+        case (.Some(let (s1,h1)), nil):
+            return SpeedViewsHelper.hexToUIColor(h1)
+        case (.Some(let (s1,h1)), .Some(let (s2,h2))):
+            let rgb1 = SpeedViewsHelper.hexToRGB(h1)
+            let rgb2 = SpeedViewsHelper.hexToRGB(h2)
+            let ri = interp1(x0: s1, x1: s2, y0: rgb1.r, y1: rgb2.r, x: speed)
+            let gi = interp1(x0: s1, x1: s2, y0: rgb1.g, y1: rgb2.g, x: speed)
+            let bi = interp1(x0: s1, x1: s2, y0: rgb1.b, y1: rgb2.b, x: speed)
+            return UIColor(red: ri, green: gi, blue: bi, alpha: 1)
+        default:
+            return UIColor.blackColor()
+  
+        }
+    }
+    
+    private func interp1(#x0: Double, x1: Double, y0: CGFloat, y1: CGFloat, x: Double) -> CGFloat {
+        let slider = CGFloat(max(min(Double(x-x0) / Double(x1-x0),1), 0))
+        return y0 + (y1 - y0)*slider
     }
     
     private func setGradientStartAndEndPoint() {
@@ -169,5 +210,8 @@ import UIKit
         gradientLayer.transform = CATransform3DMakeRotation(angle, 0, 0, 1)
  
     }
+    
+   
+    
     
 }

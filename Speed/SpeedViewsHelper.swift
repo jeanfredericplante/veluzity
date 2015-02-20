@@ -140,12 +140,41 @@ class SpeedViewsHelper {
     
     
     class func hexToUIColor(hexValue: Int) -> UIColor {
+        let (red,green,blue) = hexToRGB(hexValue)
+        return UIColor(red: red, green: green, blue: blue, alpha: 1)
+    }
+    
+    class func hexToRGB(hexValue: Int) -> (r: CGFloat, g: CGFloat, b: CGFloat) {
         var red   = CGFloat((hexValue & 0xFF0000) >> 16)   / 255.0
         var green = CGFloat((hexValue & 0x00FF00) >> 8)    / 255.0
         var blue  = CGFloat(hexValue & 0x0000FF)           / 255.0
-        
-        return UIColor(red: red, green: green, blue: blue, alpha: 1)
+        return (red, green, blue)
     }
+    
+    class func RGBtoHSV(#r: CGFloat, g:CGFloat, b: CGFloat) -> (h: CGFloat, s: CGFloat, v:CGFloat)? {
+        let c = UIColor(red: r,green: g,blue: b,alpha: 1)
+        var hue : CGFloat = 0
+        var saturation : CGFloat = 0
+        var brightness : CGFloat = 0
+        var alpha : CGFloat = 0
+        
+        if c.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+            return (hue, saturation, brightness)
+        } else {
+            return nil
+        }
+    }
+    
+    class func hexToHSV(hexValue: Int) -> (h: CGFloat, s: CGFloat, v:CGFloat)? {
+        let rgb = hexToRGB(hexValue)
+        if let hsv = RGBtoHSV(r: rgb.r, g: rgb.g, b: rgb.b) {
+            return (hsv.h, hsv.s, hsv.v)
+        } else {
+            return nil
+        }
+        
+    }
+    
 }
 
 
