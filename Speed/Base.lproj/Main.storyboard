@@ -531,7 +531,7 @@
                             <constraint firstItem="hee-Pm-0Iw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dua-Pv-iez" secondAttribute="bottom" id="a5b-4a-oTs">
                                 <variation key="heightClass=regular-widthClass=compact" constant="40"/>
                             </constraint>
-                            <constraint firstItem="m0n-eS-i98" firstAttribute="height" secondItem="cGI-jv-dtz" secondAttribute="height" multiplier="1.1" id="axG-ax-Pnj"/>
+                            <constraint firstItem="m0n-eS-i98" firstAttribute="height" secondItem="cGI-jv-dtz" secondAttribute="height" multiplier="1.2" id="axG-ax-Pnj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dua-Pv-iez" secondAttribute="trailing" constant="5" id="cTu-Kn-8im"/>
                             <constraint firstItem="Sf3-IA-Mt8" firstAttribute="height" secondItem="b2y-KI-HeR" secondAttribute="height" id="cfZ-dU-54b"/>
                             <constraint firstItem="cGI-jv-dtz" firstAttribute="centerX" secondItem="m0n-eS-i98" secondAttribute="centerX" id="eiG-jZ-wLg">

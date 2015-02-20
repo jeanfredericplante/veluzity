@@ -13,7 +13,8 @@ import UIKit
     let AnimDuration = CFTimeInterval(3)
     var animationInProgress = false
     var gradientLayer = CAGradientLayer()
-    let speedHexLUT :[(Double, Int)] = [(0, 0x1e2432),
+    let speedHexLUT :[(Double, Int)] =
+    [(0, 0x1e2432),
     (3, 0x0b2051),
     (6, 0x022c8e),
     (9, 0x0955aa),
@@ -112,7 +113,7 @@ import UIKit
     
     private func setSpeed() {
         if let s = speed {
-            if let (sc,ec) = speedToColor(s) {
+            if let (sc,ec) = speedToColorGradient(s) {
                 CATransaction.setAnimationDuration(AnimDuration)
                 startColor = sc; stopColor = ec
             }
@@ -120,48 +121,13 @@ import UIKit
     }
     
 
-    private func speedToColor(speed: Double) -> (startColor: UIColor, endColor: UIColor)? {
+    private func speedToColorGradient(speed: Double) -> (startColor: UIColor, endColor: UIColor)? {
         
-        let saturation = CGFloat(1)
-        let endBrightness = CGFloat(0.35)
-        let startBrightness = CGFloat(0.60)
-        if let hue = speedToHue(speed) {
-            println("speed is \(speed) 75hue is \(hue)")
-            let sc = UIColor(hue: hue, saturation: saturation, brightness: startBrightness, alpha: 1)
-            let ec = UIColor(hue: hue, saturation: saturation, brightness: endBrightness, alpha: 1)
-            return (sc, ec)
-        } else {
-            return nil
-        }
-        
+        let startToEndDeltaSpeed: Double = 3 //gradient end speed - gradient start speed (current speed) m/s
+        let sc = speedToColor(speed)
+        let ec = speedToColor(speed+startToEndDeltaSpeed)
+        return (sc, ec)
     }
-    
-    // TODO: need to obsolete
-    private func speedToHue(speed: Double) -> CGFloat? {
-        let speedHueLUT = [(0,120),(30,90),(35,3),(200,0)] //	 speed mps, hue degrees
-        func degreesToHue(deg: Int) -> CGFloat {
-            let resAngle = Double(deg%361)
-            return CGFloat(resAngle/360.0)
-        }
-        let firstBigger = speedHueLUT.filter{ (lutspeed,_) in lutspeed >= Int(speed) }.first
-        let lastSmaller = speedHueLUT.filter{ (lutspeed,_) in lutspeed <= Int(speed) }.last
-        if let (s1, h1) = lastSmaller {
-            if let (s2, h2) = firstBigger {
-                if s2 > s1 {
-                    let slope = Double(h2 - h1) / Double(s2 - s1)
-                    let hueInterp = Double(h1) + slope * Double(Int(speed) - s1)
-                    return degreesToHue(Int(hueInterp))
-                } else {
-                    return degreesToHue(h1)
-                }
-            }
-            return degreesToHue(h1)
-        } else if let (s2, h2) = firstBigger {
-            return degreesToHue(h2)
-        }
-        return nil
-    }
-    
     
     private func speedToColor(speed: Double) -> UIColor {
         let firstBigger = speedHexLUT.filter{ (lutspeed,_) in lutspeed >= speed }.first
