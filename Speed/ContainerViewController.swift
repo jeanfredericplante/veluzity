@@ -15,7 +15,8 @@ enum SlideOutState {
 }
 
 class ContainerViewController: UIViewController, ViewControllerDelegate, PreferencePaneControllerDelegate, UIGestureRecognizerDelegate {
-    
+    let preferencePanelExpandedOffset: CGFloat = -50
+
     var mainViewController: DashboardViewController!
     var mainViewNavigationController: UINavigationController!
     var currentState: SlideOutState = SlideOutState.PreferenceCollapsed {
@@ -26,7 +27,6 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
     }
     var preferencePaneController : PreferencePaneController?
     
-    let preferencePanelExpandedOffset: CGFloat = -50
     
     override func viewDidLoad() {
         super.viewDidLoad()

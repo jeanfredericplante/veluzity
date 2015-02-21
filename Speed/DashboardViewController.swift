@@ -86,10 +86,9 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         defaults = NSUserDefaults.standardUserDefaults()
         isMph = defaults.boolForKey("isMph")
         isFahrenheit = !defaults.boolForKey("isCelsius")
-        let direction = userLocation.getHeadingDegrees()
         
         // Updates background
-        if direction >= 0 { gradientView.direction = direction }
+        gradientView.direction = userLocation.getHeadingDegrees()
         gradientView.speed = userLocation.speed
         
         // Updates displays

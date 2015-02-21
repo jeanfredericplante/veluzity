@@ -47,14 +47,20 @@ class SpeedViewsHelper {
     
     
     class func setLabelsColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
+        let addShadow = true
         if view != nil {
             let allSubviews = view.subviews
             let allLabels = allSubviews.filter({$0.isKindOfClass(UILabel)}) as [UILabel]
             for textLabel in allLabels {
                 textLabel.textColor = color
+                if addShadow {
+                    textLabel.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+                    textLabel.shadowOffset = CGSize(width: 0,height: 1)
+                }
             }
         }
     }
+    
     
     class func setImageViewsTintColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
         if view != nil {

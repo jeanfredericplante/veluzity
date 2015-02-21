@@ -45,7 +45,7 @@ extension UIBezierPath {
         didSet { setNeedsDisplay() }
     }
  
-    @IBInspectable var minimumSpeed: Double = 1.0 {
+    @IBInspectable var minimumSpeed: Double = 0.0 {
         didSet { setNeedsDisplay() }
     }
 

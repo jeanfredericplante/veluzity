@@ -97,7 +97,7 @@ import UIKit
     
     private func setDirection() {
         CATransaction.setAnimationDuration(AnimDuration)
-        setGradientStartAndEndPoint()
+        if direction >= 0 { setGradientStartAndEndPoint() }
     }
     
     
@@ -153,8 +153,9 @@ import UIKit
     }
     
     private func interp1(#x0: Double, x1: Double, y0: CGFloat, y1: CGFloat, x: Double) -> CGFloat {
-        let slider = CGFloat(max(min(Double(x-x0) / Double(x1-x0),1), 0))
-        return y0 + (y1 - y0)*slider
+        let slider = CGFloat(Double(x-x0) / Double(x1-x0)) // need to split into as got weird archive error
+        let boundedSlider = min(1.0, max(0.0, slider))
+        return y0 + (y1 - y0)*boundedSlider
     }
     
     private func setGradientStartAndEndPoint() {
