@@ -43,8 +43,8 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         mainViewController.didMoveToParentViewController(self)
         
         // adds tap gesture detection
-        let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
-        mainViewController.view.addGestureRecognizer(touchGestureRecognizer)
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+        mainViewController.view.addGestureRecognizer(panGestureRecognizer)
         
 
     }
@@ -117,7 +117,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
     }
     
     // MARK: Gesture recognizer
-    func handleTapGesture(sender: UITapGestureRecognizer) {
+    func handlePanGesture(sender: UIPanGestureRecognizer) {
         if sender.state == .Ended {
             togglePreferencePane()
         }

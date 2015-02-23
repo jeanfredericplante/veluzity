@@ -117,7 +117,6 @@ class PreferencePaneController: UIViewController {
     
     
     private func initializePreferenceControls() {
-        
         speedPreferenceControl.selectedSegmentIndex = speedUnit.rawValue
         temperaturePreferenceControl.selectedSegmentIndex = temperatureUnit.rawValue
     }

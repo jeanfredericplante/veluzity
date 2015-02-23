@@ -22,11 +22,32 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OcS-WK-RrU">
                                 <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Us" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5R-K2-yVW">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="32" y="14" width="117" height="21"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.21176470588235294" blue="0.25882352941176473" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.094117647058823528" green="0.74509803921568629" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="J92-Iz-miO"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="o5R-K2-yVW"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="o5R-K2-yVW"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="65" minValue="40" maxValue="80" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-8v-BE1">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
@@ -74,7 +95,9 @@
                             <constraint firstItem="geM-Vj-Cov" firstAttribute="top" secondItem="4wZ-oR-ZJV" secondAttribute="bottom" constant="21" id="1z2-Oc-Trv"/>
                             <constraint firstItem="XSr-hc-dag" firstAttribute="top" secondItem="OcS-WK-RrU" secondAttribute="bottom" id="9Nz-kD-Fwa"/>
                             <constraint firstItem="xtG-8v-BE1" firstAttribute="centerY" secondItem="5FE-Mw-b8F" secondAttribute="centerY" constant="0.5" id="Bev-zj-jgu"/>
-                            <constraint firstItem="4wZ-oR-ZJV" firstAttribute="trailing" secondItem="RRu-wk-6rZ" secondAttribute="trailingMargin" id="Hj6-DN-9Bd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4wZ-oR-ZJV" secondAttribute="trailing" constant="105" id="Hj6-DN-9Bd">
+                                <variation key="heightClass=regular-widthClass=compact" constant="105"/>
+                            </constraint>
                             <constraint firstItem="3EL-hI-jvB" firstAttribute="top" secondItem="jjE-Nn-vbj" secondAttribute="bottom" constant="8" id="MLF-MR-4tW"/>
                             <constraint firstAttribute="trailing" secondItem="OcS-WK-RrU" secondAttribute="trailing" id="NRV-1f-rPd"/>
                             <constraint firstItem="5FE-Mw-b8F" firstAttribute="leading" secondItem="xtG-8v-BE1" secondAttribute="trailing" constant="15" id="W7p-2Y-DbD"/>
@@ -175,12 +198,32 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2S-2M-EEi">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2S-2M-EEi">
                                 <rect key="frame" x="27" y="11" width="36" height="30"/>
-                                <state key="normal" title="Prefs">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="icf-3w-lTu">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="50" id="idS-x9-Lzp">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                                    </constraint>
+                                </constraints>
+                                <state key="normal" title="Prefs" image="hamburger">
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="icf-3w-lTu"/>
+                                        <exclude reference="idS-x9-Lzp"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="icf-3w-lTu"/>
+                                        <include reference="idS-x9-Lzp"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="preferencesTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eo2-Pc-xrP"/>
                                 </connections>
@@ -530,7 +573,9 @@
                             <constraint firstItem="GiW-4S-PCo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fAQ-rc-NfI"/>
                             <constraint firstItem="cGI-jv-dtz" firstAttribute="centerX" secondItem="Dx3-N8-Hmz" secondAttribute="centerX" id="gY4-Ju-38W"/>
                             <constraint firstItem="dua-Pv-iez" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="gd8-NO-5v2"/>
-                            <constraint firstItem="E2S-2M-EEi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="11" id="hLo-kb-akN"/>
+                            <constraint firstItem="E2S-2M-EEi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="11" id="hLo-kb-akN">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="b2y-KI-HeR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="lMp-Uk-0bj"/>
                             <constraint firstItem="Sf3-IA-Mt8" firstAttribute="width" secondItem="b2y-KI-HeR" secondAttribute="width" id="mfa-ZV-VmN"/>
                             <constraint firstItem="M2t-dQ-Odo" firstAttribute="leading" secondItem="UWE-Xm-xi2" secondAttribute="leading" constant="320" id="ntC-yS-sJA">
@@ -541,7 +586,9 @@
                                 <variation key="heightClass=compact" constant="0.0"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
-                            <constraint firstItem="E2S-2M-EEi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-9" id="wTd-9Y-p6A"/>
+                            <constraint firstItem="E2S-2M-EEi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-9" id="wTd-9Y-p6A">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
                             <constraint firstItem="hee-Pm-0Iw" firstAttribute="height" secondItem="Sf3-IA-Mt8" secondAttribute="height" id="xeE-rw-qxv"/>
                             <constraint firstItem="b2y-KI-HeR" firstAttribute="top" secondItem="Sf3-IA-Mt8" secondAttribute="bottom" id="yvz-GY-SKK">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-9"/>
@@ -625,10 +672,27 @@
             </objects>
             <point key="canvasLocation" x="-133.5" y="387"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="YGp-Tv-1FE">
+            <objects>
+                <viewController id="nZc-dE-W8z" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X4y-4T-gnf"/>
+                        <viewControllerLayoutGuide type="bottom" id="aaA-Ib-RHF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x3G-id-HY6">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Obf-tm-VZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="12nWhite" width="65" height="65"/>
         <image name="DirectionWhite" width="65" height="65"/>
         <image name="LocationWhite" width="65" height="65"/>
+        <image name="hamburger" width="512" height="512"/>
     </resources>
 </document>
