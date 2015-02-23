@@ -15,7 +15,7 @@ enum SlideOutState {
 }
 
 class ContainerViewController: UIViewController, ViewControllerDelegate, PreferencePaneControllerDelegate, UIGestureRecognizerDelegate {
-    let preferencePanelExpandedOffset: CGFloat = -50
+    var preferencePanelExpandedOffset: CGFloat = 60
 
     var mainViewController: DashboardViewController!
     var mainViewNavigationController: UINavigationController!
@@ -36,18 +36,17 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
 
         mainViewController.delegate = self
         
-        // wraps main view in a navigation controller
+        // Sets up view controller for the dashboard, and hierarchy
         mainViewNavigationController = UINavigationController(rootViewController: mainViewController)
         view.addSubview(mainViewController.view)
         addChildViewController(mainViewController)
-        
         mainViewController.didMoveToParentViewController(self)
         
         // adds tap gesture detection
         let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
         mainViewController.view.addGestureRecognizer(touchGestureRecognizer)
         
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,9 +82,10 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         // # is to have the external parameter name match the variable name
         if (shouldExpand) {
             currentState = .PreferenceExpanded
-            animateMainViewYPosition(targetPosition:  preferencePanelExpandedOffset)
+            let targetPosition = view.bounds.width - preferencePanelExpandedOffset
+            animateMainViewXPosition(targetPosition:  targetPosition)
         } else {
-            animateMainViewYPosition(targetPosition: 0) { finished in
+            animateMainViewXPosition(targetPosition: 0) { finished in
                 self.currentState = .PreferenceCollapsed
                 self.preferencePaneController!.view.removeFromSuperview()
                 self.preferencePaneController = nil
@@ -100,11 +100,11 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
     }
     
     // TODO: check out the completion closure format
-    func animateMainViewYPosition(#targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
+    func animateMainViewXPosition(#targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0,
             options: .CurveEaseInOut,
             animations: {
-                self.mainViewController.view.frame.origin.y = targetPosition
+                self.mainViewController.view.frame.origin.x = targetPosition
             }, completion: completion)
     }
     

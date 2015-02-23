@@ -17,13 +17,28 @@ protocol PreferencePaneControllerDelegate {
 class PreferencePaneController: UIViewController {
     var defaults: NSUserDefaults!
     var delegate: PreferencePaneControllerDelegate?
+    
+    enum SpeedSegments: Int {
+        case Mph = 0
+        case Kmh = 1
+    }
+    
+    enum TemperatureSegments: Int {
+        case Fahrenheit = 0
+        case Celsius = 1
+    }
+    
 
+
+    @IBOutlet weak var temperaturePreferenceControl: UISegmentedControl!
+    @IBOutlet weak var speedPreferenceControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         defaults = NSUserDefaults.standardUserDefaults()
+        initializePreferenceControls()
 
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,15 +48,21 @@ class PreferencePaneController: UIViewController {
     
 
     // MARK: Buttons
-    @IBAction func metricPressed(sender: AnyObject) {
-        setPreferenceAsMetric()
+    @IBAction func temperaturePressed(sender: UISegmentedControl) {
+        if let temp_unit = TemperatureSegments(rawValue: sender.selectedSegmentIndex) {
+            temperatureUnit = temp_unit
+        }
         delegate?.preferenceUpdated?()
+    }
+    
+    @IBAction func speedPressed(sender: UISegmentedControl) {
+        if let speed_unit = SpeedSegments(rawValue: sender.selectedSegmentIndex) {
+            speedUnit = speed_unit
+        }
+        delegate?.preferenceUpdated?()
+
     }
   
-    @IBAction func imperialPressed(sender: AnyObject) {
-        setPreferenceAsImperial()
-        delegate?.preferenceUpdated?()
-    }
     
     func setPreferenceAsMetric() {
         defaults.setBool(false, forKey: "isMph")
@@ -53,6 +74,52 @@ class PreferencePaneController: UIViewController {
         defaults.setBool(true, forKey: "isMph")
         defaults.setBool(false, forKey: "isCelsius")
         defaults.synchronize()
+    }
+    
+  
+    var speedUnit: SpeedSegments {
+        get {
+            if defaults.boolForKey("isMph") {
+                return .Mph
+            } else {
+                return .Kmh
+            }
+        }
+        set {
+            switch newValue {
+            case .Kmh:
+                defaults.setBool(false, forKey: "isMph")
+            default:
+                defaults.setBool(true, forKey: "isMph")
+            }
+            defaults.synchronize()
+        }
+    }
+    
+    var temperatureUnit: TemperatureSegments {
+        get {
+            if defaults.boolForKey("isCelsius") {
+                return .Celsius
+            } else {
+                return .Fahrenheit
+            }
+        }
+        set {
+            switch newValue {
+            case .Celsius:
+                defaults.setBool(true, forKey: "isCelsius")
+            default:
+                defaults.setBool(false, forKey: "isCelsius")
+            }
+            defaults.synchronize()
+        }
+    }
+    
+    
+    private func initializePreferenceControls() {
+        
+        speedPreferenceControl.selectedSegmentIndex = speedUnit.rawValue
+        temperaturePreferenceControl.selectedSegmentIndex = temperatureUnit.rawValue
     }
 
     
