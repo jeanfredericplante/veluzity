@@ -118,9 +118,31 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
     
     // MARK: Gesture recognizer
     func handlePanGesture(sender: UIPanGestureRecognizer) {
-        if sender.state == .Ended {
-            togglePreferencePane()
+        let gestureIsDraggingFromLeftToRight = (sender.velocityInView(view).x > 0)
+        
+        switch sender.state {
+        case .Began:
+            if (currentState == .PreferenceCollapsed) {
+                if gestureIsDraggingFromLeftToRight {
+                    addPreferencePaneViewController()
+                }
+            }
+        case .Changed:
+            if (preferencePaneController != nil) {
+                sender.view!.center.x = sender.view!.center.x + sender.translationInView(view).x
+                sender.setTranslation(CGPointZero, inView: view)
+            }
+        case .Ended:
+            if (preferencePaneController != nil) {
+                let hasMovedGreaterThanHalfway = sender.view!.center.x > view.bounds.size.width
+                animatePreferencePane(shouldExpand: hasMovedGreaterThanHalfway)
+
+            }
+        default:
+            break
+            
         }
+
     }
     
 }

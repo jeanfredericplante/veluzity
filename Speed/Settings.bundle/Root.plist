@@ -12,6 +12,20 @@
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
+			<key>IsSecure</key>
+			<false/>
+			<key>DefaultValue</key>
+			<string>65</string>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Maximum speed</string>
+			<key>Key</key>
+			<string>userMaxSpeed</string>
+		</dict>
+		<dict>
 			<key>Titles</key>
 			<array>
 				<string>MPH</string>
