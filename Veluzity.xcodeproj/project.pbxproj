@@ -45,7 +45,7 @@
 		7EA0E3F01A833A3E004C86DF /* ColorGradientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorGradientTests.swift; sourceTree = "<group>"; };
 		7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		7EA417D01A618DC400BE639B /* PreferencePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencePaneController.swift; sourceTree = "<group>"; };
-		7EC2455F1A4F486D005F2FEA /* Speed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Speed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EC2455F1A4F486D005F2FEA /* Veluzity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veluzity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EC245631A4F486D005F2FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EC245641A4F486D005F2FEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EC245661A4F486D005F2FEA /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		7EC245601A4F486D005F2FEA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7EC2455F1A4F486D005F2FEA /* Speed.app */,
+				7EC2455F1A4F486D005F2FEA /* Veluzity.app */,
 				7EC245741A4F486D005F2FEA /* SpeedTests.xctest */,
 			);
 			name = Products;
@@ -188,7 +188,7 @@
 			);
 			name = Speed;
 			productName = Speed;
-			productReference = 7EC2455F1A4F486D005F2FEA /* Speed.app */;
+			productReference = 7EC2455F1A4F486D005F2FEA /* Veluzity.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7EC245731A4F486D005F2FEA /* SpeedTests */ = {
@@ -216,7 +216,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = "Jean Frederic Plante";
+				ORGANIZATIONNAME = "Fantastic Whale Labs";
 				TargetAttributes = {
 					7EC2455E1A4F486D005F2FEA = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -228,7 +228,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7EC2455A1A4F486D005F2FEA /* Build configuration list for PBXProject "Speed" */;
+			buildConfigurationList = 7EC2455A1A4F486D005F2FEA /* Build configuration list for PBXProject "Veluzity" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -415,7 +415,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Veluzity;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -428,7 +428,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Veluzity;
 				PROVISIONING_PROFILE = "4340e365-bc1d-4b0c-8482-32f4709acf20";
 			};
 			name = Release;
@@ -470,7 +470,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7EC2455A1A4F486D005F2FEA /* Build configuration list for PBXProject "Speed" */ = {
+		7EC2455A1A4F486D005F2FEA /* Build configuration list for PBXProject "Veluzity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7EC2457C1A4F486D005F2FEA /* Debug */,
