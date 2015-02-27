@@ -17,6 +17,19 @@ protocol PreferencePaneControllerDelegate {
 class PreferencePaneController: UIViewController {
     var defaults: NSUserDefaults!
     var delegate: PreferencePaneControllerDelegate?
+    var isMph: Bool {
+        get { return defaults.boolForKey("isMph") }
+        set { defaults.setBool(newValue, forKey: "isMph") }
+    }
+    var isFahrenheit: Bool {
+        get { return !defaults.boolForKey("isCelsius") }
+        set { defaults.setBool(!newValue, forKey: "isCelsius") }
+    }
+    var maxSpeed: Double {
+        get { return defaults.doubleForKey("maxSpeed") }
+        set { defaults.setDouble(newValue, forKey: "maxSpeed") }
+    }
+
     
     enum SpeedSegments: Int {
         case Mph = 0
@@ -32,6 +45,8 @@ class PreferencePaneController: UIViewController {
 
     @IBOutlet weak var temperaturePreferenceControl: UISegmentedControl!
     @IBOutlet weak var speedPreferenceControl: UISegmentedControl!
+    @IBOutlet weak var maxSpeedLabel: UILabel!
+    @IBOutlet weak var speedSlider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,23 +78,23 @@ class PreferencePaneController: UIViewController {
 
     }
   
+    @IBAction func speedSliderChanged(sender: UISlider) {
+    }
     
     func setPreferenceAsMetric() {
-        defaults.setBool(false, forKey: "isMph")
-        defaults.setBool(true, forKey: "isCelsius")
+        isMph = false ; isFahrenheit = false
         defaults.synchronize()
     }
     
     func setPreferenceAsImperial() {
-        defaults.setBool(true, forKey: "isMph")
-        defaults.setBool(false, forKey: "isCelsius")
+        isMph = true ; isFahrenheit = true
         defaults.synchronize()
     }
     
   
     var speedUnit: SpeedSegments {
         get {
-            if defaults.boolForKey("isMph") {
+            if isMph {
                 return .Mph
             } else {
                 return .Kmh
@@ -88,9 +103,9 @@ class PreferencePaneController: UIViewController {
         set {
             switch newValue {
             case .Kmh:
-                defaults.setBool(false, forKey: "isMph")
+                isMph = false
             default:
-                defaults.setBool(true, forKey: "isMph")
+                isMph = true
             }
             defaults.synchronize()
         }
@@ -98,7 +113,7 @@ class PreferencePaneController: UIViewController {
     
     var temperatureUnit: TemperatureSegments {
         get {
-            if defaults.boolForKey("isCelsius") {
+            if !isFahrenheit {
                 return .Celsius
             } else {
                 return .Fahrenheit
@@ -107,9 +122,9 @@ class PreferencePaneController: UIViewController {
         set {
             switch newValue {
             case .Celsius:
-                defaults.setBool(true, forKey: "isCelsius")
+                isFahrenheit = false
             default:
-                defaults.setBool(false, forKey: "isCelsius")
+                isFahrenheit = true
             }
             defaults.synchronize()
         }
@@ -120,6 +135,8 @@ class PreferencePaneController: UIViewController {
         speedPreferenceControl.selectedSegmentIndex = speedUnit.rawValue
         temperaturePreferenceControl.selectedSegmentIndex = temperatureUnit.rawValue
     }
+    
+    // MARK
 
     
 }

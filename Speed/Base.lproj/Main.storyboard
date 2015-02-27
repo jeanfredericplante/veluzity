@@ -11,7 +11,7 @@
         <!--Preference Pane-->
         <scene sceneID="oXq-Mw-Vdq">
             <objects>
-                <viewController storyboardIdentifier="PreferencePaneController" title="preference pane" id="EoH-KH-Mxk" userLabel="Preference Pane" customClass="PreferencePaneController" customModule="Speed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PreferencePaneController" title="preference pane" id="EoH-KH-Mxk" userLabel="Preference Pane" customClass="PreferencePaneController" customModule="Veluzity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jjE-Nn-vbj"/>
                         <viewControllerLayoutGuide type="bottom" id="XSr-hc-dag"/>
@@ -60,6 +60,9 @@
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="65" minValue="40" maxValue="80" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-8v-BE1">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
+                                <connections>
+                                    <action selector="speedSliderChanged:" destination="EoH-KH-Mxk" eventType="valueChanged" id="pnn-y6-kkx"/>
+                                </connections>
                             </slider>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="geM-Vj-Cov">
                                 <rect key="frame" x="-61" y="-14" width="123" height="29"/>
@@ -96,9 +99,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="61" y="28" width="95" height="32"/>
-                                </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Settings" translatesAutoresizingMaskIntoConstraints="NO" id="tYq-b4-faR">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -152,10 +152,13 @@
                                 <exclude reference="tYq-b4-faR"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="5dY-kd-Zoy"/>
-                                <exclude reference="9GQ-q2-kCg"/>
                                 <exclude reference="MLF-MR-4tW"/>
                                 <exclude reference="MMi-J3-XSu"/>
+                                <exclude reference="xgV-7E-Z7S"/>
+                                <exclude reference="Fru-36-YGg"/>
+                                <exclude reference="VIq-S4-Yt1"/>
+                                <exclude reference="XEl-fO-IOG"/>
+                                <exclude reference="wHU-D5-Zfi"/>
                                 <exclude reference="Hj6-DN-9Bd"/>
                                 <exclude reference="d3N-yW-KFs"/>
                                 <exclude reference="e1e-7c-n1s"/>
@@ -164,11 +167,8 @@
                                 <exclude reference="1xJ-Ri-7EI"/>
                                 <exclude reference="1z2-Oc-Trv"/>
                                 <exclude reference="vEF-21-U2V"/>
-                                <exclude reference="xgV-7E-Z7S"/>
-                                <exclude reference="Fru-36-YGg"/>
-                                <exclude reference="VIq-S4-Yt1"/>
-                                <exclude reference="XEl-fO-IOG"/>
-                                <exclude reference="wHU-D5-Zfi"/>
+                                <exclude reference="5dY-kd-Zoy"/>
+                                <exclude reference="9GQ-q2-kCg"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -181,10 +181,13 @@
                                 <include reference="tYq-b4-faR"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="5dY-kd-Zoy"/>
-                                <include reference="9GQ-q2-kCg"/>
                                 <include reference="MLF-MR-4tW"/>
                                 <include reference="MMi-J3-XSu"/>
+                                <include reference="xgV-7E-Z7S"/>
+                                <include reference="Fru-36-YGg"/>
+                                <include reference="VIq-S4-Yt1"/>
+                                <include reference="XEl-fO-IOG"/>
+                                <include reference="wHU-D5-Zfi"/>
                                 <include reference="Hj6-DN-9Bd"/>
                                 <include reference="d3N-yW-KFs"/>
                                 <include reference="e1e-7c-n1s"/>
@@ -193,16 +196,15 @@
                                 <include reference="1xJ-Ri-7EI"/>
                                 <include reference="1z2-Oc-Trv"/>
                                 <include reference="vEF-21-U2V"/>
-                                <include reference="xgV-7E-Z7S"/>
-                                <include reference="Fru-36-YGg"/>
-                                <include reference="VIq-S4-Yt1"/>
-                                <include reference="XEl-fO-IOG"/>
-                                <include reference="wHU-D5-Zfi"/>
+                                <include reference="5dY-kd-Zoy"/>
+                                <include reference="9GQ-q2-kCg"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="maxSpeedLabel" destination="5FE-Mw-b8F" id="7dw-pQ-8eh"/>
                         <outlet property="speedPreferenceControl" destination="4wZ-oR-ZJV" id="WbM-4T-XqP"/>
+                        <outlet property="speedSlider" destination="xtG-8v-BE1" id="DMX-SA-hCe"/>
                         <outlet property="temperaturePreferenceControl" destination="geM-Vj-Cov" id="SKm-1D-kDL"/>
                     </connections>
                 </viewController>
@@ -213,7 +215,7 @@
         <!--dashboard-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" title="dashboard" id="BYZ-38-t0r" customClass="DashboardViewController" customModule="Speed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="dashboard" id="BYZ-38-t0r" customClass="DashboardViewController" customModule="Veluzity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -222,7 +224,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GiW-4S-PCo" customClass="ColorGradient" customModule="Speed" customModuleProvider="target">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GiW-4S-PCo" customClass="ColorGradient" customModule="Veluzity" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -273,7 +275,7 @@
                             <view opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dua-Pv-iez" userLabel="speedView">
                                 <rect key="frame" x="21" y="20" width="558" height="558"/>
                                 <subviews>
-                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKy-ed-X8q" userLabel="speedMeter" customClass="SpeedMeter" customModule="Speed" customModuleProvider="target">
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKy-ed-X8q" userLabel="speedMeter" customClass="SpeedMeter" customModule="Veluzity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="-10" width="281" height="291"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="km/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJw-Yg-Iyh">
@@ -647,15 +649,15 @@
                                 <exclude reference="Mhz-Y7-zbG"/>
                                 <exclude reference="X6R-BA-X5a"/>
                                 <exclude reference="fAQ-rc-NfI"/>
-                                <exclude reference="TTO-0Q-Td4"/>
                                 <exclude reference="ntC-yS-sJA"/>
-                                <exclude reference="G4T-BS-eW2"/>
-                                <exclude reference="2zy-th-9bO"/>
-                                <exclude reference="axG-ax-Pnj"/>
                                 <exclude reference="IfC-rv-8Jh"/>
                                 <exclude reference="WJ2-r3-nlT"/>
+                                <exclude reference="TTO-0Q-Td4"/>
                                 <exclude reference="7l4-HF-0SG"/>
+                                <exclude reference="2zy-th-9bO"/>
+                                <exclude reference="axG-ax-Pnj"/>
                                 <exclude reference="Qq4-gM-hlY"/>
+                                <exclude reference="G4T-BS-eW2"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -664,9 +666,9 @@
                                 <include reference="IfC-rv-8Jh"/>
                                 <include reference="WJ2-r3-nlT"/>
                                 <exclude reference="a5b-4a-oTs"/>
-                                <exclude reference="qOg-Pk-Iex"/>
                                 <include reference="7l4-HF-0SG"/>
                                 <exclude reference="lMp-Uk-0bj"/>
+                                <exclude reference="qOg-Pk-Iex"/>
                                 <include reference="Qq4-gM-hlY"/>
                             </mask>
                         </variation>
@@ -681,15 +683,15 @@
                                 <include reference="Mhz-Y7-zbG"/>
                                 <include reference="X6R-BA-X5a"/>
                                 <exclude reference="fAQ-rc-NfI"/>
-                                <include reference="TTO-0Q-Td4"/>
                                 <exclude reference="7Zr-5P-j8m"/>
                                 <include reference="ntC-yS-sJA"/>
-                                <exclude reference="7AP-63-GpV"/>
-                                <exclude reference="G4T-BS-eW2"/>
                                 <exclude reference="MTI-UA-aHB"/>
                                 <exclude reference="XfS-Ol-R3P"/>
+                                <include reference="TTO-0Q-Td4"/>
                                 <include reference="2zy-th-9bO"/>
                                 <include reference="axG-ax-Pnj"/>
+                                <exclude reference="7AP-63-GpV"/>
+                                <exclude reference="G4T-BS-eW2"/>
                             </mask>
                         </variation>
                     </view>

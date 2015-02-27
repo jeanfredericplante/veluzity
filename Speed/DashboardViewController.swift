@@ -39,17 +39,21 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     let device : UIDevice = UIDevice.currentDevice()
     let nc = NSNotificationCenter.defaultCenter()
     var defaults: NSUserDefaults!
-    var isMph: Bool = true
-    var isFahrenheit: Bool = true
+    var isMph: Bool { return defaults.boolForKey("isMph") }
+    var isFahrenheit: Bool { return !defaults.boolForKey("isCelsius") }
+    var maxSpeed: Double {
+        get { return defaults.doubleForKey("maxSpeed") }
+        set { defaults.setDouble(newValue, forKey: "maxSpeed") }
+    }
     var delegate: ViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userLocation.delegate = self
         defaults = NSUserDefaults.standardUserDefaults()
-        isMph = defaults.boolForKey("isMph")
-        isFahrenheit = !defaults.boolForKey("isCelsius")
-        
+        // sets the maxSpeed the first time the app runs
+        if maxSpeed == 0 { setMaxSpeedPreference() }
+
         // initial style for views
         SpeedViewsHelper.setImageAndTextColor(view: headingView,
             color: SpeedViewsHelper.getColorForElement(.Heading))
@@ -84,9 +88,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     func didUpdateLocation() {
         defaults = NSUserDefaults.standardUserDefaults()
-        isMph = defaults.boolForKey("isMph")
-        isFahrenheit = !defaults.boolForKey("isCelsius")
-        
+  
         // Updates background
         gradientView.direction = userLocation.getHeadingDegrees()
         gradientView.speed = userLocation.speed
@@ -169,6 +171,14 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
             return "mp/h"
         } else {
             return "km/h"
+        }
+    }
+    
+    private func setMaxSpeedPreference()  {
+        if isMph {
+            maxSpeed = Setup.Initialization.maxSpeedUSA
+        } else {
+            maxSpeed = Setup.Initialization.maxSpeedEurope
         }
     }
     
