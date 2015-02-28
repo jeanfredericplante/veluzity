@@ -13,9 +13,7 @@ class Settings {
     
     init () {
         defaults = NSUserDefaults.standardUserDefaults()
-        let test = defaults?.boolForKey("isMph")
-        defaults?.synchronize()
-        if maxSpeed == 0 { setMaxSpeedPreference() }
+        if maxSpeed == 0 { initSettingsAtFirstLaunch() }
     }
     
     var isMph: Bool {
@@ -43,12 +41,11 @@ class Settings {
     
 
     
-    private func setMaxSpeedPreference(){
-        if isMph {
-            maxSpeed = Params.Initialization.maxSpeedUSA
-        } else {
-            maxSpeed = Params.Initialization.maxSpeedEurope
-        }
+    private func initSettingsAtFirstLaunch(){
+        isMph = true
+        isFahrenheit = true
+        maxSpeed = Params.Initialization.maxSpeedUSA
+        defaults?.synchronize()
     }
     
 }
