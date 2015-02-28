@@ -47,9 +47,9 @@
 			<key>Title</key>
 			<string>Temperature Units</string>
 			<key>Key</key>
-			<string>isCelsius</string>
+			<string>isFahrenheit</string>
 			<key>DefaultValue</key>
-			<false/>
+			<true/>
 		</dict>
 	</array>
 	<key>StringsTable</key>

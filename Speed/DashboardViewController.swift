@@ -38,21 +38,12 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     let locationWeather = WeatherModel()
     let device : UIDevice = UIDevice.currentDevice()
     let nc = NSNotificationCenter.defaultCenter()
-    var defaults: NSUserDefaults!
-    var isMph: Bool { return defaults.boolForKey("isMph") }
-    var isFahrenheit: Bool { return !defaults.boolForKey("isCelsius") }
-    var maxSpeed: Double {
-        get { return defaults.doubleForKey("maxSpeed") }
-        set { defaults.setDouble(newValue, forKey: "maxSpeed") }
-    }
+    let defaults = Settings()
     var delegate: ViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userLocation.delegate = self
-        defaults = NSUserDefaults.standardUserDefaults()
-        // sets the maxSpeed the first time the app runs
-        if maxSpeed == 0 { setMaxSpeedPreference() }
 
         // initial style for views
         SpeedViewsHelper.setImageAndTextColor(view: headingView,
@@ -87,7 +78,6 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     }
     
     func didUpdateLocation() {
-        defaults = NSUserDefaults.standardUserDefaults()
   
         // Updates background
         gradientView.direction = userLocation.getHeadingDegrees()
@@ -119,10 +109,10 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     func didUpdateWeather() {
         var temperature: Double
-        if !self.isFahrenheit {
-            temperature = locationWeather.temperature()
-        } else {
+        if defaults.isFahrenheit {
             temperature = locationWeather.temperatureFahrenheit()
+        } else {
+            temperature = locationWeather.temperature()
         }
         tempDisplay.attributedText = SpeedViewsHelper.weatherViewFormattedText(temperature,
             description: locationWeather.getWeatherDescription(), font: tempDisplay.font)
@@ -131,25 +121,13 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
             color: SpeedViewsHelper.getWeatherColor())
     
     }
-    
-    // TODO: DRY the temp string function
-    func updatedTemperature(temperature: Double) {
-        println("I got the temperature of \(temperature)")
-        
-        if !isFahrenheit {
-            self.tempDisplay.text = NSString(format: "%.1f°",locationWeather.temperature())
-        } else
-        {
-            self.tempDisplay.text = NSString(format: "%.1f°",locationWeather.temperatureFahrenheit())
-        }
-    }
-    
+     
     
     
     func getLocalizedSpeed() -> Double {
         var localizedSpeed: Double!
         
-        if isMph {
+        if defaults.isMph {
             localizedSpeed = userLocation.speed * 2.23694
         } else {
             localizedSpeed = userLocation.speed * 3.6
@@ -167,18 +145,10 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     }
     
     func getSpeedUnitText() -> String {
-        if isMph {
+        if defaults.isMph {
             return "mp/h"
         } else {
             return "km/h"
-        }
-    }
-    
-    private func setMaxSpeedPreference()  {
-        if isMph {
-            maxSpeed = Setup.Initialization.maxSpeedUSA
-        } else {
-            maxSpeed = Setup.Initialization.maxSpeedEurope
         }
     }
     

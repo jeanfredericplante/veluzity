@@ -51,8 +51,8 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     
     let currentWeatherServiceUrl = "http://api.openweathermap.org/data/2.5/weather"
     
-    var weatherIcon: String! = nil
-    var weatherDescription: String! = nil
+    var weatherIcon: String?
+    var weatherDescription: String?
     var minDistanceToUpdateWeather:Double = 500 // distance to travel before we bug openweathermap again in meters
     var maxTimeBetweenUpdates: NSTimeInterval = 300 // maximum time between updates in seconds
     var lastReadTemperatureCelsius: Double
@@ -108,12 +108,12 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     }
     
     func getWeatherIcon() -> String {
-        return self.weatherIcon
+        return weatherIcon? ?? "01d"
     }
     
     // TODO: Shouldn't be any ui image here
     func getWeatherIconImage() -> UIImage {
-        let wi = WeatherIcon(rawValue: self.weatherIcon)
+        let wi = WeatherIcon(rawValue: getWeatherIcon())
         if wi == nil {
             return UIImage()
         } else {
@@ -124,7 +124,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     
     
     func getWeatherDescription() -> String {
-        return self.weatherDescription.lowercaseString
+        return self.weatherDescription?.lowercaseString ?? ""
     }
     
         
