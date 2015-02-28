@@ -11,24 +11,37 @@ import Foundation
 class Settings {
     var defaults: NSUserDefaults?
     
+    init () {
+        defaults = NSUserDefaults.standardUserDefaults()
+        let test = defaults?.boolForKey("isMph")
+        defaults?.synchronize()
+        if maxSpeed == 0 { setMaxSpeedPreference() }
+    }
+    
     var isMph: Bool {
         get { return defaults?.boolForKey("isMph") ?? true }
-        set { defaults?.setBool(newValue, forKey: "isMph") }
+        set {
+            defaults?.setBool(newValue, forKey: "isMph")
+            defaults?.synchronize()
+        }
     }
     var isFahrenheit: Bool {
         get { return (defaults?.boolForKey("isFahrenheit") ?? true) }
-        set { defaults?.setBool(newValue, forKey: "isFahrenheit") }
+        set {
+            defaults?.setBool(newValue, forKey: "isFahrenheit")
+            defaults?.synchronize()
+        }
     }
     var maxSpeed: Double {
         get { return defaults?.doubleForKey("maxSpeed")  ?? 0 }
-        set { defaults?.setDouble(newValue, forKey: "maxSpeed") }
+        set {
+            defaults?.setDouble(newValue, forKey: "maxSpeed")
+            defaults?.synchronize()
+        }
     }
 
     
-    init () {
-        defaults = NSUserDefaults.standardUserDefaults()
-        if maxSpeed == 0 { setMaxSpeedPreference() }
-    }
+
     
     private func setMaxSpeedPreference(){
         if isMph {
@@ -36,7 +49,6 @@ class Settings {
         } else {
             maxSpeed = Params.Initialization.maxSpeedEurope
         }
-        defaults?.synchronize()
     }
     
 }

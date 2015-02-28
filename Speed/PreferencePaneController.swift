@@ -60,12 +60,18 @@ class PreferencePaneController: UIViewController {
         if let speed_unit = SpeedSegments(rawValue: sender.selectedSegmentIndex) {
             speedUnit = speed_unit
         }
+        maxSpeedLabel.text = maxSpeedLabLocalized()
         delegate?.preferenceUpdated?()
         
     }
     
     @IBAction func speedSliderChanged(sender: UISlider) {
+        defaults.maxSpeed = Double(sender.value)
+        maxSpeedLabel.text = maxSpeedLabLocalized()
+        delegate?.preferenceUpdated?()
+        
     }
+    
     
     var speedUnit: SpeedSegments {
         get {
@@ -104,9 +110,29 @@ class PreferencePaneController: UIViewController {
     }
     
     
+    
+    private func maxSpeedLabLocalized() -> String {
+        let maxSpeedMph =  defaults.maxSpeed * Params.Conversion.msToMph
+        let maxSpeedKmh = defaults.maxSpeed * Params.Conversion.msToKmh
+        
+        if defaults.isMph {
+            return "Max speed: \(roundToNearest(increment: 5, for_value: maxSpeedMph)) mph"
+        } else {
+            return "Max speed: \(roundToNearest(increment: 5, for_value: maxSpeedKmh)) km/h"
+        }
+    }
+    
+    private func roundToNearest(increment: Int = 5, for_value value: Double) -> Int {
+        return  increment * Int (max(0, round(value / Double(increment))))
+    }
+    
     private func initializePreferenceControls() {
         speedPreferenceControl.selectedSegmentIndex = speedUnit.rawValue
         temperaturePreferenceControl.selectedSegmentIndex = temperatureUnit.rawValue
+        speedSlider.minimumValue = Float(Params.PreferencePane.minMaxSpeedSlider)
+        speedSlider.maximumValue = Float(Params.PreferencePane.maxMaxSpeedSlider)
+        speedSlider.value = Float(defaults.maxSpeed)
+        maxSpeedLabel.text = maxSpeedLabLocalized()
     }
     
     // MARK

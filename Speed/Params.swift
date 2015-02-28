@@ -10,18 +10,24 @@ import Foundation
 
 struct Params {
     
-    // Defaults
-    var defaults: NSUserDefaults
-        { return NSUserDefaults.standardUserDefaults() }
-    var isMph: Bool {
-        get { return defaults.boolForKey("isMph") }
-        set { defaults.setBool(newValue, forKey: "isMph") }
-    }
-    
     struct Initialization {
         // in m/s
         static let maxSpeedUSA = 29.0
         static let maxSpeedEurope = 36.1
+    }
+    
+    struct SpeedMeter {
+        static let maxSpeedFractionOfDial = 0.6
+    }
+    
+    struct PreferencePane {
+        static let minMaxSpeedSlider = 8
+        static let maxMaxSpeedSlider = 50
+    }
+    
+    struct Conversion {
+        static let msToKmh = 3.6
+        static let msToMph = 2.236
     }
 
     

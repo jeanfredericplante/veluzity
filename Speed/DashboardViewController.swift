@@ -38,12 +38,13 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     let locationWeather = WeatherModel()
     let device : UIDevice = UIDevice.currentDevice()
     let nc = NSNotificationCenter.defaultCenter()
-    let defaults = Settings()
+    var defaults: Settings!
     var delegate: ViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userLocation.delegate = self
+        defaults = Settings()
 
         // initial style for views
         SpeedViewsHelper.setImageAndTextColor(view: headingView,
@@ -93,7 +94,9 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
             userLocation.getHeadingDegrees(),
             cardinality: userLocation.getCardinalDirection(),
             font: headingDisplay.font)
-        velocityMeter.speed = getLocalizedSpeed()
+        velocityMeter.maximumSpeed = getMaxSpeed()
+        velocityMeter.speed = userLocation.speed
+
         
         // Updates weather model location
         if (userLocation.coordinates != nil) {
@@ -122,7 +125,9 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     }
      
-    
+    func getMaxSpeed() -> Double {
+        return  defaults.maxSpeed / Params.SpeedMeter.maxSpeedFractionOfDial
+    }
     
     func getLocalizedSpeed() -> Double {
         var localizedSpeed: Double!

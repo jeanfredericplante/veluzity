@@ -10,29 +10,34 @@ import UIKit
 
 @IBDesignable class ColorGradient: UIView {
     
-    let AnimDuration = CFTimeInterval(3)
+    struct Constants {
+        static let animDuration = CFTimeInterval(3)
+        static let speedAtRedTransition = 29
+        static let speedHexLUT :[(Double, Int)] =
+        [(0, 0x1e2432),
+            (3, 0x0b2051),
+            (6, 0x022c8e),
+            (9, 0x0955aa),
+            (11, 0x1875b6),
+            (14, 0x2ba8c7),
+            (17, 0x32d8de),
+            (20, 0x1bead4),
+            (23, 0x13ebb1),
+            (25, 0x0eee6d),
+            (27, 0x09df13),
+            (28, 0x75c113),
+            (29, 0xa9d71b),
+            (30, 0xe4c51c),
+            (32, 0xe9ad1c),
+            (35, 0xe88c15),
+            (37, 0xed6912),
+            (38, 0xed2d0d),
+            (200, 0xf10638)]
+    }
+    
     var animationInProgress = false
     var gradientLayer = CAGradientLayer()
-    let speedHexLUT :[(Double, Int)] =
-    [(0, 0x1e2432),
-    (3, 0x0b2051),
-    (6, 0x022c8e),
-    (9, 0x0955aa),
-    (11, 0x1875b6),
-    (14, 0x2ba8c7),
-    (17, 0x32d8de),
-    (20, 0x1bead4),
-    (23, 0x13ebb1),
-    (25, 0x0eee6d),
-    (27, 0x09df13),
-    (28, 0x75c113),
-    (29, 0xa9d71b),
-    (30, 0xe4c51c),
-    (32, 0xe9ad1c),
-    (35, 0xe88c15),
-    (37, 0xed6912),
-    (38, 0xed2d0d),
-    (200, 0xf10638)]
+    
 
   
     @IBInspectable var startColor: UIColor = UIColor.blackColor() {
@@ -96,7 +101,7 @@ import UIKit
     }
     
     private func setDirection() {
-        CATransaction.setAnimationDuration(AnimDuration)
+        CATransaction.setAnimationDuration(Constants.animDuration)
         if direction >= 0 { setGradientStartAndEndPoint() }
     }
     
@@ -114,7 +119,7 @@ import UIKit
     private func setSpeed() {
         if let s = speed {
             if let (sc,ec) = speedToColorGradient(s) {
-                CATransaction.setAnimationDuration(AnimDuration)
+                CATransaction.setAnimationDuration(Constants.animDuration)
                 startColor = sc; stopColor = ec
             }
         }
@@ -130,8 +135,8 @@ import UIKit
     }
     
     private func speedToColor(speed: Double) -> UIColor {
-        let firstBigger = speedHexLUT.filter{ (lutspeed,_) in lutspeed >= speed }.first
-        let lastSmaller = speedHexLUT.filter{ (lutspeed,_) in lutspeed <= speed }.last
+        let firstBigger = Constants.speedHexLUT.filter{ (lutspeed,_) in lutspeed >= speed }.first
+        let lastSmaller = Constants.speedHexLUT.filter{ (lutspeed,_) in lutspeed <= speed }.last
         let location = (firstBigger, lastSmaller)
         
         switch location {

@@ -49,7 +49,7 @@ extension UIBezierPath {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable var maximumSpeed: Double = 120.0 {
+    @IBInspectable var maximumSpeed: Double = 48.0 {
         didSet { setNeedsDisplay() }
     }
     
