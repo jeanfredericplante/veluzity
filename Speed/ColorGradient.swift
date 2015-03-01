@@ -52,7 +52,7 @@ import UIKit
         didSet { setDirection() }
     }
     
-    @IBInspectable var speed: Double? {
+    @IBInspectable var speed: Double = 0 {
         didSet { setSpeed() }
     }
     
@@ -117,12 +117,10 @@ import UIKit
     }
     
     private func setSpeed() {
-        if let s = speed {
-            if let (sc,ec) = speedToColorGradient(s) {
+            if let (sc,ec) = speedToColorGradient(speed) {
                 CATransaction.setAnimationDuration(Constants.animDuration)
                 startColor = sc; stopColor = ec
             }
-        }
     }
     
 

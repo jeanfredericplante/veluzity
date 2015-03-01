@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Foundation
 
 enum WeatherIcon: String {
     case ClearSky = "01d"
@@ -55,11 +56,13 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     var weatherDescription: String?
     var minDistanceToUpdateWeather:Double = 500 // distance to travel before we bug openweathermap again in meters
     var maxTimeBetweenUpdates: NSTimeInterval = 300 // maximum time between updates in seconds
+    var minTimeBetweenUpates: NSTimeInterval = 15
     var lastReadTemperatureCelsius: Double
     var lastUpdateTime: NSDate?
     var coordinates: CLLocationCoordinate2D
     var weatherResponseData: NSMutableData
     var temperatureUpdated: WeatherUpdateDelegate?
+    var weatherApiCallCounts: Int = 0
     
     
     override init() {
@@ -139,6 +142,8 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:
             {
                 (response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
+                self.weatherApiCallCounts++
+                println("number of API calls \(self.weatherApiCallCounts) at \(NSDate())")
                 if error == nil {
                     self.parseAndUpdateModelWithJsonFromAPI(data)
                 } else {

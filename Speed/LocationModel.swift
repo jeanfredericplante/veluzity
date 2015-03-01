@@ -45,7 +45,6 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
         self.coordinates = manager.location.coordinate
         self.course = manager.location.course
         self.getStreetName(manager.location)
-        println("speed (m/s):" + self.speed.description)
         self.delegate?.didUpdateLocation()
         
     }
@@ -62,7 +61,6 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
                     self.cityName = placemark.locality
                     self.stateName = placemark.administrativeArea
 
-                    println("this is the placemark location \(self.streetName?)")
                     self.delegate?.didUpdateLocation()
                 }
             }

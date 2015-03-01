@@ -289,9 +289,6 @@
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="122" y="121" width="39" height="20"/>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="160" y="110" width="40" height="20"/>
-                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="68" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0jE-ee-Pue">
                                                 <rect key="frame" x="15" y="15" width="251" height="261"/>
@@ -360,8 +357,7 @@
                                                 <exclude reference="pJU-CR-ilT"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="12" y="16" width="45" height="44"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="pJU-CR-ilT"/>
                                             </mask>
@@ -526,9 +522,6 @@
                                         </variation>
                                         <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="-254" y="24" width="234" height="71"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="62" y="9" width="116" height="59"/>
                                         </variation>
                                     </label>
                                 </subviews>
@@ -718,23 +711,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-133.5" y="387"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="YGp-Tv-1FE">
-            <objects>
-                <viewController id="nZc-dE-W8z" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="X4y-4T-gnf"/>
-                        <viewControllerLayoutGuide type="bottom" id="aaA-Ib-RHF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="x3G-id-HY6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Obf-tm-VZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>
