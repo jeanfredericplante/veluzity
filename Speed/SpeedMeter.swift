@@ -18,7 +18,9 @@ extension UIBezierPath {
 
 
 @IBDesignable class SpeedMeter: UIView {
-    
+    struct Constants {
+        static let animDuration = CFTimeInterval(3)
+    }
     
     // MARK: Declare inspectable variables
 
@@ -107,24 +109,19 @@ extension UIBezierPath {
         let maxAngleRadians = CGFloat(startAngleRadians+maximumAngleRadians)
         
         // create background arc
-        speedBackground.createArc(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: maxAngleRadians, width: trackBorderWidth)
-        if trackImage == nil {
-            trackColor.setFill()
-            speedBackground.fillWithBlendMode(kCGBlendModeNormal, alpha: 0.1)
-        } else {
-            speedBackground.addClip()
-            trackImage!.drawInRect(innerRect, blendMode: kCGBlendModeNormal, alpha: 0.1)
-        }
+        trackColor.setStroke()
+        speedBackground.addArcWithCenter(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: maxAngleRadians, clockwise: true)
+        speedBackground.lineWidth = trackBorderWidth
+        speedBackground.strokeWithBlendMode(kCGBlendModeNormal, alpha: 0.1)
         
-        // create speed arc        
-        speedCurve.createArc(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: endAngleRadians, width: trackBorderWidth)
-        if trackImage == nil {
-            trackColor.setFill()
-            speedCurve.fill()
-        } else {
-            speedCurve.addClip()
-            trackImage!.drawInRect(innerRect)
-        }
+        
+        // create speed arc
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(Constants.animDuration)
+        speedCurve.addArcWithCenter(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: endAngleRadians, clockwise: true)
+        speedCurve.lineWidth = trackBorderWidth
+        speedCurve.stroke()
+        CATransaction.commit()
         
     }
     
