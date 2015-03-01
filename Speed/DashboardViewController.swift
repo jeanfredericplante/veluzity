@@ -80,8 +80,9 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     func didUpdateLocation() {
   
-        // Updates background
+        // Updates gradient background
         gradientView.direction = userLocation.getHeadingDegrees()
+        gradientView.maxTransitionSpeed = defaults.maxSpeed
         gradientView.speed = userLocation.speed
         
         // Updates displays

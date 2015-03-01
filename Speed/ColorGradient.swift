@@ -12,7 +12,9 @@ import UIKit
     
     struct Constants {
         static let animDuration = CFTimeInterval(3)
-        static let speedAtRedTransition = 29
+        static let speedAtRedTransition: Double = 29
+        static let startToEndDeltaSpeed: Double = 3 //gradient end speed - gradient start speed (current speed) m/s
+
         static let speedHexLUT :[(Double, Int)] =
         [(0, 0x1e2432),
             (3, 0x0b2051),
@@ -53,6 +55,10 @@ import UIKit
     }
     
     @IBInspectable var speed: Double = 0 {
+        didSet { setSpeed() }
+    }
+    
+    @IBInspectable var maxTransitionSpeed: Double = 29 {
         didSet { setSpeed() }
     }
     
@@ -126,15 +132,15 @@ import UIKit
 
     private func speedToColorGradient(speed: Double) -> (startColor: UIColor, endColor: UIColor)? {
         
-        let startToEndDeltaSpeed: Double = 3 //gradient end speed - gradient start speed (current speed) m/s
         let sc = speedToColor(speed)
-        let ec = speedToColor(speed+startToEndDeltaSpeed)
+        let ec = speedToColor(speed+Constants.startToEndDeltaSpeed )
         return (sc, ec)
     }
     
-    private func speedToColor(speed: Double) -> UIColor {
-        let firstBigger = Constants.speedHexLUT.filter{ (lutspeed,_) in lutspeed >= speed }.first
-        let lastSmaller = Constants.speedHexLUT.filter{ (lutspeed,_) in lutspeed <= speed }.last
+    private func speedToColor(s: Double) -> UIColor {
+        let normalizedSpeed = normalizeSpeedToMax(s)
+        let firstBigger = Constants.speedHexLUT.filter{ (lutspeed,_) in lutspeed >= normalizedSpeed }.first
+        let lastSmaller = Constants.speedHexLUT.filter{ (lutspeed,_) in lutspeed <= normalizedSpeed }.last
         let location = (firstBigger, lastSmaller)
         
         switch location {
@@ -145,13 +151,21 @@ import UIKit
         case (.Some(let (s1,h1)), .Some(let (s2,h2))):
             let rgb1 = SpeedViewsHelper.hexToRGB(h1)
             let rgb2 = SpeedViewsHelper.hexToRGB(h2)
-            let ri = interp1(x0: s1, x1: s2, y0: rgb1.r, y1: rgb2.r, x: speed)
-            let gi = interp1(x0: s1, x1: s2, y0: rgb1.g, y1: rgb2.g, x: speed)
-            let bi = interp1(x0: s1, x1: s2, y0: rgb1.b, y1: rgb2.b, x: speed)
+            let ri = interp1(x0: s1, x1: s2, y0: rgb1.r, y1: rgb2.r, x: normalizedSpeed)
+            let gi = interp1(x0: s1, x1: s2, y0: rgb1.g, y1: rgb2.g, x: normalizedSpeed)
+            let bi = interp1(x0: s1, x1: s2, y0: rgb1.b, y1: rgb2.b, x: normalizedSpeed)
             return UIColor(red: ri, green: gi, blue: bi, alpha: 1)
         default:
             return UIColor.blackColor()
   
+        }
+    }
+    
+    private func normalizeSpeedToMax(speed: Double) -> Double {
+        if self.maxTransitionSpeed == 0 {
+            return 0
+        } else {
+            return max(0.0, speed*Constants.speedAtRedTransition/self.maxTransitionSpeed)
         }
     }
     
