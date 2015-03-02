@@ -54,6 +54,12 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showAboutUs" {
+            currentState = .PreferenceCollapsed
+        }
+    }
+    
     // MARK: ViewController delegate method
     func togglePreferencePane() {
         let notAlreadyExpanded = (currentState != SlideOutState.PreferenceExpanded)
