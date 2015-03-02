@@ -25,7 +25,7 @@ extension UIBezierPath {
     // MARK: Declare inspectable variables
 
     @IBInspectable var speed: Double = 0.0 {
-        didSet { setNeedsDisplay() }
+        didSet { updateSpeed() }
     }
     
     
@@ -69,93 +69,91 @@ extension UIBezierPath {
     }
     
     var sm = Meter(startAngleRadians: 0, maximumAngleRadians: 0, speedAngleRadians: 0, center: CGPoint(), radius: 0)
+    var speedBackgroundPath = UIBezierPath()
+    var speedCurveLayer = CAShapeLayer()
+
     
     
     // MARK: override methods
     
     required override init(frame: CGRect) {
         super.init(frame: frame)
-        setupMeter()
+        setupMeter(rect: frame)
+
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupMeter()
+
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        setupMeter()
+        speedBackgroundPath = backgroundMeterPath()
+        speedCurveLayer = speedMeterPath()
+        self.layer.addSublayer(speedCurveLayer)
+
     }
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
 
-        let innerRect = CGRectInset(rect, trackBorderWidth, trackBorderWidth)
- 
-        // start angle referenced from the south of the circle
-        let startAngleRadians = CGFloat(degreesToRadians(startAngle+90))
-        let maximumAngleRadians = degreesToRadians(360 - 2*startAngle)
-        let speedCurve = UIBezierPath()
-        let speedBackground = UIBezierPath()
-        let speedRect = CGRectMake(innerRect.minX, innerRect.minY, CGRectGetWidth(innerRect), CGRectGetHeight(innerRect))
-        let centerCurve = CGPoint(x:speedRect.midX, y: speedRect.midY)
-        let radius = speedRect.width / 2.0
-        
-        // there is a minimum for the meter, and set the max to what can be hit
-        var displaySpeed = min(max(minimumSpeed, speed), maximumSpeed)
-        
-        let speedAngle = CGFloat(displaySpeed / maximumSpeed) * maximumAngleRadians
-        let endAngleRadians = CGFloat(startAngleRadians+speedAngle)
-        let maxAngleRadians = CGFloat(startAngleRadians+maximumAngleRadians)
-        
-        // create background arc
+        // update / create background path
         trackColor.setStroke()
-        speedBackground.addArcWithCenter(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: maxAngleRadians, clockwise: true)
-        speedBackground.lineWidth = trackBorderWidth
-        speedBackground.strokeWithBlendMode(kCGBlendModeNormal, alpha: 0.1)
+        speedBackgroundPath.strokeWithBlendMode(kCGBlendModeNormal, alpha: 0.1)
         
-        
-        // create speed arc
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(Constants.animDuration)
-        speedCurve.addArcWithCenter(centerCurve, radius: radius, startAngle: startAngleRadians, endAngle: endAngleRadians, clockwise: true)
-        speedCurve.lineWidth = trackBorderWidth
-        speedCurve.stroke()
-        CATransaction.commit()
-        
+        // updated speed
+        updateSpeed()
+ 
     }
     
     
     
-    func setupMeter() {
-        let innerRect = CGRectInset(self.bounds, trackBorderWidth, trackBorderWidth)
-        sm.startAngleRadians = CGFloat(degreesToRadians(startAngle+90))
-        sm.maximumAngleRadians = degreesToRadians(360 - 2*startAngle)
+    func setupMeter(rect: CGRect? = nil) {
+        var innerRect: CGRect
+        if let meterZone = rect {
+             innerRect = CGRectInset(meterZone, trackBorderWidth, trackBorderWidth)
+        } else {
+             innerRect = CGRectInset(self.bounds, trackBorderWidth, trackBorderWidth)
+        }
+        sm.startAngleRadians = CGFloat(degreesToRadians(startAngle + 90))
+        sm.maximumAngleRadians = CGFloat(sm.startAngleRadians + degreesToRadians(360 - 2*startAngle))
         sm.center = CGPoint(x:innerRect.midX, y: innerRect.midY)
         sm.radius = innerRect.width / 2.0
         sm.speedAngleRadians = 0
         
-        updateSpeed()
-    }
+       
+        }
     
     func updateSpeed() {
         // there is a minimum for the meter, and set the max to what can be hit
+        CATransaction.setAnimationDuration(Constants.animDuration)
         let displaySpeed = min(max(minimumSpeed, speed), maximumSpeed)
-        let speedAngle = CGFloat(displaySpeed / maximumSpeed) * sm.maximumAngleRadians
-        sm.speedAngleRadians  = CGFloat(sm.startAngleRadians+speedAngle)
+        let strokeEnd = CGFloat(displaySpeed / maximumSpeed)
+        speedCurveLayer.strokeEnd = strokeEnd
     }
     
     func backgroundMeterPath() -> UIBezierPath {
-        return UIBezierPath()
+        let meterPath = UIBezierPath()
+        meterPath.lineWidth = trackBorderWidth
+        meterPath.addArcWithCenter(sm.center, radius: sm.radius, startAngle: sm.startAngleRadians, endAngle: sm.maximumAngleRadians, clockwise: true)
+        return meterPath
+    }
+    
+    func speedMeterPath() -> CAShapeLayer {
+        var context = UIGraphicsGetCurrentContext()
+        let speedArc = CAShapeLayer()
+        speedArc.path = speedBackgroundPath.CGPath
+        speedArc.fillColor = UIColor.clearColor().CGColor
+        speedArc.lineWidth = trackBorderWidth
+        speedArc.strokeStart = 0
+        speedArc.strokeEnd = 0
+        speedArc.strokeColor = trackColor.CGColor
+        return speedArc
     }
     
     
-    
-    func setSpeedWithAnimation(speed: Double) {
-        
-    }
-    
-
     func degreesToRadians(degrees: Double) -> CGFloat {
         return CGFloat(degrees * M_PI / 180.0)
     }

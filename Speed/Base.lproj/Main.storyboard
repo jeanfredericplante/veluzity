@@ -287,7 +287,7 @@
                                                 <real key="value" value="120"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="speed">
-                                                <real key="value" value="121"/>
+                                                <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -645,24 +645,24 @@
                                 <exclude reference="Mhz-Y7-zbG"/>
                                 <exclude reference="X6R-BA-X5a"/>
                                 <exclude reference="fAQ-rc-NfI"/>
-                                <exclude reference="TTO-0Q-Td4"/>
                                 <exclude reference="ntC-yS-sJA"/>
                                 <exclude reference="G4T-BS-eW2"/>
-                                <exclude reference="WJ2-r3-nlT"/>
                                 <exclude reference="2zy-th-9bO"/>
-                                <exclude reference="axG-ax-Pnj"/>
                                 <exclude reference="IfC-rv-8Jh"/>
+                                <exclude reference="WJ2-r3-nlT"/>
+                                <exclude reference="TTO-0Q-Td4"/>
                                 <exclude reference="7l4-HF-0SG"/>
+                                <exclude reference="axG-ax-Pnj"/>
                                 <exclude reference="Qq4-gM-hlY"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
                                 <exclude reference="cTu-Kn-8im"/>
+                                <include reference="IfC-rv-8Jh"/>
                                 <include reference="WJ2-r3-nlT"/>
                                 <exclude reference="a5b-4a-oTs"/>
                                 <exclude reference="qOg-Pk-Iex"/>
-                                <include reference="IfC-rv-8Jh"/>
                                 <include reference="7l4-HF-0SG"/>
                                 <exclude reference="lMp-Uk-0bj"/>
                                 <include reference="Qq4-gM-hlY"/>
@@ -679,7 +679,6 @@
                                 <include reference="Mhz-Y7-zbG"/>
                                 <include reference="X6R-BA-X5a"/>
                                 <exclude reference="fAQ-rc-NfI"/>
-                                <include reference="TTO-0Q-Td4"/>
                                 <exclude reference="7Zr-5P-j8m"/>
                                 <include reference="ntC-yS-sJA"/>
                                 <exclude reference="7AP-63-GpV"/>
@@ -687,6 +686,7 @@
                                 <exclude reference="MTI-UA-aHB"/>
                                 <exclude reference="XfS-Ol-R3P"/>
                                 <include reference="2zy-th-9bO"/>
+                                <include reference="TTO-0Q-Td4"/>
                                 <include reference="axG-ax-Pnj"/>
                             </mask>
                         </variation>

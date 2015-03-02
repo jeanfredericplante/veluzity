@@ -79,7 +79,7 @@ import UIKit
         self.layer.insertSublayer(gradientLayer, atIndex: 0)
         
     }
-    
+
     override class func layerClass() -> AnyClass {
         return CAGradientLayer.self
     }
@@ -92,13 +92,20 @@ import UIKit
         }
     }
     
+    override func drawRect(rect: CGRect) {
+        setupView(rect: rect)
+    }
+    
     // MARK : private methods
     
-    private func setupView() {
+    private func setupView(rect: CGRect? = nil) {
         setColors()
-        gradientLayer.frame = UIScreen.mainScreen().bounds
-        // not sure why self.frame not initialized properly. Uses mainScreen bounds instead
-        self.setNeedsDisplay()
+        if let r = rect {
+            gradientLayer.frame = r
+        } else
+        {
+            gradientLayer.frame = UIScreen.mainScreen().bounds
+        }
     }
     
     private func setColors() {
