@@ -32,6 +32,9 @@
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="162" height="50"/>
                                         </variation>
+                                        <connections>
+                                            <segue destination="dmK-JC-HCk" kind="presentation" identifier="ShowAboutUs" modalPresentationStyle="overFullScreen" id="zk3-cL-gbI"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Info" translatesAutoresizingMaskIntoConstraints="NO" id="EK8-kx-Y9c">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -210,7 +213,109 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SC7-rj-awP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="174" y="1671.75"/>
+            <point key="canvasLocation" x="-133.5" y="1044.75"/>
+        </scene>
+        <!--About Us-->
+        <scene sceneID="9k2-qI-Mkc">
+            <objects>
+                <viewController id="dmK-JC-HCk" userLabel="About Us" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MBg-PB-efJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="kaq-ff-Hyn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QSp-wJ-SKx">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNd-II-bht">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfU-zW-cL5">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="83" id="Dfa-X7-URk"/>
+                                            <constraint firstAttribute="height" constant="33" id="hMn-pd-yzl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Dfa-X7-URk"/>
+                                                <exclude reference="hMn-pd-yzl"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="Dfa-X7-URk"/>
+                                                <include reference="hMn-pd-yzl"/>
+                                            </mask>
+                                        </variation>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.12941177189350128" green="0.13725486397743225" blue="0.18823523819446564" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="BfU-zW-cL5" firstAttribute="top" secondItem="wNd-II-bht" secondAttribute="topMargin" constant="15" id="fDN-pu-PVr"/>
+                                    <constraint firstItem="BfU-zW-cL5" firstAttribute="trailing" secondItem="wNd-II-bht" secondAttribute="trailingMargin" constant="15" id="uoz-lC-HY8"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="BfU-zW-cL5"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="fDN-pu-PVr"/>
+                                        <exclude reference="uoz-lC-HY8"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="BfU-zW-cL5"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="fDN-pu-PVr"/>
+                                        <include reference="uoz-lC-HY8"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wNd-II-bht" firstAttribute="leading" secondItem="QSp-wJ-SKx" secondAttribute="leading" id="IVE-Jm-kfz"/>
+                            <constraint firstAttribute="trailing" secondItem="wNd-II-bht" secondAttribute="trailing" id="Kc1-BQ-PxO"/>
+                            <constraint firstItem="wNd-II-bht" firstAttribute="top" secondItem="QSp-wJ-SKx" secondAttribute="top" id="UbU-vU-XMh"/>
+                            <constraint firstAttribute="bottom" secondItem="wNd-II-bht" secondAttribute="bottom" id="Vsf-Jd-csZ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="wNd-II-bht"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="IVE-Jm-kfz"/>
+                                <exclude reference="Kc1-BQ-PxO"/>
+                                <exclude reference="UbU-vU-XMh"/>
+                                <exclude reference="Vsf-Jd-csZ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="wNd-II-bht"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="IVE-Jm-kfz"/>
+                                <include reference="Kc1-BQ-PxO"/>
+                                <include reference="UbU-vU-XMh"/>
+                                <include reference="Vsf-Jd-csZ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="u5V-l4-6eP"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="axp-TX-RhR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="669" y="1040.25"/>
         </scene>
         <!--dashboard-->
         <scene sceneID="tne-QT-ifu">
