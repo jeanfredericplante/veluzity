@@ -17,14 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         UIDevice.currentDevice().batteryMonitoringEnabled = true
-        
-        
-        
+         
         // set container view controller as root view
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let containerViewController = ContainerViewController()
         window!.rootViewController = containerViewController
         window!.makeKeyAndVisible()
+        
+        // start analytics
+        Flurry.startSession("***REMOVED***")
+
+        
         
         return true
     }

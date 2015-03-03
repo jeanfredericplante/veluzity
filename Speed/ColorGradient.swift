@@ -12,7 +12,7 @@ import UIKit
     
     struct Constants {
         static let animDuration = CFTimeInterval(3)
-        static let speedAtRedTransition: Double = 29
+        static let speedAtRedTransition: Double = 30.2
         static let startToEndDeltaSpeed: Double = 3 //gradient end speed - gradient start speed (current speed) m/s
 
         static let speedHexLUT :[(Double, Int)] =

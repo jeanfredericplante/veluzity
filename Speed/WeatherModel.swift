@@ -89,13 +89,16 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         var newLocation = CLLocation(latitude: newCoordinates.latitude, longitude: newCoordinates.longitude)
         var distance = newLocation.distanceFromLocation(lastUpdateLocation)
         var shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh: Bool
+        var hasPassedMinTimeBetweenCalls: Bool
         if (lastUpdateTime? == nil) {
             shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh = true
+            hasPassedMinTimeBetweenCalls = true
         } else {
             shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh =
                 lastUpdateTime!.timeIntervalSinceNow < -maxTimeBetweenUpdates // timeSinceInterval will be negative
+            hasPassedMinTimeBetweenCalls = lastUpdateTime!.timeIntervalSinceNow < -minTimeBetweenUpates
         }
-        if (distance > minDistanceToUpdateWeather) || shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh {
+        if (distance > minDistanceToUpdateWeather && hasPassedMinTimeBetweenCalls) || shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh {
             return true
         } else {
             return false

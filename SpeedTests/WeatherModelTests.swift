@@ -46,6 +46,8 @@ class WeatherModelTests: XCTestCase {
         XCTAssertTrue(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"should update the first time because we never updated")
         wm.lastUpdateTime = NSDate()
         XCTAssertFalse(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"should not update the first time because we just updated")
+        wm.lastUpdateTime = NSDate(timeInterval: -5, sinceDate: NSDate())
+        XCTAssertFalse(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"should not update the first time because we are below the min update time")
         wm.lastUpdateTime = NSDate(timeInterval: -600, sinceDate: NSDate())
         XCTAssertTrue(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"should update because we've not updated in a long time")
         
