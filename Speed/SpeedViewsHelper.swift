@@ -94,7 +94,7 @@ class SpeedViewsHelper {
             return textWithTwoFontSizes(degreesText, smallText: cardinalDirection, font: font, ratio: Constants.fontRatio)
 
         } else {
-            return textWithTwoFontSizes("N/A", smallText: "", font: font, ratio: Constants.fontRatio)
+            return textWithTwoFontSizes("0°", smallText: "N", font: font, ratio: Constants.fontRatio)
         }
         
     }
