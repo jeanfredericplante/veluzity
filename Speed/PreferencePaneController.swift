@@ -38,6 +38,7 @@ class PreferencePaneController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePreferenceControls()
+        setUISegmentedControlFonts()
         
         
     }
@@ -124,6 +125,18 @@ class PreferencePaneController: UIViewController {
     
     private func roundToNearest(increment: Int = 5, for_value value: Double) -> Int {
         return  increment * Int (max(0, round(value / Double(increment))))
+    }
+    
+    private func setUISegmentedControlFonts() {
+        var attr: NSDictionary
+        if let segFont = UIFont(name: "HelveticaNeue-Thin", size: 21.0) {
+         attr = NSDictionary(objects: [segFont, UIColor.whiteColor()],
+            forKeys: [NSFontAttributeName, NSForegroundColorAttributeName])
+        } else {
+         attr = NSDictionary(objects: [UIColor.whiteColor()],
+                forKeys: [ NSForegroundColorAttributeName])
+        }
+        UISegmentedControl.appearance().setTitleTextAttributes(attr, forState: .Normal)
     }
     
     private func initializePreferenceControls() {

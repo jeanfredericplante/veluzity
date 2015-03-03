@@ -183,9 +183,9 @@ import UIKit
     }
     
     private func setGradientStartAndEndPoint() {
-        gradientLayer.endPoint = CGPoint(x:transformCoordinate(cos(gradientDirectionRadians)),
+        gradientLayer.startPoint = CGPoint(x:transformCoordinate(cos(gradientDirectionRadians)),
             y: transformCoordinate(sin(gradientDirectionRadians)))
-        gradientLayer.startPoint = getMirrorPoint(gradientLayer.endPoint)
+        gradientLayer.endPoint = getMirrorPoint(gradientLayer.startPoint)
     }
     
     private func rotateGradientOfDirection() {

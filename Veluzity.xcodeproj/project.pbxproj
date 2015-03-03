@@ -423,6 +423,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Speed/Flurry",
+					"$(PROJECT_DIR)/Speed",
+				);
 				PRODUCT_NAME = Veluzity;
 				PROVISIONING_PROFILE = "";
 			};
@@ -436,6 +441,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Speed/Flurry",
+					"$(PROJECT_DIR)/Speed",
+				);
 				PRODUCT_NAME = Veluzity;
 				PROVISIONING_PROFILE = "4340e365-bc1d-4b0c-8482-32f4709acf20";
 			};
