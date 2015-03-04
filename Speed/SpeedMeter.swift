@@ -132,6 +132,7 @@ extension UIBezierPath {
         let displaySpeed = min(max(minimumSpeed, speed), maximumSpeed)
         let strokeEnd = CGFloat(displaySpeed / maximumSpeed)
         speedCurveLayer.strokeEnd = strokeEnd
+        setNeedsDisplay()
     }
     
     func backgroundMeterPath() -> UIBezierPath {

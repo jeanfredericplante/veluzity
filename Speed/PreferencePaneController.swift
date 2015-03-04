@@ -148,6 +148,10 @@ class PreferencePaneController: UIViewController {
         maxSpeedLabel.text = maxSpeedLabLocalized()
     }
     
+    private func currentVersion() -> String {
+        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
+    }
+    
 
     // MARK
     

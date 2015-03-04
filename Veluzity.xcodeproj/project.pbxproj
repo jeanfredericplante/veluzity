@@ -457,6 +457,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Speed-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -477,6 +478,7 @@
 				PRODUCT_NAME = Veluzity;
 				PROVISIONING_PROFILE = "4340e365-bc1d-4b0c-8482-32f4709acf20";
 				SWIFT_OBJC_BRIDGING_HEADER = "Speed-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
