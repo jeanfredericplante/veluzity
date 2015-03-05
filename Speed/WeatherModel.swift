@@ -118,13 +118,17 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     }
     
     // TODO: Shouldn't be any ui image here
-    func getWeatherIconImage() -> UIImage {
+    func getWeatherIconImage() -> UIImage? {
         let wi = WeatherIcon(rawValue: getWeatherIcon())
         if wi == nil {
-            return UIImage()
+            return nil
         } else {
             var imageName: String = wi!.rawValue + "White.png"
-            return UIImage(named: imageName)!
+            if let currentImage = UIImage(named: imageName) {
+                return currentImage
+            } else {
+                return nil
+            }
         }
     }
     

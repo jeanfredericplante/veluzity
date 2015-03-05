@@ -19,12 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIDevice.currentDevice().batteryMonitoringEnabled = true
          
         // set container view controller as root view
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let containerViewController = ContainerViewController()
-        window!.rootViewController = containerViewController
-        window!.makeKeyAndVisible()
+        self.window?.rootViewController = containerViewController
+        self.window?.makeKeyAndVisible()
         
-        // start analytics
+//        // start analytics
         Flurry.setCrashReportingEnabled(true)
         Flurry.startSession("***REMOVED***")
 

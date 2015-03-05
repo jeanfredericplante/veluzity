@@ -70,12 +70,22 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         
         // Set status bar to light
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-        
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
+        {
+            println("landscape dvc" )  } else
+        {
+            println("portrait dvc" )
+        }
     }
     
     func didUpdateLocation() {

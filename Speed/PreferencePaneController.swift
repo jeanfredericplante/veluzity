@@ -51,6 +51,10 @@ class PreferencePaneController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        println(" I am viewWillLayoutSubviews for preference pane view controller")
+    }
     
     // MARK: Buttons
     @IBAction func temperaturePressed(sender: UISegmentedControl) {

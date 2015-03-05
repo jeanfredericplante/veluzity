@@ -45,7 +45,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         // adds tap gesture detection
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
         mainViewController.view.addGestureRecognizer(panGestureRecognizer)
-        
+        println(" supported orientations \(self.supportedInterfaceOrientations())")
 
     }
 
@@ -54,11 +54,11 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showAboutUs" {
-            currentState = .PreferenceCollapsed
-        }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        println(" I am viewWillLayoutSubviews for container view controller")
     }
+    
     
     // MARK: ViewController delegate method
     func togglePreferencePane() {
