@@ -18,6 +18,11 @@ class PreferencePaneController: UIViewController {
     let defaults = Settings()
     var delegate: PreferencePaneControllerDelegate?
     
+    
+    struct Constants {
+        static let speedResolution: Int = 5 // in mph or kmh, increment to determine max speed
+    }
+
     enum SpeedSegments: Int {
         case Mph = 0
         case Kmh = 1
@@ -27,8 +32,6 @@ class PreferencePaneController: UIViewController {
         case Fahrenheit = 0
         case Celsius = 1
     }
-    
-    
     
     @IBOutlet weak var temperaturePreferenceControl: UISegmentedControl!
     @IBOutlet weak var speedPreferenceControl: UISegmentedControl!
@@ -67,7 +70,8 @@ class PreferencePaneController: UIViewController {
     }
     
     @IBAction func speedSliderChanged(sender: UISlider) {
-        defaults.maxSpeed = Double(sender.value)
+        defaults.maxSpeed = Double(roundToNearest(increment: Constants.speedResolution,
+            for_value: Double(sender.value)))
         maxSpeedLabel.text = maxSpeedLabLocalized()
         delegate?.preferenceUpdated?()
         
@@ -117,9 +121,9 @@ class PreferencePaneController: UIViewController {
         let maxSpeedKmh = defaults.maxSpeed * Params.Conversion.msToKmh
         
         if defaults.isMph {
-            return "Max speed: \(roundToNearest(increment: 5, for_value: maxSpeedMph)) mph"
+            return "Max speed: \(roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedMph)) mph"
         } else {
-            return "Max speed: \(roundToNearest(increment: 5, for_value: maxSpeedKmh)) km/h"
+            return "Max speed: \(roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedKmh)) km/h"
         }
     }
     

@@ -13,7 +13,6 @@
 		7E211AC41AA591500058301F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC31AA591500058301F /* SystemConfiguration.framework */; };
 		7E2320C41A78AED40097D2D8 /* ColorGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2320C31A78AED40097D2D8 /* ColorGradient.swift */; };
 		7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */; };
-		7EA0E3F21A833A3E004C86DF /* ColorGradientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0E3F01A833A3E004C86DF /* ColorGradientTests.swift */; };
 		7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */; };
 		7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417D01A618DC400BE639B /* PreferencePaneController.swift */; };
 		7EC245651A4F486D005F2FEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245641A4F486D005F2FEA /* AppDelegate.swift */; };
@@ -21,27 +20,12 @@
 		7EC2456A1A4F486D005F2FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EC245681A4F486D005F2FEA /* Main.storyboard */; };
 		7EC2456C1A4F486D005F2FEA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EC2456B1A4F486D005F2FEA /* Images.xcassets */; };
 		7EC2456F1A4F486D005F2FEA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EC2456D1A4F486D005F2FEA /* LaunchScreen.xib */; };
-		7EC2457B1A4F486D005F2FEA /* SpeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2457A1A4F486D005F2FEA /* SpeedTests.swift */; };
 		7EC2458A1A507E05005F2FEA /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245891A507E05005F2FEA /* WeatherModel.swift */; };
-		7EC2458B1A507E05005F2FEA /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245891A507E05005F2FEA /* WeatherModel.swift */; };
-		7EC2458E1A507E1E005F2FEA /* WeatherModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458C1A507E1E005F2FEA /* WeatherModelTests.swift */; };
-		7EC245911A507E34005F2FEA /* LocationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */; };
 		7ECAE10A1A50E8F700AB9A5C /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */; };
-		7ECAE10B1A50E8F700AB9A5C /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */; };
 		7EEFE7F31AA0560C00565DAA /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F21AA0560C00565DAA /* Params.swift */; };
 		7EEFE7F51AA1605000565DAA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F41AA1605000565DAA /* Settings.swift */; };
 		7EF7DDC01A74766A00C74AF0 /* SpeedViewsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		7EC245751A4F486D005F2FEA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7EC245571A4F486D005F2FEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7EC2455E1A4F486D005F2FEA;
-			remoteInfo = Speed;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7E15C11E1A570C080000BEDA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -62,7 +46,6 @@
 		7EC245691A4F486D005F2FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7EC2456B1A4F486D005F2FEA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7EC2456E1A4F486D005F2FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		7EC245741A4F486D005F2FEA /* SpeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EC245791A4F486D005F2FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EC2457A1A4F486D005F2FEA /* SpeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTests.swift; sourceTree = "<group>"; };
 		7EC245891A507E05005F2FEA /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
@@ -82,13 +65,6 @@
 				7E211AC41AA591500058301F /* SystemConfiguration.framework in Frameworks */,
 				7E211AC21AA5913F0058301F /* Security.framework in Frameworks */,
 				7E211AC01AA5912A0058301F /* libFlurry_6.2.0.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7EC245711A4F486D005F2FEA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				7EC2455F1A4F486D005F2FEA /* Veluzity.app */,
-				7EC245741A4F486D005F2FEA /* SpeedTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -221,24 +196,6 @@
 			productReference = 7EC2455F1A4F486D005F2FEA /* Veluzity.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7EC245731A4F486D005F2FEA /* SpeedTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7EC245811A4F486D005F2FEA /* Build configuration list for PBXNativeTarget "SpeedTests" */;
-			buildPhases = (
-				7EC245701A4F486D005F2FEA /* Sources */,
-				7EC245711A4F486D005F2FEA /* Frameworks */,
-				7EC245721A4F486D005F2FEA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7EC245761A4F486D005F2FEA /* PBXTargetDependency */,
-			);
-			name = SpeedTests;
-			productName = SpeedTests;
-			productReference = 7EC245741A4F486D005F2FEA /* SpeedTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -251,10 +208,6 @@
 					7EC2455E1A4F486D005F2FEA = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = ZQEHFBD5JZ;
-					};
-					7EC245731A4F486D005F2FEA = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 7EC2455E1A4F486D005F2FEA;
 					};
 				};
 			};
@@ -272,7 +225,6 @@
 			projectRoot = "";
 			targets = (
 				7EC2455E1A4F486D005F2FEA /* Speed */,
-				7EC245731A4F486D005F2FEA /* SpeedTests */,
 			);
 		};
 /* End PBXProject section */
@@ -286,13 +238,6 @@
 				7EC2456A1A4F486D005F2FEA /* Main.storyboard in Resources */,
 				7EC2456F1A4F486D005F2FEA /* LaunchScreen.xib in Resources */,
 				7EC2456C1A4F486D005F2FEA /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7EC245721A4F486D005F2FEA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,28 +262,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7EC245701A4F486D005F2FEA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7EC2458E1A507E1E005F2FEA /* WeatherModelTests.swift in Sources */,
-				7EA0E3F21A833A3E004C86DF /* ColorGradientTests.swift in Sources */,
-				7EC2458B1A507E05005F2FEA /* WeatherModel.swift in Sources */,
-				7EC2457B1A4F486D005F2FEA /* SpeedTests.swift in Sources */,
-				7ECAE10B1A50E8F700AB9A5C /* LocationModel.swift in Sources */,
-				7EC245911A507E34005F2FEA /* LocationModelTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7EC245761A4F486D005F2FEA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7EC2455E1A4F486D005F2FEA /* Speed */;
-			targetProxy = 7EC245751A4F486D005F2FEA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7EC245681A4F486D005F2FEA /* Main.storyboard */ = {
@@ -482,40 +406,6 @@
 			};
 			name = Release;
 		};
-		7EC245821A4F486D005F2FEA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SpeedTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Speed.app/Speed";
-			};
-			name = Debug;
-		};
-		7EC245831A4F486D005F2FEA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SpeedTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Speed.app/Speed";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -533,15 +423,6 @@
 			buildConfigurations = (
 				7EC2457F1A4F486D005F2FEA /* Debug */,
 				7EC245801A4F486D005F2FEA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7EC245811A4F486D005F2FEA /* Build configuration list for PBXNativeTarget "SpeedTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7EC245821A4F486D005F2FEA /* Debug */,
-				7EC245831A4F486D005F2FEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

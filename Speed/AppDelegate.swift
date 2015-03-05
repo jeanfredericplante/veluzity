@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.makeKeyAndVisible()
         
         // start analytics
+        Flurry.setCrashReportingEnabled(true)
         Flurry.startSession("***REMOVED***")
 
         
