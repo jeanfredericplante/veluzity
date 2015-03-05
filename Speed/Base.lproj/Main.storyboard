@@ -438,13 +438,13 @@
                                         <color key="value" red="0.1176470588" green="0.14117647059999999" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="stopColor">
-                                        <color key="value" red="0.29999999999999999" green="0.35999999999999999" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.1019607843" green="0.7843137255" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="direction">
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="speed">
-                                        <real key="value" value="0.0"/>
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxTransitionSpeed">
                                         <real key="value" value="29"/>
@@ -553,10 +553,10 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hee-Pm-0Iw" userLabel="addressView">
+                            <view opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hee-Pm-0Iw" userLabel="addressView">
                                 <rect key="frame" x="16" y="578" width="548" height="2"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="LocationWhite" translatesAutoresizingMaskIntoConstraints="NO" id="Dx3-N8-Hmz">
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="LocationWhite" translatesAutoresizingMaskIntoConstraints="NO" id="Dx3-N8-Hmz">
                                         <rect key="frame" x="0.0" y="-34" width="71" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Dx3-N8-Hmz" secondAttribute="height" multiplier="1:1" id="pJU-CR-ilT"/>
@@ -657,10 +657,10 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-IA-Mt8" userLabel="headingView">
+                            <view opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-IA-Mt8" userLabel="headingView">
                                 <rect key="frame" x="160" y="580" width="548" height="3"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="DirectionWhite" translatesAutoresizingMaskIntoConstraints="NO" id="cGI-jv-dtz">
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="DirectionWhite" translatesAutoresizingMaskIntoConstraints="NO" id="cGI-jv-dtz">
                                         <rect key="frame" x="-144" y="-34" width="71" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="cGI-jv-dtz" secondAttribute="height" multiplier="1:1" id="ZSR-CK-qQK"/>
@@ -717,10 +717,10 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-KI-HeR" userLabel="weatherView">
+                            <view opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-KI-HeR" userLabel="weatherView">
                                 <rect key="frame" x="26" y="583" width="548" height="2"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="12nWhite" translatesAutoresizingMaskIntoConstraints="NO" id="m0n-eS-i98">
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="12nWhite" translatesAutoresizingMaskIntoConstraints="NO" id="m0n-eS-i98">
                                         <rect key="frame" x="-5" y="-34" width="71" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="m0n-eS-i98" secondAttribute="height" multiplier="1:1" id="NVj-RY-SWv"/>
@@ -965,6 +965,7 @@
                         <variation key="heightClass=compact">
                             <mask key="subviews">
                                 <include reference="GiW-4S-PCo"/>
+                                <exclude reference="E2S-2M-EEi"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="ntC-yS-sJA"/>

@@ -84,6 +84,10 @@ import UIKit
         return CAGradientLayer.self
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupView()
+    }
     
     var gradientDirectionRadians: Double {
         get {

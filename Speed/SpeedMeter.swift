@@ -91,9 +91,12 @@ extension UIBezierPath {
         super.layoutSubviews()
         setupMeter()
         speedBackgroundPath = backgroundMeterPath()
-        speedCurveLayer = speedMeterPath()
-        self.layer.addSublayer(speedCurveLayer)
+        setMeterPath(speedCurveLayer)
+        if speedCurveLayer.superlayer == nil {
+            self.layer.addSublayer(speedCurveLayer)
+        }
 
+        setNeedsDisplay()
     }
     
     override func drawRect(rect: CGRect) {
@@ -142,16 +145,14 @@ extension UIBezierPath {
         return meterPath
     }
     
-    func speedMeterPath() -> CAShapeLayer {
-        var context = UIGraphicsGetCurrentContext()
-        let speedArc = CAShapeLayer()
-        speedArc.path = speedBackgroundPath.CGPath
-        speedArc.fillColor = UIColor.clearColor().CGColor
-        speedArc.lineWidth = trackBorderWidth
-        speedArc.strokeStart = 0
-        speedArc.strokeEnd = 0
-        speedArc.strokeColor = trackColor.CGColor
-        return speedArc
+    func setMeterPath(meter: CAShapeLayer) -> Void {
+        meter.path = speedBackgroundPath.CGPath
+        meter.fillColor = UIColor.clearColor().CGColor
+        meter.lineWidth = trackBorderWidth
+        meter.strokeStart = 0
+        meter.strokeEnd = 0
+        meter.strokeColor = trackColor.CGColor
+
     }
     
     
