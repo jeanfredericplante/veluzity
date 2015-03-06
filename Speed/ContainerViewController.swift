@@ -15,6 +15,11 @@ enum SlideOutState {
 }
 
 class ContainerViewController: UIViewController, ViewControllerDelegate, PreferencePaneControllerDelegate, UIGestureRecognizerDelegate {
+    
+    struct Constants {
+        static let preferencePanelExpandedOffsetPortrait: CGFloat = 60
+        static let preferencePanelExpandedOffsetLandscape: CGFloat = 0
+    }
     var preferencePanelExpandedOffset: CGFloat = 60
 
     var mainViewController: DashboardViewController!
@@ -59,14 +64,36 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         println(" I am viewWillLayoutSubviews for container view controller")
     }
     
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        closePreferencePane()
+    }
+    
+    
+    
+    
     
     // MARK: ViewController delegate method
     func togglePreferencePane() {
         let notAlreadyExpanded = (currentState != SlideOutState.PreferenceExpanded)
+        let shouldI = notAlreadyExpanded && isLandscape()
         if notAlreadyExpanded {
             addPreferencePaneViewController()
         }
-        animatePreferencePane(shouldExpand: notAlreadyExpanded)
+        animatePreferencePane(shouldExpand: shouldI)
+    }
+    
+    func expandedOffset() -> CGFloat {
+        if isLandscape(){
+            return view.bounds.width - Constants.preferencePanelExpandedOffsetPortrait
+        } else {
+            return view.bounds.height + Constants.preferencePanelExpandedOffsetLandscape
+        }
+    }
+    
+    func closePreferencePane() {
+        if currentState == SlideOutState.PreferenceExpanded {
+            animatePreferencePane(shouldExpand: false)
+        }
     }
     
     // MARK: PreferencePaneController delegate method
@@ -88,7 +115,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         // # is to have the external parameter name match the variable name
         if (shouldExpand) {
             currentState = .PreferenceExpanded
-            let targetPosition = view.bounds.width - preferencePanelExpandedOffset
+            let targetPosition = expandedOffset()
             animateMainViewXPosition(targetPosition:  targetPosition)
         } else {
             animateMainViewXPosition(targetPosition: 0) { finished in
@@ -120,6 +147,11 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         } else {
             mainViewController.view.layer.shadowOpacity = 0
         }
+    }
+    
+    
+    func isLandscape() -> Bool {
+        return UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)
     }
     
     // MARK: Gesture recognizer
