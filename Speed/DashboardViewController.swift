@@ -120,6 +120,11 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         }
     }
     
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        didUpdateLocation()
+        didUpdateWeather()
+    }
+    
     
     func didUpdateWeather() {
         var temperature: Double

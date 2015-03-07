@@ -87,7 +87,12 @@ import UIKit
     override func layoutSubviews() {
         super.layoutSubviews()
         setupView()
+        setNeedsDisplay()
+
+
     }
+    
+    
     
     var gradientDirectionRadians: Double {
         get {
