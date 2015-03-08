@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = containerViewController
         self.window?.makeKeyAndVisible()
         
-//        // start analytics
+        // start analytics
         Flurry.setCrashReportingEnabled(true)
         Flurry.startSession("***REMOVED***")
 
