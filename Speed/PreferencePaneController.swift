@@ -14,13 +14,14 @@ protocol PreferencePaneControllerDelegate {
 }
 
 
-class PreferencePaneController: UIViewController {
+class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     let defaults = Settings()
     var delegate: PreferencePaneControllerDelegate?
     
     
     struct Constants {
         static let speedResolution: Int = 5 // in mph or kmh, increment to determine max speed
+        static let heightOfElementsAroundScrollView: CGFloat = 200
     }
 
     enum SpeedSegments: Int {
@@ -37,13 +38,13 @@ class PreferencePaneController: UIViewController {
     @IBOutlet weak var speedPreferenceControl: UISegmentedControl!
     @IBOutlet weak var maxSpeedLabel: UILabel!
     @IBOutlet weak var speedSlider: UISlider!
+    @IBOutlet weak var settingsScrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePreferenceControls()
         setUISegmentedControlFonts()
-        
-        
+        settingsScrollView.contentSize = CGSize(width: 200, height: 50)
     }
     
     override func didReceiveMemoryWarning() {
