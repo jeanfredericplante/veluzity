@@ -45,97 +45,122 @@
                                     <rect key="frame" x="1" y="161" width="328" height="328"/>
                                 </variation>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iwU-gN-5eS">
-                                <rect key="frame" x="16" y="90" width="568" height="410"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iwU-gN-5eS">
+                                <rect key="frame" x="16" y="90" width="250" height="410"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q71-HG-WWz">
-                                        <rect key="frame" x="8" y="8" width="124" height="29"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="geM-Vj-Cov">
-                                        <rect key="frame" x="8" y="45" width="220" height="41"/>
-                                        <color key="backgroundColor" red="0.12941176470588237" green="0.13725490196078433" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nld-CE-Rly" userLabel="Scrollable Settings">
+                                        <rect key="frame" x="0.0" y="0.0" width="230" height="320"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q71-HG-WWz">
+                                                <rect key="frame" x="11" y="105" width="124" height="29"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="geM-Vj-Cov">
+                                                <rect key="frame" x="8" y="142" width="220" height="41"/>
+                                                <color key="backgroundColor" red="0.12941176470588237" green="0.13725490196078433" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                                <segments>
+                                                    <segment title="ºF"/>
+                                                    <segment title="ºC"/>
+                                                </segments>
+                                                <color key="tintColor" red="0.30196078431372547" green="0.33725490196078434" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="temperaturePressed:" destination="EoH-KH-Mxk" eventType="valueChanged" id="IoZ-Zi-Ue9"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wcj-pG-7zZ">
+                                                <rect key="frame" x="8" y="8" width="67" height="29"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="4wZ-oR-ZJV">
+                                                <rect key="frame" x="8" y="45" width="220" height="41"/>
+                                                <color key="backgroundColor" red="0.12941176470588237" green="0.13725490196078433" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="GpE-jg-OHt"/>
+                                                    <constraint firstAttribute="width" constant="220" id="Yvr-N9-1vJ"/>
+                                                </constraints>
+                                                <segments>
+                                                    <segment title="mph"/>
+                                                    <segment title="km/h"/>
+                                                </segments>
+                                                <color key="tintColor" red="0.30196078431372547" green="0.33725490196078434" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="speedPressed:" destination="EoH-KH-Mxk" eventType="valueChanged" id="gHu-X7-jsy"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max speed: 70 mp/h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5FE-Mw-b8F">
+                                                <rect key="frame" x="8" y="202" width="220" height="29"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="2" y="391" width="114" height="9"/>
+                                                </variation>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="65" minValue="40" maxValue="80" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-8v-BE1">
+                                                <rect key="frame" x="6" y="273" width="224" height="31"/>
+                                                <color key="tintColor" red="0.30196078431372547" green="0.33725490196078434" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="185" width="118" height="31"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="74" y="104" width="118" height="31"/>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="speedSliderChanged:" destination="EoH-KH-Mxk" eventType="valueChanged" id="pnn-y6-kkx"/>
+                                                </connections>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Background will turn reddish above that speed" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CNI-HF-OD0">
+                                                <rect key="frame" x="8" y="231" width="220" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="z1X-Fb-hf9"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="2" y="391" width="251" height="16"/>
+                                                </variation>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="2qV-Oz-Eg5"/>
-                                            <constraint firstAttribute="width" constant="220" id="9JU-nB-b7M"/>
+                                            <constraint firstItem="Wcj-pG-7zZ" firstAttribute="top" secondItem="Nld-CE-Rly" secondAttribute="topMargin" id="2Gu-Fd-aZS"/>
+                                            <constraint firstAttribute="width" constant="230" id="2iq-xG-ltN"/>
+                                            <constraint firstItem="4wZ-oR-ZJV" firstAttribute="height" secondItem="geM-Vj-Cov" secondAttribute="height" id="2qa-hD-NwC"/>
+                                            <constraint firstItem="5FE-Mw-b8F" firstAttribute="width" relation="lessThanOrEqual" secondItem="geM-Vj-Cov" secondAttribute="width" id="AQe-dX-Dn7"/>
+                                            <constraint firstItem="xtG-8v-BE1" firstAttribute="leading" secondItem="geM-Vj-Cov" secondAttribute="leading" id="B0a-u1-CKP"/>
+                                            <constraint firstItem="CNI-HF-OD0" firstAttribute="width" relation="lessThanOrEqual" secondItem="5FE-Mw-b8F" secondAttribute="width" id="FVz-1M-ZFC"/>
+                                            <constraint firstItem="4wZ-oR-ZJV" firstAttribute="leading" secondItem="Wcj-pG-7zZ" secondAttribute="leading" id="Ifd-TN-gIe"/>
+                                            <constraint firstItem="CNI-HF-OD0" firstAttribute="leading" secondItem="5FE-Mw-b8F" secondAttribute="leading" id="LEL-1q-CHS"/>
+                                            <constraint firstItem="q71-HG-WWz" firstAttribute="top" secondItem="4wZ-oR-ZJV" secondAttribute="bottom" constant="20" id="LcH-dc-Uz3"/>
+                                            <constraint firstItem="geM-Vj-Cov" firstAttribute="leading" secondItem="4wZ-oR-ZJV" secondAttribute="leading" id="N0i-UF-NzZ"/>
+                                            <constraint firstItem="4wZ-oR-ZJV" firstAttribute="top" secondItem="Wcj-pG-7zZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Pub-Tk-PtT"/>
+                                            <constraint firstItem="5FE-Mw-b8F" firstAttribute="leading" secondItem="geM-Vj-Cov" secondAttribute="leading" id="R3t-ck-f5j"/>
+                                            <constraint firstItem="xtG-8v-BE1" firstAttribute="width" secondItem="geM-Vj-Cov" secondAttribute="width" id="ZtT-VC-eAy"/>
+                                            <constraint firstItem="Wcj-pG-7zZ" firstAttribute="leading" secondItem="Nld-CE-Rly" secondAttribute="leadingMargin" id="aLQ-d2-1TF"/>
+                                            <constraint firstItem="CNI-HF-OD0" firstAttribute="top" secondItem="5FE-Mw-b8F" secondAttribute="bottom" id="cbh-8M-5ll"/>
+                                            <constraint firstItem="5FE-Mw-b8F" firstAttribute="top" secondItem="geM-Vj-Cov" secondAttribute="bottom" constant="20" id="izJ-Kq-TPa"/>
+                                            <constraint firstAttribute="height" constant="320" id="k4H-ga-nJZ"/>
+                                            <constraint firstItem="4wZ-oR-ZJV" firstAttribute="width" secondItem="geM-Vj-Cov" secondAttribute="width" id="n2d-1Z-Xfc"/>
+                                            <constraint firstItem="geM-Vj-Cov" firstAttribute="top" secondItem="q71-HG-WWz" secondAttribute="bottom" constant="8" symbolic="YES" id="nD2-Le-4IK"/>
+                                            <constraint firstItem="xtG-8v-BE1" firstAttribute="top" secondItem="CNI-HF-OD0" secondAttribute="bottom" constant="8" symbolic="YES" id="nSG-oM-PaB"/>
+                                            <constraint firstItem="q71-HG-WWz" firstAttribute="leading" secondItem="Wcj-pG-7zZ" secondAttribute="leading" constant="3" id="rPD-DX-2me"/>
                                         </constraints>
-                                        <segments>
-                                            <segment title="ºF"/>
-                                            <segment title="ºC"/>
-                                        </segments>
-                                        <color key="tintColor" red="0.30196078431372547" green="0.33725490196078434" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="temperaturePressed:" destination="EoH-KH-Mxk" eventType="valueChanged" id="IoZ-Zi-Ue9"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wcj-pG-7zZ">
-                                        <rect key="frame" x="8" y="105" width="67" height="29"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="4wZ-oR-ZJV">
-                                        <rect key="frame" x="8" y="142" width="220" height="41"/>
-                                        <color key="backgroundColor" red="0.12941176470588237" green="0.13725490196078433" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                        <segments>
-                                            <segment title="mph"/>
-                                            <segment title="km/h"/>
-                                        </segments>
-                                        <color key="tintColor" red="0.30196078431372547" green="0.33725490196078434" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="speedPressed:" destination="EoH-KH-Mxk" eventType="valueChanged" id="gHu-X7-jsy"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max speed: 70 mp/h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5FE-Mw-b8F">
-                                        <rect key="frame" x="8" y="202" width="212" height="29"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="2" y="391" width="114" height="9"/>
-                                        </variation>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Background will turn reddish above that speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CNI-HF-OD0">
-                                        <rect key="frame" x="-16" y="-90" width="251" height="16"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="2" y="391" width="251" height="16"/>
-                                        </variation>
-                                    </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="65" minValue="40" maxValue="80" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-8v-BE1">
-                                        <rect key="frame" x="6" y="239" width="216" height="31"/>
-                                        <color key="tintColor" red="0.30196078431372547" green="0.33725490196078434" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
-                                        <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="185" width="118" height="31"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="74" y="104" width="118" height="31"/>
-                                        </variation>
-                                        <connections>
-                                            <action selector="speedSliderChanged:" destination="EoH-KH-Mxk" eventType="valueChanged" id="pnn-y6-kkx"/>
-                                        </connections>
-                                    </slider>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="4wZ-oR-ZJV" firstAttribute="top" secondItem="Wcj-pG-7zZ" secondAttribute="bottom" constant="8" symbolic="YES" id="4cx-mM-0bI"/>
-                                    <constraint firstItem="4wZ-oR-ZJV" firstAttribute="leading" secondItem="geM-Vj-Cov" secondAttribute="leading" id="8jw-RJ-EtN"/>
-                                    <constraint firstItem="q71-HG-WWz" firstAttribute="leading" secondItem="iwU-gN-5eS" secondAttribute="leadingMargin" id="9Iq-iR-sIv"/>
-                                    <constraint firstItem="Wcj-pG-7zZ" firstAttribute="top" secondItem="geM-Vj-Cov" secondAttribute="bottom" constant="20" id="9Ku-fk-vMZ"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="q71-HG-WWz" secondAttribute="trailing" constant="50" id="ABE-ZN-3gR"/>
-                                    <constraint firstItem="q71-HG-WWz" firstAttribute="leading" secondItem="Wcj-pG-7zZ" secondAttribute="leading" id="DWR-9Z-beO"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="geM-Vj-Cov" secondAttribute="trailing" constant="50" id="Db5-JR-ND2"/>
-                                    <constraint firstItem="4wZ-oR-ZJV" firstAttribute="trailing" secondItem="geM-Vj-Cov" secondAttribute="trailing" id="Fcl-9c-KPA"/>
-                                    <constraint firstItem="geM-Vj-Cov" firstAttribute="top" secondItem="q71-HG-WWz" secondAttribute="bottom" constant="8" symbolic="YES" id="HLN-JM-Xyi"/>
-                                    <constraint firstItem="5FE-Mw-b8F" firstAttribute="leading" secondItem="Wcj-pG-7zZ" secondAttribute="leading" id="MPW-1r-Pdf"/>
-                                    <constraint firstItem="geM-Vj-Cov" firstAttribute="leading" secondItem="q71-HG-WWz" secondAttribute="leading" id="XQu-y8-JI2"/>
-                                    <constraint firstItem="4wZ-oR-ZJV" firstAttribute="height" secondItem="geM-Vj-Cov" secondAttribute="height" id="b9S-7F-cWU"/>
-                                    <constraint firstItem="5FE-Mw-b8F" firstAttribute="top" secondItem="Wcj-pG-7zZ" secondAttribute="bottom" constant="68" id="egA-HI-lW3"/>
-                                    <constraint firstItem="q71-HG-WWz" firstAttribute="top" secondItem="iwU-gN-5eS" secondAttribute="topMargin" id="lqU-R9-FVq"/>
+                                    <constraint firstItem="Nld-CE-Rly" firstAttribute="top" secondItem="iwU-gN-5eS" secondAttribute="top" id="T4s-Rl-SGZ"/>
+                                    <constraint firstItem="Nld-CE-Rly" firstAttribute="leading" secondItem="iwU-gN-5eS" secondAttribute="leading" id="exD-Ek-B5A"/>
+                                    <constraint firstAttribute="width" constant="250" id="qNe-DJ-y9f"/>
                                 </constraints>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                <variation key="heightClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="16" y="90" width="518" height="210"/>
+                                </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="40" height="492"/>
                                 </variation>
@@ -152,27 +177,18 @@
                                             <constraint firstAttribute="height" constant="60" id="OjZ-EU-u4q"/>
                                             <constraint firstAttribute="width" constant="60" id="qDa-tP-6d8"/>
                                         </constraints>
-                                        <variation key="heightClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="400"/>
-                                        </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VELUZITY version 1.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="PGf-mH-f6c">
                                         <rect key="frame" x="88" y="20" width="207" height="28"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="58" y="5" width="240" height="28"/>
-                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright (c) 2015 Fantastic Whale Labs" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="8FU-lC-LUR">
                                         <rect key="frame" x="88" y="56" width="238" height="17"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="60" y="30" width="238" height="17"/>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.21176470588235294" blue="0.25882352941176473" alpha="1" colorSpace="calibratedRGB"/>
@@ -203,7 +219,6 @@
                             <constraint firstItem="tYq-b4-faR" firstAttribute="top" secondItem="jjE-Nn-vbj" secondAttribute="bottom" constant="8" id="gAF-0b-DU1"/>
                             <constraint firstItem="3EL-hI-jvB" firstAttribute="bottom" secondItem="tYq-b4-faR" secondAttribute="bottom" id="hDd-dG-GDK"/>
                             <constraint firstItem="iwU-gN-5eS" firstAttribute="top" secondItem="3EL-hI-jvB" secondAttribute="bottom" constant="12" id="jwC-R7-vst"/>
-                            <constraint firstItem="iwU-gN-5eS" firstAttribute="trailing" secondItem="RRu-wk-6rZ" secondAttribute="trailingMargin" id="lvK-xh-lcE"/>
                             <constraint firstItem="iwU-gN-5eS" firstAttribute="leading" secondItem="RRu-wk-6rZ" secondAttribute="leadingMargin" id="nXV-rx-zZi"/>
                             <constraint firstItem="3EL-hI-jvB" firstAttribute="top" secondItem="tYq-b4-faR" secondAttribute="top" id="vP5-cE-8OX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OcS-WK-RrU" secondAttribute="trailing" constant="-16" id="xgL-N3-kTx"/>
@@ -211,6 +226,7 @@
                     </view>
                     <connections>
                         <outlet property="maxSpeedLabel" destination="5FE-Mw-b8F" id="7dw-pQ-8eh"/>
+                        <outlet property="scrollableSettings" destination="Nld-CE-Rly" id="vLx-iC-OoV"/>
                         <outlet property="settingsScrollView" destination="iwU-gN-5eS" id="2FS-nF-Q7a"/>
                         <outlet property="speedPreferenceControl" destination="4wZ-oR-ZJV" id="WbM-4T-XqP"/>
                         <outlet property="speedSlider" destination="xtG-8v-BE1" id="DMX-SA-hCe"/>
@@ -265,6 +281,9 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" red="0.25098039215686274" green="1" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="164" y="113" width="40" height="20"/>
+                                                </variation>
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="160" y="115" width="40" height="20"/>
                                                 </variation>
@@ -324,9 +343,6 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Dx3-N8-Hmz" secondAttribute="height" multiplier="1:1" id="pJU-CR-ilT"/>
                                         </constraints>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="17" width="58" height="58"/>
-                                        </variation>
                                         <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
                                             <rect key="frame" x="22" y="27" width="65" height="46"/>
                                         </variation>
@@ -339,9 +355,6 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
                                         <color key="textColor" red="0.49411764705882355" green="1" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="63" y="0.0" width="130" height="64"/>
-                                        </variation>
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="62" y="0.0" width="286" height="53"/>
                                         </variation>
@@ -351,9 +364,6 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.4941176471" green="1" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="63" y="59" width="130" height="27"/>
-                                        </variation>
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="62" y="48" width="286" height="22"/>
                                         </variation>
@@ -445,8 +455,7 @@
                                                 <exclude reference="ZSR-CK-qQK"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="20" width="53" height="53"/>
+                                        <variation key="heightClass=compact">
                                             <mask key="constraints">
                                                 <include reference="ZSR-CK-qQK"/>
                                             </mask>
@@ -468,9 +477,6 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
                                         <color key="textColor" red="0.070588235294117646" green="1" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="63" y="-3" width="125" height="92"/>
-                                        </variation>
                                         <variation key="heightClass=compact-widthClass=compact">
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="42"/>
                                         </variation>
@@ -526,9 +532,6 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="m0n-eS-i98" secondAttribute="height" multiplier="1:1" id="fvG-rf-hh7"/>
                                         </constraints>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="14" width="64" height="64"/>
-                                        </variation>
                                         <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
                                             <rect key="frame" x="0.0" y="26" width="65" height="51"/>
                                         </variation>
@@ -538,9 +541,6 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
                                         <color key="textColor" red="0.80000001192092896" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="63" y="16" width="130" height="59"/>
-                                        </variation>
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="62" y="8" width="286" height="59"/>
                                         </variation>
@@ -610,9 +610,6 @@
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="heightClass=compact" misplaced="YES">
-                                    <rect key="frame" x="16" y="30" width="25" height="25"/>
-                                </variation>
                                 <connections>
                                     <action selector="preferencesTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eo2-Pc-xrP"/>
                                 </connections>
@@ -671,15 +668,15 @@
                             <mask key="constraints">
                                 <exclude reference="KXc-k7-beo"/>
                                 <exclude reference="m1P-75-kVR"/>
-                                <exclude reference="axG-ax-Pnj"/>
                                 <exclude reference="2FF-wt-TnC"/>
                                 <exclude reference="H3W-ja-Tie"/>
-                                <exclude reference="Jgo-3Q-Mnu"/>
-                                <exclude reference="cJd-9Y-XQR"/>
                                 <exclude reference="TTO-0Q-Td4"/>
                                 <exclude reference="2zy-th-9bO"/>
+                                <exclude reference="axG-ax-Pnj"/>
+                                <exclude reference="cJd-9Y-XQR"/>
                                 <exclude reference="ubS-ns-pQ5"/>
                                 <exclude reference="ntC-yS-sJA"/>
+                                <exclude reference="Jgo-3Q-Mnu"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -688,16 +685,16 @@
                                 <include reference="KXc-k7-beo"/>
                                 <exclude reference="cTu-Kn-8im"/>
                                 <include reference="m1P-75-kVR"/>
-                                <include reference="axG-ax-Pnj"/>
                                 <include reference="2FF-wt-TnC"/>
                                 <include reference="H3W-ja-Tie"/>
-                                <include reference="Jgo-3Q-Mnu"/>
                                 <include reference="TTO-0Q-Td4"/>
                                 <include reference="HmE-MW-ekQ"/>
                                 <exclude reference="lMp-Uk-0bj"/>
                                 <include reference="2zy-th-9bO"/>
+                                <include reference="axG-ax-Pnj"/>
                                 <include reference="ubS-ns-pQ5"/>
                                 <include reference="ntC-yS-sJA"/>
+                                <include reference="Jgo-3Q-Mnu"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
@@ -708,10 +705,10 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
                                 <exclude reference="XfS-Ol-R3P"/>
-                                <include reference="axG-ax-Pnj"/>
-                                <include reference="cJd-9Y-XQR"/>
                                 <include reference="TTO-0Q-Td4"/>
                                 <include reference="2zy-th-9bO"/>
+                                <include reference="axG-ax-Pnj"/>
+                                <include reference="cJd-9Y-XQR"/>
                                 <include reference="ntC-yS-sJA"/>
                             </mask>
                         </variation>
@@ -736,6 +733,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-156" y="387"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dFb-Rn-mEy">
+            <objects>
+                <viewController id="TZ8-dL-D7T" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G4N-C8-L9K"/>
+                        <viewControllerLayoutGuide type="bottom" id="OdO-NO-4Qd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FGX-5u-z07">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gg8-X9-zvk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

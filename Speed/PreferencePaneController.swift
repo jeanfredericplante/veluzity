@@ -21,7 +21,6 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     
     struct Constants {
         static let speedResolution: Int = 5 // in mph or kmh, increment to determine max speed
-        static let heightOfElementsAroundScrollView: CGFloat = 200
     }
 
     enum SpeedSegments: Int {
@@ -39,12 +38,15 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var maxSpeedLabel: UILabel!
     @IBOutlet weak var speedSlider: UISlider!
     @IBOutlet weak var settingsScrollView: UIScrollView!
+    @IBOutlet weak var scrollableSettings: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePreferenceControls()
         setUISegmentedControlFonts()
-        settingsScrollView.contentSize = CGSize(width: 200, height: 50)
+        settingsScrollView.contentSize = CGSize(width: scrollableSettings.bounds.width, height: scrollableSettings.bounds.height)
+        settingsScrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        scrollableSettings.setTranslatesAutoresizingMaskIntoConstraints(false)
     }
     
     override func didReceiveMemoryWarning() {
