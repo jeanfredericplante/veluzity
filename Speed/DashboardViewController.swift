@@ -56,6 +56,9 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         SpeedViewsHelper.setImageAndTextColor(view: speedMeter,
             color: SpeedViewsHelper.getColorForElement(.Speed))
         
+        // sets location to undefined until we get one
+        notifyLocationUndefined()
+        
         // completion closure, temperature updated
         locationWeather.temperatureUpdated = { lw in
             println("I got the temperature of \(lw.temperature())")
@@ -64,6 +67,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         
         // updates sleep mode
         self.updateSleepMode()
+        
         
         // adds obsever on battery charging state
         nc.addObserver(self, selector: "deviceBatteryStateChanged", name: UIDeviceBatteryStateDidChangeNotification, object: device)
@@ -80,12 +84,6 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
-        {
-            println("landscape dvc" )  } else
-        {
-            println("portrait dvc" )
-        }
     }
     
     func didUpdateLocation() {
@@ -98,9 +96,13 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         // Updates displays
         speedDisplay.text = getSpeedWithPreferencesUnit()
         speedUnit.text = getSpeedUnitText()
-        locationDisplay.text = userLocation.streetName
-        locationSubtextDisplay.text = SpeedViewsHelper.cityAndStateText(userLocation.cityName,
-            state: userLocation.stateName)
+        if let currentStreet = userLocation.streetName {
+            locationDisplay.text = currentStreet
+            locationSubtextDisplay.text = SpeedViewsHelper.cityAndStateText(userLocation.cityName,
+                state: userLocation.stateName)
+        } else {
+            notifyLocationUndefined()
+        }
         headingDisplay.attributedText = SpeedViewsHelper.headingViewFormattedText(
             userLocation.getHeadingDegrees(),
             cardinality: userLocation.getCardinalDirection(),
@@ -170,6 +172,11 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         } else {
             return "km/h"
         }
+    }
+    
+    private func notifyLocationUndefined() -> Void {
+        locationDisplay.text = "Locating..."
+        locationSubtextDisplay.text = " "
     }
     
     // MARK: Button actions
