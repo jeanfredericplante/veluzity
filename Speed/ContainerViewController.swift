@@ -17,10 +17,8 @@ enum SlideOutState {
 class ContainerViewController: UIViewController, ViewControllerDelegate, PreferencePaneControllerDelegate, UIGestureRecognizerDelegate {
     
     struct Constants {
-        static let preferencePanelExpandedOffsetPortrait: CGFloat = 60
-        static let preferencePanelExpandedOffsetLandscape: CGFloat = 0
+        static let preferencePanelExpandedOffset: CGFloat = 270
     }
-    var preferencePanelExpandedOffset: CGFloat = 60
 
     var mainViewController: DashboardViewController!
     var mainViewNavigationController: UINavigationController!
@@ -83,11 +81,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
     }
     
     func expandedOffset() -> CGFloat {
-        if isLandscape(){
-            return view.bounds.width - Constants.preferencePanelExpandedOffsetPortrait
-        } else {
-            return view.bounds.height + Constants.preferencePanelExpandedOffsetLandscape
-        }
+        return Constants.preferencePanelExpandedOffset
     }
     
     func closePreferencePane() {
@@ -167,8 +161,9 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
             }
         case .Changed:
             if (preferencePaneController != nil) {
-                sender.view!.center.x = sender.view!.center.x + sender.translationInView(view).x
-                sender.setTranslation(CGPointZero, inView: view)
+                    sender.view!.center.x = sender.view!.center.x + sender.translationInView(view).x
+                    sender.setTranslation(CGPointZero, inView: view)
+
             }
         case .Ended:
             if (preferencePaneController != nil) {

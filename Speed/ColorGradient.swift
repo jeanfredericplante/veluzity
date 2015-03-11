@@ -88,8 +88,6 @@ import UIKit
         super.layoutSubviews()
         setupView()
         setNeedsDisplay()
-
-
     }
     
     

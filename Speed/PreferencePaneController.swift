@@ -21,6 +21,7 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     
     struct Constants {
         static let speedResolution: Int = 5 // in mph or kmh, increment to determine max speed
+        static let fontRatio: CGFloat = 0.6
     }
 
     enum SpeedSegments: Int {
@@ -39,14 +40,15 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var speedSlider: UISlider!
     @IBOutlet weak var settingsScrollView: UIScrollView!
     @IBOutlet weak var scrollableSettings: UIView!
+    @IBOutlet weak var versionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePreferenceControls()
         setUISegmentedControlFonts()
-        settingsScrollView.contentSize = CGSize(width: scrollableSettings.bounds.width, height: scrollableSettings.bounds.height)
-        settingsScrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        scrollableSettings.setTranslatesAutoresizingMaskIntoConstraints(false)
+        setScrollableView()
+        setCurrentVersion()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -162,6 +164,19 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     
     private func currentVersion() -> String {
         return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
+    }
+    
+    private func setScrollableView() -> Void {
+        settingsScrollView.contentSize = CGSize(width: scrollableSettings.bounds.width, height: scrollableSettings.bounds.height)
+        settingsScrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        scrollableSettings.setTranslatesAutoresizingMaskIntoConstraints(false)
+    }
+    
+    private func setCurrentVersion() -> Void {
+        let version = " v" + currentVersion()
+        let font  = versionLabel.font
+        let attributedTextForVersion =  SpeedViewsHelper.textWithTwoFontSizes("VELUZITY", smallText: version, font: font, ratio: Constants.fontRatio)
+        versionLabel.attributedText = attributedTextForVersion
     }
     
 
