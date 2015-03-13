@@ -34,15 +34,18 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     
     
-    let userLocation = LocationModel()
-    let locationWeather = WeatherModel()
+    var userLocation: LocationModel!
+    var locationWeather: WeatherModel!
+    var defaults: Settings!
     let device : UIDevice = UIDevice.currentDevice()
     let nc = NSNotificationCenter.defaultCenter()
-    var defaults: Settings!
+
     var delegate: ViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userLocation = LocationModel()
+        locationWeather = WeatherModel()
         userLocation.delegate = self
         defaults = Settings()
 

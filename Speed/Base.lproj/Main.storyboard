@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -35,9 +35,6 @@
                                     <constraint firstAttribute="width" constant="50" id="dgL-AT-sRB"/>
                                     <constraint firstAttribute="height" constant="50" id="tph-C5-Mpc"/>
                                 </constraints>
-                                <variation key="heightClass=compact" misplaced="YES">
-                                    <rect key="frame" x="289" y="161" width="240" height="240"/>
-                                </variation>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="89" y="161" width="240" height="128"/>
                                 </variation>
@@ -96,16 +93,10 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="2" y="391" width="114" height="9"/>
-                                                </variation>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="65" minValue="40" maxValue="80" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-8v-BE1">
                                                 <rect key="frame" x="6" y="273" width="224" height="31"/>
                                                 <color key="tintColor" red="0.30196078431372547" green="0.33725490196078434" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
-                                                <variation key="heightClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="185" width="118" height="31"/>
-                                                </variation>
                                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="74" y="104" width="118" height="31"/>
                                                 </variation>
@@ -121,9 +112,6 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="2" y="391" width="251" height="16"/>
-                                                </variation>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -160,9 +148,6 @@
                                     <constraint firstAttribute="width" constant="260" id="qNe-DJ-y9f"/>
                                 </constraints>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                <variation key="heightClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="16" y="90" width="518" height="210"/>
-                                </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="40" height="492"/>
                                 </variation>
@@ -204,9 +189,6 @@
                                     <constraint firstItem="PGf-mH-f6c" firstAttribute="leading" secondItem="EK8-kx-Y9c" secondAttribute="trailing" constant="8" id="brG-Ip-bKK"/>
                                     <constraint firstItem="EK8-kx-Y9c" firstAttribute="leading" secondItem="OcS-WK-RrU" secondAttribute="leading" constant="20" symbolic="YES" id="kGf-Zz-y7R"/>
                                 </constraints>
-                                <variation key="heightClass=compact" misplaced="YES">
-                                    <rect key="frame" x="2" y="0.0" width="598" height="400"/>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.17246812582015991" green="0.18517181277275085" blue="0.24668249487876892" alpha="1" colorSpace="deviceRGB"/>
@@ -284,9 +266,6 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" red="0.25098039215686274" green="1" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="164" y="113" width="40" height="20"/>
-                                                </variation>
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="160" y="115" width="40" height="20"/>
                                                 </variation>
@@ -562,7 +541,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="GiW-4S-PCo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0S9-GZ-qNQ"/>
                             <constraint firstItem="hee-Pm-0Iw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="2FF-wt-TnC"/>

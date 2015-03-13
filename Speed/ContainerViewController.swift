@@ -59,7 +59,6 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        println(" I am viewWillLayoutSubviews for container view controller")
     }
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {

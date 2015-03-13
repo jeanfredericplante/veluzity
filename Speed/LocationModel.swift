@@ -28,9 +28,16 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
     
     override init() {
         super.init()
+        setupLocationManager()
+
+
+    }
+    
+    func setupLocationManager() {
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         self.locationManager.activityType = CLActivityType.AutomotiveNavigation
+        let currentStatus = CLLocationManager.authorizationStatus()
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
     }
@@ -38,6 +45,7 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
     func speedInKmh() -> Double {
         return speed * 3.6
     }
+    
     
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
