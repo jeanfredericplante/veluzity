@@ -116,14 +116,18 @@ class SpeedViewsHelper {
         var descriptionText: String = ""
         
         if temperature != nil { temperatureText = NSString(format: "%.0f°", temperature!) }
-        if description != nil { descriptionText = description }
+        if description != nil { descriptionText = " " + description }
         
         // adding a space for line break with small labels
-        return textWithTwoFontSizes(temperatureText, smallText: " " + description, font: font, ratio: 0.4)
+        return textWithTwoFontSizes(temperatureText, smallText: descriptionText, font: font, ratio: 0.4)
     }
     
     class func getWeatherIconImage() -> UIImage? {
         return nil
+    }
+    
+    class func isLandscape() -> Bool {
+        return UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)
     }
 
     

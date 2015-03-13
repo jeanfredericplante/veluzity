@@ -72,7 +72,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
     // MARK: ViewController delegate method
     func togglePreferencePane() {
         let notAlreadyExpanded = (currentState != SlideOutState.PreferenceExpanded)
-        let shouldI = notAlreadyExpanded // && isLandscape()
+        let shouldI = notAlreadyExpanded
         if notAlreadyExpanded {
             addPreferencePaneViewController()
         }
@@ -142,10 +142,6 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         }
     }
     
-    
-    func isLandscape() -> Bool {
-        return UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)
-    }
     
     // MARK: Gesture recognizer
     func handlePanGesture(sender: UIPanGestureRecognizer) {

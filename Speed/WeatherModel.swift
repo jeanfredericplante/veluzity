@@ -69,6 +69,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         weatherResponseData = NSMutableData()
         lastReadTemperatureCelsius = 20
         coordinates = CLLocationCoordinate2D(latitude: 48, longitude: 3)
+        lastUpdateTime =  NSDate(timeInterval: -minTimeBetweenUpates, sinceDate: NSDate())
     }
     
     func setPosition(newCoordinates: CLLocationCoordinate2D) -> Void {

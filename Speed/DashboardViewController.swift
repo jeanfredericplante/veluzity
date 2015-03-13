@@ -132,6 +132,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     func didUpdateWeather() {
         var temperature: Double
+        var weatherDescription: String
         if defaults.isFahrenheit {
             temperature = locationWeather.temperatureFahrenheit()
         } else {
@@ -142,7 +143,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         weatherIcon.image = locationWeather.getWeatherIconImage()
         SpeedViewsHelper.setImageAndTextColor(view: weatherView,
             color: SpeedViewsHelper.getWeatherColor())
-    
+        
     }
      
     func getMaxSpeed() -> Double {
