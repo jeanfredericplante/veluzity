@@ -11,6 +11,10 @@ import Foundation
 class Settings {
     var defaults: NSUserDefaults?
     
+    struct Constants {
+        static let speedResolution: Int = 5 // in mph or kmh, increment to determine max speed
+    }
+    
     init () {
         defaults = NSUserDefaults.standardUserDefaults()
         if maxSpeed == 0 { initSettingsAtFirstLaunch() }
@@ -33,7 +37,19 @@ class Settings {
     var maxSpeed: Double {
         get { return defaults?.doubleForKey("maxSpeed")  ?? 0 }
         set {
-            defaults?.setDouble(newValue, forKey: "maxSpeed")
+            var roundedMph: Double
+            
+            // TODO: could i make that more complex?
+            if isMph {
+                let maxSpeedMph =  newValue * Params.Conversion.msToMph
+                roundedMph = Double((SpeedViewsHelper.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedMph))) / Params.Conversion.msToMph
+            } else {
+                let maxSpeedKmh = newValue * Params.Conversion.msToKmh
+                roundedMph = Double((SpeedViewsHelper.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedKmh))) / Params.Conversion.msToKmh
+            }
+            
+ 
+            defaults?.setDouble(roundedMph, forKey: "maxSpeed")
             defaults?.synchronize()
         }
     }

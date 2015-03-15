@@ -80,8 +80,7 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func speedSliderChanged(sender: UISlider) {
-        defaults.maxSpeed = Double(roundToNearest(increment: Constants.speedResolution,
-            for_value: Double(sender.value)))
+        defaults.maxSpeed = Double(sender.value)
         maxSpeedLabel.text = maxSpeedLabLocalized()
         delegate?.preferenceUpdated?()
         
@@ -131,15 +130,13 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
         let maxSpeedKmh = defaults.maxSpeed * Params.Conversion.msToKmh
         
         if defaults.isMph {
-            return "Max speed: \(roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedMph)) mph"
+            return "Max speed: \(SpeedViewsHelper.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedMph)) mph"
         } else {
-            return "Max speed: \(roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedKmh)) km/h"
+            return "Max speed: \(SpeedViewsHelper.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedKmh)) km/h"
         }
     }
     
-    private func roundToNearest(increment: Int = 5, for_value value: Double) -> Int {
-        return  increment * Int (max(0, round(value / Double(increment))))
-    }
+
     
     private func setUISegmentedControlFonts() {
         var attr: NSDictionary
