@@ -581,8 +581,8 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dua-Pv-iez" secondAttribute="bottom" constant="5" id="ubS-ns-pQ5"/>
-                            <constraint firstItem="E2S-2M-EEi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="wTd-9Y-p6A">
-                                <variation key="heightClass=compact" constant="10"/>
+                            <constraint firstItem="E2S-2M-EEi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="wTd-9Y-p6A">
+                                <variation key="heightClass=compact" constant="8" symbolic="YES"/>
                             </constraint>
                             <constraint firstItem="hee-Pm-0Iw" firstAttribute="height" secondItem="Sf3-IA-Mt8" secondAttribute="height" id="xeE-rw-qxv"/>
                             <constraint firstItem="b2y-KI-HeR" firstAttribute="top" secondItem="Sf3-IA-Mt8" secondAttribute="bottom" constant="-9" id="yvz-GY-SKK">
