@@ -148,6 +148,8 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
                 forKeys: [ NSForegroundColorAttributeName])
         }
         UISegmentedControl.appearance().setTitleTextAttributes(attr, forState: .Normal)
+        UISegmentedControl.appearance().setTitleTextAttributes(attr, forState: .Selected)
+
     }
     
     private func initializePreferenceControls() {

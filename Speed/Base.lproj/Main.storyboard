@@ -54,14 +54,13 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="geM-Vj-Cov">
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="geM-Vj-Cov">
                                                 <rect key="frame" x="8" y="142" width="220" height="41"/>
-                                                <color key="backgroundColor" red="0.12941176470588237" green="0.13725490196078433" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                 <segments>
                                                     <segment title="ºF"/>
                                                     <segment title="ºC"/>
                                                 </segments>
-                                                <color key="tintColor" red="0.30196078431372547" green="0.33725490196078434" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" red="0.17254901960784313" green="0.18431372549019609" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="temperaturePressed:" destination="EoH-KH-Mxk" eventType="valueChanged" id="IoZ-Zi-Ue9"/>
                                                 </connections>
@@ -72,9 +71,8 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="4wZ-oR-ZJV">
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="4wZ-oR-ZJV">
                                                 <rect key="frame" x="8" y="45" width="220" height="41"/>
-                                                <color key="backgroundColor" red="0.12941176470588237" green="0.13725490196078433" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="GpE-jg-OHt"/>
                                                     <constraint firstAttribute="width" constant="220" id="Yvr-N9-1vJ"/>
@@ -83,7 +81,7 @@
                                                     <segment title="mph"/>
                                                     <segment title="km/h"/>
                                                 </segments>
-                                                <color key="tintColor" red="0.30196078431372547" green="0.33725490196078434" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" red="0.17254901960784313" green="0.18431372549019609" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="speedPressed:" destination="EoH-KH-Mxk" eventType="valueChanged" id="gHu-X7-jsy"/>
                                                 </connections>
@@ -96,7 +94,7 @@
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="65" minValue="40" maxValue="80" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-8v-BE1">
                                                 <rect key="frame" x="6" y="273" width="224" height="31"/>
-                                                <color key="tintColor" red="0.30196078431372547" green="0.33725490196078434" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" red="0.17254901960784313" green="0.18431372549019609" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="74" y="104" width="118" height="31"/>
                                                 </variation>
@@ -178,7 +176,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.21176470588235294" blue="0.25882352941176473" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.27254833202613027" green="0.28413306960934087" blue="0.33480511527312429" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.094117647058823528" green="0.74509803921568629" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="PGf-mH-f6c" firstAttribute="leading" secondItem="8FU-lC-LUR" secondAttribute="leading" id="898-Gt-Rf8"/>
@@ -191,7 +189,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.17246812582015991" green="0.18517181277275085" blue="0.24668249487876892" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.19033933234842201" green="0.20159602871066645" blue="0.25464458371463577" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="3EL-hI-jvB" firstAttribute="leading" secondItem="tYq-b4-faR" secondAttribute="trailing" constant="15" id="0w3-Ha-XRR"/>
                             <constraint firstItem="OcS-WK-RrU" firstAttribute="leading" secondItem="RRu-wk-6rZ" secondAttribute="leadingMargin" constant="-16" id="2i2-ym-g4c"/>
@@ -643,6 +641,6 @@
         <image name="FantasticWhaleLabs_WhiteIcon" width="79" height="102"/>
         <image name="LocationWhite" width="65" height="65"/>
         <image name="Settings" width="65" height="65"/>
-        <image name="hamburger" width="40" height="26"/>
+        <image name="hamburger" width="41" height="41"/>
     </resources>
 </document>

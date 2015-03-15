@@ -47,7 +47,7 @@ class SpeedViewsHelper {
     
     
     class func setLabelsColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
-        let addShadow = true
+        let addShadow = false
         if view != nil {
             let allSubviews = view.subviews
             let allLabels = allSubviews.filter({$0.isKindOfClass(UILabel)}) as [UILabel]
