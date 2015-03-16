@@ -88,7 +88,7 @@ extension UIBezierPath {
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews()
+//        super.layoutSubviews()
         setupMeter()
         speedBackgroundPath = backgroundMeterPath()
         setMeterPath(speedCurveLayer)

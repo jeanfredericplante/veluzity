@@ -41,7 +41,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         
         // Sets up view controller for the dashboard, and hierarchy
         mainViewNavigationController = UINavigationController(rootViewController: mainViewController)
-        view.addSubview(mainViewController.view)
+        self.view.addSubview(mainViewController.view)
         addChildViewController(mainViewController)
         mainViewController.didMoveToParentViewController(self)
         
@@ -57,11 +57,9 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-    }
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
         closePreferencePane()
     }
     

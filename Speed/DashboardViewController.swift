@@ -68,6 +68,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
             self.didUpdateWeather()
         }
         
+        
         // updates sleep mode
         self.updateSleepMode()
         
@@ -80,15 +81,12 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
 
     }
     
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-    }
-    
+   
     func didUpdateLocation() {
   
         // Updates gradient background
@@ -123,10 +121,6 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
                 locationWeather.getWeatherFromAPI()
             }
         }
-    }
-    
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-
     }
     
     

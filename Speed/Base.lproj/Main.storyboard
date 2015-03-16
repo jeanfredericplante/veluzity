@@ -229,7 +229,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="94" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GiW-4S-PCo" customClass="ColorGradient" customModule="Veluzity" customModuleProvider="target">
@@ -521,7 +521,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2S-2M-EEi">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2S-2M-EEi">
                                 <rect key="frame" x="16" y="25" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
@@ -530,7 +530,7 @@
                                     <constraint firstAttribute="width" constant="25" id="icf-3w-lTu"/>
                                     <constraint firstAttribute="height" constant="25" id="idS-x9-Lzp"/>
                                 </constraints>
-                                <state key="normal" title="Prefs" image="hamburger">
+                                <state key="normal" title="Prefs" image="Hamburger">
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -639,8 +639,8 @@
         <image name="12nWhite" width="65" height="65"/>
         <image name="DirectionWhite" width="65" height="65"/>
         <image name="FantasticWhaleLabs_WhiteIcon" width="79" height="102"/>
+        <image name="Hamburger" width="41" height="41"/>
         <image name="LocationWhite" width="65" height="65"/>
         <image name="Settings" width="65" height="65"/>
-        <image name="hamburger" width="41" height="41"/>
     </resources>
 </document>

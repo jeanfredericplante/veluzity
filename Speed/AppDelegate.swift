@@ -26,9 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // start analytics
         Flurry.setCrashReportingEnabled(true)
         Flurry.startSession("***REMOVED***")
-
-        
-        
+  
         return true
     }
 
