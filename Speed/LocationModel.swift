@@ -30,8 +30,8 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
         super.init()
         setupLocationManager()
 
-
     }
+    
     
     func setupLocationManager() {
         self.locationManager.delegate = self

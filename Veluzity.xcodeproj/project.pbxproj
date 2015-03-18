@@ -152,8 +152,8 @@
 		7E00F5BD1A74666F007C3992 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7EEFE7F21AA0560C00565DAA /* Params.swift */,
 				7EEFE7F41AA1605000565DAA /* Settings.swift */,
+				7EEFE7F21AA0560C00565DAA /* Params.swift */,
 				7EC245891A507E05005F2FEA /* WeatherModel.swift */,
 				7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */,
 			);
@@ -693,6 +693,7 @@
 				7ED0E91E1AB26FA8004134CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7ED0E9201AB26FA8004134CE /* Build configuration list for PBXNativeTarget "Veluzity WatchKit Extension" */ = {
 			isa = XCConfigurationList;
@@ -701,6 +702,7 @@
 				7ED0E91C1AB26FA8004134CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
