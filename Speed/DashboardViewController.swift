@@ -31,7 +31,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     @IBOutlet weak var headingView: UIView!
     @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var speedMeter: SpeedMeter!
-    
+    @IBOutlet weak var weatherDescription: UILabel!
     
     
     var userLocation: LocationModel!
@@ -126,14 +126,14 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     func didUpdateWeather() {
         var temperature: Double
-        var weatherDescription: String
         if defaults.isFahrenheit {
             temperature = locationWeather.temperatureFahrenheit()
         } else {
             temperature = locationWeather.temperature()
         }
         tempDisplay.attributedText = SpeedViewsHelper.weatherViewFormattedText(temperature,
-            description: locationWeather.getWeatherDescription(), font: tempDisplay.font)
+            description: "", font: tempDisplay.font)
+        weatherDescription.text = locationWeather.weatherDescription?.lowercaseString
         weatherIcon.image = locationWeather.getWeatherIconImage()
         SpeedViewsHelper.setImageAndTextColor(view: weatherView,
             color: SpeedViewsHelper.getWeatherColor())
