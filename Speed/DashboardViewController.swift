@@ -78,10 +78,10 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         
         // Set status bar to light
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
 
     }
-    
- 
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
