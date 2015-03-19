@@ -53,18 +53,7 @@ class Settings {
             defaults?.synchronize()
         }
     }
-    
-    var streetName: String? {
-        get {
-            return defaults?.objectForKey("streetName") as? String
-            }
-        set {
-            defaults?.setObject(newValue, forKey: "streetName")
-        }
-    }
-
-
-    
+      
 
     
     private func initSettingsAtFirstLaunch(){
