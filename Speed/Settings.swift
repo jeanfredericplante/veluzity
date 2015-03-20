@@ -15,6 +15,8 @@ class Settings {
         static let speedResolution: Int = 5 // in mph or kmh, increment to determine max speed
     }
     
+
+    
     init () {
         defaults = NSUserDefaults.standardUserDefaults()
         if maxSpeed == 0 { initSettingsAtFirstLaunch() }
@@ -34,6 +36,19 @@ class Settings {
             defaults?.synchronize()
         }
     }
+    
+    
+    func saveDictionary(dictionary: NSDictionary, withKey: String) {
+        defaults?.setObject(dictionary, forKey: withKey)
+    }
+    
+    func restoreDictionaryForKey(key: String) -> NSDictionary? {
+        return defaults?.dictionaryForKey(key)
+    }
+    
+    
+    
+    
     var maxSpeed: Double {
         get { return defaults?.doubleForKey("maxSpeed")  ?? 0 }
         set {

@@ -50,26 +50,31 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     // create update delegate type
     typealias WeatherUpdateDelegate = (WeatherModel) -> ()
     
-    let currentWeatherServiceUrl = "http://api.openweathermap.org/data/2.5/weather"
+    struct Constants {
+        static let minDistanceToUpdateWeather:Double = 500 // distance to travel before we bug openweathermap again in meters
+        static let maxTimeBetweenUpdates: NSTimeInterval = 300 // maximum time between updates in seconds
+        static let minTimeBetweenUpates: NSTimeInterval = 15
+        static let currentWeatherServiceUrl = "http://api.openweathermap.org/data/2.5/weather"
+
+    }
     
+
     var weatherIcon: String?
     var weatherDescription: String?
-    var minDistanceToUpdateWeather:Double = 500 // distance to travel before we bug openweathermap again in meters
-    var maxTimeBetweenUpdates: NSTimeInterval = 300 // maximum time between updates in seconds
-    var minTimeBetweenUpates: NSTimeInterval = 15
-    var lastReadTemperatureCelsius: Double
+    var lastReadTemperatureCelsius: Double?
     var lastUpdateTime: NSDate?
     var coordinates: CLLocationCoordinate2D
     var weatherResponseData: NSMutableData
     var temperatureUpdated: WeatherUpdateDelegate?
     var weatherApiCallCounts: Int = 0
-    
+    var minDistanceToUpdateWeather = Constants.minDistanceToUpdateWeather
+    var maxTimeBetweenUpdates = Constants.maxTimeBetweenUpdates
+  
     
     override init() {
         weatherResponseData = NSMutableData()
-        lastReadTemperatureCelsius = 20
         coordinates = CLLocationCoordinate2D(latitude: 48, longitude: 3)
-        lastUpdateTime =  NSDate(timeInterval: -minTimeBetweenUpates, sinceDate: NSDate())
+        lastUpdateTime =  NSDate(timeInterval: -Constants.minTimeBetweenUpates, sinceDate: NSDate())
     }
     
     func setPosition(newCoordinates: CLLocationCoordinate2D) -> Void {
@@ -77,11 +82,11 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     }
     
     func setUpdateTime(time: NSTimeInterval) {
-        self.maxTimeBetweenUpdates = time
+        maxTimeBetweenUpdates = time
     }
     
     func setUpdateDistance(distance: Double) {
-        self.minDistanceToUpdateWeather = distance
+        minDistanceToUpdateWeather = distance
     }
     
     func shouldUpdateWeather(newCoordinates: CLLocationCoordinate2D) -> Bool {
@@ -97,7 +102,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         } else {
             shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh =
                 lastUpdateTime!.timeIntervalSinceNow < -maxTimeBetweenUpdates // timeSinceInterval will be negative
-            hasPassedMinTimeBetweenCalls = lastUpdateTime!.timeIntervalSinceNow < -minTimeBetweenUpates
+            hasPassedMinTimeBetweenCalls = lastUpdateTime!.timeIntervalSinceNow < -Constants.minTimeBetweenUpates
         }
         if (distance > minDistanceToUpdateWeather && hasPassedMinTimeBetweenCalls) || shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh {
             return true
@@ -106,16 +111,48 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         }
     }
     
-    func temperature() -> Double {
-        return lastReadTemperatureCelsius
+    func temperature() -> Double? {
+        return lastReadTemperatureCelsius?
     }
     
-    func temperatureFahrenheit() -> Double {
-        return lastReadTemperatureCelsius*9/5+32
+    func temperatureFahrenheit() -> Double? {
+        if let tc = lastReadTemperatureCelsius {
+            return 9/5 * tc + 32
+        } else {
+            return nil
+        }
     }
     
     func getWeatherIcon() -> String {
         return weatherIcon? ?? "01d"
+    }
+    
+    // Save and restore state
+    
+    func saveState() {
+        let defaults = Settings()
+        var currentTemp = ""
+        if let temp = temperature() {
+            currentTemp = String(format: "%.0f", temp)
+        }
+        var state: Dictionary<String,String> = [
+            "icon": getWeatherIcon(),
+            "temperature": currentTemp,
+            "description": getWeatherDescription()]
+        
+        defaults.saveDictionary(state as NSDictionary, withKey: "WeatherModel.defaults")
+    }
+    
+    func restoreState() {
+        let defaults = Settings()
+        var savedState = defaults.restoreDictionaryForKey("WeatherModel.defaults")
+        if let state = savedState as? Dictionary<String,String> {
+            self.weatherIcon = state["icon"]
+            self.weatherDescription = state["description"]
+            if let newTemp = state["temperature"] {
+                self.lastReadTemperatureCelsius = (newTemp as NSString).doubleValue
+            }
+        }
     }
     
     // TODO: Shouldn't be any ui image here
@@ -141,7 +178,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         
     func getWeatherFromAPI()
     {
-        var requestURL = currentWeatherServiceUrl + "?lat=" + coordinates.latitude.description +
+        var requestURL = Constants.currentWeatherServiceUrl + "?lat=" + coordinates.latitude.description +
         "&lon=" + coordinates.longitude.description
         println("url: \(requestURL.debugDescription)")
         let request = NSURLRequest(URL: NSURL(string: requestURL)!)
@@ -176,7 +213,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
                 self.lastUpdateTime = NSDate() // now
                 self.temperatureUpdated!(self)
                 
-                println("temperature updated to \(lastReadTemperatureCelsius.description)")
+                println("temperature updated to \(lastReadTemperatureCelsius?.description)")
             }
             
         } else {

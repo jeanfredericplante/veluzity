@@ -59,6 +59,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         SpeedViewsHelper.setImageAndTextColor(view: speedMeter,
             color: SpeedViewsHelper.getColorForElement(.Speed))
         
+       
         // sets location to undefined until we get one
         notifyLocationUndefined()
         
@@ -76,10 +77,17 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         // adds obsever on battery charging state
         nc.addObserver(self, selector: "deviceBatteryStateChanged", name: UIDeviceBatteryStateDidChangeNotification, object: device)
         
+        
+        // Add enter background observer to save state
+        nc.addObserver(self, selector: Selector("saveState"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+
         // Set status bar to light
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
-
+        // restore last used values
+        locationWeather.restoreState()
+        self.didUpdateWeather()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -125,11 +133,11 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     
     func didUpdateWeather() {
-        var temperature: Double
+        var temperature: Double?
         if defaults.isFahrenheit {
-            temperature = locationWeather.temperatureFahrenheit()
+            temperature = locationWeather.temperatureFahrenheit()?
         } else {
-            temperature = locationWeather.temperature()
+            temperature = locationWeather.temperature()?
         }
         tempDisplay.attributedText = SpeedViewsHelper.weatherViewFormattedText(temperature,
             description: "", font: tempDisplay.font)
@@ -172,6 +180,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         }
     }
     
+  
     private func notifyLocationUndefined() -> Void {
         locationDisplay.text = "Locating..."
         locationSubtextDisplay.text = " "
@@ -195,6 +204,11 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         var currentBatteryState = device.batteryState;
         UIApplication.sharedApplication().idleTimerDisabled = currentBatteryState == .Charging
     }
+    
+    func saveState() {
+        locationWeather.saveState()
+    }
+    
     
 }
 

@@ -111,7 +111,7 @@ class SpeedViewsHelper {
     }
     
     
-    class func weatherViewFormattedText(temperature: Double!, description: String! = nil, font: UIFont) -> NSAttributedString {
+    class func weatherViewFormattedText(temperature: Double?, description: String! = nil, font: UIFont) -> NSAttributedString {
         var temperatureText: String = ""
         var descriptionText: String = ""
         
