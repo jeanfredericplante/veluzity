@@ -96,6 +96,8 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     }
    
     func didUpdateLocation() {
+        
+        println("updating location")
   
         // Updates gradient background
         gradientView.direction = userLocation.getHeadingDegrees()
@@ -139,8 +141,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         } else {
             temperature = locationWeather.temperature()?
         }
-        tempDisplay.attributedText = SpeedViewsHelper.weatherViewFormattedText(temperature,
-            description: "", font: tempDisplay.font)
+        tempDisplay.text = SpeedViewsHelper.formattedTemperature(temperature)
         weatherDescription.text = locationWeather.weatherDescription?.lowercaseString
         weatherIcon.image = locationWeather.getWeatherIconImage()
         SpeedViewsHelper.setImageAndTextColor(view: weatherView,

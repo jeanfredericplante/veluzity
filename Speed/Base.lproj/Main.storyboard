@@ -451,12 +451,12 @@
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-KI-HeR" userLabel="weatherView">
                                 <subviews>
-                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="12nWhite" translatesAutoresizingMaskIntoConstraints="NO" id="m0n-eS-i98">
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="50nWhite" translatesAutoresizingMaskIntoConstraints="NO" id="m0n-eS-i98">
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="m0n-eS-i98" secondAttribute="height" multiplier="1:1" id="fvG-rf-hh7"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" misplaced="YES" text="72 °" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="UWE-Xm-xi2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" misplaced="YES" text="59°" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="UWE-Xm-xi2">
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
                                         <color key="textColor" red="0.80000001192092896" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -464,7 +464,7 @@
                                             <rect key="frame" x="51" y="3" width="405" height="59"/>
                                         </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sky is clear" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="bYw-jq-NcO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sky is clear" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bYw-jq-NcO">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -654,7 +654,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="12nWhite" width="65" height="65"/>
+        <image name="50nWhite" width="65" height="65"/>
         <image name="DirectionWhite" width="65" height="65"/>
         <image name="FantasticWhaleLabs_WhiteIcon" width="79" height="102"/>
         <image name="Hamburger" width="41" height="41"/>

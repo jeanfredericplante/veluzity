@@ -112,14 +112,23 @@ class SpeedViewsHelper {
     
     
     class func weatherViewFormattedText(temperature: Double?, description: String! = nil, font: UIFont) -> NSAttributedString {
-        var temperatureText: String = ""
         var descriptionText: String = ""
-        
-        if temperature != nil { temperatureText = NSString(format: "%.0f°", temperature!) }
-        if description != nil { descriptionText = " " + description }
+ 
+        if description != nil { descriptionText = "" + description }
         
         // adding a space for line break with small labels
-        return textWithTwoFontSizes(temperatureText, smallText: descriptionText, font: font, ratio: 0.4)
+        return textWithTwoFontSizes(formattedTemperature(temperature), smallText: descriptionText, font: font, ratio: 0.4)
+    }
+    
+    
+    class func formattedTemperature(temperature: Double?) -> NSString {
+        var formattedTemp: NSString
+        if let temp = temperature {
+            formattedTemp = NSString(format: "%.0f°", temp)
+        } else {
+            formattedTemp = NSString(string: "--°")
+        }
+        return formattedTemp
     }
     
     class func getWeatherIconImage() -> UIImage? {
