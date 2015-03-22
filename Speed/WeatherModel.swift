@@ -152,6 +152,11 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
             if let newTemp = state["temperature"] {
                 self.lastReadTemperatureCelsius = (newTemp as NSString).doubleValue
             }
+        } else {
+            // set defaults value for first launch
+            self.weatherIcon = "01d"
+            self.weatherDescription = "sky is clear"
+            self.lastReadTemperatureCelsius = 20
         }
     }
     

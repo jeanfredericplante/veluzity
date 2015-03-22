@@ -37,7 +37,6 @@ class Settings {
         }
     }
     
-    
     func saveDictionary(dictionary: NSDictionary, withKey: String) {
         defaults?.setObject(dictionary, forKey: withKey)
     }
