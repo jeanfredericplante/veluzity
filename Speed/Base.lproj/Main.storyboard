@@ -163,7 +163,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="8FU-lC-LUR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="8FU-lC-LUR">
                                         <rect key="frame" x="88" y="56" width="169" height="34"/>
                                         <string key="text">Copyright (c) 2015
 Fantastic Whale Labs</string>
@@ -607,28 +607,28 @@ Fantastic Whale Labs</string>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="KXc-k7-beo"/>
-                                <exclude reference="Rmx-6f-hTS"/>
                                 <exclude reference="2FF-wt-TnC"/>
                                 <exclude reference="H3W-ja-Tie"/>
                                 <exclude reference="Jgo-3Q-Mnu"/>
+                                <exclude reference="KXc-k7-beo"/>
+                                <exclude reference="Rmx-6f-hTS"/>
                                 <exclude reference="ubS-ns-pQ5"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
+                                <include reference="HmE-MW-ekQ"/>
+                                <exclude reference="lMp-Uk-0bj"/>
+                                <include reference="2FF-wt-TnC"/>
+                                <include reference="H3W-ja-Tie"/>
+                                <exclude reference="Jgo-3Q-Mnu"/>
+                                <exclude reference="cJd-9Y-XQR"/>
                                 <exclude reference="8dl-vG-3ec"/>
                                 <include reference="KXc-k7-beo"/>
                                 <include reference="Rmx-6f-hTS"/>
                                 <exclude reference="cTu-Kn-8im"/>
                                 <exclude reference="gd8-NO-5v2"/>
-                                <include reference="2FF-wt-TnC"/>
-                                <include reference="H3W-ja-Tie"/>
-                                <exclude reference="Jgo-3Q-Mnu"/>
-                                <exclude reference="cJd-9Y-XQR"/>
                                 <include reference="ubS-ns-pQ5"/>
-                                <include reference="HmE-MW-ekQ"/>
-                                <exclude reference="lMp-Uk-0bj"/>
                             </mask>
                         </variation>
                     </view>
