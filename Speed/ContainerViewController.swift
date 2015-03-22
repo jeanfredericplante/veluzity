@@ -150,6 +150,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
             if (currentState == .PreferenceCollapsed) {
                 if gestureIsDraggingFromLeftToRight {
                     addPreferencePaneViewController()
+                    showShadowForMainView(true)
                 }
             }
         case .Changed:
