@@ -37,4 +37,20 @@ class EmailComposer: MFMailComposeViewController, MFMailComposeViewControllerDel
     }
     
     
+    private func gatherDeviceInformationForFeedbackAsHtml() -> String {
+        let currentDevice = UIDevice.currentDevice()
+        let deviceModel = UIDevice.currentDevice().model
+        let osVersion = UIDevice.currentDevice().systemVersion
+        
+        return ""
+    }
+    
+    private func getScreenSize() -> String {
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        return "screen size: \(screenWidth.description)x\(screenHeight.description)"
+    }
+
+    
 }

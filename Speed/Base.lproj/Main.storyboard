@@ -109,7 +109,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaK-Ub-ZXL">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaK-Ub-ZXL">
                                                 <rect key="frame" x="8" y="292" width="141" height="38"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
                                                 <state key="normal" title="Send feedback (temp)">
@@ -128,7 +128,9 @@
                                             <constraint firstItem="4wZ-oR-ZJV" firstAttribute="height" secondItem="geM-Vj-Cov" secondAttribute="height" id="2qa-hD-NwC"/>
                                             <constraint firstItem="5FE-Mw-b8F" firstAttribute="width" relation="lessThanOrEqual" secondItem="geM-Vj-Cov" secondAttribute="width" id="AQe-dX-Dn7"/>
                                             <constraint firstItem="xtG-8v-BE1" firstAttribute="leading" secondItem="geM-Vj-Cov" secondAttribute="leading" id="B0a-u1-CKP"/>
-                                            <constraint firstItem="LaK-Ub-ZXL" firstAttribute="top" secondItem="5FE-Mw-b8F" secondAttribute="bottom" constant="70" id="Ej3-Sr-f8d"/>
+                                            <constraint firstItem="LaK-Ub-ZXL" firstAttribute="top" secondItem="5FE-Mw-b8F" secondAttribute="bottom" constant="70" id="Ej3-Sr-f8d">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="80"/>
+                                            </constraint>
                                             <constraint firstItem="CNI-HF-OD0" firstAttribute="width" relation="lessThanOrEqual" secondItem="5FE-Mw-b8F" secondAttribute="width" id="FVz-1M-ZFC"/>
                                             <constraint firstItem="4wZ-oR-ZJV" firstAttribute="leading" secondItem="Wcj-pG-7zZ" secondAttribute="leading" id="Ifd-TN-gIe"/>
                                             <constraint firstItem="CNI-HF-OD0" firstAttribute="leading" secondItem="5FE-Mw-b8F" secondAttribute="leading" id="LEL-1q-CHS"/>
@@ -141,7 +143,9 @@
                                             <constraint firstItem="Wcj-pG-7zZ" firstAttribute="leading" secondItem="Nld-CE-Rly" secondAttribute="leadingMargin" id="aLQ-d2-1TF"/>
                                             <constraint firstItem="CNI-HF-OD0" firstAttribute="top" secondItem="5FE-Mw-b8F" secondAttribute="bottom" id="cbh-8M-5ll"/>
                                             <constraint firstItem="5FE-Mw-b8F" firstAttribute="top" secondItem="geM-Vj-Cov" secondAttribute="bottom" constant="20" id="izJ-Kq-TPa"/>
-                                            <constraint firstAttribute="height" constant="320" id="k4H-ga-nJZ"/>
+                                            <constraint firstAttribute="height" constant="320" id="k4H-ga-nJZ">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="340"/>
+                                            </constraint>
                                             <constraint firstItem="4wZ-oR-ZJV" firstAttribute="width" secondItem="geM-Vj-Cov" secondAttribute="width" id="n2d-1Z-Xfc"/>
                                             <constraint firstItem="geM-Vj-Cov" firstAttribute="top" secondItem="q71-HG-WWz" secondAttribute="bottom" constant="8" symbolic="YES" id="nD2-Le-4IK"/>
                                             <constraint firstItem="xtG-8v-BE1" firstAttribute="top" secondItem="CNI-HF-OD0" secondAttribute="bottom" constant="8" symbolic="YES" id="nSG-oM-PaB"/>
@@ -328,19 +332,19 @@ Fantastic Whale Labs</string>
                                     <constraint firstItem="fKy-ed-X8q" firstAttribute="leading" secondItem="dua-Pv-iez" secondAttribute="leading" id="dKC-Df-5g7"/>
                                 </constraints>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hee-Pm-0Iw" userLabel="addressView">
+                            <view opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hee-Pm-0Iw" userLabel="addressView">
                                 <subviews>
                                     <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="LocationWhite" translatesAutoresizingMaskIntoConstraints="NO" id="Dx3-N8-Hmz">
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Dx3-N8-Hmz" secondAttribute="height" multiplier="1:1" id="pJU-CR-ilT"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rancho Bernardo Dr" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="jCq-5v-Upo">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rancho Bernardo Dr" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="jCq-5v-Upo">
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
                                         <color key="textColor" red="0.49411764705882355" green="1" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Diego, California" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-lk-FaR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="San Diego, California" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-lk-FaR">
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.4941176471" green="1" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -400,7 +404,7 @@ Fantastic Whale Labs</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-IA-Mt8" userLabel="headingView">
+                            <view opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-IA-Mt8" userLabel="headingView">
                                 <subviews>
                                     <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DirectionWhite" translatesAutoresizingMaskIntoConstraints="NO" id="cGI-jv-dtz">
                                         <constraints>
@@ -468,7 +472,7 @@ Fantastic Whale Labs</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-KI-HeR" userLabel="weatherView">
+                            <view opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-KI-HeR" userLabel="weatherView">
                                 <subviews>
                                     <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01dWhite" translatesAutoresizingMaskIntoConstraints="NO" id="m0n-eS-i98">
                                         <constraints>
@@ -523,8 +527,8 @@ Fantastic Whale Labs</string>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="1ai-3D-aco"/>
-                                        <include reference="RGT-5U-XTd"/>
                                         <include reference="6vF-w6-Qsm"/>
+                                        <include reference="RGT-5U-XTd"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
@@ -532,9 +536,9 @@ Fantastic Whale Labs</string>
                                         <include reference="bYw-jq-NcO"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="ijU-3r-c54"/>
                                         <include reference="UbM-V6-Rp8"/>
                                         <include reference="sex-X0-Aim"/>
-                                        <include reference="ijU-3r-c54"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
