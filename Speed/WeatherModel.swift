@@ -223,7 +223,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
             
         } else {
             println("invalid json: \(myError?.localizedDescription)")
-//            println("raw json:\()")
+            println("raw json:\(json.description)")
         }
     }
     
