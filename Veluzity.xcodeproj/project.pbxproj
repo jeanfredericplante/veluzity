@@ -22,6 +22,7 @@
 		7EC2456F1A4F486D005F2FEA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EC2456D1A4F486D005F2FEA /* LaunchScreen.xib */; };
 		7EC2458A1A507E05005F2FEA /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245891A507E05005F2FEA /* WeatherModel.swift */; };
 		7ECAE10A1A50E8F700AB9A5C /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */; };
+		7ED5946C1AC3D17C0047B88E /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */; };
 		7EEFE7F31AA0560C00565DAA /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F21AA0560C00565DAA /* Params.swift */; };
 		7EEFE7F51AA1605000565DAA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F41AA1605000565DAA /* Settings.swift */; };
 		7EF7DDC01A74766A00C74AF0 /* SpeedViewsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */; };
@@ -65,6 +66,7 @@
 		7EC2458C1A507E1E005F2FEA /* WeatherModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModelTests.swift; sourceTree = "<group>"; };
 		7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModelTests.swift; sourceTree = "<group>"; };
 		7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailComposer.swift; sourceTree = "<group>"; };
 		7EEFE7F21AA0560C00565DAA /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Params.swift; sourceTree = "<group>"; };
 		7EEFE7F41AA1605000565DAA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedViewsHelper.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		7E00F5BB1A746443007C3992 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7ED5946A1AC3D11F0047B88E /* Helpers */,
 				7EC245681A4F486D005F2FEA /* Main.storyboard */,
 				7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */,
 				7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */,
@@ -101,6 +104,7 @@
 				7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */,
 				7EA417D01A618DC400BE639B /* PreferencePaneController.swift */,
 				7EC245661A4F486D005F2FEA /* DashboardViewController.swift */,
+				7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -187,6 +191,13 @@
 				7EC245791A4F486D005F2FEA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7ED5946A1AC3D11F0047B88E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +288,7 @@
 				7EF7DDC01A74766A00C74AF0 /* SpeedViewsHelper.swift in Sources */,
 				7EC245671A4F486D005F2FEA /* DashboardViewController.swift in Sources */,
 				7EEFE7F51AA1605000565DAA /* Settings.swift in Sources */,
+				7ED5946C1AC3D17C0047B88E /* EmailComposer.swift in Sources */,
 				7EC245651A4F486D005F2FEA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

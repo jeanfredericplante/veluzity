@@ -16,6 +16,8 @@ protocol PreferencePaneControllerDelegate {
 
 class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     let defaults = Settings()
+    let emailView = EmailComposer()
+
     var delegate: PreferencePaneControllerDelegate?
     
     
@@ -48,7 +50,7 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
         setUISegmentedControlFonts()
         setScrollableView()
         setCurrentVersion()
-
+ 
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,6 +83,16 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    
+    @IBAction func sendFeedback(sender: AnyObject) {
+        
+        let configuredMailComposeViewController = emailView.configuredMailComposeViewController()
+        if emailView.canSendMail()
+        {
+            presentViewController(configuredMailComposeViewController, animated: true, completion: nil)
+        }
+    }
+
     
     var speedUnit: SpeedSegments {
         get {
