@@ -78,22 +78,23 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         nc.addObserver(self, selector: "deviceBatteryStateChanged", name: UIDeviceBatteryStateDidChangeNotification, object: device)
         
         
-        // Add enter background observer to save state
-        nc.addObserver(self, selector: Selector("saveState"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        // Add enter background observer to save state, stop location updates
+        nc.addObserver(self, selector: Selector("applicationDidEnterBackground"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        
+        // Add application active observer to restore state, start location updates
+        nc.addObserver(self, selector: Selector("applicationDidBecomeActive"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
 
         // Set status bar to light
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
-        // restore last used values
-        locationWeather.restoreState()
-        self.didUpdateWeather()
-        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
    
     func didUpdateLocation() {
         
@@ -208,6 +209,18 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     func saveState() {
         locationWeather.saveState()
+    }
+    
+    func applicationDidEnterBackground() {
+        saveState()
+        userLocation.stopUpdatingLocation()
+    }
+    
+    func applicationDidBecomeActive() {
+        locationWeather.restoreState()
+        userLocation.startUpdatingLocation()
+        self.didUpdateWeather()
+        
     }
     
     

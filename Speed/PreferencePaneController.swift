@@ -134,16 +134,24 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
 
     
     private func setUISegmentedControlFonts() {
-        var attr: NSDictionary
+        var attrSelected: NSDictionary
+        var attrNormal: NSDictionary
+        let nonSelectedColor = UIColor(red: 0.39, green: 0.40, blue: 0.43, alpha: 1)
+        let selectedColor = UIColor.whiteColor()
         if let segFont = UIFont(name: "HelveticaNeue-Thin", size: 21.0) {
-         attr = NSDictionary(objects: [segFont, UIColor.whiteColor()],
+         attrSelected = NSDictionary(objects: [segFont, selectedColor],
             forKeys: [NSFontAttributeName, NSForegroundColorAttributeName])
+            attrNormal = NSDictionary(objects: [segFont,
+                nonSelectedColor],
+                forKeys: [NSFontAttributeName, NSForegroundColorAttributeName])
         } else {
-         attr = NSDictionary(objects: [UIColor.whiteColor()],
+         attrSelected = NSDictionary(objects: [selectedColor],
+                forKeys: [ NSForegroundColorAttributeName])
+            attrNormal = NSDictionary(objects: [nonSelectedColor],
                 forKeys: [ NSForegroundColorAttributeName])
         }
-        UISegmentedControl.appearance().setTitleTextAttributes(attr, forState: .Normal)
-        UISegmentedControl.appearance().setTitleTextAttributes(attr, forState: .Selected)
+        UISegmentedControl.appearance().setTitleTextAttributes(attrSelected, forState: .Selected)
+        UISegmentedControl.appearance().setTitleTextAttributes(attrNormal, forState: .Normal)
 
     }
     
