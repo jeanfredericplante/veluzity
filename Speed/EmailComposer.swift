@@ -21,11 +21,12 @@ class EmailComposer: MFMailComposeViewController, MFMailComposeViewControllerDel
     func configuredMailComposeViewController() -> MFMailComposeViewController
     {
         let mailComposerVC = MFMailComposeViewController()
+        let body = gatherDeviceInformationForFeedback()
         mailComposerVC.mailComposeDelegate = self
         
-        mailComposerVC.setToRecipients(["veluzity@gmail.com"])
+        mailComposerVC.setToRecipients(["veluzity+support@gmail.com"])
         mailComposerVC.setSubject("Feedback for Veluzity")
-        mailComposerVC.setMessageBody("", isHTML: false)
+        mailComposerVC.setMessageBody(body, isHTML: false)
         
         return mailComposerVC
     }
@@ -37,20 +38,15 @@ class EmailComposer: MFMailComposeViewController, MFMailComposeViewControllerDel
     }
     
     
-    private func gatherDeviceInformationForFeedbackAsHtml() -> String {
-        let currentDevice = UIDevice.currentDevice()
-        let deviceModel = UIDevice.currentDevice().model
-        let osVersion = UIDevice.currentDevice().systemVersion
+    private func gatherDeviceInformationForFeedback() -> String {
+        let spaceBefore = Array(count: 3, repeatedValue: "")
+        let deviceModel = "Model: \(UIApplicationUtils.getDeviceModel())"
+        let osVersion = "OS Version: \(UIApplicationUtils.getOSVersion())"
+        let screenSize = UIApplicationUtils.getScreenSize()
+        let appVersion = "App Version: \(UIApplicationUtils.getAppVersion()) (\(UIApplicationUtils.getAppBuild()))"
         
-        return ""
+        return "\n".join(["", "", "", appVersion, deviceModel, osVersion, screenSize])
     }
     
-    private func getScreenSize() -> String {
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
-        return "screen size: \(screenWidth.description)x\(screenHeight.description)"
-    }
-
     
 }

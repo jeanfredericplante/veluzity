@@ -176,9 +176,7 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
         maxSpeedLabel.text = maxSpeedLabLocalized()
     }
     
-    private func currentVersion() -> String {
-        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
-    }
+
     
     private func setScrollableView() -> Void {
         settingsScrollView.contentSize = CGSize(width: scrollableSettings.bounds.width, height: scrollableSettings.bounds.height)
@@ -187,7 +185,7 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     }
     
     private func setCurrentVersion() -> Void {
-        let version = " v" + currentVersion()
+        let version = " v" + UIApplicationUtils.getAppVersion()
         let font  = versionLabel.font
         let attributedTextForVersion =  SpeedViewsHelper.textWithTwoFontSizes("VELUZITY", smallText: version, font: font, ratio: Constants.fontRatio)
         versionLabel.attributedText = attributedTextForVersion
