@@ -14,6 +14,21 @@ protocol ViewControllerDelegate {
     optional func togglePreferencePane()
 }
 
+extension WeatherModel {
+    func getWeatherIconImage() -> UIImage? {
+        let wi = WeatherIcon(rawValue: getWeatherIcon())
+        if wi == nil {
+            return nil
+        } else {
+            var imageName: String = wi!.rawValue + "White.png"
+            if let currentImage = UIImage(named: imageName) {
+                return currentImage
+            } else {
+                return nil
+            }
+        }
+    }
+}
 
 class DashboardViewController: UIViewController, LocationUpdateDelegate {
 
@@ -194,6 +209,10 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         delegate?.togglePreferencePane?()
     }
     
+    
+    // MARK: Class extension
+    
+
     
     // MARK: Utilities
     // TODO: Move to helper class?
