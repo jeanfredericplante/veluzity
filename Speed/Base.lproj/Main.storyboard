@@ -302,8 +302,10 @@ Fantastic Whale Labs</string>
                                             <constraint firstItem="0jE-ee-Pue" firstAttribute="centerX" secondItem="tJw-Yg-Iyh" secondAttribute="centerX" constant="-0.5" id="4Bm-pr-Tss"/>
                                             <constraint firstItem="0jE-ee-Pue" firstAttribute="centerY" secondItem="tJw-Yg-Iyh" secondAttribute="bottom" constant="50" id="5SY-44-Z8U"/>
                                             <constraint firstAttribute="trailing" secondItem="0jE-ee-Pue" secondAttribute="trailing" constant="15" id="Mpt-9H-XAX"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="226" id="UOY-j9-Xu8"/>
                                             <constraint firstItem="0jE-ee-Pue" firstAttribute="top" secondItem="fKy-ed-X8q" secondAttribute="top" constant="15" id="Zw8-eg-RUv"/>
                                             <constraint firstAttribute="bottom" secondItem="0jE-ee-Pue" secondAttribute="bottom" constant="15" id="qCA-w2-jY7"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="226" id="ya5-Zp-edN"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="trackBorderWidth">
@@ -322,6 +324,18 @@ Fantastic Whale Labs</string>
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="UOY-j9-Xu8"/>
+                                                <exclude reference="ya5-Zp-edN"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="UOY-j9-Xu8"/>
+                                                <include reference="ya5-Zp-edN"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -441,9 +455,6 @@ Fantastic Whale Labs</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
                                         <color key="textColor" red="0.070588235294117646" green="1" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="68" y="-3" width="138" height="91"/>
-                                        </variation>
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="63" y="5" width="280" height="59"/>
                                         </variation>
@@ -500,9 +511,6 @@ Fantastic Whale Labs</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="144" y="61" width="67" height="24"/>
-                                        </variation>
                                         <variation key="heightClass=regular" ambiguous="YES">
                                             <rect key="frame" x="456" y="32" width="92" height="24"/>
                                         </variation>
@@ -515,9 +523,6 @@ Fantastic Whale Labs</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
                                         <color key="textColor" red="0.80000001192092896" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="67" y="0.0" width="76" height="91"/>
-                                        </variation>
                                         <variation key="heightClass=regular" ambiguous="YES">
                                             <rect key="frame" x="51" y="3" width="405" height="59"/>
                                         </variation>
@@ -542,13 +547,22 @@ Fantastic Whale Labs</string>
                                     <constraint firstAttribute="trailing" secondItem="bYw-jq-NcO" secondAttribute="trailing" id="sex-X0-Aim">
                                         <variation key="heightClass=regular" constant="0.0"/>
                                     </constraint>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="324" id="zRw-P4-f2l">
+                                        <variation key="heightClass=compact" constant="200"/>
+                                    </constraint>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zRw-P4-f2l"/>
+                                    </mask>
+                                </variation>
                                 <variation key="heightClass=compact">
                                     <mask key="subviews">
                                         <include reference="UWE-Xm-xi2"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="1ai-3D-aco"/>
+                                        <include reference="zRw-P4-f2l"/>
                                         <include reference="6vF-w6-Qsm"/>
                                         <include reference="RGT-5U-XTd"/>
                                     </mask>
