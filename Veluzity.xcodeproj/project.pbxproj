@@ -94,7 +94,6 @@
 				7ED5946A1AC3D11F0047B88E /* Helpers */,
 				7EC245681A4F486D005F2FEA /* Main.storyboard */,
 				7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */,
-				7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */,
 				7E2320C31A78AED40097D2D8 /* ColorGradient.swift */,
 			);
 			name = Views;
@@ -198,6 +197,7 @@
 		7ED5946A1AC3D11F0047B88E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */,
 				7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */,
 			);
 			name = Helpers;

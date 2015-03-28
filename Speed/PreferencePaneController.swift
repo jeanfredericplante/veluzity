@@ -44,12 +44,15 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollableSettings: UIView!
     @IBOutlet weak var versionLabel: UILabel!
     
+    @IBOutlet weak var sendFeedback: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePreferenceControls()
         setUISegmentedControlFonts()
         setScrollableView()
         setCurrentVersion()
+        setEmailFeedback()
  
     }
     
@@ -191,6 +194,11 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
         versionLabel.attributedText = attributedTextForVersion
     }
     
+    private func setEmailFeedback() -> Void {
+        if !emailView.canSendMail() {
+            sendFeedback.hidden = true
+        }
+    }
     
 
     // MARK
