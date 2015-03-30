@@ -8,26 +8,26 @@
 
 import Foundation
 
-struct Params {
+public struct Params {
     
-    struct Initialization {
+    public struct Initialization {
         // in m/s
-        static let maxSpeedUSA = 29.0
-        static let maxSpeedEurope = 36.1
+        public static let maxSpeedUSA = 29.0
+        public static let maxSpeedEurope = 36.1
     }
     
-    struct SpeedMeter {
-        static let maxSpeedFractionOfDial = 0.6
+    public struct SpeedMeter {
+        public  static let maxSpeedFractionOfDial = 0.6
     }
     
-    struct PreferencePane {
-        static let minMaxSpeedSlider = 8
-        static let maxMaxSpeedSlider = 50
+    public struct PreferencePane {
+        public static let minMaxSpeedSlider = 8
+        public static let maxMaxSpeedSlider = 50
     }
     
-    struct Conversion {
-        static let msToKmh = 3.6
-        static let msToMph = 2.236
+    public struct Conversion {
+        public static let msToKmh = 3.6
+        public static let msToMph = 2.236
     }
     
    

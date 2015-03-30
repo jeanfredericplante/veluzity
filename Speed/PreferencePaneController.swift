@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VeluzityKit
 
 @objc
 protocol PreferencePaneControllerDelegate {
@@ -140,9 +141,9 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
         let maxSpeedKmh = defaults.maxSpeed * Params.Conversion.msToKmh
         
         if defaults.isMph {
-            return "Max speed: \(SpeedViewsHelper.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedMph)) mph"
+            return "Max speed: \(Settings.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedMph)) mph"
         } else {
-            return "Max speed: \(SpeedViewsHelper.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedKmh)) km/h"
+            return "Max speed: \(Settings.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedKmh)) km/h"
         }
     }
     

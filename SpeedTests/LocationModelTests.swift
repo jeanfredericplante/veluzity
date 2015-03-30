@@ -1,5 +1,6 @@
 import UIKit
 import XCTest
+import VeluzityKit
 
 class LocationModelTests: XCTestCase {
     

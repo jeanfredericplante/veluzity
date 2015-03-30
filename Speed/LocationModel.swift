@@ -10,23 +10,23 @@
 import CoreLocation
 import AddressBook
 
-protocol LocationUpdateDelegate {
+public protocol LocationUpdateDelegate {
     func didUpdateLocation()
 }
 
-class LocationModel: NSObject, CLLocationManagerDelegate {
-    var speed: Double = 0.0 // speed in m/s
-    var altitude: Double = 0.0 // altitude in meters
-    var coordinates: CLLocationCoordinate2D?
-    var course: CLLocationDirection? // North/East/West/South
+public class LocationModel: NSObject, CLLocationManagerDelegate {
+    private(set) public var speed: Double = 0.0 // speed in m/s
+    private(set) public var altitude: Double = 0.0 // altitude in meters
+    public var coordinates: CLLocationCoordinate2D?
+    public var course: CLLocationDirection? // North/East/West/South
     let locationManager = CLLocationManager()
     let locationGeoCoder = CLGeocoder()
-    var delegate: LocationUpdateDelegate?
-    var streetName: String?
-    var cityName: String?
-    var stateName: String?
+    public var delegate: LocationUpdateDelegate?
+    public var streetName: String?
+    public var cityName: String?
+    public var stateName: String?
     
-    override init() {
+    public override init() {
         super.init()
         setupLocationManager()
 
@@ -42,13 +42,13 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
         self.locationManager.startUpdatingLocation()
     }
     
-    func speedInKmh() -> Double {
+    public func speedInKmh() -> Double {
         return speed * 3.6
     }
     
     
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    public func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         self.speed = manager.location.speed
         self.coordinates = manager.location.coordinate
         self.course = manager.location.course
@@ -57,16 +57,16 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
         
     }
     
-    func startUpdatingLocation() {
+    public func startUpdatingLocation() {
         self.locationManager.startUpdatingLocation()
     }
     
-    func stopUpdatingLocation() {
+    public func stopUpdatingLocation() {
         self.locationManager.stopUpdatingLocation()
     }
     
     
-    func getStreetName(location: CLLocation) {
+    public func getStreetName(location: CLLocation) {
         locationGeoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
             if error != nil {
                 println("reverse location failed")
@@ -84,7 +84,7 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
     }
     
     
-    func getHeading() -> String {
+    public func getHeading() -> String {
         if course != nil && course >= 0  {
             var cardHeading = getCardinalDirectionFromHeading(self.course!)
             return NSString(format: "%.0f° %@",self.course!, cardHeading) }
@@ -93,18 +93,19 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func getCardinalDirection() -> String {
+    public func getCardinalDirection() -> String {
         if course != nil && course >= 0  {
             return getCardinalDirectionFromHeading(self.course!)}
         else {
             return ""
         }
     }
-    func getHeadingDegrees() -> Double {
+    
+    public func getHeadingDegrees() -> Double {
         return self.course!
     }
     
-    func getCardinalDirectionFromHeading(course: Double) -> String {
+    public func getCardinalDirectionFromHeading(course: Double) -> String {
         var modCourse = Int(round(course%360))
         switch modCourse   {
         case 0...22:

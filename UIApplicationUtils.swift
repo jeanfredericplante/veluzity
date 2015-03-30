@@ -33,9 +33,7 @@ class UIApplicationUtils: NSObject {
     
     class func getScreenSize() -> String {
         let screenSize: CGRect = UIScreen.mainScreen().bounds
-        let screenWidth = screenSize.width.description
-        let screenHeight = screenSize.height.description
-        return "Screen size: \(screenWidth)x\(screenHeight)"
+        return "Screen size: \(screenSize.width)x\(screenSize.height)"
     }
 
 }

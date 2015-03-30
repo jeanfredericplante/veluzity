@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import VeluzityKit
 
 @objc // makes protocol available from Objective C
 protocol ViewControllerDelegate {

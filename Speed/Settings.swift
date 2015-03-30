@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Settings {
+public class Settings {
     var defaults: NSUserDefaults?
     
     struct Constants {
@@ -17,19 +17,19 @@ class Settings {
     
 
     
-    init () {
+    public init () {
         defaults = NSUserDefaults.standardUserDefaults()
         if maxSpeed == 0 { initSettingsAtFirstLaunch() }
     }
     
-    var isMph: Bool {
+    public var isMph: Bool {
         get { return defaults?.boolForKey("isMph") ?? true }
         set {
             defaults?.setBool(newValue, forKey: "isMph")
             defaults?.synchronize()
         }
     }
-    var isFahrenheit: Bool {
+    public var isFahrenheit: Bool {
         get { return (defaults?.boolForKey("isFahrenheit") ?? true) }
         set {
             defaults?.setBool(newValue, forKey: "isFahrenheit")
@@ -37,18 +37,18 @@ class Settings {
         }
     }
     
-    func saveDictionary(dictionary: NSDictionary, withKey: String) {
+    public func saveDictionary(dictionary: NSDictionary, withKey: String) {
         defaults?.setObject(dictionary, forKey: withKey)
     }
     
-    func restoreDictionaryForKey(key: String) -> NSDictionary? {
+    public func restoreDictionaryForKey(key: String) -> NSDictionary? {
         return defaults?.dictionaryForKey(key)
     }
     
     
     
     
-    var maxSpeed: Double {
+    public var maxSpeed: Double {
         get { return defaults?.doubleForKey("maxSpeed")  ?? 0 }
         set {
             var roundedMph: Double
@@ -56,10 +56,10 @@ class Settings {
             // TODO: could i make that more complex?
             if isMph {
                 let maxSpeedMph =  newValue * Params.Conversion.msToMph
-                roundedMph = Double((SpeedViewsHelper.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedMph))) / Params.Conversion.msToMph
+                roundedMph = Double((Settings.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedMph))) / Params.Conversion.msToMph
             } else {
                 let maxSpeedKmh = newValue * Params.Conversion.msToKmh
-                roundedMph = Double((SpeedViewsHelper.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedKmh))) / Params.Conversion.msToKmh
+                roundedMph = Double((Settings.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedKmh))) / Params.Conversion.msToKmh
             }
             
  
@@ -76,5 +76,10 @@ class Settings {
         maxSpeed = Params.Initialization.maxSpeedUSA
         defaults?.synchronize()
     }
+    
+    public class func roundToNearest(increment: Int = 5, for_value value: Double) -> Int {
+        return  increment * Int (max(0, round(value / Double(increment))))
+    }
+    
     
 }

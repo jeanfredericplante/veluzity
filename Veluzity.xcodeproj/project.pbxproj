@@ -12,6 +12,9 @@
 		7E211AC21AA5913F0058301F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC11AA5913F0058301F /* Security.framework */; };
 		7E211AC41AA591500058301F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC31AA591500058301F /* SystemConfiguration.framework */; };
 		7E2320C41A78AED40097D2D8 /* ColorGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2320C31A78AED40097D2D8 /* ColorGradient.swift */; };
+		7E28B95E1AC8E63200095181 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245891A507E05005F2FEA /* WeatherModel.swift */; };
+		7E28B95F1AC8E79200095181 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F41AA1605000565DAA /* Settings.swift */; };
+		7E28B9601AC8E7DC00095181 /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F21AA0560C00565DAA /* Params.swift */; };
 		7E8D0B251AC523BC00DE627B /* UIApplicationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */; };
 		7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */; };
 		7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */; };
@@ -21,13 +24,40 @@
 		7EC2456A1A4F486D005F2FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EC245681A4F486D005F2FEA /* Main.storyboard */; };
 		7EC2456C1A4F486D005F2FEA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EC2456B1A4F486D005F2FEA /* Images.xcassets */; };
 		7EC2456F1A4F486D005F2FEA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EC2456D1A4F486D005F2FEA /* LaunchScreen.xib */; };
-		7EC2458A1A507E05005F2FEA /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245891A507E05005F2FEA /* WeatherModel.swift */; };
-		7ECAE10A1A50E8F700AB9A5C /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */; };
+		7ED15A061AC8571400F329D0 /* VeluzityKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED15A051AC8571400F329D0 /* VeluzityKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7ED15A0C1AC8571400F329D0 /* VeluzityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED15A011AC8571400F329D0 /* VeluzityKit.framework */; };
+		7ED15A151AC8571400F329D0 /* VeluzityKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15A141AC8571400F329D0 /* VeluzityKitTests.swift */; };
+		7ED15A181AC8571400F329D0 /* VeluzityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED15A011AC8571400F329D0 /* VeluzityKit.framework */; };
+		7ED15A191AC8571400F329D0 /* VeluzityKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED15A011AC8571400F329D0 /* VeluzityKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7ED15A211AC8587500F329D0 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */; };
+		7ED15A231AC858A400F329D0 /* LocationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */; };
 		7ED5946C1AC3D17C0047B88E /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */; };
-		7EEFE7F31AA0560C00565DAA /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F21AA0560C00565DAA /* Params.swift */; };
-		7EEFE7F51AA1605000565DAA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F41AA1605000565DAA /* Settings.swift */; };
 		7EF7DDC01A74766A00C74AF0 /* SpeedViewsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7ED15A0D1AC8571400F329D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EC245571A4F486D005F2FEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7ED15A001AC8571400F329D0;
+			remoteInfo = VeluzityKit;
+		};
+		7ED15A0F1AC8571400F329D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EC245571A4F486D005F2FEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7EC2455E1A4F486D005F2FEA;
+			remoteInfo = Speed;
+		};
+		7ED15A161AC8571400F329D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EC245571A4F486D005F2FEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7ED15A001AC8571400F329D0;
+			remoteInfo = VeluzityKit;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7ED0E9211AB26FA8004134CE /* Embed App Extensions */ = {
@@ -38,6 +68,17 @@
 			files = (
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED15A1D1AC8571400F329D0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7ED15A191AC8571400F329D0 /* VeluzityKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -64,13 +105,19 @@
 		7EC2456E1A4F486D005F2FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7EC245791A4F486D005F2FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EC2457A1A4F486D005F2FEA /* SpeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTests.swift; sourceTree = "<group>"; };
-		7EC245891A507E05005F2FEA /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		7EC245891A507E05005F2FEA /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherModel.swift; path = ../Speed/WeatherModel.swift; sourceTree = "<group>"; };
 		7EC2458C1A507E1E005F2FEA /* WeatherModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModelTests.swift; sourceTree = "<group>"; };
-		7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModelTests.swift; sourceTree = "<group>"; };
-		7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationModelTests.swift; path = ../SpeedTests/LocationModelTests.swift; sourceTree = "<group>"; };
+		7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationModel.swift; path = ../Speed/LocationModel.swift; sourceTree = "<group>"; };
+		7ED15A011AC8571400F329D0 /* VeluzityKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VeluzityKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ED15A041AC8571400F329D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ED15A051AC8571400F329D0 /* VeluzityKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VeluzityKit.h; sourceTree = "<group>"; };
+		7ED15A0B1AC8571400F329D0 /* VeluzityKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VeluzityKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ED15A131AC8571400F329D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ED15A141AC8571400F329D0 /* VeluzityKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeluzityKitTests.swift; sourceTree = "<group>"; };
 		7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailComposer.swift; sourceTree = "<group>"; };
-		7EEFE7F21AA0560C00565DAA /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Params.swift; sourceTree = "<group>"; };
-		7EEFE7F41AA1605000565DAA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		7EEFE7F21AA0560C00565DAA /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Params.swift; path = ../Speed/Params.swift; sourceTree = "<group>"; };
+		7EEFE7F41AA1605000565DAA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Speed/Settings.swift; sourceTree = "<group>"; };
 		7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedViewsHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,8 +127,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E211AC41AA591500058301F /* SystemConfiguration.framework in Frameworks */,
+				7ED15A181AC8571400F329D0 /* VeluzityKit.framework in Frameworks */,
 				7E211AC21AA5913F0058301F /* Security.framework in Frameworks */,
 				7E211AC01AA5912A0058301F /* libFlurry_6.2.0.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED159FD1AC8571400F329D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED15A081AC8571400F329D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ED15A0C1AC8571400F329D0 /* VeluzityKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,10 +176,6 @@
 		7E00F5BD1A74666F007C3992 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7EEFE7F41AA1605000565DAA /* Settings.swift */,
-				7EEFE7F21AA0560C00565DAA /* Params.swift */,
-				7EC245891A507E05005F2FEA /* WeatherModel.swift */,
-				7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -138,6 +197,8 @@
 				7E211AC11AA5913F0058301F /* Security.framework */,
 				7EC245611A4F486D005F2FEA /* Speed */,
 				7EC245771A4F486D005F2FEA /* SpeedTests */,
+				7ED15A021AC8571400F329D0 /* VeluzityKit */,
+				7ED15A111AC8571400F329D0 /* VeluzityKitTests */,
 				7EC245601A4F486D005F2FEA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -146,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				7EC2455F1A4F486D005F2FEA /* Veluzity.app */,
+				7ED15A011AC8571400F329D0 /* VeluzityKit.framework */,
+				7ED15A0B1AC8571400F329D0 /* VeluzityKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,7 +243,6 @@
 				7EA0E3F01A833A3E004C86DF /* ColorGradientTests.swift */,
 				7EC2457A1A4F486D005F2FEA /* SpeedTests.swift */,
 				7EC2458C1A507E1E005F2FEA /* WeatherModelTests.swift */,
-				7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */,
 				7EC245781A4F486D005F2FEA /* Supporting Files */,
 			);
 			path = SpeedTests;
@@ -190,6 +252,45 @@
 			isa = PBXGroup;
 			children = (
 				7EC245791A4F486D005F2FEA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7ED15A021AC8571400F329D0 /* VeluzityKit */ = {
+			isa = PBXGroup;
+			children = (
+				7EEFE7F21AA0560C00565DAA /* Params.swift */,
+				7EEFE7F41AA1605000565DAA /* Settings.swift */,
+				7EC245891A507E05005F2FEA /* WeatherModel.swift */,
+				7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */,
+				7ED15A051AC8571400F329D0 /* VeluzityKit.h */,
+				7ED15A031AC8571400F329D0 /* Supporting Files */,
+			);
+			path = VeluzityKit;
+			sourceTree = "<group>";
+		};
+		7ED15A031AC8571400F329D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7ED15A041AC8571400F329D0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7ED15A111AC8571400F329D0 /* VeluzityKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */,
+				7ED15A141AC8571400F329D0 /* VeluzityKitTests.swift */,
+				7ED15A121AC8571400F329D0 /* Supporting Files */,
+			);
+			path = VeluzityKitTests;
+			sourceTree = "<group>";
+		};
+		7ED15A121AC8571400F329D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7ED15A131AC8571400F329D0 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -205,6 +306,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		7ED159FE1AC8571400F329D0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ED15A061AC8571400F329D0 /* VeluzityKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		7EC2455E1A4F486D005F2FEA /* Speed */ = {
 			isa = PBXNativeTarget;
@@ -214,15 +326,54 @@
 				7EC2455C1A4F486D005F2FEA /* Frameworks */,
 				7EC2455D1A4F486D005F2FEA /* Resources */,
 				7ED0E9211AB26FA8004134CE /* Embed App Extensions */,
+				7ED15A1D1AC8571400F329D0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7ED15A171AC8571400F329D0 /* PBXTargetDependency */,
 			);
 			name = Speed;
 			productName = Speed;
 			productReference = 7EC2455F1A4F486D005F2FEA /* Veluzity.app */;
 			productType = "com.apple.product-type.application";
+		};
+		7ED15A001AC8571400F329D0 /* VeluzityKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ED15A1A1AC8571400F329D0 /* Build configuration list for PBXNativeTarget "VeluzityKit" */;
+			buildPhases = (
+				7ED159FC1AC8571400F329D0 /* Sources */,
+				7ED159FD1AC8571400F329D0 /* Frameworks */,
+				7ED159FE1AC8571400F329D0 /* Headers */,
+				7ED159FF1AC8571400F329D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VeluzityKit;
+			productName = VeluzityKit;
+			productReference = 7ED15A011AC8571400F329D0 /* VeluzityKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7ED15A0A1AC8571400F329D0 /* VeluzityKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ED15A1E1AC8571400F329D0 /* Build configuration list for PBXNativeTarget "VeluzityKitTests" */;
+			buildPhases = (
+				7ED15A071AC8571400F329D0 /* Sources */,
+				7ED15A081AC8571400F329D0 /* Frameworks */,
+				7ED15A091AC8571400F329D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7ED15A0E1AC8571400F329D0 /* PBXTargetDependency */,
+				7ED15A101AC8571400F329D0 /* PBXTargetDependency */,
+			);
+			name = VeluzityKitTests;
+			productName = VeluzityKitTests;
+			productReference = 7ED15A0B1AC8571400F329D0 /* VeluzityKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -242,6 +393,14 @@
 							};
 						};
 					};
+					7ED15A001AC8571400F329D0 = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = ZQEHFBD5JZ;
+					};
+					7ED15A0A1AC8571400F329D0 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 7EC2455E1A4F486D005F2FEA;
+					};
 				};
 			};
 			buildConfigurationList = 7EC2455A1A4F486D005F2FEA /* Build configuration list for PBXProject "Veluzity" */;
@@ -258,6 +417,8 @@
 			projectRoot = "";
 			targets = (
 				7EC2455E1A4F486D005F2FEA /* Speed */,
+				7ED15A001AC8571400F329D0 /* VeluzityKit */,
+				7ED15A0A1AC8571400F329D0 /* VeluzityKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -274,6 +435,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7ED159FF1AC8571400F329D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED15A091AC8571400F329D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -282,22 +457,56 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E2320C41A78AED40097D2D8 /* ColorGradient.swift in Sources */,
-				7ECAE10A1A50E8F700AB9A5C /* LocationModel.swift in Sources */,
 				7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */,
-				7EEFE7F31AA0560C00565DAA /* Params.swift in Sources */,
-				7EC2458A1A507E05005F2FEA /* WeatherModel.swift in Sources */,
 				7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */,
 				7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */,
 				7EF7DDC01A74766A00C74AF0 /* SpeedViewsHelper.swift in Sources */,
 				7EC245671A4F486D005F2FEA /* DashboardViewController.swift in Sources */,
-				7EEFE7F51AA1605000565DAA /* Settings.swift in Sources */,
 				7E8D0B251AC523BC00DE627B /* UIApplicationUtils.swift in Sources */,
 				7ED5946C1AC3D17C0047B88E /* EmailComposer.swift in Sources */,
 				7EC245651A4F486D005F2FEA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7ED159FC1AC8571400F329D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E28B95F1AC8E79200095181 /* Settings.swift in Sources */,
+				7E28B95E1AC8E63200095181 /* WeatherModel.swift in Sources */,
+				7ED15A211AC8587500F329D0 /* LocationModel.swift in Sources */,
+				7E28B9601AC8E7DC00095181 /* Params.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED15A071AC8571400F329D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ED15A231AC858A400F329D0 /* LocationModelTests.swift in Sources */,
+				7ED15A151AC8571400F329D0 /* VeluzityKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7ED15A0E1AC8571400F329D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7ED15A001AC8571400F329D0 /* VeluzityKit */;
+			targetProxy = 7ED15A0D1AC8571400F329D0 /* PBXContainerItemProxy */;
+		};
+		7ED15A101AC8571400F329D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7EC2455E1A4F486D005F2FEA /* Speed */;
+			targetProxy = 7ED15A0F1AC8571400F329D0 /* PBXContainerItemProxy */;
+		};
+		7ED15A171AC8571400F329D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7ED15A001AC8571400F329D0 /* VeluzityKit */;
+			targetProxy = 7ED15A161AC8571400F329D0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7EC245681A4F486D005F2FEA /* Main.storyboard */ = {
@@ -447,6 +656,88 @@
 			};
 			name = Release;
 		};
+		7ED15A1B1AC8571400F329D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VeluzityKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7ED15A1C1AC8571400F329D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = VeluzityKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7ED15A1F1AC8571400F329D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VeluzityKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Veluzity.app/Veluzity";
+			};
+			name = Debug;
+		};
+		7ED15A201AC8571400F329D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VeluzityKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Veluzity.app/Veluzity";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -464,6 +755,24 @@
 			buildConfigurations = (
 				7EC2457F1A4F486D005F2FEA /* Debug */,
 				7EC245801A4F486D005F2FEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7ED15A1A1AC8571400F329D0 /* Build configuration list for PBXNativeTarget "VeluzityKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ED15A1B1AC8571400F329D0 /* Debug */,
+				7ED15A1C1AC8571400F329D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7ED15A1E1AC8571400F329D0 /* Build configuration list for PBXNativeTarget "VeluzityKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ED15A1F1AC8571400F329D0 /* Debug */,
+				7ED15A201AC8571400F329D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

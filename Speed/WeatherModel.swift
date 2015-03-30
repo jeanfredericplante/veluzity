@@ -6,11 +6,10 @@
 //  Copyright (c) 2014 Jean Frederic Plante. All rights reserved.
 //
 
-import UIKit
 import CoreLocation
 import Foundation
 
-enum WeatherIcon: String {
+public enum WeatherIcon: String {
     case ClearSky = "01d"
     case FewClouds = "02d"
     case ScatteredClouds = "03d"
@@ -46,9 +45,9 @@ enum WeatherIcon: String {
     }
 }
 
-class WeatherModel: NSObject, NSURLConnectionDelegate {
+public class WeatherModel: NSObject, NSURLConnectionDelegate {
     // create update delegate type
-    typealias WeatherUpdateDelegate = (WeatherModel) -> ()
+    public typealias WeatherUpdateDelegate = (WeatherModel) -> ()
     
     struct Constants {
         static let minDistanceToUpdateWeather:Double = 500 // distance to travel before we bug openweathermap again in meters
@@ -59,37 +58,37 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
     }
     
 
-    var weatherIcon: String?
-    var weatherDescription: String?
-    var lastReadTemperatureCelsius: Double?
-    var lastUpdateTime: NSDate?
-    var coordinates: CLLocationCoordinate2D
+    public var weatherIcon: String?
+    public var weatherDescription: String?
+    public var lastReadTemperatureCelsius: Double?
+    public var lastUpdateTime: NSDate?
+    public var coordinates: CLLocationCoordinate2D
     var weatherResponseData: NSMutableData
-    var temperatureUpdated: WeatherUpdateDelegate?
+    public var temperatureUpdated: WeatherUpdateDelegate?
     var weatherApiCallCounts: Int = 0
-    var minDistanceToUpdateWeather = Constants.minDistanceToUpdateWeather
-    var maxTimeBetweenUpdates = Constants.maxTimeBetweenUpdates
+    public var minDistanceToUpdateWeather = Constants.minDistanceToUpdateWeather
+    public var maxTimeBetweenUpdates = Constants.maxTimeBetweenUpdates
   
     
-    override init() {
+    public override init() {
         weatherResponseData = NSMutableData()
         coordinates = CLLocationCoordinate2D(latitude: 48, longitude: 3)
         lastUpdateTime =  NSDate(timeInterval: -Constants.minTimeBetweenUpates, sinceDate: NSDate())
     }
     
-    func setPosition(newCoordinates: CLLocationCoordinate2D) -> Void {
+    public func setPosition(newCoordinates: CLLocationCoordinate2D) -> Void {
         self.coordinates = newCoordinates
     }
     
-    func setUpdateTime(time: NSTimeInterval) {
+    public func setUpdateTime(time: NSTimeInterval) {
         maxTimeBetweenUpdates = time
     }
     
-    func setUpdateDistance(distance: Double) {
+    public func setUpdateDistance(distance: Double) {
         minDistanceToUpdateWeather = distance
     }
     
-    func shouldUpdateWeather(newCoordinates: CLLocationCoordinate2D) -> Bool {
+    public func shouldUpdateWeather(newCoordinates: CLLocationCoordinate2D) -> Bool {
         
         var lastUpdateLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
         var newLocation = CLLocation(latitude: newCoordinates.latitude, longitude: newCoordinates.longitude)
@@ -111,11 +110,11 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         }
     }
     
-    func temperature() -> Double? {
+    public func temperature() -> Double? {
         return lastReadTemperatureCelsius?
     }
     
-    func temperatureFahrenheit() -> Double? {
+    public func temperatureFahrenheit() -> Double? {
         if let tc = lastReadTemperatureCelsius {
             return 9/5 * tc + 32
         } else {
@@ -123,13 +122,13 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         }
     }
     
-    func getWeatherIcon() -> String {
+    public func getWeatherIcon() -> String {
         return weatherIcon? ?? "01d"
     }
     
     // Save and restore state
     
-    func saveState() {
+    public func saveState() {
         let defaults = Settings()
         var currentTemp = ""
         if let temp = temperature() {
@@ -143,7 +142,7 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         defaults.saveDictionary(state as NSDictionary, withKey: "WeatherModel.defaults")
     }
     
-    func restoreState() {
+    public func restoreState() {
         let defaults = Settings()
         var savedState = defaults.restoreDictionaryForKey("WeatherModel.defaults")
         if let state = savedState as? Dictionary<String,String> {
@@ -160,15 +159,13 @@ class WeatherModel: NSObject, NSURLConnectionDelegate {
         }
     }
     
-    // TODO: Shouldn't be any ui image here
-
     
-    func getWeatherDescription() -> String {
+    public func getWeatherDescription() -> String {
         return self.weatherDescription?.lowercaseString ?? ""
     }
     
         
-    func getWeatherFromAPI()
+    public func getWeatherFromAPI()
     {
         var requestURL = Constants.currentWeatherServiceUrl + "?lat=" + coordinates.latitude.description +
         "&lon=" + coordinates.longitude.description
