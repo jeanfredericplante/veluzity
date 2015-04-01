@@ -98,11 +98,9 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         nc.addObserver(self, selector: Selector("applicationDidEnterBackground"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
         // Add application active observer to restore state, start location updates
-        nc.addObserver(self, selector: Selector("applicationDidBecomeActive"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        nc.addObserver(self, selector: Selector("applicationWillBecomeActive"), name: UIApplicationWillEnterForegroundNotification, object: nil)
 
-        // Set status bar to light
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-        
+      
 
     }
 
@@ -236,9 +234,13 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         userLocation.stopUpdatingLocation()
     }
     
-    func applicationDidBecomeActive() {
+    func applicationWillBecomeActive() {
         locationWeather.restoreState()
         userLocation.startUpdatingLocation()
+    
+        // Set status bar to light
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
         self.didUpdateWeather()
         
     }
