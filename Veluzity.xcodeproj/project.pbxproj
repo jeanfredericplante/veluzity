@@ -19,6 +19,7 @@
 		7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */; };
 		7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */; };
 		7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417D01A618DC400BE639B /* PreferencePaneController.swift */; };
+		7EAF2BC41ACD0FF7002D9C0C /* VeluzityHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF2BC31ACD0FF7002D9C0C /* VeluzityHelpers.swift */; };
 		7EC245651A4F486D005F2FEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245641A4F486D005F2FEA /* AppDelegate.swift */; };
 		7EC245671A4F486D005F2FEA /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245661A4F486D005F2FEA /* DashboardViewController.swift */; };
 		7EC2456A1A4F486D005F2FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EC245681A4F486D005F2FEA /* Main.storyboard */; };
@@ -96,6 +97,7 @@
 		7EA0E3F01A833A3E004C86DF /* ColorGradientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorGradientTests.swift; sourceTree = "<group>"; };
 		7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		7EA417D01A618DC400BE639B /* PreferencePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencePaneController.swift; sourceTree = "<group>"; };
+		7EAF2BC31ACD0FF7002D9C0C /* VeluzityHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VeluzityHelpers.swift; path = Speed/VeluzityHelpers.swift; sourceTree = SOURCE_ROOT; };
 		7EC2455F1A4F486D005F2FEA /* Veluzity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veluzity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EC245631A4F486D005F2FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EC245641A4F486D005F2FEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		7ED15A021AC8571400F329D0 /* VeluzityKit */ = {
 			isa = PBXGroup;
 			children = (
+				7EAF2BC31ACD0FF7002D9C0C /* VeluzityHelpers.swift */,
 				7EEFE7F21AA0560C00565DAA /* Params.swift */,
 				7EEFE7F41AA1605000565DAA /* Settings.swift */,
 				7EC245891A507E05005F2FEA /* WeatherModel.swift */,
@@ -472,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EAF2BC41ACD0FF7002D9C0C /* VeluzityHelpers.swift in Sources */,
 				7E28B95F1AC8E79200095181 /* Settings.swift in Sources */,
 				7E28B95E1AC8E63200095181 /* WeatherModel.swift in Sources */,
 				7ED15A211AC8587500F329D0 /* LocationModel.swift in Sources */,
