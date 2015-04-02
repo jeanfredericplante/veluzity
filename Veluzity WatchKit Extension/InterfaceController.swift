@@ -11,17 +11,19 @@ import Foundation
 import VeluzityKit
 
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, LocationUpdateDelegate {
 
     @IBOutlet weak var speedLabel: WKInterfaceLabel!
     @IBOutlet weak var speedUnitLabel: WKInterfaceLabel!
     
     
     let userLocation = LocationModel()
+
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
+        userLocation.delegate = self
+ 
         // Configure interface objects here.
     }
 
@@ -37,7 +39,12 @@ class InterfaceController: WKInterfaceController {
     
     
     private func updateSpeed() {
-        
+        let speed = localizeSpeed(userLocation.speed, isMph: true)
+        speedLabel.setText(String(format: "%.0f", speed))
+    }
+    
+    func didUpdateLocation() {
+        updateSpeed()
     }
 
 }
