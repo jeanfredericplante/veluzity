@@ -27,7 +27,7 @@ public struct Params {
     
     public struct Conversion {
         public static let msToKmh = 3.6
-        public static let msToMph = 2.236
+        public static let msToMph = 2.23694
     }
     
    

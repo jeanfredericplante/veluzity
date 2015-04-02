@@ -36,8 +36,6 @@ struct Constants {
 }
 
 class SpeedViewsHelper {
-   
-    
     
     class func setImageAndTextColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
         if view != nil {

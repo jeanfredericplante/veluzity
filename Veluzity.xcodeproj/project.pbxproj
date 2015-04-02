@@ -19,11 +19,19 @@
 		7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */; };
 		7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */; };
 		7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417D01A618DC400BE639B /* PreferencePaneController.swift */; };
+		7EAF2BC21ACD07E4002D9C0C /* VeluzityHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECA8A451ACD05790058A5F9 /* VeluzityHelpers.swift */; };
 		7EC245651A4F486D005F2FEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245641A4F486D005F2FEA /* AppDelegate.swift */; };
 		7EC245671A4F486D005F2FEA /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245661A4F486D005F2FEA /* DashboardViewController.swift */; };
 		7EC2456A1A4F486D005F2FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EC245681A4F486D005F2FEA /* Main.storyboard */; };
 		7EC2456C1A4F486D005F2FEA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EC2456B1A4F486D005F2FEA /* Images.xcassets */; };
 		7EC2456F1A4F486D005F2FEA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EC2456D1A4F486D005F2FEA /* LaunchScreen.xib */; };
+		7ECA8A271ACCEFEE0058A5F9 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECA8A261ACCEFEE0058A5F9 /* InterfaceController.swift */; };
+		7ECA8A291ACCEFEE0058A5F9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECA8A281ACCEFEE0058A5F9 /* NotificationController.swift */; };
+		7ECA8A2B1ACCEFEE0058A5F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A2A1ACCEFEE0058A5F9 /* Images.xcassets */; };
+		7ECA8A2F1ACCEFEE0058A5F9 /* Veluzity WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A2E1ACCEFEE0058A5F9 /* Veluzity WatchKit App.app */; };
+		7ECA8A371ACCEFEE0058A5F9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A351ACCEFEE0058A5F9 /* Interface.storyboard */; };
+		7ECA8A391ACCEFEE0058A5F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A381ACCEFEE0058A5F9 /* Images.xcassets */; };
+		7ECA8A3C1ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7ECA8A211ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7ED15A061AC8571400F329D0 /* VeluzityKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED15A051AC8571400F329D0 /* VeluzityKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ED15A0C1AC8571400F329D0 /* VeluzityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED15A011AC8571400F329D0 /* VeluzityKit.framework */; };
 		7ED15A151AC8571400F329D0 /* VeluzityKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15A141AC8571400F329D0 /* VeluzityKitTests.swift */; };
@@ -36,6 +44,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7ECA8A301ACCEFEE0058A5F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EC245571A4F486D005F2FEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7ECA8A2D1ACCEFEE0058A5F9;
+			remoteInfo = "Veluzity WatchKit App";
+		};
+		7ECA8A3A1ACCEFEE0058A5F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EC245571A4F486D005F2FEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7ECA8A201ACCEFEE0058A5F9;
+			remoteInfo = "Veluzity WatchKit Extension";
+		};
 		7ED15A0D1AC8571400F329D0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7EC245571A4F486D005F2FEA /* Project object */;
@@ -66,6 +88,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				7ECA8A3C1ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +131,17 @@
 		7EC245891A507E05005F2FEA /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherModel.swift; path = ../Speed/WeatherModel.swift; sourceTree = "<group>"; };
 		7EC2458C1A507E1E005F2FEA /* WeatherModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModelTests.swift; sourceTree = "<group>"; };
 		7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationModelTests.swift; path = ../SpeedTests/LocationModelTests.swift; sourceTree = "<group>"; };
+		7ECA8A211ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Veluzity WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ECA8A241ACCEFEE0058A5F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ECA8A251ACCEFEE0058A5F9 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		7ECA8A261ACCEFEE0058A5F9 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		7ECA8A281ACCEFEE0058A5F9 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		7ECA8A2A1ACCEFEE0058A5F9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7ECA8A2E1ACCEFEE0058A5F9 /* Veluzity WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Veluzity WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ECA8A341ACCEFEE0058A5F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ECA8A361ACCEFEE0058A5F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		7ECA8A381ACCEFEE0058A5F9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7ECA8A451ACD05790058A5F9 /* VeluzityHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VeluzityHelpers.swift; path = ../Speed/VeluzityHelpers.swift; sourceTree = "<group>"; };
 		7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationModel.swift; path = ../Speed/LocationModel.swift; sourceTree = "<group>"; };
 		7ED15A011AC8571400F329D0 /* VeluzityKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VeluzityKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED15A041AC8571400F329D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -130,6 +164,13 @@
 				7ED15A181AC8571400F329D0 /* VeluzityKit.framework in Frameworks */,
 				7E211AC21AA5913F0058301F /* Security.framework in Frameworks */,
 				7E211AC01AA5912A0058301F /* libFlurry_6.2.0.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ECA8A1E1ACCEFEE0058A5F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +241,8 @@
 				7ED15A021AC8571400F329D0 /* VeluzityKit */,
 				7ED15A111AC8571400F329D0 /* VeluzityKitTests */,
 				7EC245601A4F486D005F2FEA /* Products */,
+				7ECA8A221ACCEFEE0058A5F9 /* Veluzity WatchKit Extension */,
+				7ECA8A321ACCEFEE0058A5F9 /* Veluzity WatchKit App */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,6 +252,8 @@
 				7EC2455F1A4F486D005F2FEA /* Veluzity.app */,
 				7ED15A011AC8571400F329D0 /* VeluzityKit.framework */,
 				7ED15A0B1AC8571400F329D0 /* VeluzityKitTests.xctest */,
+				7ECA8A211ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex */,
+				7ECA8A2E1ACCEFEE0058A5F9 /* Veluzity WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,11 +261,7 @@
 		7EC245611A4F486D005F2FEA /* Speed */ = {
 			isa = PBXGroup;
 			children = (
-				7E211ABD1AA5912A0058301F /* Flurry */,
-				7E00F5BB1A746443007C3992 /* Views */,
-				7E00F5BC1A7465FE007C3992 /* Controllers */,
-				7E00F5BD1A74666F007C3992 /* Models */,
-				7EC245621A4F486D005F2FEA /* Supporting Files */,
+				7ECA8A441ACCF01C0058A5F9 /* iPhoneApp */,
 			);
 			path = Speed;
 			sourceTree = "<group>";
@@ -256,6 +297,56 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7ECA8A221ACCEFEE0058A5F9 /* Veluzity WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7ECA8A261ACCEFEE0058A5F9 /* InterfaceController.swift */,
+				7ECA8A281ACCEFEE0058A5F9 /* NotificationController.swift */,
+				7ECA8A2A1ACCEFEE0058A5F9 /* Images.xcassets */,
+				7ECA8A231ACCEFEE0058A5F9 /* Supporting Files */,
+			);
+			path = "Veluzity WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		7ECA8A231ACCEFEE0058A5F9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7ECA8A241ACCEFEE0058A5F9 /* Info.plist */,
+				7ECA8A251ACCEFEE0058A5F9 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7ECA8A321ACCEFEE0058A5F9 /* Veluzity WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				7ECA8A351ACCEFEE0058A5F9 /* Interface.storyboard */,
+				7ECA8A381ACCEFEE0058A5F9 /* Images.xcassets */,
+				7ECA8A331ACCEFEE0058A5F9 /* Supporting Files */,
+			);
+			path = "Veluzity WatchKit App";
+			sourceTree = "<group>";
+		};
+		7ECA8A331ACCEFEE0058A5F9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7ECA8A341ACCEFEE0058A5F9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7ECA8A441ACCF01C0058A5F9 /* iPhoneApp */ = {
+			isa = PBXGroup;
+			children = (
+				7E211ABD1AA5912A0058301F /* Flurry */,
+				7E00F5BB1A746443007C3992 /* Views */,
+				7E00F5BC1A7465FE007C3992 /* Controllers */,
+				7E00F5BD1A74666F007C3992 /* Models */,
+				7EC245621A4F486D005F2FEA /* Supporting Files */,
+			);
+			name = iPhoneApp;
+			sourceTree = "<group>";
+		};
 		7ED15A021AC8571400F329D0 /* VeluzityKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +354,7 @@
 				7EEFE7F41AA1605000565DAA /* Settings.swift */,
 				7EC245891A507E05005F2FEA /* WeatherModel.swift */,
 				7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */,
+				7ECA8A451ACD05790058A5F9 /* VeluzityHelpers.swift */,
 				7ED15A051AC8571400F329D0 /* VeluzityKit.h */,
 				7ED15A031AC8571400F329D0 /* Supporting Files */,
 			);
@@ -332,11 +424,45 @@
 			);
 			dependencies = (
 				7ED15A171AC8571400F329D0 /* PBXTargetDependency */,
+				7ECA8A3B1ACCEFEE0058A5F9 /* PBXTargetDependency */,
 			);
 			name = Speed;
 			productName = Speed;
 			productReference = 7EC2455F1A4F486D005F2FEA /* Veluzity.app */;
 			productType = "com.apple.product-type.application";
+		};
+		7ECA8A201ACCEFEE0058A5F9 /* Veluzity WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ECA8A421ACCEFEF0058A5F9 /* Build configuration list for PBXNativeTarget "Veluzity WatchKit Extension" */;
+			buildPhases = (
+				7ECA8A1D1ACCEFEE0058A5F9 /* Sources */,
+				7ECA8A1E1ACCEFEE0058A5F9 /* Frameworks */,
+				7ECA8A1F1ACCEFEE0058A5F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7ECA8A311ACCEFEE0058A5F9 /* PBXTargetDependency */,
+			);
+			name = "Veluzity WatchKit Extension";
+			productName = "Veluzity WatchKit Extension";
+			productReference = 7ECA8A211ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		7ECA8A2D1ACCEFEE0058A5F9 /* Veluzity WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ECA8A411ACCEFEF0058A5F9 /* Build configuration list for PBXNativeTarget "Veluzity WatchKit App" */;
+			buildPhases = (
+				7ECA8A2C1ACCEFEE0058A5F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Veluzity WatchKit App";
+			productName = "Veluzity WatchKit App";
+			productReference = 7ECA8A2E1ACCEFEE0058A5F9 /* Veluzity WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
 		};
 		7ED15A001AC8571400F329D0 /* VeluzityKit */ = {
 			isa = PBXNativeTarget;
@@ -393,6 +519,13 @@
 							};
 						};
 					};
+					7ECA8A201ACCEFEE0058A5F9 = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = ZQEHFBD5JZ;
+					};
+					7ECA8A2D1ACCEFEE0058A5F9 = {
+						CreatedOnToolsVersion = 6.2;
+					};
 					7ED15A001AC8571400F329D0 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = ZQEHFBD5JZ;
@@ -419,6 +552,8 @@
 				7EC2455E1A4F486D005F2FEA /* Speed */,
 				7ED15A001AC8571400F329D0 /* VeluzityKit */,
 				7ED15A0A1AC8571400F329D0 /* VeluzityKitTests */,
+				7ECA8A201ACCEFEE0058A5F9 /* Veluzity WatchKit Extension */,
+				7ECA8A2D1ACCEFEE0058A5F9 /* Veluzity WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -432,6 +567,24 @@
 				7EC2456A1A4F486D005F2FEA /* Main.storyboard in Resources */,
 				7EC2456F1A4F486D005F2FEA /* LaunchScreen.xib in Resources */,
 				7EC2456C1A4F486D005F2FEA /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ECA8A1F1ACCEFEE0058A5F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ECA8A2F1ACCEFEE0058A5F9 /* Veluzity WatchKit App.app in Resources */,
+				7ECA8A2B1ACCEFEE0058A5F9 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ECA8A2C1ACCEFEE0058A5F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ECA8A371ACCEFEE0058A5F9 /* Interface.storyboard in Resources */,
+				7ECA8A391ACCEFEE0058A5F9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,10 +621,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7ECA8A1D1ACCEFEE0058A5F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ECA8A291ACCEFEE0058A5F9 /* NotificationController.swift in Sources */,
+				7ECA8A271ACCEFEE0058A5F9 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7ED159FC1AC8571400F329D0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EAF2BC21ACD07E4002D9C0C /* VeluzityHelpers.swift in Sources */,
 				7E28B95F1AC8E79200095181 /* Settings.swift in Sources */,
 				7E28B95E1AC8E63200095181 /* WeatherModel.swift in Sources */,
 				7ED15A211AC8587500F329D0 /* LocationModel.swift in Sources */,
@@ -491,6 +654,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7ECA8A311ACCEFEE0058A5F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7ECA8A2D1ACCEFEE0058A5F9 /* Veluzity WatchKit App */;
+			targetProxy = 7ECA8A301ACCEFEE0058A5F9 /* PBXContainerItemProxy */;
+		};
+		7ECA8A3B1ACCEFEE0058A5F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7ECA8A201ACCEFEE0058A5F9 /* Veluzity WatchKit Extension */;
+			targetProxy = 7ECA8A3A1ACCEFEE0058A5F9 /* PBXContainerItemProxy */;
+		};
 		7ED15A0E1AC8571400F329D0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7ED15A001AC8571400F329D0 /* VeluzityKit */;
@@ -523,6 +696,14 @@
 				7EC2456E1A4F486D005F2FEA /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		7ECA8A351ACCEFEE0058A5F9 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7ECA8A361ACCEFEE0058A5F9 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -656,6 +837,70 @@
 			};
 			name = Release;
 		};
+		7ECA8A3D1ACCEFEF0058A5F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Veluzity WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7ECA8A3E1ACCEFEF0058A5F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = "Veluzity WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7ECA8A3F1ACCEFEF0058A5F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = Veluzity_WatchKit_Extension;
+				INFOPLIST_FILE = "Veluzity WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		7ECA8A401ACCEFEF0058A5F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COPY_PHASE_STRIP = NO;
+				IBSC_MODULE = Veluzity_WatchKit_Extension;
+				INFOPLIST_FILE = "Veluzity WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
 		7ED15A1B1AC8571400F329D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -755,6 +1000,24 @@
 			buildConfigurations = (
 				7EC2457F1A4F486D005F2FEA /* Debug */,
 				7EC245801A4F486D005F2FEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7ECA8A411ACCEFEF0058A5F9 /* Build configuration list for PBXNativeTarget "Veluzity WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ECA8A3F1ACCEFEF0058A5F9 /* Debug */,
+				7ECA8A401ACCEFEF0058A5F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7ECA8A421ACCEFEF0058A5F9 /* Build configuration list for PBXNativeTarget "Veluzity WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ECA8A3D1ACCEFEF0058A5F9 /* Debug */,
+				7ECA8A3E1ACCEFEF0058A5F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

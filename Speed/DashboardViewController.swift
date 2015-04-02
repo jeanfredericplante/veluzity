@@ -100,7 +100,9 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         // Add application active observer to restore state, start location updates
         nc.addObserver(self, selector: Selector("applicationWillBecomeActive"), name: UIApplicationWillEnterForegroundNotification, object: nil)
 
-      
+        // Set status bar to light
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
 
     }
 
@@ -169,16 +171,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     }
     
     func getLocalizedSpeed() -> Double {
-        var localizedSpeed: Double!
-        
-        if defaults.isMph {
-            localizedSpeed = userLocation.speed * 2.23694
-        } else {
-            localizedSpeed = userLocation.speed * 3.6
-        }
-        
-        if localizedSpeed < 0 { localizedSpeed = 0 }
-        return localizedSpeed
+        return localizeSpeed(userLocation.speed, isMph: defaults.isMph)
     }
     
     func getSpeedWithPreferencesUnit() -> String {
