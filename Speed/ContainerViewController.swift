@@ -30,13 +30,12 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestu
     }
     var slideOutController : SlideOutController?
     
-    
+     // MARK: Lifecycle  methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mainViewController = UIStoryboard.mainViewController()
         mainViewController.view.layer.shadowOffset = CGSize(width: 0,height: 3)
-
         mainViewController.delegate = self
         
         // Sets up view controller for the dashboard, and hierarchy
@@ -67,7 +66,24 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestu
     
     
     
-    // MARK: ViewController delegate method
+    
+     // MARK: Container view management method
+    func addPreferencePaneViewController() {
+        if slideOutController == nil {
+            slideOutController = UIStoryboard.slideOutController()
+            addChildSlideOutController(slideOutController!)
+//            SlideOutController!.delegate = self
+            
+        }
+    }
+   
+    func addChildSlideOutController(preferenceController: SlideOutController) {
+        view.insertSubview(preferenceController.view, atIndex: 0)
+        addChildViewController(preferenceController)
+        preferenceController.didMoveToParentViewController(self)
+    }
+
+    
     func togglePreferencePane() {
         let notAlreadyExpanded = (currentState != SlideOutState.PreferenceExpanded)
         let shouldI = notAlreadyExpanded
@@ -77,31 +93,17 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestu
         animatePreferencePane(shouldExpand: shouldI)
     }
     
-    func expandedOffset() -> CGFloat {
-        return Constants.preferencePanelExpandedOffset
-    }
-    
     func closePreferencePane() {
         if currentState == SlideOutState.PreferenceExpanded {
             animatePreferencePane(shouldExpand: false)
         }
     }
     
-    // MARK: SlideOutController delegate method
-    func preferenceUpdated() {
-        mainViewController.didUpdateLocation()
-        mainViewController.didUpdateWeather()
+    func expandedOffset() -> CGFloat {
+        return Constants.preferencePanelExpandedOffset
     }
     
-    // MARK: Container view management method
-    func addPreferencePaneViewController() {
-        if slideOutController == nil {
-            slideOutController = UIStoryboard.slideOutController()
-            addChildSlideOutController(slideOutController!)
-//            SlideOutController!.delegate = self
-            
-        }
-    }
+
     func animatePreferencePane(#shouldExpand: Bool) {
         // # is to have the external parameter name match the variable name
         if (shouldExpand) {
@@ -117,13 +119,6 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestu
         }
     }
     
-    func addChildSlideOutController(preferenceController: SlideOutController) {
-        view.insertSubview(preferenceController.view, atIndex: 0)
-        addChildViewController(preferenceController)
-        preferenceController.didMoveToParentViewController(self)
-    }
-    
-    // TODO: check out the completion closure format
     func animateMainViewXPosition(#targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0,
             options: .CurveEaseInOut,
@@ -172,6 +167,19 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestu
 
     }
     
+    // MARK: unwind from preference pane
+    
+    @IBAction func prepareForSegueToDashboard(segue: UIStoryboardSegue) {
+        //
+    }
+    
+    func preferenceUpdated() {
+        mainViewController.didUpdateLocation()
+        mainViewController.didUpdateWeather()
+    }
+    
+
+
 }
 
 private extension UIStoryboard {
