@@ -14,7 +14,7 @@ enum SlideOutState {
     case PreferenceCollapsed
 }
 
-class ContainerViewController: UIViewController, ViewControllerDelegate, PreferencePaneControllerDelegate, UIGestureRecognizerDelegate {
+class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestureRecognizerDelegate {
     
     struct Constants {
         static let preferencePanelExpandedOffset: CGFloat = 270
@@ -28,7 +28,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
             showShadowForMainView(shouldShowShadow)
         }
     }
-    var preferencePaneController : PreferencePaneController?
+    var slideOutController : SlideOutController?
     
     
     override func viewDidLoad() {
@@ -87,7 +87,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         }
     }
     
-    // MARK: PreferencePaneController delegate method
+    // MARK: SlideOutController delegate method
     func preferenceUpdated() {
         mainViewController.didUpdateLocation()
         mainViewController.didUpdateWeather()
@@ -95,10 +95,10 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
     
     // MARK: Container view management method
     func addPreferencePaneViewController() {
-        if preferencePaneController == nil {
-            preferencePaneController = UIStoryboard.preferencePaneController()
-            addChildPreferencePaneController(preferencePaneController!)
-            preferencePaneController!.delegate = self
+        if slideOutController == nil {
+            slideOutController = UIStoryboard.slideOutController()
+            addChildSlideOutController(slideOutController!)
+//            SlideOutController!.delegate = self
             
         }
     }
@@ -111,13 +111,13 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
         } else {
             animateMainViewXPosition(targetPosition: 0) { finished in
                 self.currentState = .PreferenceCollapsed
-                self.preferencePaneController!.view.removeFromSuperview()
-                self.preferencePaneController = nil
+                self.slideOutController!.view.removeFromSuperview()
+                self.slideOutController = nil
             }
         }
     }
     
-    func addChildPreferencePaneController(preferenceController: PreferencePaneController) {
+    func addChildSlideOutController(preferenceController: SlideOutController) {
         view.insertSubview(preferenceController.view, atIndex: 0)
         addChildViewController(preferenceController)
         preferenceController.didMoveToParentViewController(self)
@@ -154,13 +154,13 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, Prefere
                 }
             }
         case .Changed:
-            if (preferencePaneController != nil) {
+            if (slideOutController != nil) {
                     sender.view!.center.x = sender.view!.center.x + sender.translationInView(view).x
                     sender.setTranslation(CGPointZero, inView: view)
 
             }
         case .Ended:
-            if (preferencePaneController != nil) {
+            if (slideOutController != nil) {
                 let hasMovedGreaterThanHalfway = sender.view!.center.x > view.bounds.size.width
                 animatePreferencePane(shouldExpand: hasMovedGreaterThanHalfway)
 
@@ -181,8 +181,8 @@ private extension UIStoryboard {
         return mainStoryboard().instantiateViewControllerWithIdentifier("MainViewController") as? DashboardViewController
     }
     
-    class func preferencePaneController() -> PreferencePaneController? {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("PreferencePaneController") as? PreferencePaneController
+    class func slideOutController() -> SlideOutController? {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("SlideOutController") as? SlideOutController
     }
 
 }
