@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H7d-s9-5cs">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -206,7 +206,7 @@ Fantastic Whale Labs</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.19033933234842201" green="0.20159602871066645" blue="0.25464458371463577" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.19215686274509805" green="0.20000000000000001" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3EL-hI-jvB" firstAttribute="leading" secondItem="tYq-b4-faR" secondAttribute="trailing" constant="15" id="0w3-Ha-XRR"/>
                             <constraint firstItem="OcS-WK-RrU" firstAttribute="leading" secondItem="RRu-wk-6rZ" secondAttribute="leadingMargin" constant="-16" id="2i2-ym-g4c"/>
@@ -237,6 +237,141 @@ Fantastic Whale Labs</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SC7-rj-awP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-201" y="1147"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="3cb-XY-rlM">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="we3-mG-F65" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="H7d-s9-5cs" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="B5A-HA-E63">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.44" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="hD0-TQ-YaM">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="gtt-kf-eL1">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gtt-kf-eL1" id="BDJ-mH-lHb">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Settings" translatesAutoresizingMaskIntoConstraints="NO" id="pLz-vV-Cbq">
+                                                    <rect key="frame" x="29" y="5" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="7GK-aw-OZu"/>
+                                                        <constraint firstAttribute="height" constant="35" id="EXO-z5-iVe"/>
+                                                    </constraints>
+                                                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                        <rect key="frame" x="89" y="161" width="240" height="128"/>
+                                                    </variation>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Settings" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="gke-u9-fEe" userLabel="Settings Label">
+                                                    <rect key="frame" x="79" y="5" width="156" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="156" id="bTS-49-DwY"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.19215686274509805" green="0.20000000000000001" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="gke-u9-fEe" firstAttribute="top" secondItem="pLz-vV-Cbq" secondAttribute="top" id="2hV-oX-ccg"/>
+                                                <constraint firstAttribute="centerY" secondItem="gke-u9-fEe" secondAttribute="centerY" id="Ak4-ze-dNg"/>
+                                                <constraint firstAttribute="centerX" secondItem="pLz-vV-Cbq" secondAttribute="centerX" constant="253.5" id="Pt6-uU-h7g"/>
+                                                <constraint firstItem="gke-u9-fEe" firstAttribute="leading" secondItem="pLz-vV-Cbq" secondAttribute="trailing" constant="15" id="bdg-Fg-5fk"/>
+                                                <constraint firstItem="gke-u9-fEe" firstAttribute="bottom" secondItem="pLz-vV-Cbq" secondAttribute="bottom" id="g0x-bI-sHy"/>
+                                                <constraint firstItem="pLz-vV-Cbq" firstAttribute="leading" secondItem="BDJ-mH-lHb" secondAttribute="leadingMargin" constant="21" id="wH0-XB-3m9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.19215686274509805" green="0.20000000000000001" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="Erh-AW-CHF">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Erh-AW-CHF" id="gng-aE-RZI">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Info" translatesAutoresizingMaskIntoConstraints="NO" id="caH-lM-Gc3">
+                                                    <rect key="frame" x="29" y="5" width="35" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="5IG-hN-Tkh"/>
+                                                        <constraint firstAttribute="height" constant="35" id="P7y-UX-RIT"/>
+                                                    </constraints>
+                                                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                        <rect key="frame" x="89" y="161" width="240" height="128"/>
+                                                    </variation>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contact Us" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="oNc-u3-2jP" userLabel="Settings Label">
+                                                    <rect key="frame" x="79" y="5" width="156" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="156" id="KD5-E0-3nK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.19215686269999999" green="0.20000000000000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="oNc-u3-2jP" firstAttribute="top" secondItem="caH-lM-Gc3" secondAttribute="top" id="73Q-RZ-dpU"/>
+                                                <constraint firstAttribute="centerX" secondItem="caH-lM-Gc3" secondAttribute="centerX" constant="253.5" id="ESH-Ys-RfW"/>
+                                                <constraint firstItem="oNc-u3-2jP" firstAttribute="bottom" secondItem="caH-lM-Gc3" secondAttribute="bottom" id="Kf6-CI-xRy"/>
+                                                <constraint firstItem="caH-lM-Gc3" firstAttribute="leading" secondItem="gng-aE-RZI" secondAttribute="leadingMargin" constant="21" id="OXx-jd-rLn"/>
+                                                <constraint firstAttribute="centerY" secondItem="oNc-u3-2jP" secondAttribute="centerY" id="rBm-Tw-OrU"/>
+                                                <constraint firstItem="oNc-u3-2jP" firstAttribute="leading" secondItem="caH-lM-Gc3" secondAttribute="trailing" constant="15" id="xuT-Xa-q64"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.19215686269999999" green="0.20000000000000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="qYp-d2-SMB">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qYp-d2-SMB" id="gci-Oy-Fya">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Info" translatesAutoresizingMaskIntoConstraints="NO" id="mMo-Zh-xVW">
+                                                    <rect key="frame" x="29" y="5" width="35" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="5Hy-8K-gIx"/>
+                                                        <constraint firstAttribute="height" constant="35" id="x4q-dW-aaV"/>
+                                                    </constraints>
+                                                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                        <rect key="frame" x="89" y="161" width="240" height="128"/>
+                                                    </variation>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="About Us" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="F9x-Bx-Vmq" userLabel="Settings Label">
+                                                    <rect key="frame" x="79" y="5" width="156" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="156" id="1Bq-to-8kU"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.19215686269999999" green="0.20000000000000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="mMo-Zh-xVW" secondAttribute="centerX" constant="253.5" id="2ez-Z5-0cf"/>
+                                                <constraint firstItem="F9x-Bx-Vmq" firstAttribute="top" secondItem="mMo-Zh-xVW" secondAttribute="top" id="5Jd-7Z-cJ3"/>
+                                                <constraint firstItem="F9x-Bx-Vmq" firstAttribute="leading" secondItem="mMo-Zh-xVW" secondAttribute="trailing" constant="15" id="QYF-xe-U2u"/>
+                                                <constraint firstItem="F9x-Bx-Vmq" firstAttribute="bottom" secondItem="mMo-Zh-xVW" secondAttribute="bottom" id="boc-nu-F4j"/>
+                                                <constraint firstItem="mMo-Zh-xVW" firstAttribute="leading" secondItem="gci-Oy-Fya" secondAttribute="leadingMargin" constant="21" id="qyn-wf-rpX"/>
+                                                <constraint firstAttribute="centerY" secondItem="F9x-Bx-Vmq" secondAttribute="centerY" id="yfw-8p-mHU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.19215686269999999" green="0.20000000000000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="H7d-s9-5cs" id="vyL-8u-1gk"/>
+                            <outlet property="delegate" destination="H7d-s9-5cs" id="eHz-eG-jFb"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="470" y="403"/>
         </scene>
         <!--dashboard-->
         <scene sceneID="tne-QT-ifu">
@@ -282,6 +417,9 @@ Fantastic Whale Labs</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" red="0.25098039215686274" green="1" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="151" y="100" width="40" height="20"/>
+                                                </variation>
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="160" y="115" width="40" height="20"/>
                                                 </variation>
@@ -434,7 +572,8 @@ Fantastic Whale Labs</string>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="cGI-jv-dtz" secondAttribute="height" multiplier="1:1" id="ZSR-CK-qQK"/>
                                         </constraints>
-                                        <variation key="heightClass=compact">
+                                        <variation key="heightClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="19" width="53" height="54"/>
                                             <mask key="constraints">
                                                 <include reference="ZSR-CK-qQK"/>
                                             </mask>
@@ -502,6 +641,9 @@ Fantastic Whale Labs</string>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="m0n-eS-i98" secondAttribute="height" multiplier="1:1" id="fvG-rf-hh7"/>
                                         </constraints>
+                                        <variation key="heightClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="13" width="64" height="64"/>
+                                        </variation>
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="0.0" y="12" width="53" height="52"/>
                                         </variation>
@@ -714,6 +856,7 @@ Fantastic Whale Labs</string>
         <image name="DirectionWhite" width="65" height="65"/>
         <image name="FantasticWhaleLabs_WhiteIcon" width="79" height="102"/>
         <image name="Hamburger" width="41" height="41"/>
+        <image name="Info" width="65" height="65"/>
         <image name="LocationWhite" width="65" height="65"/>
         <image name="Settings" width="65" height="65"/>
     </resources>
