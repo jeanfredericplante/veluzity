@@ -17,7 +17,7 @@ protocol PreferencePaneControllerDelegate {
 
 class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     let defaults = Settings()
-    let emailView = EmailComposer()
+
 
     var delegate: PreferencePaneControllerDelegate?
     
@@ -53,7 +53,6 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
         setUISegmentedControlFonts()
         setScrollableView()
         setCurrentVersion()
-        setEmailFeedback()
  
     }
     
@@ -87,16 +86,6 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    
-    @IBAction func sendFeedback(sender: AnyObject) {
-        
-        let configuredMailComposeViewController = emailView.configuredMailComposeViewController()
-        if emailView.canSendMail()
-        {
-            presentViewController(configuredMailComposeViewController, animated: true, completion: nil)
-        }
-    }
-
     
     var speedUnit: SpeedSegments {
         get {
@@ -194,13 +183,7 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
         let attributedTextForVersion =  SpeedViewsHelper.textWithTwoFontSizes("VELUZITY", smallText: version, font: font, ratio: Constants.fontRatio)
         versionLabel.attributedText = attributedTextForVersion
     }
-    
-    private func setEmailFeedback() -> Void {
-        if !emailView.canSendMail() {
-            sendFeedback.hidden = true
-        }
-    }
-    
+ 
 
     // MARK
     
