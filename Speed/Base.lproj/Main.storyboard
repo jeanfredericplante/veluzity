@@ -274,7 +274,7 @@ Fantastic Whale Labs</string>
                         <sections>
                             <tableViewSection id="hD0-TQ-YaM">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="gtt-kf-eL1">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="70" id="gtt-kf-eL1">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gtt-kf-eL1" id="BDJ-mH-lHb">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -314,7 +314,7 @@ Fantastic Whale Labs</string>
                                             <segue destination="EoH-KH-Mxk" kind="show" identifier="showSettings" id="39i-Rk-rPP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="Erh-AW-CHF">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="70" id="Erh-AW-CHF">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Erh-AW-CHF" id="gng-aE-RZI">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -351,7 +351,7 @@ Fantastic Whale Labs</string>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.19215686269999999" green="0.20000000000000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="qYp-d2-SMB">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="70" id="qYp-d2-SMB">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qYp-d2-SMB" id="gci-Oy-Fya">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -877,31 +877,6 @@ Fantastic Whale Labs</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-156" y="387"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="b6h-aB-9u5">
-            <objects>
-                <tableViewController id="pLC-zp-ckS" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WvK-EC-nXz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vfl-Uf-qaJ">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vfl-Uf-qaJ" id="tyL-H1-fe0">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="pLC-zp-ckS" id="HwF-os-Yka"/>
-                            <outlet property="delegate" destination="pLC-zp-ckS" id="ha6-gV-J4W"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pZq-Kl-Ogz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>

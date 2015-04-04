@@ -9,5 +9,15 @@
 import Foundation
 
 class SlideOutController: UITableViewController {
-
+    
+    // MARK: transition methods
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let parentVC = self.parentViewController {
+            if let parentVC = parentVC as? ContainerViewController {
+                parentVC.closePreferencePane()
+            }
+        }
+    }
+    
 }

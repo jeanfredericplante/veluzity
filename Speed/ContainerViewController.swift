@@ -169,11 +169,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestu
     
     // MARK: unwind from preference pane
     
-    @IBAction func prepareForSegueToDashboard(segue: UIStoryboardSegue) {
-        //
-    }
-    
-    func preferenceUpdated() {
+   func preferenceUpdated() {
         mainViewController.didUpdateLocation()
         mainViewController.didUpdateWeather()
     }
