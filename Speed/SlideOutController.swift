@@ -11,22 +11,11 @@ import Foundation
 class SlideOutController: UITableViewController, UITableViewDelegate {
     
     let emailView = EmailComposer()
-    @IBOutlet weak var contactUsLabel: UILabel!
-  
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // check whether email is available
-    }
+
     
     // MARK: transition methods
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if let parentVC = self.parentViewController {
-            if let parentVC = parentVC as? ContainerViewController {
-                parentVC.closePreferencePane()
-            }
-        }
+        closeSlideOutPanel()
     }
     
     
@@ -45,6 +34,7 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
         if (indexPath.row == 1) {
             if emailView.canSendMail() {
                 println("row 1 pressed")
+                presentFeedbackEmail()
             } else {
                 cantSendEmailAlert()
             }
@@ -62,4 +52,13 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
 
     }
     
+    private func closeSlideOutPanel() {
+        if let parentVC = self.parentViewController {
+            if let parentVC = parentVC as? ContainerViewController {
+                parentVC.closePreferencePane()
+            }
+        }
+
+    }
+
 }
