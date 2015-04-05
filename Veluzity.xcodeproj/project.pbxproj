@@ -34,6 +34,7 @@
 		7ED15A231AC858A400F329D0 /* LocationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */; };
 		7ED5946C1AC3D17C0047B88E /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */; };
 		7EF049741ACED4FC00B168E9 /* SlideOutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF049731ACED4FC00B168E9 /* SlideOutController.swift */; };
+		7EF049761AD1949200B168E9 /* AboutUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF049751AD1949200B168E9 /* AboutUsController.swift */; };
 		7EF7DDC01A74766A00C74AF0 /* SpeedViewsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +123,7 @@
 		7EEFE7F21AA0560C00565DAA /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Params.swift; path = ../Speed/Params.swift; sourceTree = "<group>"; };
 		7EEFE7F41AA1605000565DAA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Speed/Settings.swift; sourceTree = "<group>"; };
 		7EF049731ACED4FC00B168E9 /* SlideOutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutController.swift; sourceTree = "<group>"; };
+		7EF049751AD1949200B168E9 /* AboutUsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsController.swift; sourceTree = "<group>"; };
 		7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedViewsHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +174,7 @@
 				7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */,
 				7EA417D01A618DC400BE639B /* PreferencePaneController.swift */,
 				7EF049731ACED4FC00B168E9 /* SlideOutController.swift */,
+				7EF049751AD1949200B168E9 /* AboutUsController.swift */,
 				7EC245661A4F486D005F2FEA /* DashboardViewController.swift */,
 				7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */,
 			);
@@ -462,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EF049761AD1949200B168E9 /* AboutUsController.swift in Sources */,
 				7E2320C41A78AED40097D2D8 /* ColorGradient.swift in Sources */,
 				7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */,
 				7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */,

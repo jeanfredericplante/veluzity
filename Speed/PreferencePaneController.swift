@@ -44,9 +44,7 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var settingsScrollView: UIScrollView!
     @IBOutlet weak var scrollableSettings: UIView!
     @IBOutlet weak var versionLabel: UILabel!
-    
-    @IBOutlet weak var sendFeedback: UIButton!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePreferenceControls()
