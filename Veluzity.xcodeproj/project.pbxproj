@@ -19,7 +19,7 @@
 		7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */; };
 		7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */; };
 		7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417D01A618DC400BE639B /* PreferencePaneController.swift */; };
-		7EAF2BC21ACD07E4002D9C0C /* VeluzityHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECA8A451ACD05790058A5F9 /* VeluzityHelpers.swift */; };
+		7EAF2BC41ACD0FF7002D9C0C /* VeluzityHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF2BC31ACD0FF7002D9C0C /* VeluzityHelpers.swift */; };
 		7EC245651A4F486D005F2FEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245641A4F486D005F2FEA /* AppDelegate.swift */; };
 		7EC245671A4F486D005F2FEA /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245661A4F486D005F2FEA /* DashboardViewController.swift */; };
 		7EC2456A1A4F486D005F2FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EC245681A4F486D005F2FEA /* Main.storyboard */; };
@@ -40,6 +40,8 @@
 		7ED15A211AC8587500F329D0 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */; };
 		7ED15A231AC858A400F329D0 /* LocationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */; };
 		7ED5946C1AC3D17C0047B88E /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */; };
+		7EF049741ACED4FC00B168E9 /* SlideOutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF049731ACED4FC00B168E9 /* SlideOutController.swift */; };
+		7EF049761AD1949200B168E9 /* AboutUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF049751AD1949200B168E9 /* AboutUsController.swift */; };
 		7EF7DDC01A74766A00C74AF0 /* SpeedViewsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +121,7 @@
 		7EA0E3F01A833A3E004C86DF /* ColorGradientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorGradientTests.swift; sourceTree = "<group>"; };
 		7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		7EA417D01A618DC400BE639B /* PreferencePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencePaneController.swift; sourceTree = "<group>"; };
+		7EAF2BC31ACD0FF7002D9C0C /* VeluzityHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VeluzityHelpers.swift; path = Speed/VeluzityHelpers.swift; sourceTree = SOURCE_ROOT; };
 		7EC2455F1A4F486D005F2FEA /* Veluzity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veluzity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EC245631A4F486D005F2FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EC245641A4F486D005F2FEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +155,8 @@
 		7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailComposer.swift; sourceTree = "<group>"; };
 		7EEFE7F21AA0560C00565DAA /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Params.swift; path = ../Speed/Params.swift; sourceTree = "<group>"; };
 		7EEFE7F41AA1605000565DAA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Speed/Settings.swift; sourceTree = "<group>"; };
+		7EF049731ACED4FC00B168E9 /* SlideOutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutController.swift; sourceTree = "<group>"; };
+		7EF049751AD1949200B168E9 /* AboutUsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsController.swift; sourceTree = "<group>"; };
 		7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedViewsHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +213,8 @@
 			children = (
 				7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */,
 				7EA417D01A618DC400BE639B /* PreferencePaneController.swift */,
+				7EF049731ACED4FC00B168E9 /* SlideOutController.swift */,
+				7EF049751AD1949200B168E9 /* AboutUsController.swift */,
 				7EC245661A4F486D005F2FEA /* DashboardViewController.swift */,
 				7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */,
 			);
@@ -350,6 +357,7 @@
 		7ED15A021AC8571400F329D0 /* VeluzityKit */ = {
 			isa = PBXGroup;
 			children = (
+				7EAF2BC31ACD0FF7002D9C0C /* VeluzityHelpers.swift */,
 				7EEFE7F21AA0560C00565DAA /* Params.swift */,
 				7EEFE7F41AA1605000565DAA /* Settings.swift */,
 				7EC245891A507E05005F2FEA /* WeatherModel.swift */,
@@ -609,12 +617,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EF049761AD1949200B168E9 /* AboutUsController.swift in Sources */,
 				7E2320C41A78AED40097D2D8 /* ColorGradient.swift in Sources */,
 				7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */,
 				7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */,
 				7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */,
 				7EF7DDC01A74766A00C74AF0 /* SpeedViewsHelper.swift in Sources */,
 				7EC245671A4F486D005F2FEA /* DashboardViewController.swift in Sources */,
+				7EF049741ACED4FC00B168E9 /* SlideOutController.swift in Sources */,
 				7E8D0B251AC523BC00DE627B /* UIApplicationUtils.swift in Sources */,
 				7ED5946C1AC3D17C0047B88E /* EmailComposer.swift in Sources */,
 				7EC245651A4F486D005F2FEA /* AppDelegate.swift in Sources */,
@@ -634,7 +644,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EAF2BC21ACD07E4002D9C0C /* VeluzityHelpers.swift in Sources */,
+				7EAF2BC41ACD0FF7002D9C0C /* VeluzityHelpers.swift in Sources */,
 				7E28B95F1AC8E79200095181 /* Settings.swift in Sources */,
 				7E28B95E1AC8E63200095181 /* WeatherModel.swift in Sources */,
 				7ED15A211AC8587500F329D0 /* LocationModel.swift in Sources */,
