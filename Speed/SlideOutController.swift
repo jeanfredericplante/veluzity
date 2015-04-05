@@ -11,7 +11,8 @@ import Foundation
 class SlideOutController: UITableViewController, UITableViewDelegate {
     
     let emailView = EmailComposer()
-
+    
+ 
     
     // MARK: transition methods
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -41,6 +42,13 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
         }
     }
     
+    override  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // customize selected color for table view
+        let selectedView = UIView()
+        selectedView.backgroundColor = UIColor(red: 69/255, green: 72/255, blue: 85/255, alpha: 1)
+        cell.selectedBackgroundView = selectedView
+    }
     
     
     private func cantSendEmailAlert() -> Void {
