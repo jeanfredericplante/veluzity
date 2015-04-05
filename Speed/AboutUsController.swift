@@ -16,5 +16,6 @@ class AboutUsController: UIViewController {
     override func viewDidLoad() {
         versionLabel.text = "version "+UIApplicationUtils.getAppVersion()
     }
-
+    
+     
 }

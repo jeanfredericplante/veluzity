@@ -432,7 +432,7 @@ Fantastic Whale Labs</string>
                         <viewControllerLayoutGuide type="top" id="TeI-Ve-4X4"/>
                         <viewControllerLayoutGuide type="bottom" id="cEP-q8-Hni"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ec1-tb-b0q">
+                    <view key="view" contentMode="scaleToFill" id="ec1-tb-b0q" customClass="ColorGradient" customModule="Veluzity" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -489,7 +489,7 @@ Fantastic Whale Labs</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.086274509803921567" green="0.13333333333333333" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.050980392156862744" green="0.12549019607843137" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="rWP-Md-iYi" secondAttribute="centerY" constant="60" id="3Vj-n2-HRa"/>
                             <constraint firstItem="WfL-Cg-VYK" firstAttribute="trailing" secondItem="ec1-tb-b0q" secondAttribute="trailingMargin" id="5HM-2L-9IZ"/>
@@ -505,6 +505,14 @@ Fantastic Whale Labs</string>
                             <constraint firstItem="uHM-Jo-tfl" firstAttribute="top" secondItem="zhx-xK-5qm" secondAttribute="bottom" constant="8" id="vXU-QR-kK5"/>
                             <constraint firstItem="9xu-NO-iCO" firstAttribute="leading" secondItem="ec1-tb-b0q" secondAttribute="leadingMargin" id="von-Bu-7is"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" red="0.11764705882352941" green="0.14117647058823529" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="stopColor">
+                                <color key="value" red="0.050980392156862744" green="0.12549019607843137" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="versionLabel" destination="uHM-Jo-tfl" id="LXr-jf-4sG"/>
@@ -1003,6 +1011,6 @@ Fantastic Whale Labs</string>
         <image name="VeluzityLaunch" width="328" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9Mp-gO-CSa"/>
+        <segue reference="ERt-tb-kgs"/>
     </inferredMetricsTieBreakers>
 </document>
