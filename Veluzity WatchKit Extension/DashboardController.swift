@@ -11,12 +11,14 @@ import Foundation
 import VeluzityKit
 
 
-class InterfaceController: WKInterfaceController, LocationUpdateDelegate {
+class DashboardController: WKInterfaceController, LocationUpdateDelegate {
 
     @IBOutlet weak var speedLabel: WKInterfaceLabel!
     @IBOutlet weak var speedUnitLabel: WKInterfaceLabel!
     
+    @IBOutlet weak var meterGroup: WKInterfaceGroup!
     
+    @IBOutlet weak var meterImage: WKInterfaceImage!
     let userLocation = LocationModel()
 
     
@@ -45,6 +47,14 @@ class InterfaceController: WKInterfaceController, LocationUpdateDelegate {
     
     func didUpdateLocation() {
         updateSpeed()
+        updateMeterImage()
+    }
+    
+    func updateMeterImage() {
+        let frameSize = WKInterfaceDevice.currentDevice().screenBounds
+        let meterView = MeterView(meterSize: CGSize(width: frameSize.width, height: frameSize.height))
+        meterGroup.setBackgroundImage(meterView.meterBackgroundImage)
+        
     }
 
 }

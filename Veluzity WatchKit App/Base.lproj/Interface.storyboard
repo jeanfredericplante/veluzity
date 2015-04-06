@@ -5,24 +5,34 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Dashboard Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Veluzity_WatchKit_App" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" userLabel="Dashboard Controller" customClass="DashboardController" customModule="Veluzity_WatchKit_Extension">
                     <items>
-                        <label height="43" alignment="center" text="65" textAlignment="center" id="XLp-7a-PTV">
-                            <fontDescription key="font" type="system" weight="thin" pointSize="50"/>
-                        </label>
-                        <label height="1" heightAdjustment="-119" alignment="center" text="mph" textAlignment="center" id="v18-00-6tu"/>
-                        <imageView alignment="center" verticalAlignment="bottom" id="CVW-Zb-JuY"/>
+                        <group width="1" alignment="left" id="fkf-wz-8dg">
+                            <items>
+                                <label height="43" alignment="left" text="65" textAlignment="left" id="XLp-7a-PTV">
+                                    <fontDescription key="font" type="system" weight="thin" pointSize="50"/>
+                                </label>
+                                <label height="25" alignment="left" verticalAlignment="bottom" text="mph" textAlignment="left" id="v18-00-6tu"/>
+                            </items>
+                        </group>
+                        <group width="1" height="111" alignment="left" id="Ra1-n1-gUo">
+                            <items>
+                                <imageView alignment="center" id="CVW-Zb-JuY"/>
+                            </items>
+                        </group>
                     </items>
                     <connections>
+                        <outlet property="meterGroup" destination="Ra1-n1-gUo" id="uqt-Hw-iXC"/>
+                        <outlet property="meterImage" destination="CVW-Zb-JuY" id="VTX-ua-Fdb"/>
                         <outlet property="speedLabel" destination="XLp-7a-PTV" id="Uv8-t5-mu1"/>
                         <outlet property="speedUnitLabel" destination="v18-00-6tu" id="V1K-1m-9C0"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="220" y="348.5"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

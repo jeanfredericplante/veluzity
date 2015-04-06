@@ -15,6 +15,7 @@
 		7E28B95E1AC8E63200095181 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC245891A507E05005F2FEA /* WeatherModel.swift */; };
 		7E28B95F1AC8E79200095181 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F41AA1605000565DAA /* Settings.swift */; };
 		7E28B9601AC8E7DC00095181 /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F21AA0560C00565DAA /* Params.swift */; };
+		7E7645861AD212EF00A36536 /* MeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7645851AD212EF00A36536 /* MeterView.swift */; };
 		7E8D0B251AC523BC00DE627B /* UIApplicationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */; };
 		7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */; };
 		7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */; };
@@ -25,7 +26,7 @@
 		7EC2456A1A4F486D005F2FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EC245681A4F486D005F2FEA /* Main.storyboard */; };
 		7EC2456C1A4F486D005F2FEA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EC2456B1A4F486D005F2FEA /* Images.xcassets */; };
 		7EC2456F1A4F486D005F2FEA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EC2456D1A4F486D005F2FEA /* LaunchScreen.xib */; };
-		7ECA8A271ACCEFEE0058A5F9 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECA8A261ACCEFEE0058A5F9 /* InterfaceController.swift */; };
+		7ECA8A271ACCEFEE0058A5F9 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECA8A261ACCEFEE0058A5F9 /* DashboardController.swift */; };
 		7ECA8A291ACCEFEE0058A5F9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECA8A281ACCEFEE0058A5F9 /* NotificationController.swift */; };
 		7ECA8A2B1ACCEFEE0058A5F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A2A1ACCEFEE0058A5F9 /* Images.xcassets */; };
 		7ECA8A2F1ACCEFEE0058A5F9 /* Veluzity WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A2E1ACCEFEE0058A5F9 /* Veluzity WatchKit App.app */; };
@@ -116,6 +117,7 @@
 		7E211AC31AA591500058301F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7E211AC51AA591930058301F /* Speed-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Speed-Bridging-Header.h"; path = "../../Speed-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E2320C31A78AED40097D2D8 /* ColorGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorGradient.swift; sourceTree = "<group>"; };
+		7E7645851AD212EF00A36536 /* MeterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeterView.swift; sourceTree = "<group>"; };
 		7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationUtils.swift; path = ../UIApplicationUtils.swift; sourceTree = "<group>"; };
 		7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedMeter.swift; sourceTree = "<group>"; };
 		7EA0E3F01A833A3E004C86DF /* ColorGradientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorGradientTests.swift; sourceTree = "<group>"; };
@@ -137,7 +139,7 @@
 		7ECA8A211ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Veluzity WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ECA8A241ACCEFEE0058A5F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ECA8A251ACCEFEE0058A5F9 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		7ECA8A261ACCEFEE0058A5F9 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		7ECA8A261ACCEFEE0058A5F9 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		7ECA8A281ACCEFEE0058A5F9 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		7ECA8A2A1ACCEFEE0058A5F9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7ECA8A2E1ACCEFEE0058A5F9 /* Veluzity WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Veluzity WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,8 +309,9 @@
 		7ECA8A221ACCEFEE0058A5F9 /* Veluzity WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7ECA8A261ACCEFEE0058A5F9 /* InterfaceController.swift */,
+				7ECA8A261ACCEFEE0058A5F9 /* DashboardController.swift */,
 				7ECA8A281ACCEFEE0058A5F9 /* NotificationController.swift */,
+				7E7645851AD212EF00A36536 /* MeterView.swift */,
 				7ECA8A2A1ACCEFEE0058A5F9 /* Images.xcassets */,
 				7ECA8A231ACCEFEE0058A5F9 /* Supporting Files */,
 			);
@@ -636,7 +639,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ECA8A291ACCEFEE0058A5F9 /* NotificationController.swift in Sources */,
-				7ECA8A271ACCEFEE0058A5F9 /* InterfaceController.swift in Sources */,
+				7ECA8A271ACCEFEE0058A5F9 /* DashboardController.swift in Sources */,
+				7E7645861AD212EF00A36536 /* MeterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
