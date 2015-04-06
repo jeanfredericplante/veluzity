@@ -8,6 +8,7 @@
 
 import Foundation
 import WatchKit
+import VeluzityKit
 
 class MeterView {
     struct Constants {
@@ -15,6 +16,9 @@ class MeterView {
     }
     
     var frameSize: CGSize = CGSizeMake(0,0)
+    var speed: Double = 0
+    var speedUnit: WeatherIcon = .BrokenClouds
+    
     
     init(meterSize: CGSize) {
         frameSize = meterSize
