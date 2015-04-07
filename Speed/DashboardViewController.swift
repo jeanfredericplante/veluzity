@@ -12,7 +12,7 @@ import VeluzityKit
 
 @objc // makes protocol available from Objective C
 protocol ViewControllerDelegate {
-    optional func togglePreferencePane()
+    optional func toggleSlideOut()
 }
 
 extension WeatherModel {
@@ -198,7 +198,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     // MARK: Button actions
     
     @IBAction func preferencesTapped(sender: AnyObject) {
-        delegate?.togglePreferencePane?()
+        delegate?.toggleSlideOut?()
     }
     
     

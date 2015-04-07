@@ -8,9 +8,16 @@
 
 import Foundation
 
+@objc // makes protocol available from Objective C
+protocol SlideOutDelegate {
+    optional func aboutUsTapped()
+    optional func settingsTapped()
+}
+
 class SlideOutController: UITableViewController, UITableViewDelegate {
     
     let emailView = EmailComposer()
+    var delegate: SlideOutDelegate?
     
  
     
@@ -32,14 +39,24 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
     // MARK: table view delegate methods
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (indexPath.row == 1) {
-            if emailView.canSendMail() {
-                println("row 1 pressed")
-                presentFeedbackEmail()
-            } else {
-                cantSendEmailAlert()
-            }
+        switch indexPath.row {
+        case 0:
+            delegate?.settingsTapped?()
+        case 1:
+            
+                if emailView.canSendMail() {
+                    println("row 1 pressed")
+                    presentFeedbackEmail()
+                } else {
+                    cantSendEmailAlert()
+                }
+        case 2:
+            delegate?.aboutUsTapped?()
+        default:
+            break
+            
         }
+        
     }
     
     override  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -63,7 +80,7 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
     private func closeSlideOutPanel() {
         if let parentVC = self.parentViewController {
             if let parentVC = parentVC as? ContainerViewController {
-                parentVC.closePreferencePane()
+                parentVC.closeSlideOut()
             }
         }
 
