@@ -16,7 +16,7 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
     
     // MARK: transition methods
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        closeSlideOutPanel()
+//        closeSlideOutPanel()
     }
     
     
