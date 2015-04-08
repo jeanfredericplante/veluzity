@@ -444,7 +444,7 @@ Fantastic Whale Labs</string>
         <!--About Us-->
         <scene sceneID="dev-sa-dCn">
             <objects>
-                <viewController storyboardIdentifier="AboutUsController" id="l1E-uu-F9x" userLabel="About Us" customClass="AboutUsController" customModule="Veluzity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutUsController" modalPresentationStyle="overCurrentContext" id="l1E-uu-F9x" userLabel="About Us" customClass="AboutUsController" customModule="Veluzity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TeI-Ve-4X4"/>
                         <viewControllerLayoutGuide type="bottom" id="cEP-q8-Hni"/>
@@ -502,7 +502,7 @@ Fantastic Whale Labs</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Fo2-0p-6zl" kind="show" id="6ag-qj-pXJ"/>
+                                    <segue destination="bX8-2m-Llv" kind="unwind" unwindAction="unwindFromModals:" id="wEi-TR-NiX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -537,6 +537,7 @@ Fantastic Whale Labs</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ez-Oy-8sV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bX8-2m-Llv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1262" y="387"/>
         </scene>

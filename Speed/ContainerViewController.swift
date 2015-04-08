@@ -170,6 +170,14 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
     }
     
     // MARK: unwind from preference pane
+    @IBAction func unwindFromModals(segue: UIStoryboardSegue) {
+        if let sourceViewController: AnyObject = segue.sourceViewController as? UIViewController {
+            sourceViewController.dismissViewControllerAnimated(true, completion: nil)
+//            switch sourceViewController.class {
+//                case
+//            }
+        }
+    }
     
     // MARK: delegate methods for Slide Out
     func aboutUsTapped() {
