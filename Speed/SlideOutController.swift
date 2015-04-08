@@ -39,6 +39,7 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
     // MARK: table view delegate methods
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.row {
         case 0:
             delegate?.settingsTapped?()
@@ -54,7 +55,6 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
             delegate?.aboutUsTapped?()
         default:
             break
-            
         }
         
     }
@@ -63,7 +63,7 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
         
         // customize selected color for table view
         let selectedView = UIView()
-        selectedView.backgroundColor = UIColor(red: 69/255, green: 72/255, blue: 85/255, alpha: 1)
+        selectedView.backgroundColor = UIColor(red: 0.1668, green: 0.1706, blue: 0.2186, alpha: 1)
         cell.selectedBackgroundView = selectedView
     }
     

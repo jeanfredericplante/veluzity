@@ -187,12 +187,6 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
         }
     }
     
-    // MARK: delegate methods for Slide Out
-    func aboutUsTapped() {
-        var aboutUsController = UIStoryboard.aboutUsController()
-        self.presentViewController(aboutUsController!, animated: true, completion: nil)
-    }
-    
    func preferenceUpdated() {
         mainViewController.didUpdateLocation()
         mainViewController.didUpdateWeather()
