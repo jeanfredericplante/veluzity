@@ -170,12 +170,20 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
     }
     
     // MARK: unwind from preference pane
-    @IBAction func unwindFromModals(segue: UIStoryboardSegue) {
-        if let sourceViewController: AnyObject = segue.sourceViewController as? UIViewController {
-            sourceViewController.dismissViewControllerAnimated(true, completion: nil)
-//            switch sourceViewController.class {
-//                case
-//            }
+    @IBAction func unwindToContainerViewController(sender: UIStoryboardSegue) {
+        if let sourceViewController: AnyObject = sender.sourceViewController as? UIViewController {
+            if let storyboardId = sender.identifier {
+                switch storyboardId {
+                case "dismissAboutUs":
+                    sourceViewController.dismissViewControllerAnimated(true, completion: nil)
+
+                case "dismissPreferencePaneController":
+                    println("in pref pane")
+                    sourceViewController.dismissViewControllerAnimated(true, completion: {self.preferenceUpdated()})
+                default:
+                    break
+                }
+            }
         }
     }
     
