@@ -183,7 +183,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     func getSpeedUnitText() -> String {
         if defaults.isMph {
-            return "mp/h"
+            return "mph"
         } else {
             return "km/h"
         }
