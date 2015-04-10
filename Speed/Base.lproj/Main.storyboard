@@ -95,6 +95,8 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="65" minValue="40" maxValue="80" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-8v-BE1">
                                                 <rect key="frame" x="6" y="278" width="224" height="31"/>
                                                 <color key="tintColor" red="0.37647058823529411" green="0.41568627450980394" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="maximumTrackTintColor" red="0.37647058823529411" green="0.41568627450980394" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="speedSliderChanged:" destination="EoH-KH-Mxk" eventType="valueChanged" id="pnn-y6-kkx"/>
                                                 </connections>
@@ -227,8 +229,8 @@ Fantastic Whale Labs</string>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJS-Gc-ySE">
-                                <rect key="frame" x="543" y="28" width="41" height="41"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJS-Gc-ySE">
+                                <rect key="frame" x="544" y="29" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="lfv-Iw-2So"/>
                                     <constraint firstAttribute="width" secondItem="sJS-Gc-ySE" secondAttribute="height" multiplier="1:1" id="y0M-Vm-bHD"/>
@@ -265,11 +267,11 @@ Fantastic Whale Labs</string>
                                 <exclude reference="OcS-WK-RrU"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="bTi-re-eBu"/>
+                                <exclude reference="vPs-1V-0Th"/>
                                 <exclude reference="2i2-ym-g4c"/>
                                 <exclude reference="IEp-NA-CMA"/>
                                 <exclude reference="xgL-N3-kTx"/>
-                                <exclude reference="bTi-re-eBu"/>
-                                <exclude reference="vPs-1V-0Th"/>
                                 <exclude reference="duA-lf-FuZ"/>
                                 <exclude reference="PtQ-Sg-cx3"/>
                             </mask>
@@ -301,7 +303,7 @@ Fantastic Whale Labs</string>
                         <color key="separatorColor" white="0.27048211348684209" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Uwc-a3-HRq">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.19215686274509805" green="0.20000000000000001" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
@@ -456,7 +458,7 @@ Fantastic Whale Labs</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="we3-mG-F65" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="560" y="387"/>
+            <point key="canvasLocation" x="469" y="387"/>
         </scene>
         <!--About Us-->
         <scene sceneID="dev-sa-dCn">
