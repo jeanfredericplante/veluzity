@@ -730,11 +730,11 @@ Fantastic Whale Labs</string>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="yo5-0S-Tw3"/>
-                                        <include reference="l4Z-gy-BIc"/>
                                         <include reference="RLg-dH-9Y0"/>
                                         <include reference="Yu4-AA-Ybq"/>
                                         <include reference="lRz-Im-Ud2"/>
                                         <include reference="txg-Kw-YN3"/>
+                                        <include reference="l4Z-gy-BIc"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
@@ -746,11 +746,11 @@ Fantastic Whale Labs</string>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="yo5-0S-Tw3"/>
-                                        <include reference="l4Z-gy-BIc"/>
                                         <include reference="RLg-dH-9Y0"/>
                                         <include reference="Yu4-AA-Ybq"/>
                                         <include reference="lRz-Im-Ud2"/>
                                         <include reference="txg-Kw-YN3"/>
+                                        <include reference="l4Z-gy-BIc"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -995,27 +995,27 @@ Fantastic Whale Labs</string>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="KXc-k7-beo"/>
+                                <exclude reference="Rmx-6f-hTS"/>
                                 <exclude reference="2FF-wt-TnC"/>
                                 <exclude reference="H3W-ja-Tie"/>
                                 <exclude reference="Jgo-3Q-Mnu"/>
-                                <exclude reference="KXc-k7-beo"/>
-                                <exclude reference="Rmx-6f-hTS"/>
                                 <exclude reference="ubS-ns-pQ5"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
+                                <exclude reference="8dl-vG-3ec"/>
+                                <include reference="KXc-k7-beo"/>
+                                <include reference="Rmx-6f-hTS"/>
+                                <exclude reference="cTu-Kn-8im"/>
+                                <exclude reference="gd8-NO-5v2"/>
                                 <include reference="HmE-MW-ekQ"/>
                                 <exclude reference="lMp-Uk-0bj"/>
                                 <include reference="2FF-wt-TnC"/>
                                 <include reference="H3W-ja-Tie"/>
                                 <exclude reference="Jgo-3Q-Mnu"/>
                                 <exclude reference="cJd-9Y-XQR"/>
-                                <exclude reference="8dl-vG-3ec"/>
-                                <include reference="KXc-k7-beo"/>
-                                <include reference="Rmx-6f-hTS"/>
-                                <exclude reference="cTu-Kn-8im"/>
-                                <exclude reference="gd8-NO-5v2"/>
                                 <include reference="ubS-ns-pQ5"/>
                             </mask>
                         </variation>

@@ -637,9 +637,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Speed/Flurry",
-					"$(PROJECT_DIR)/Speed",
-					/Users/jeanfredericplante/Desktop/Flurry,
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Flurry",
 				);
@@ -665,9 +662,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Speed/Flurry",
-					"$(PROJECT_DIR)/Speed",
-					/Users/jeanfredericplante/Desktop/Flurry,
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Flurry",
 				);
