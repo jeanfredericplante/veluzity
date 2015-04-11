@@ -10,8 +10,10 @@
 import CoreLocation
 import AddressBook
 
+@objc
 public protocol LocationUpdateDelegate {
     func didUpdateLocation()
+    func didChangeLocationAuthorizationStatus(status: CLAuthorizationStatus)
 }
 
 public class LocationModel: NSObject, CLLocationManagerDelegate {
@@ -65,7 +67,24 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         self.locationManager.stopUpdatingLocation()
     }
     
+    public func authorizationStatus() -> CLAuthorizationStatus {
+        return CLLocationManager.authorizationStatus()
+    }
     
+    public func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status {
+        case .AuthorizedAlways, .AuthorizedWhenInUse:
+            self.delegate?.didChangeLocationAuthorizationStatus(status)
+        case .NotDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .Restricted, .Denied:
+            self.delegate?.didChangeLocationAuthorizationStatus(status)
+        default:
+            break
+        }
+    }
+    
+ 
     public func getStreetName(location: CLLocation) {
         locationGeoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
             if error != nil {
@@ -94,6 +113,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         }
     }
     
+  
     public func getCardinalDirection() -> String {
         if course != nil && course >= 0  {
             return getCardinalDirectionFromHeading(self.course!)}

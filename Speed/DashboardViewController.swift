@@ -230,12 +230,79 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     func applicationWillBecomeActive() {
         locationWeather.restoreState()
         userLocation.startUpdatingLocation()
+    }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        userLocation.stopUpdatingLocation()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        userLocation.startUpdatingLocation()
+        let locationStatus = userLocation.authorizationStatus()
+        presentAlertIfLocationAuthorizationNotAuthorized(locationStatus)
+
         // Set status bar to light
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-        
         self.didUpdateWeather()
+    }
+    
+    
+    // MARK: Location authorization services alerting
+    
+    func didChangeLocationAuthorizationStatus(status: CLAuthorizationStatus) {
+        switch status {
+        case .AuthorizedWhenInUse, .AuthorizedAlways:
+            self.userLocation.startUpdatingLocation()
+        default:
+            presentAlertIfLocationAuthorizationNotAuthorized(status)
+        }
+    }
+    
+    func presentAlertIfLocationAuthorizationNotAuthorized(status: CLAuthorizationStatus) {
+        switch status {
+        case .Denied:
+            self.userLocation.stopUpdatingLocation()
+            askUserToTurnOnLocationServices()
+        case .Restricted:
+            self.userLocation.stopUpdatingLocation()
+            alertUserLocationServicesAreRestricted()
+        default:
+            break
+        }
+    }
+    
+
+    
+    func askUserToTurnOnLocationServices() {
+        let alertController = UIAlertController(
+            title: "Location Access Disabled",
+            message: "Veluzity needs location access in order to get the speed, location and heading. Please open this app's  settings and enable location access.",
+            preferredStyle: .Alert)
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+            if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        }
+        alertController.addAction(openAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func alertUserLocationServicesAreRestricted() {
+        let alertController = UIAlertController(
+            title: "Location Access Restricted",
+            message: "Veluzity needs location access in order to get the speed, but your device currently restricts the access to location services.",
+            preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+
     }
     
     
