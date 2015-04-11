@@ -36,8 +36,6 @@ struct Constants {
 }
 
 class SpeedViewsHelper {
-   
-    
     
     class func setImageAndTextColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
         if view != nil {
@@ -50,7 +48,7 @@ class SpeedViewsHelper {
     class func setLabelsColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
         if view != nil {
             let allSubviews = view.subviews
-            let allLabels = allSubviews.filter({$0.isKindOfClass(UILabel)}) as [UILabel]
+            let allLabels = allSubviews.filter({$0.isKindOfClass(UILabel)}) as! [UILabel]
             for textLabel in allLabels {
                 textLabel.textColor = color
                 if Constants.addShadowsToFont {
@@ -64,7 +62,7 @@ class SpeedViewsHelper {
     
     class func setImageViewsTintColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
         if view != nil {
-            let allImageViews = view.subviews.filter({$0.isKindOfClass(UIImageView)}) as [UIImageView]
+            let allImageViews = view.subviews.filter({$0.isKindOfClass(UIImageView)}) as! [UIImageView]
             for imageView in allImageViews {
                 imageView.image = imageView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
                 imageView.tintColor = color
@@ -89,7 +87,7 @@ class SpeedViewsHelper {
         var cardinalDirection: String = ""
         if degrees != nil && degrees >= 0  && cardinality != nil
         {
-            degreesText = NSString(format: "%.0f° ", degrees!)
+            degreesText = String(format: "%.0f° ", degrees!)
             cardinalDirection = cardinality
             return textWithTwoFontSizes(degreesText, smallText: cardinalDirection, font: font, ratio: Constants.fontRatio)
 
@@ -121,12 +119,12 @@ class SpeedViewsHelper {
     }
     
     
-    class func formattedTemperature(temperature: Double?) -> NSString {
-        var formattedTemp: NSString
+    class func formattedTemperature(temperature: Double?) -> String {
+        var formattedTemp: String
         if let temp = temperature {
-            formattedTemp = NSString(format: "%.0f°", temp)
+            formattedTemp = String(format: "%.0f°", temp)
         } else {
-            formattedTemp = NSString(string: "--°")
+            formattedTemp = String("--°")
         }
         return formattedTemp
     }

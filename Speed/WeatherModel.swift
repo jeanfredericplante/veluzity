@@ -95,7 +95,7 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
         var distance = newLocation.distanceFromLocation(lastUpdateLocation)
         var shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh: Bool
         var hasPassedMinTimeBetweenCalls: Bool
-        if (lastUpdateTime? == nil) {
+        if (lastUpdateTime == nil) {
             shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh = true
             hasPassedMinTimeBetweenCalls = true
         } else {
@@ -111,7 +111,7 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
     }
     
     public func temperature() -> Double? {
-        return lastReadTemperatureCelsius?
+        return lastReadTemperatureCelsius
     }
     
     public func temperatureFahrenheit() -> Double? {
@@ -123,7 +123,7 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
     }
     
     public func getWeatherIcon() -> String {
-        return weatherIcon? ?? "01d"
+        return weatherIcon ?? "01d"
     }
     
     // Save and restore state
@@ -190,13 +190,13 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
     
     func parseAndUpdateModelWithJsonFromAPI(json: NSData) {
         var myError: NSError?
-        var weatherInfo: NSDictionary? = NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.MutableContainers, error: &myError) as NSDictionary?
+        var weatherInfo: NSDictionary? = NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.MutableContainers, error: &myError) as? NSDictionary
         if (myError == nil) {
-            var weatherMain: NSDictionary? = weatherInfo?["main"] as NSDictionary?
-            var temperatureKelvin: Double? = weatherMain?["temp"] as Double?
-            var weatherDescr: NSDictionary? = weatherInfo?["weather"]?[0] as NSDictionary?
-            self.weatherDescription = weatherDescr?["description"] as String?
-            self.weatherIcon = weatherDescr?["icon"] as String?
+            var weatherMain: NSDictionary? = weatherInfo?["main"] as? NSDictionary
+            var temperatureKelvin: Double? = weatherMain?["temp"] as? Double
+            var weatherDescr: NSDictionary? = weatherInfo?["weather"]?[0] as? NSDictionary
+            self.weatherDescription = weatherDescr?["description"] as? String
+            self.weatherIcon = weatherDescr?["icon"] as? String
             if temperatureKelvin != nil {
                 self.lastReadTemperatureCelsius = temperatureKelvin! - 273.15
                 self.lastUpdateTime = NSDate() // now

@@ -72,12 +72,13 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
                 println("reverse location failed")
             } else {
                 if placemarks.count > 0 {
-                    var placemark: CLPlacemark = placemarks[0] as CLPlacemark
-                    self.streetName = placemark.thoroughfare
-                    self.cityName = placemark.locality
-                    self.stateName = placemark.administrativeArea
-
-                    self.delegate?.didUpdateLocation()
+                    if let placemark: CLPlacemark = placemarks[0] as? CLPlacemark {
+                        self.streetName = placemark.thoroughfare
+                        self.cityName = placemark.locality
+                        self.stateName = placemark.administrativeArea
+                        
+                        self.delegate?.didUpdateLocation()
+                    }
                 }
             }
         }
@@ -87,7 +88,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     public func getHeading() -> String {
         if course != nil && course >= 0  {
             var cardHeading = getCardinalDirectionFromHeading(self.course!)
-            return NSString(format: "%.0f° %@",self.course!, cardHeading) }
+            return String(format: "%.0f° %@", self.course!, cardHeading) }
         else {
             return ""
         }

@@ -154,9 +154,9 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     func didUpdateWeather() {
         var temperature: Double?
         if defaults.isFahrenheit {
-            temperature = locationWeather.temperatureFahrenheit()?
+            temperature = locationWeather.temperatureFahrenheit()
         } else {
-            temperature = locationWeather.temperature()?
+            temperature = locationWeather.temperature()
         }
         tempDisplay.text = SpeedViewsHelper.formattedTemperature(temperature)
         weatherDescription.text = locationWeather.weatherDescription?.lowercaseString
@@ -177,7 +177,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     func getSpeedWithPreferencesUnit() -> String {
         var speedText: String!
         var localizedSpeed = getLocalizedSpeed()
-        speedText = NSString(format: "%.0f", localizedSpeed)
+        speedText = String(format: "%.0f", localizedSpeed)
         return speedText
     }
     
