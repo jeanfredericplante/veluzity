@@ -172,7 +172,6 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
         println("url: \(requestURL.debugDescription)")
         let request = NSURLRequest(URL: NSURL(string: requestURL)!)
         
-        
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:
             {
                 (response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in

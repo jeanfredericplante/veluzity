@@ -152,6 +152,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     
     func didUpdateWeather() {
+        Flurry.logEvent("openweather_request")
         var temperature: Double?
         if defaults.isFahrenheit {
             temperature = locationWeather.temperatureFahrenheit()
