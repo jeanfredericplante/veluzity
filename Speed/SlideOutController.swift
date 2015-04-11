@@ -28,6 +28,7 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
     
     
     private func presentFeedbackEmail() {
+        Flurry.logEvent("feedback_email_load")
         let configuredMailComposeViewController = emailView.configuredMailComposeViewController()
         if emailView.canSendMail()
         {

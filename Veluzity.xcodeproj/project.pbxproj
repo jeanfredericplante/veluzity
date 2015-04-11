@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7E15C11F1A570C080000BEDA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7E15C11E1A570C080000BEDA /* Settings.bundle */; };
-		7E211AC01AA5912A0058301F /* libFlurry_6.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211ABF1AA5912A0058301F /* libFlurry_6.2.0.a */; };
 		7E211AC21AA5913F0058301F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC11AA5913F0058301F /* Security.framework */; };
 		7E211AC41AA591500058301F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC31AA591500058301F /* SystemConfiguration.framework */; };
 		7E2320C41A78AED40097D2D8 /* ColorGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2320C31A78AED40097D2D8 /* ColorGradient.swift */; };
@@ -16,6 +15,7 @@
 		7E28B95F1AC8E79200095181 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F41AA1605000565DAA /* Settings.swift */; };
 		7E28B9601AC8E7DC00095181 /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F21AA0560C00565DAA /* Params.swift */; };
 		7E8D0B251AC523BC00DE627B /* UIApplicationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */; };
+		7E8E40311AD970B2005ED3F0 /* libFlurry_6.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E8E40301AD970B2005ED3F0 /* libFlurry_6.3.0.a */; };
 		7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */; };
 		7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */; };
 		7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417D01A618DC400BE639B /* PreferencePaneController.swift */; };
@@ -88,13 +88,13 @@
 
 /* Begin PBXFileReference section */
 		7E15C11E1A570C080000BEDA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		7E211ABE1AA5912A0058301F /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		7E211ABF1AA5912A0058301F /* libFlurry_6.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.2.0.a; sourceTree = "<group>"; };
 		7E211AC11AA5913F0058301F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7E211AC31AA591500058301F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		7E211AC51AA591930058301F /* Speed-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Speed-Bridging-Header.h"; path = "../../Speed-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E2320C31A78AED40097D2D8 /* ColorGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorGradient.swift; sourceTree = "<group>"; };
 		7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationUtils.swift; path = ../UIApplicationUtils.swift; sourceTree = "<group>"; };
+		7E8E402F1AD970B2005ED3F0 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = SOURCE_ROOT; };
+		7E8E40301AD970B2005ED3F0 /* libFlurry_6.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_6.3.0.a; path = Flurry/libFlurry_6.3.0.a; sourceTree = SOURCE_ROOT; };
+		7E8E40331AD97107005ED3F0 /* Speed-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Speed-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedMeter.swift; sourceTree = "<group>"; };
 		7EA0E3F01A833A3E004C86DF /* ColorGradientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorGradientTests.swift; sourceTree = "<group>"; };
 		7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 				7E211AC41AA591500058301F /* SystemConfiguration.framework in Frameworks */,
 				7ED15A181AC8571400F329D0 /* VeluzityKit.framework in Frameworks */,
 				7E211AC21AA5913F0058301F /* Security.framework in Frameworks */,
-				7E211AC01AA5912A0058301F /* libFlurry_6.2.0.a in Frameworks */,
+				7E8E40311AD970B2005ED3F0 /* libFlurry_6.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,9 +191,9 @@
 		7E211ABD1AA5912A0058301F /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
-				7E211AC51AA591930058301F /* Speed-Bridging-Header.h */,
-				7E211ABE1AA5912A0058301F /* Flurry.h */,
-				7E211ABF1AA5912A0058301F /* libFlurry_6.2.0.a */,
+				7E8E40331AD97107005ED3F0 /* Speed-Bridging-Header.h */,
+				7E8E402F1AD970B2005ED3F0 /* Flurry.h */,
+				7E8E40301AD970B2005ED3F0 /* libFlurry_6.3.0.a */,
 			);
 			path = Flurry;
 			sourceTree = "<group>";
@@ -635,6 +635,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Speed/Flurry",
 					"$(PROJECT_DIR)/Speed",
+					/Users/jeanfredericplante/Desktop/Flurry,
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Flurry",
 				);
 				PRODUCT_NAME = Veluzity;
 				PROVISIONING_PROFILE = "";
@@ -660,6 +663,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Speed/Flurry",
 					"$(PROJECT_DIR)/Speed",
+					/Users/jeanfredericplante/Desktop/Flurry,
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Flurry",
 				);
 				PRODUCT_NAME = Veluzity;
 				PROVISIONING_PROFILE = "";
