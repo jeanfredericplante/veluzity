@@ -457,7 +457,7 @@ Fantastic Whale Labs</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="we3-mG-F65" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="469" y="387"/>
+            <point key="canvasLocation" x="569" y="387"/>
         </scene>
         <!--About Us-->
         <scene sceneID="dev-sa-dCn">
