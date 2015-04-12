@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VeluzityKit
 
 struct Constants {
     static let fontRatio: CGFloat = 0.5
@@ -48,7 +49,7 @@ class SpeedViewsHelper {
     class func setLabelsColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
         if view != nil {
             let allSubviews = view.subviews
-            let allLabels = allSubviews.filter({$0.isKindOfClass(UILabel)}) as [UILabel]
+            let allLabels = allSubviews.filter({$0.isKindOfClass(UILabel)}) as! [UILabel]
             for textLabel in allLabels {
                 textLabel.textColor = color
                 if Constants.addShadowsToFont {
@@ -62,7 +63,7 @@ class SpeedViewsHelper {
     
     class func setImageViewsTintColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
         if view != nil {
-            let allImageViews = view.subviews.filter({$0.isKindOfClass(UIImageView)}) as [UIImageView]
+            let allImageViews = view.subviews.filter({$0.isKindOfClass(UIImageView)}) as! [UIImageView]
             for imageView in allImageViews {
                 imageView.image = imageView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
                 imageView.tintColor = color
@@ -87,7 +88,7 @@ class SpeedViewsHelper {
         var cardinalDirection: String = ""
         if degrees != nil && degrees >= 0  && cardinality != nil
         {
-            degreesText = NSString(format: "%.0f° ", degrees!)
+            degreesText = String(format: "%.0f° ", degrees!)
             cardinalDirection = cardinality
             return textWithTwoFontSizes(degreesText, smallText: cardinalDirection, font: font, ratio: Constants.fontRatio)
 
@@ -119,12 +120,12 @@ class SpeedViewsHelper {
     }
     
     
-    class func formattedTemperature(temperature: Double?) -> NSString {
-        var formattedTemp: NSString
+    class func formattedTemperature(temperature: Double?) -> String {
+        var formattedTemp: String
         if let temp = temperature {
-            formattedTemp = NSString(format: "%.0f°", temp)
+            formattedTemp = String(format: "%.0f°", temp)
         } else {
-            formattedTemp = NSString(string: "--°")
+            formattedTemp = String("--°")
         }
         return formattedTemp
     }
@@ -155,20 +156,7 @@ class SpeedViewsHelper {
     class func getColorForElement(e: Constants.ViewColors) -> UIColor {
         return hexToUIColor(e.toHex())
     }
-    
-    
-    class func hexToUIColor(hexValue: Int) -> UIColor {
-        let (red,green,blue) = hexToRGB(hexValue)
-        return UIColor(red: red, green: green, blue: blue, alpha: 1)
-    }
-    
-    class func hexToRGB(hexValue: Int) -> (r: CGFloat, g: CGFloat, b: CGFloat) {
-        var red   = CGFloat((hexValue & 0xFF0000) >> 16)   / 255.0
-        var green = CGFloat((hexValue & 0x00FF00) >> 8)    / 255.0
-        var blue  = CGFloat(hexValue & 0x0000FF)           / 255.0
-        return (red, green, blue)
-    }
-    
+        
     class func RGBtoHSV(#r: CGFloat, g:CGFloat, b: CGFloat) -> (h: CGFloat, s: CGFloat, v:CGFloat)? {
         let c = UIColor(red: r,green: g,blue: b,alpha: 1)
         var hue : CGFloat = 0

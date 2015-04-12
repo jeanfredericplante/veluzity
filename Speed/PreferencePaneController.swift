@@ -51,6 +51,7 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
         setUISegmentedControlFonts()
         setScrollableView()
         setCurrentVersion()
+        Flurry.logEvent("settings_viewdidload")
  
     }
     
@@ -137,23 +138,19 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
 
     
     private func setUISegmentedControlFonts() {
-        var attrSelected: NSDictionary
-        var attrNormal: NSDictionary
+        var attrSelected: Dictionary<NSObject, AnyObject>
+        var attrNormal: Dictionary<NSObject, AnyObject>
         let nonSelectedColor = UIColor(red: 0.39, green: 0.40, blue: 0.43, alpha: 1)
         let selectedColor = UIColor.whiteColor()
         if let segFont = UIFont(name: "HelveticaNeue-Thin", size: 21.0) {
-         attrSelected = NSDictionary(objects: [segFont, selectedColor],
-            forKeys: [NSFontAttributeName, NSForegroundColorAttributeName])
-            attrNormal = NSDictionary(objects: [segFont,
-                nonSelectedColor],
-                forKeys: [NSFontAttributeName, NSForegroundColorAttributeName])
+            attrSelected = [NSFontAttributeName: segFont, NSForegroundColorAttributeName:selectedColor]
+            attrNormal = [NSFontAttributeName: segFont, NSForegroundColorAttributeName:nonSelectedColor]
+
         } else {
-         attrSelected = NSDictionary(objects: [selectedColor],
-                forKeys: [ NSForegroundColorAttributeName])
-            attrNormal = NSDictionary(objects: [nonSelectedColor],
-                forKeys: [ NSForegroundColorAttributeName])
+            attrSelected = [NSForegroundColorAttributeName : selectedColor]
+            attrNormal = [NSForegroundColorAttributeName : nonSelectedColor]
         }
-        UISegmentedControl.appearance().setTitleTextAttributes(attrSelected, forState: .Selected)
+        UISegmentedControl.appearance().setTitleTextAttributes(attrSelected , forState: .Selected)
         UISegmentedControl.appearance().setTitleTextAttributes(attrNormal, forState: .Normal)
 
     }
@@ -173,6 +170,7 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
         settingsScrollView.contentSize = CGSize(width: scrollableSettings.bounds.width, height: scrollableSettings.bounds.height)
         settingsScrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
         scrollableSettings.setTranslatesAutoresizingMaskIntoConstraints(false)
+   
     }
     
     private func setCurrentVersion() -> Void {

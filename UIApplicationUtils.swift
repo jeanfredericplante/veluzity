@@ -12,15 +12,15 @@ class UIApplicationUtils: NSObject {
     
     
     class func getAppName() -> String {
-        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleDisplayName") as String
+        return (NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleDisplayName") as? String) ?? ""
     }
     
     class func getAppVersion() -> String {
-        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
+        return (NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String) ?? "-"
     }
     
     class func getAppBuild() -> String {
-        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as String
+        return (NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as? String) ?? "-"
     }
     
     class func getDeviceModel() -> String {

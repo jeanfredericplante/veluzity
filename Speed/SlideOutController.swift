@@ -8,19 +8,27 @@
 
 import Foundation
 
+@objc // makes protocol available from Objective C
+protocol SlideOutDelegate {
+    optional func aboutUsTapped()
+    optional func settingsTapped()
+}
+
 class SlideOutController: UITableViewController, UITableViewDelegate {
     
     let emailView = EmailComposer()
+    var delegate: SlideOutDelegate?
     
  
     
     // MARK: transition methods
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        closeSlideOutPanel()
+//        closeSlideOutPanel()
     }
     
     
     private func presentFeedbackEmail() {
+        Flurry.logEvent("feedback_email_load")
         let configuredMailComposeViewController = emailView.configuredMailComposeViewController()
         if emailView.canSendMail()
         {
@@ -32,21 +40,31 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
     // MARK: table view delegate methods
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (indexPath.row == 1) {
-            if emailView.canSendMail() {
-                println("row 1 pressed")
-                presentFeedbackEmail()
-            } else {
-                cantSendEmailAlert()
-            }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        switch indexPath.row {
+        case 0:
+            delegate?.settingsTapped?()
+        case 1:
+            
+                if emailView.canSendMail() {
+                    println("row 1 pressed")
+                    presentFeedbackEmail()
+                } else {
+                    cantSendEmailAlert()
+                }
+        case 2:
+            delegate?.aboutUsTapped?()
+        default:
+            break
         }
+        
     }
     
     override  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         // customize selected color for table view
         let selectedView = UIView()
-        selectedView.backgroundColor = UIColor(red: 69/255, green: 72/255, blue: 85/255, alpha: 1)
+        selectedView.backgroundColor = UIColor(red: 0.1668, green: 0.1706, blue: 0.2186, alpha: 1)
         cell.selectedBackgroundView = selectedView
     }
     
@@ -63,7 +81,7 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
     private func closeSlideOutPanel() {
         if let parentVC = self.parentViewController {
             if let parentVC = parentVC as? ContainerViewController {
-                parentVC.closePreferencePane()
+                parentVC.closeSlideOut()
             }
         }
 

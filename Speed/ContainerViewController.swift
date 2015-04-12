@@ -14,10 +14,10 @@ enum SlideOutState {
     case PreferenceCollapsed
 }
 
-class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestureRecognizerDelegate {
+class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOutDelegate, UIGestureRecognizerDelegate {
     
     struct Constants {
-        static let preferencePanelExpandedOffset: CGFloat = 270
+        static let SlideOutExpandedOffset: CGFloat = 270
     }
 
     var mainViewController: DashboardViewController!
@@ -56,26 +56,26 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestu
         // Dispose of any resources that can be recreated.
     }
     
-    
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
-        closePreferencePane()
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        closeSlideOut()
     }
-    
     
     
     
     
     
      // MARK: Container view management method
-    func addPreferencePaneViewController() {
+    func addSlideOutViewController() {
         if slideOutController == nil {
             slideOutController = UIStoryboard.slideOutController()
             addChildSlideOutController(slideOutController!)
-//            SlideOutController!.delegate = self
+            slideOutController!.delegate = self
             
         }
     }
+    
+
    
     func addChildSlideOutController(preferenceController: SlideOutController) {
         view.insertSubview(preferenceController.view, atIndex: 0)
@@ -84,27 +84,27 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestu
     }
 
     
-    func togglePreferencePane() {
+    func toggleSlideOut() {
         let notAlreadyExpanded = (currentState != SlideOutState.PreferenceExpanded)
         let shouldI = notAlreadyExpanded
         if notAlreadyExpanded {
-            addPreferencePaneViewController()
+            addSlideOutViewController()
         }
-        animatePreferencePane(shouldExpand: shouldI)
+        animateSlideOut(shouldExpand: shouldI)
     }
     
-    func closePreferencePane() {
+    func closeSlideOut() {
         if currentState == SlideOutState.PreferenceExpanded {
-            animatePreferencePane(shouldExpand: false)
+            animateSlideOut(shouldExpand: false)
         }
     }
     
     func expandedOffset() -> CGFloat {
-        return Constants.preferencePanelExpandedOffset
+        return Constants.SlideOutExpandedOffset
     }
     
 
-    func animatePreferencePane(#shouldExpand: Bool) {
+    func animateSlideOut(#shouldExpand: Bool) {
         // # is to have the external parameter name match the variable name
         if (shouldExpand) {
             currentState = .PreferenceExpanded
@@ -144,7 +144,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestu
         case .Began:
             if (currentState == .PreferenceCollapsed) {
                 if gestureIsDraggingFromLeftToRight {
-                    addPreferencePaneViewController()
+                    addSlideOutViewController()
                     showShadowForMainView(true)
                 }
             }
@@ -157,7 +157,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestu
         case .Ended:
             if (slideOutController != nil) {
                 let hasMovedGreaterThanHalfway = sender.view!.center.x > view.bounds.size.width
-                animatePreferencePane(shouldExpand: hasMovedGreaterThanHalfway)
+                animateSlideOut(shouldExpand: hasMovedGreaterThanHalfway)
 
             }
         default:
@@ -168,6 +168,22 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, UIGestu
     }
     
     // MARK: unwind from preference pane
+    @IBAction func unwindToContainerViewController(sender: UIStoryboardSegue) {
+        if let sourceViewController: AnyObject = sender.sourceViewController as? UIViewController {
+            if let storyboardId = sender.identifier {
+                switch storyboardId {
+                case "dismissAboutUs":
+                    sourceViewController.dismissViewControllerAnimated(true, completion: nil)
+
+                case "dismissPreferencePaneController":
+                    println("in pref pane")
+                    sourceViewController.dismissViewControllerAnimated(true, completion: {self.preferenceUpdated()})
+                default:
+                    break
+                }
+            }
+        }
+    }
     
    func preferenceUpdated() {
         mainViewController.didUpdateLocation()
@@ -188,5 +204,14 @@ private extension UIStoryboard {
     class func slideOutController() -> SlideOutController? {
         return mainStoryboard().instantiateViewControllerWithIdentifier("SlideOutController") as? SlideOutController
     }
+    
+    class func preferencePaneController() -> PreferencePaneController? {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("PreferencePaneController") as? PreferencePaneController
+    }
+    
+    class func aboutUsController() -> AboutUsController? {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("AboutUsController") as? AboutUsController
+    }
+
 
 }

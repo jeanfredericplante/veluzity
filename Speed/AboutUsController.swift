@@ -14,6 +14,7 @@ class AboutUsController: UIViewController {
 
 
     override func viewDidLoad() {
+        Flurry.logEvent("aboutus_controller_load")
         versionLabel.text = "version "+UIApplicationUtils.getAppVersion()
     }
     

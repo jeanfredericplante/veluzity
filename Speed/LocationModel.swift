@@ -10,8 +10,10 @@
 import CoreLocation
 import AddressBook
 
+@objc
 public protocol LocationUpdateDelegate {
     func didUpdateLocation()
+    func didChangeLocationAuthorizationStatus(status: CLAuthorizationStatus)
 }
 
 public class LocationModel: NSObject, CLLocationManagerDelegate {
@@ -65,19 +67,37 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         self.locationManager.stopUpdatingLocation()
     }
     
+    public func authorizationStatus() -> CLAuthorizationStatus {
+        return CLLocationManager.authorizationStatus()
+    }
     
+    public func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status {
+        case .AuthorizedAlways, .AuthorizedWhenInUse:
+            self.delegate?.didChangeLocationAuthorizationStatus(status)
+        case .NotDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .Restricted, .Denied:
+            self.delegate?.didChangeLocationAuthorizationStatus(status)
+        default:
+            break
+        }
+    }
+    
+ 
     public func getStreetName(location: CLLocation) {
         locationGeoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
             if error != nil {
                 println("reverse location failed")
             } else {
                 if placemarks.count > 0 {
-                    var placemark: CLPlacemark = placemarks[0] as CLPlacemark
-                    self.streetName = placemark.thoroughfare
-                    self.cityName = placemark.locality
-                    self.stateName = placemark.administrativeArea
-
-                    self.delegate?.didUpdateLocation()
+                    if let placemark: CLPlacemark = placemarks[0] as? CLPlacemark {
+                        self.streetName = placemark.thoroughfare
+                        self.cityName = placemark.locality
+                        self.stateName = placemark.administrativeArea
+                        
+                        self.delegate?.didUpdateLocation()
+                    }
                 }
             }
         }
@@ -87,12 +107,13 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     public func getHeading() -> String {
         if course != nil && course >= 0  {
             var cardHeading = getCardinalDirectionFromHeading(self.course!)
-            return NSString(format: "%.0f° %@",self.course!, cardHeading) }
+            return String(format: "%.0f° %@", self.course!, cardHeading) }
         else {
             return ""
         }
     }
     
+  
     public func getCardinalDirection() -> String {
         if course != nil && course >= 0  {
             return getCardinalDirectionFromHeading(self.course!)}
