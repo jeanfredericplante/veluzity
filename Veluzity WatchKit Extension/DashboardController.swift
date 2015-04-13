@@ -13,13 +13,14 @@ import VeluzityKit
 
 class DashboardController: WKInterfaceController, LocationUpdateDelegate {
 
-    @IBOutlet weak var speedLabel: WKInterfaceLabel!
-    @IBOutlet weak var speedUnitLabel: WKInterfaceLabel!
-    
     @IBOutlet weak var meterGroup: WKInterfaceGroup!
     
     @IBOutlet weak var meterImage: WKInterfaceImage!
     let userLocation = LocationModel()
+    lazy var meterView: MeterView  = {
+         let frameSize = WKInterfaceDevice.currentDevice().screenBounds
+         return MeterView(bounds: frameSize)
+    }()
 
     
     override func awakeWithContext(context: AnyObject?) {
@@ -42,7 +43,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     
     private func updateSpeed() {
         let speed = localizeSpeed(userLocation.speed, isMph: true)
-        speedLabel.setText(String(format: "%.0f", speed))
+//        speedLabel.setText(String(format: "%.0f", speed))
     }
     
     func didUpdateLocation() {
@@ -50,9 +51,12 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
         updateMeterImage()
     }
     
+    func didChangeLocationAuthorizationStatus(status: CLAuthorizationStatus) {
+        // TODO: handle auth change
+    }
+    
     func updateMeterImage() {
-        let frameSize = WKInterfaceDevice.currentDevice().screenBounds
-        let meterView = MeterView(meterSize: CGSize(width: frameSize.width, height: frameSize.height))
+        meterView.speed = userLocation.speed
         meterGroup.setBackgroundImage(meterView.meterBackgroundImage)
         
     }
