@@ -16,7 +16,7 @@ class MeterView {
         static let maxDuration: NSTimeInterval = 0.75
         static let meterRadius: CGFloat = 50
         static let meterWidth: CGFloat = 5
-        static let startAngleOffset: Double = 0
+        static let startAngleOffset: Double = M_PI/10
         static let maxDialSpeed: Double = 50
     }
     
@@ -59,6 +59,7 @@ class MeterView {
 
     var meterBackgroundImage: UIImage {
         UIGraphicsBeginImageContextWithOptions(frameSize, false, 2.0)
+         setAxisOrientation()
         drawGradientInCurrentContext(for_speed: speed)
         drawProgressCircleInCurrentContext(for_speed: speed)
         drawSpeedTextInCurrentContext(for_speed: speed)
@@ -84,6 +85,7 @@ class MeterView {
     func drawProgressCircleInCurrentContext(for_speed s: Double) {
         let path = CGPathCreateMutable()
         let c = UIGraphicsGetCurrentContext()
+
         let outerRadius = Constants.meterRadius
         let center = CGPointMake(CGRectGetMidX(viewBounds), CGRectGetMidY(viewBounds))
         let speedPercentage = s/Constants.maxDialSpeed
@@ -91,7 +93,7 @@ class MeterView {
         let startAngle =  CGFloat((3*M_PI_2) - Constants.startAngleOffset)
         let endAngle = startAngle - CGFloat((2*M_PI - 2*Constants.startAngleOffset) * speedPercentage)
         
-        CGPathAddArc(path, nil, center.x, center.y, outerRadius, startAngle, endAngle, false)
+        CGPathAddArc(path, nil, center.x, center.y, outerRadius, startAngle, endAngle, true)
 
         UIColor.whiteColor().set()
         CGContextAddPath(c, path)
@@ -101,11 +103,8 @@ class MeterView {
     
     func drawSpeedTextInCurrentContext(for_speed s: Double) {
         let c = UIGraphicsGetCurrentContext()
-        CGContextTranslateCTM(c, 0.0, viewBounds.height)
-        CGContextScaleCTM(c, 1.0, -1.0)
-        
         let speed = String(format: "%.0f",localizeSpeed(s, isMph: true))
-        let font = UIFont.systemFontOfSize(40)
+        let font = UIFont.systemFontOfSize(50)
         let x = CGRectGetMidX(viewBounds)
         let y = CGRectGetMidY(viewBounds)
         let attr = [NSFontAttributeName: font,
@@ -114,8 +113,14 @@ class MeterView {
         let attributedString = NSAttributedString(string: speed, attributes: attr)
         let line = CTLineCreateWithAttributedString(attributedString)
 
-        CGContextSetTextPosition(c, x-attributedString.size().width/2, y)
+        CGContextSetTextPosition(c, x-attributedString.size().width/2, y-attributedString.size().height/4)
         CTLineDraw(line, c)
      }
+    
+    func setAxisOrientation() {
+        let c = UIGraphicsGetCurrentContext()
+        CGContextTranslateCTM(c, 0.0, viewBounds.height)
+        CGContextScaleCTM(c, 1.0, -1.0)
+    }
     
 }
