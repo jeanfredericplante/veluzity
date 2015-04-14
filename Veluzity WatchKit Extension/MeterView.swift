@@ -14,8 +14,9 @@ import CoreGraphics
 class MeterView {
     struct Constants {
         static let maxDuration: NSTimeInterval = 0.75
-        static let meterRadius: CGFloat = 50
-        static let meterWidth: CGFloat = 5
+        static let meterRadius: CGFloat = 70
+        static let gradientClipWidth: CGFloat = 140
+        static let meterWidth: CGFloat = 10
         static let startAngleOffset: Double = M_PI/10
         static let maxDialSpeed: Double = 50
     }
@@ -59,7 +60,7 @@ class MeterView {
 
     var meterBackgroundImage: UIImage {
         UIGraphicsBeginImageContextWithOptions(frameSize, false, 2.0)
-         setAxisOrientation()
+        setAxisOrientation()
         drawGradientInCurrentContext(for_speed: speed)
         drawProgressCircleInCurrentContext(for_speed: speed)
         drawSpeedTextInCurrentContext(for_speed: speed)
@@ -73,12 +74,16 @@ class MeterView {
         let colorspace = CGColorSpaceCreateDeviceRGB()
         if let (sc,ec) = speedToColorGradient(speed: s, maxTransitionSpeed: transitionSpeed)
         {
+            let ctx = UIGraphicsGetCurrentContext()
             let colors: CFArray = [sc.CGColor,ec.CGColor]
+            let xMin = CGRectGetMidX(viewBounds) - Constants.gradientClipWidth/2
+            let yMin = CGRectGetMidY(viewBounds) - Constants.gradientClipWidth/2
+            CGContextAddEllipseInRect(ctx, CGRectMake(xMin, yMin, Constants.gradientClipWidth, Constants.gradientClipWidth))
+            CGContextClip(ctx)
             let gradient = CGGradientCreateWithColors(colorspace, colors, [0,1])
             let startPoint = CGPoint(x: 0, y: 0)
             let endPoint = CGPoint(x: 0, y: frameSize.height)
-            let ctx = UIGraphicsGetCurrentContext()
-            CGContextDrawLinearGradient(UIGraphicsGetCurrentContext(), gradient, startPoint, endPoint, 0)
+            CGContextDrawLinearGradient(ctx, gradient, startPoint, endPoint, 0)
         }
     }
     

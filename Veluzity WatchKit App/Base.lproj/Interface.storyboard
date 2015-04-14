@@ -10,9 +10,9 @@
             <objects>
                 <controller id="AgC-eL-Hgc" userLabel="Dashboard Controller" customClass="DashboardController" customModule="Veluzity_WatchKit_Extension">
                     <items>
-                        <group width="136" height="152" alignment="center" verticalAlignment="center" id="Ra1-n1-gUo">
+                        <group width="140" height="140" alignment="center" verticalAlignment="center" id="Ra1-n1-gUo">
                             <items>
-                                <imageView height="106" alignment="center" id="CVW-Zb-JuY"/>
+                                <imageView width="1" height="1" alignment="center" verticalAlignment="center" id="CVW-Zb-JuY"/>
                             </items>
                         </group>
                     </items>

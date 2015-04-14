@@ -18,15 +18,17 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     @IBOutlet weak var meterImage: WKInterfaceImage!
     let userLocation = LocationModel()
     lazy var meterView: MeterView  = {
-         let frameSize = WKInterfaceDevice.currentDevice().screenBounds
-         return MeterView(bounds: frameSize)
+        let frameSize = WKInterfaceDevice.currentDevice().screenBounds
+        let centerX = CGRectGetMidX(frameSize)
+        let centerY = CGRectGetMidY(frameSize)
+        let width = min(frameSize.width, frameSize.height)
+        return MeterView(bounds: CGRectMake(centerX-width/2, centerY-frameSize.height/2, width, width))
     }()
 
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         userLocation.delegate = self
- 
         // Configure interface objects here.
     }
 
