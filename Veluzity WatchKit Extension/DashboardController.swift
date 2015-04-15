@@ -15,7 +15,8 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
 
     @IBOutlet weak var meterGroup: WKInterfaceGroup!
     
-    @IBOutlet weak var meterImage: WKInterfaceImage!
+    @IBOutlet weak var speedLabel: WKInterfaceLabel!
+
     let userLocation = LocationModel()
     lazy var meterView: MeterView  = {
         let frameSize = WKInterfaceDevice.currentDevice().screenBounds
@@ -44,8 +45,9 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     
     
     private func updateSpeed() {
-        let speed = localizeSpeed(userLocation.speed, isMph: true)
-//        speedLabel.setText(String(format: "%.0f", speed))
+        let speed = String(format: "%.0f",localizeSpeed(userLocation.speed, isMph: true))
+        let font = UIFont.systemFontOfSize(50, weight: UIFontWeightThin)
+        speedLabel.setAttributedText(speedText(speed, smallText: "mph", font: font, ratio: 0.3))
     }
     
     func didUpdateLocation() {
@@ -61,6 +63,16 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
         meterView.speed = userLocation.speed
         meterGroup.setBackgroundImage(meterView.meterBackgroundImage)
         
+    }
+    
+    func speedText(bigText: String, smallText: String,
+        font: UIFont, ratio: CGFloat) -> NSAttributedString {
+            var smallFontSize: CGFloat = round(font.pointSize * ratio)
+            var smallFont = font.fontWithSize(smallFontSize)
+            var bigAttrText = NSMutableAttributedString(string: bigText, attributes: [NSFontAttributeName: font])
+            var smallAttrText = NSMutableAttributedString(string: "\n"+smallText, attributes: [NSFontAttributeName: smallFont])
+            bigAttrText.appendAttributedString(smallAttrText)
+            return bigAttrText
     }
 
 }
