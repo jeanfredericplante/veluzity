@@ -215,8 +215,12 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     }
     
     func updateSleepMode() {
-        var currentBatteryState = device.batteryState;
-        UIApplication.sharedApplication().idleTimerDisabled = currentBatteryState == .Charging
+        switch device.batteryState {
+        case .Charging, .Full:
+            UIApplication.sharedApplication().idleTimerDisabled = true
+        default:
+            UIApplication.sharedApplication().idleTimerDisabled = false
+        }
     }
     
     func saveState() {
