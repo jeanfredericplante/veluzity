@@ -8,15 +8,18 @@
 
 import Foundation
 
-public func localizeSpeed(speed: Double, #isMph: Bool) -> Double {
-    var localizedSpeed: Double
+public func localizeSpeed(speed: Double, #isMph: Bool) -> Double? {
+    var localizedSpeed: Double?
     
-    if isMph {
-        localizedSpeed = speed * Params.Conversion.msToMph
-    } else {
-        localizedSpeed = speed * Params.Conversion.msToKmh
+    if speed < 0 {
+        localizedSpeed = nil
     }
-    
-    if localizedSpeed < 0 { localizedSpeed = 0 }
+    else {
+        if isMph {
+            localizedSpeed = speed * Params.Conversion.msToMph
+        } else {
+            localizedSpeed = speed * Params.Conversion.msToKmh
+        }
+    }
     return localizedSpeed
 }

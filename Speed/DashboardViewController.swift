@@ -122,8 +122,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         gradientView.speed = userLocation.speed
         
         // Updates displays
-        speedDisplay.text = getSpeedWithPreferencesUnit()
-        speedUnit.text = getSpeedUnitText()
+        updatesSpeedometerDialWhenItCan()
         if let currentStreet = userLocation.streetName {
             locationDisplay.text = currentStreet
             locationSubtextDisplay.text = SpeedViewsHelper.cityAndStateText(userLocation.cityName,
@@ -171,14 +170,29 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         return  defaults.maxSpeed / Params.SpeedMeter.maxSpeedFractionOfDial
     }
     
-    func getLocalizedSpeed() -> Double {
+    func getLocalizedSpeed() -> Double? {
         return localizeSpeed(userLocation.speed, isMph: defaults.isMph)
     }
     
-    func getSpeedWithPreferencesUnit() -> String {
-        var speedText: String!
-        var localizedSpeed = getLocalizedSpeed()
-        speedText = String(format: "%.0f", localizedSpeed)
+    func updatesSpeedometerDialWhenItCan() {
+        if let currentSpeed = getSpeedWithPreferencesUnit() {
+            speedDisplay.textColor = UIColor.whiteColor()
+            speedDisplay.text = currentSpeed
+        } else {
+            speedDisplay.textColor = UIColor.grayColor()
+        }
+        speedUnit.text = getSpeedUnitText()
+
+    }
+    
+    func getSpeedWithPreferencesUnit() -> String? {
+        var speedText: String?
+        if let localizedSpeed = getLocalizedSpeed() {
+            speedText = String(format: "%.0f", localizedSpeed) }
+        else {
+            speedText = nil
+        }
+
         return speedText
     }
     
