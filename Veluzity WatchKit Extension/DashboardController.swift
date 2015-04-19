@@ -14,10 +14,12 @@ import VeluzityKit
 class DashboardController: WKInterfaceController, LocationUpdateDelegate {
 
     @IBOutlet weak var meterGroup: WKInterfaceGroup!
-    
     @IBOutlet weak var speedLabel: WKInterfaceLabel!
 
     let userLocation = LocationModel()
+    struct Constants {
+        static let cacheBackgroundName = "background_"
+    }
     lazy var meterView: MeterView  = {
         let frameSize = WKInterfaceDevice.currentDevice().screenBounds
         let centerX = CGRectGetMidX(frameSize)
@@ -36,6 +38,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        cacheBackgroundImagesOnWatch()
     }
 
     override func didDeactivate() {
@@ -45,14 +48,17 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     
     
     private func updateSpeed() {
-        let speed = String(format: "%.0f",localizeSpeed(userLocation.speed, isMph: true))
+        let speed = String(format: "%.0f",localizeSpeed(userLocation.speed, isMph: true) ?? 0)
         let font = UIFont.systemFontOfSize(50, weight: UIFontWeightThin)
         speedLabel.setAttributedText(speedText(speed, smallText: "mph", font: font, ratio: 0.3))
     }
     
     func didUpdateLocation() {
-        updateSpeed()
-        updateMeterImage()
+        if meterView.speed != userLocation.speed {
+            updateSpeed()
+            updateMeterImage()
+            meterView.speed = userLocation.speed
+        }
     }
     
     func didChangeLocationAuthorizationStatus(status: CLAuthorizationStatus) {
@@ -60,9 +66,10 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     }
     
     func updateMeterImage() {
+        let startSpeedFraction = MeterView.speedFractionOfMax(meterView.speed)
+        let stopSpeedFraction = MeterView.speedFractionOfMax(userLocation.speed)
         meterView.speed = userLocation.speed
         meterGroup.setBackgroundImage(meterView.meterBackgroundImage)
-        
     }
     
     func speedText(bigText: String, smallText: String,
@@ -74,5 +81,16 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
             bigAttrText.appendAttributedString(smallAttrText)
             return bigAttrText
     }
+    
+    private func cacheBackgroundImagesOnWatch() {
+        let imageSet = meterView.createAssetsForCaching()
+        for idx in 0..<count(imageSet) {
+            var backgroundName = Constants.cacheBackgroundName+"\(idx)"
+            println("caching image \(idx)")
+            WKInterfaceDevice.currentDevice().addCachedImage(imageSet[idx], name: backgroundName)
+        }
+    }
+    
+    
 
 }

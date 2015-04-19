@@ -13,12 +13,16 @@ import CoreGraphics
 
 class MeterView {
     struct Constants {
+        static let numberOfMeterViewAssets = 50
         static let maxDuration: NSTimeInterval = 0.75
         static let meterRadius: CGFloat = 70
-        static let gradientClipWidth: CGFloat = 140
-        static let meterWidth: CGFloat = 10
+        static let gradientClipWidth: CGFloat = 145
+        static let meterWidth: CGFloat = 5
         static let startAngleOffset: Double = M_PI/10
         static let maxDialSpeed: Double = 50
+        static let watch38mmBackgroundSize = CGSize(width: 272, height: 340)
+        static let watch42mmBackgroundSize = CGSize(width: 312, height: 390)
+
     }
     
     // Speedmeter structure
@@ -59,14 +63,7 @@ class MeterView {
     }
 
     var meterBackgroundImage: UIImage {
-        UIGraphicsBeginImageContextWithOptions(frameSize, false, 2.0)
-        setAxisOrientation()
-        drawGradientInCurrentContext(for_speed: speed)
-        drawProgressCircleInCurrentContext(for_speed: speed)
-        drawSpeedTextInCurrentContext(for_speed: speed)
-        let frame = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
+        let frame = createBackground(for_speed: speed, with_size: frameSize)
         return frame
     }
     
@@ -103,12 +100,13 @@ class MeterView {
         UIColor.whiteColor().set()
         CGContextAddPath(c, path)
         CGContextSetLineWidth(c, Constants.meterWidth)
+        CGContextSetLineCap(c, kCGLineCapRound)
         CGContextStrokePath(c)
     }
     
     func drawSpeedTextInCurrentContext(for_speed s: Double) {
         let c = UIGraphicsGetCurrentContext()
-        let speed = String(format: "%.0f",localizeSpeed(s, isMph: true))
+        let speed = String(format: "%.0f",localizeSpeed(s, isMph: true) ?? 0)
         let font = UIFont.systemFontOfSize(50)
         let x = CGRectGetMidX(viewBounds)
         let y = CGRectGetMidY(viewBounds)
@@ -128,4 +126,37 @@ class MeterView {
         CGContextScaleCTM(c, 1.0, -1.0)
     }
     
+    func createAssetsForCaching() -> [UIImage] {
+        var array_assets: [UIImage] = []
+        for i in 0..<Constants.numberOfMeterViewAssets {
+            var s: Double = Double(i) * Constants.maxDialSpeed / Double(Constants.numberOfMeterViewAssets)
+            array_assets.append(createBackground(for_speed: s, with_size: Constants.watch42mmBackgroundSize))
+        }
+        return array_assets
+    }
+    
+    func createBackground(for_speed s: Double, with_size f: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(f, false, 2.0)
+        setAxisOrientation()
+        drawGradientInCurrentContext(for_speed: s)
+        drawProgressCircleInCurrentContext(for_speed: s)
+        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return backgroundImage
+    }
+    
+    
+    class func speedToBackgroundImageIndex(s: Double) -> Int {
+        return Int(Double(Constants.numberOfMeterViewAssets) * s / Constants.maxDialSpeed)
+    }
+    
+    class func speedFractionOfMax(s: Double) -> Double {
+        return s / Constants.maxDialSpeed
+    }
+    
+    class func speedRangeToBackgroundImageRange(start_speed: Double, stop_speed: Double) -> Range<Int> {
+        let startIndex = speedToBackgroundImageIndex(start_speed)
+        let stopIndex = speedToBackgroundImageIndex(stop_speed)
+        return startIndex...stopIndex
+    }
 }
