@@ -13,7 +13,7 @@ import CoreGraphics
 
 class MeterView {
     struct Constants {
-        static let numberOfMeterViewAssets = 50
+        static let numberOfMeterViewAssets = 100
         static let maxDuration: NSTimeInterval = 0.75
         static let meterRadius: CGFloat = 70
         static let gradientClipWidth: CGFloat = 145
@@ -130,7 +130,7 @@ class MeterView {
         var array_assets: [UIImage] = []
         for i in 0..<Constants.numberOfMeterViewAssets {
             var s: Double = Double(i) * Constants.maxDialSpeed / Double(Constants.numberOfMeterViewAssets)
-            array_assets.append(createBackground(for_speed: s, with_size: Constants.watch42mmBackgroundSize))
+            array_assets.append(createBackground(for_speed: s, with_size: frameSize))
         }
         return array_assets
     }
@@ -147,7 +147,9 @@ class MeterView {
     
     
     class func speedToBackgroundImageIndex(s: Double) -> Int {
-        return Int(Double(Constants.numberOfMeterViewAssets) * s / Constants.maxDialSpeed)
+        let fractionOfDial = speedFractionOfMax(s)
+        let backgroundIndex = Int(Double(Constants.numberOfMeterViewAssets) * fractionOfDial)
+        return Int(Double(Constants.numberOfMeterViewAssets) * fractionOfDial)
     }
     
     class func speedFractionOfMax(s: Double) -> Double {

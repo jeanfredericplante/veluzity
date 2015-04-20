@@ -32,13 +32,17 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         userLocation.delegate = self
+        meterView.speed = 0
+        println("start caching images")
+        cacheBackgroundImagesOnWatch()
+        println("images cached")
         // Configure interface objects here.
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        cacheBackgroundImagesOnWatch()
+       
     }
 
     override func didDeactivate() {
@@ -56,8 +60,9 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     func didUpdateLocation() {
         if meterView.speed != userLocation.speed {
             updateSpeed()
-            updateMeterImage()
+            updateMeterImage(from_speed: meterView.speed, to_speed: userLocation.speed)
             meterView.speed = userLocation.speed
+
         }
     }
     
@@ -65,11 +70,23 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
         // TODO: handle auth change
     }
     
-    func updateMeterImage() {
-        let startSpeedFraction = MeterView.speedFractionOfMax(meterView.speed)
-        let stopSpeedFraction = MeterView.speedFractionOfMax(userLocation.speed)
-        meterView.speed = userLocation.speed
-        meterGroup.setBackgroundImage(meterView.meterBackgroundImage)
+    func updateMeterImage(from_speed start_speed: Double, to_speed new_speed: Double ) {
+        
+        var animRange: Range<Int>?
+        var speed_is_increasing: Bool?
+        
+        if start_speed < new_speed {
+            speed_is_increasing = true
+            animRange = MeterView.speedRangeToBackgroundImageRange(start_speed, stop_speed: new_speed)
+        } else if start_speed > new_speed {
+            speed_is_increasing = false
+            animRange = MeterView.speedRangeToBackgroundImageRange(new_speed, stop_speed: start_speed)
+        }
+        if let r = animRange, b = speed_is_increasing {
+            animateBackgroundForRange(r, with_dial_increasing: b)
+            meterView.speed = userLocation.speed
+        }
+
     }
     
     func speedText(bigText: String, smallText: String,
@@ -83,12 +100,18 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     }
     
     private func cacheBackgroundImagesOnWatch() {
+        let device =   WKInterfaceDevice.currentDevice()
         let imageSet = meterView.createAssetsForCaching()
-        for idx in 0..<count(imageSet) {
-            var backgroundName = Constants.cacheBackgroundName+"\(idx)"
-            println("caching image \(idx)")
-            WKInterfaceDevice.currentDevice().addCachedImage(imageSet[idx], name: backgroundName)
-        }
+        let backgroundAnimation = UIImage.animatedImageWithImages(imageSet, duration: NSTimeInterval(1.0))
+        device.removeAllCachedImages()
+        device.addCachedImage(backgroundAnimation, name: Constants.cacheBackgroundName)
+    }
+    
+    private func animateBackgroundForRange(r: Range<Int>, with_dial_increasing isAccelerating: Bool ) {
+        let animRange = NSRange(r)
+        let animDuration = NSTimeInterval((isAccelerating ? 1 : -1) * 2)
+        meterGroup.setBackgroundImageNamed(Constants.cacheBackgroundName)
+        meterGroup.startAnimatingWithImagesInRange(animRange, duration: animDuration, repeatCount: 1)
     }
     
     
