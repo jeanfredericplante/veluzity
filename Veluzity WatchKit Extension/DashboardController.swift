@@ -42,6 +42,8 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        println("will activate")
+
        
     }
 
@@ -52,6 +54,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     
     
     private func updateSpeed() {
+        println("update speed")
         let speed = String(format: "%.0f",localizeSpeed(userLocation.speed, isMph: true) ?? 0)
         let font = UIFont.systemFontOfSize(50, weight: UIFontWeightThin)
         speedLabel.setAttributedText(speedText(speed, smallText: "mph", font: font, ratio: 0.3))
@@ -60,7 +63,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     func didUpdateLocation() {
         if meterView.speed != userLocation.speed {
             updateSpeed()
-            updateMeterImage(from_speed: meterView.speed, to_speed: userLocation.speed)
+         //   updateMeterImage(from_speed: meterView.speed, to_speed: userLocation.speed)
             meterView.speed = userLocation.speed
 
         }
