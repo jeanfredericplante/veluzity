@@ -176,10 +176,12 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     func updatesSpeedometerDialWhenItCan() {
         if let currentSpeed = getSpeedWithPreferencesUnit() {
-            speedDisplay.textColor = UIColor.whiteColor()
+            speedDisplay.alpha = 1
+            speedUnit.alpha = 1
             speedDisplay.text = currentSpeed
         } else {
-            speedDisplay.textColor = UIColor.grayColor()
+            speedDisplay.alpha = 0.1
+            speedUnit.alpha = 0.1
         }
         speedUnit.text = getSpeedUnitText()
 
