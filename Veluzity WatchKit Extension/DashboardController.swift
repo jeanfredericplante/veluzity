@@ -18,7 +18,9 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
 
     let userLocation = LocationModel()
     struct Constants {
-        static let cacheBackgroundName = "background_"
+        static let cacheBackgroundName = "background-"
+        static let pregenerateAssetsInDocumentsFolder = false
+        static let usePregeneratedAssets = true
     }
     lazy var meterView: MeterView  = {
         let frameSize = WKInterfaceDevice.currentDevice().screenBounds
@@ -33,10 +35,13 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
         super.awakeWithContext(context)
         userLocation.delegate = self
         meterView.speed = 0
+        pregenerateAssets()
         println("start caching images")
         cacheBackgroundImagesOnWatch()
         println("images cached")
         // Configure interface objects here.
+        
+        
     }
 
     override func willActivate() {
@@ -63,7 +68,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     func didUpdateLocation() {
         if meterView.speed != userLocation.speed {
             updateSpeed()
-         //   updateMeterImage(from_speed: meterView.speed, to_speed: userLocation.speed)
+            updateMeterImage(from_speed: meterView.speed, to_speed: userLocation.speed)
             meterView.speed = userLocation.speed
 
         }
@@ -102,14 +107,22 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
             return bigAttrText
     }
     
+    
+    private func animateBackgroundForRange(r: Range<Int>, with_dial_increasing isAccelerating: Bool ) {
+        let animRange = NSRange(r)
+        let animDuration = NSTimeInterval((isAccelerating ? 1 : -1) * 2)
+        meterGroup.setBackgroundImageNamed(Constants.cacheBackgroundName)
+        meterGroup.startAnimatingWithImagesInRange(animRange, duration: animDuration, repeatCount: 1)
+    }
+    
     private func cacheBackgroundImagesOnWatch() {
-        let device =   WKInterfaceDevice.currentDevice()
-        let imageSet = meterView.createAssetsForCaching()
-        println("saving images in cache")
-        saveAssetsInCache(imageSet)
-        let backgroundAnimation = UIImage.animatedImageWithImages(imageSet, duration: NSTimeInterval(1.0))
-        device.removeAllCachedImages()
-        device.addCachedImage(backgroundAnimation, name: Constants.cacheBackgroundName)
+        if !Constants.usePregeneratedAssets {
+            let device =   WKInterfaceDevice.currentDevice()
+            let imageSet = meterView.createAssetsForCaching()
+            let backgroundAnimation = UIImage.animatedImageWithImages(imageSet, duration: NSTimeInterval(1.0))
+            device.removeAllCachedImages()
+            device.addCachedImage(backgroundAnimation, name: Constants.cacheBackgroundName)
+        }
     }
     
     private func saveAssetsInCache(imageArray: [UIImage]?) {
@@ -118,7 +131,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
                 if let imageData = UIImagePNGRepresentation(backgroundImage) {
                     let fileManager = NSFileManager()
                     if let docsDir = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first as? NSURL {
-                        let filename = Constants.cacheBackgroundName + "\(index).png"
+                        let filename = Constants.cacheBackgroundName + "\(index)@2x.png"
                         let url = docsDir.URLByAppendingPathComponent(filename)
                         if let path = url.absoluteString {
                             if imageData.writeToURL(url, atomically: true) {
@@ -132,15 +145,15 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
         }
         
     }
-
     
-    private func animateBackgroundForRange(r: Range<Int>, with_dial_increasing isAccelerating: Bool ) {
-        let animRange = NSRange(r)
-        let animDuration = NSTimeInterval((isAccelerating ? 1 : -1) * 2)
-        meterGroup.setBackgroundImageNamed(Constants.cacheBackgroundName)
-        meterGroup.startAnimatingWithImagesInRange(animRange, duration: animDuration, repeatCount: 1)
+    private func pregenerateAssets() {
+        if Constants.pregenerateAssetsInDocumentsFolder {
+            println("saving images in cache")
+            let imageSet = meterView.createAssetsForCaching()
+            saveAssetsInCache(imageSet)
+        }
+
     }
-    
-    
 
+ 
 }
