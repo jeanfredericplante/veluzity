@@ -14,7 +14,7 @@ import VeluzityKit
 class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     struct Constants {
         static let cacheBackgroundName = "background-"
-        static let pregenerateAssetsInDocumentsFolder = true
+        static let pregenerateAssetsInDocumentsFolder = false
         static let usePregeneratedAssets = true
         static let animationDuration: NSTimeInterval = 2
     }
@@ -23,6 +23,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     @IBOutlet weak var speedLabel: WKInterfaceLabel!
 
     let userLocation = LocationModel()
+    let defaults = Settings()
     var lastMeterAnimationStartTime: NSDate?
     var lastMeterAnimationStartSpeed: Double?
     var lastMeterAnimationStopSpeed: Double?
@@ -92,9 +93,10 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
 
     private func updateSpeed() {
         println("update speed")
-        let speed = String(format: "%.0f",localizeSpeed(userLocation.speed, isMph: true) ?? 0)
+        let speed = String(format: "%.0f",localizeSpeed(userLocation.speed, isMph: defaults.isMphWatch) ?? 0)
+        let speedUnit = defaults.isMphWatch ? "mph" : "kmh"
         let font = UIFont.systemFontOfSize(50, weight: UIFontWeightThin)
-        speedLabel.setAttributedText(speedText(speed, smallText: "mph", font: font, ratio: 0.3))
+        speedLabel.setAttributedText(speedText(speed, smallText: speedUnit, font: font, ratio: 0.3))
     }
     
     

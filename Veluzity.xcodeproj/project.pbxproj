@@ -404,6 +404,7 @@
 		7ED5946C1AC3D17C0047B88E /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */; };
 		7EF049741ACED4FC00B168E9 /* SlideOutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF049731ACED4FC00B168E9 /* SlideOutController.swift */; };
 		7EF049761AD1949200B168E9 /* AboutUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF049751AD1949200B168E9 /* AboutUsController.swift */; };
+		7EF2D12A1AED93D500113F52 /* Settings-Watch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7EF2D1291AED93D500113F52 /* Settings-Watch.bundle */; };
 		7EF7DDC01A74766A00C74AF0 /* SpeedViewsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -881,6 +882,9 @@
 		7EEFE7F41AA1605000565DAA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Speed/Settings.swift; sourceTree = "<group>"; };
 		7EF049731ACED4FC00B168E9 /* SlideOutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutController.swift; sourceTree = "<group>"; };
 		7EF049751AD1949200B168E9 /* AboutUsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsController.swift; sourceTree = "<group>"; };
+		7EF2D1281AED57CE00113F52 /* Veluzity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Veluzity.entitlements; sourceTree = "<group>"; };
+		7EF2D1291AED93D500113F52 /* Settings-Watch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "Settings-Watch.bundle"; sourceTree = "<group>"; };
+		7EF2D12B1AEDA40700113F52 /* Veluzity WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Veluzity WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedViewsHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1359,6 +1363,7 @@
 		7EC245611A4F486D005F2FEA /* Speed */ = {
 			isa = PBXGroup;
 			children = (
+				7EF2D1281AED57CE00113F52 /* Veluzity.entitlements */,
 				7ECA8A441ACCF01C0058A5F9 /* iPhoneApp */,
 			);
 			path = Speed;
@@ -1368,6 +1373,7 @@
 			isa = PBXGroup;
 			children = (
 				7EC245641A4F486D005F2FEA /* AppDelegate.swift */,
+				7EF2D1291AED93D500113F52 /* Settings-Watch.bundle */,
 				7E15C11E1A570C080000BEDA /* Settings.bundle */,
 				7EC2456B1A4F486D005F2FEA /* Images.xcassets */,
 				7EC2456D1A4F486D005F2FEA /* LaunchScreen.xib */,
@@ -1398,6 +1404,7 @@
 		7ECA8A221ACCEFEE0058A5F9 /* Veluzity WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				7EF2D12B1AEDA40700113F52 /* Veluzity WatchKit Extension.entitlements */,
 				7ECA8A261ACCEFEE0058A5F9 /* DashboardController.swift */,
 				7ECA8A281ACCEFEE0058A5F9 /* NotificationController.swift */,
 				7E7645851AD212EF00A36536 /* MeterView.swift */,
@@ -1617,13 +1624,18 @@
 						DevelopmentTeam = ZQEHFBD5JZ;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
 					7ECA8A201ACCEFEE0058A5F9 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = ZQEHFBD5JZ;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					7ECA8A2D1ACCEFEE0058A5F9 = {
 						CreatedOnToolsVersion = 6.2;
@@ -1666,6 +1678,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E15C11F1A570C080000BEDA /* Settings.bundle in Resources */,
+				7EF2D12A1AED93D500113F52 /* Settings-Watch.bundle in Resources */,
 				7EC2456A1A4F486D005F2FEA /* Main.storyboard in Resources */,
 				7EC2456F1A4F486D005F2FEA /* LaunchScreen.xib in Resources */,
 				7EC2456C1A4F486D005F2FEA /* Images.xcassets in Resources */,
@@ -2259,7 +2272,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = Speed/Veluzity.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -2284,7 +2297,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = Speed/Veluzity.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -2306,6 +2319,7 @@
 		7ECA8A3D1ACCEFEF0058A5F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Veluzity WatchKit Extension/Veluzity WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2316,6 +2330,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -2323,6 +2338,7 @@
 		7ECA8A3E1ACCEFEF0058A5F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Veluzity WatchKit Extension/Veluzity WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -2330,6 +2346,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
