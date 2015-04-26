@@ -12,16 +12,39 @@ import VeluzityKit
 
 
 class DashboardController: WKInterfaceController, LocationUpdateDelegate {
-
+    struct Constants {
+        static let cacheBackgroundName = "background-"
+        static let pregenerateAssetsInDocumentsFolder = true
+        static let usePregeneratedAssets = true
+        static let animationDuration: NSTimeInterval = 2
+    }
+    
     @IBOutlet weak var meterGroup: WKInterfaceGroup!
     @IBOutlet weak var speedLabel: WKInterfaceLabel!
 
     let userLocation = LocationModel()
-    struct Constants {
-        static let cacheBackgroundName = "background-"
-        static let pregenerateAssetsInDocumentsFolder = false
-        static let usePregeneratedAssets = true
+    var lastMeterAnimationStartTime: NSDate?
+    var lastMeterAnimationStartSpeed: Double?
+    var lastMeterAnimationStopSpeed: Double?
+    var currentAnimationDisplaySpeed: Double? {
+        get {
+            if let start = lastMeterAnimationStartTime {
+                let elapsedTime = -start.timeIntervalSinceNow
+                let isStillAnimating = elapsedTime < Constants.animationDuration
+                if isStillAnimating {
+                    if let start = lastMeterAnimationStartSpeed, stop = lastMeterAnimationStopSpeed {
+                        let timeRatio = elapsedTime / Constants.animationDuration
+                        let interpSpeed = start + (stop - start) * timeRatio
+                        return interpSpeed
+                    }
+                } else {
+                    return lastMeterAnimationStopSpeed
+                }
+            }
+            return nil
+        }
     }
+   
     lazy var meterView: MeterView  = {
         let frameSize = WKInterfaceDevice.currentDevice().screenBounds
         let centerX = CGRectGetMidX(frameSize)
@@ -57,7 +80,16 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
         super.didDeactivate()
     }
     
-    
+    func didUpdateLocation() {
+        if meterView.speed != userLocation.speed {
+            updateSpeed()
+            let fromSpeed = currentAnimationDisplaySpeed ?? meterView.speed
+            updateMeterImage(from_speed: fromSpeed, to_speed: userLocation.speed)
+            meterView.speed = userLocation.speed
+            
+        }
+    }
+
     private func updateSpeed() {
         println("update speed")
         let speed = String(format: "%.0f",localizeSpeed(userLocation.speed, isMph: true) ?? 0)
@@ -65,14 +97,6 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
         speedLabel.setAttributedText(speedText(speed, smallText: "mph", font: font, ratio: 0.3))
     }
     
-    func didUpdateLocation() {
-        if meterView.speed != userLocation.speed {
-            updateSpeed()
-            updateMeterImage(from_speed: meterView.speed, to_speed: userLocation.speed)
-            meterView.speed = userLocation.speed
-
-        }
-    }
     
     func didChangeLocationAuthorizationStatus(status: CLAuthorizationStatus) {
         // TODO: handle auth change
@@ -85,9 +109,11 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
         
         if start_speed < new_speed {
             speed_is_increasing = true
+            lastMeterAnimationStartSpeed = start_speed; lastMeterAnimationStopSpeed = new_speed
             animRange = MeterView.speedRangeToBackgroundImageRange(start_speed, stop_speed: new_speed)
         } else if start_speed > new_speed {
             speed_is_increasing = false
+            lastMeterAnimationStartSpeed = new_speed; lastMeterAnimationStopSpeed = start_speed
             animRange = MeterView.speedRangeToBackgroundImageRange(new_speed, stop_speed: start_speed)
         }
         if let r = animRange, b = speed_is_increasing {
@@ -110,8 +136,9 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     
     private func animateBackgroundForRange(r: Range<Int>, with_dial_increasing isAccelerating: Bool ) {
         let animRange = NSRange(r)
-        let animDuration = NSTimeInterval((isAccelerating ? 1 : -1) * 2)
+        let animDuration = NSTimeInterval((isAccelerating ? 1 : -1) * Constants.animationDuration)
         meterGroup.setBackgroundImageNamed(Constants.cacheBackgroundName)
+        lastMeterAnimationStartTime = NSDate(timeInterval: 0, sinceDate: NSDate())
         meterGroup.startAnimatingWithImagesInRange(animRange, duration: animDuration, repeatCount: 1)
     }
     

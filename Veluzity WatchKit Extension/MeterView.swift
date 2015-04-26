@@ -13,13 +13,14 @@ import CoreGraphics
 
 class MeterView {
     struct Constants {
-        static let numberOfMeterViewAssets = 100
+        static let numberOfMeterViewAssets = 360
         static let maxDuration: NSTimeInterval = 0.75
         static let meterRadius: CGFloat = 70
-        static let gradientClipWidth: CGFloat = 145
-        static let meterWidth: CGFloat = 5
+        static let gradientClipWidth: CGFloat = 140
+        static let meterWidth: CGFloat = 10
         static let startAngleOffset: Double = M_PI/10
         static let maxDialSpeed: Double = 50
+        static let backgroundGradientIsCircular = false
         static let watch38mmBackgroundSize = CGSize(width: 272, height: 340)
         static let watch42mmBackgroundSize = CGSize(width: 312, height: 390)
 
@@ -88,7 +89,7 @@ class MeterView {
         let path = CGPathCreateMutable()
         let c = UIGraphicsGetCurrentContext()
 
-        let outerRadius = Constants.meterRadius
+        let outerRadius = Constants.meterRadius - Constants.meterWidth/2
         let center = CGPointMake(CGRectGetMidX(viewBounds), CGRectGetMidY(viewBounds))
         let speedPercentage = s/Constants.maxDialSpeed
         
