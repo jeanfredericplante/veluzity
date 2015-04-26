@@ -105,10 +105,34 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate {
     private func cacheBackgroundImagesOnWatch() {
         let device =   WKInterfaceDevice.currentDevice()
         let imageSet = meterView.createAssetsForCaching()
+        println("saving images in cache")
+        saveAssetsInCache(imageSet)
         let backgroundAnimation = UIImage.animatedImageWithImages(imageSet, duration: NSTimeInterval(1.0))
         device.removeAllCachedImages()
         device.addCachedImage(backgroundAnimation, name: Constants.cacheBackgroundName)
     }
+    
+    private func saveAssetsInCache(imageArray: [UIImage]?) {
+        if let allImages = imageArray {
+            for (index,backgroundImage) in enumerate(allImages) {
+                if let imageData = UIImagePNGRepresentation(backgroundImage) {
+                    let fileManager = NSFileManager()
+                    if let docsDir = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first as? NSURL {
+                        let filename = Constants.cacheBackgroundName + "\(index).png"
+                        let url = docsDir.URLByAppendingPathComponent(filename)
+                        if let path = url.absoluteString {
+                            if imageData.writeToURL(url, atomically: true) {
+                                println("saved successfully to \(path)")
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+        
+    }
+
     
     private func animateBackgroundForRange(r: Range<Int>, with_dial_increasing isAccelerating: Bool ) {
         let animRange = NSRange(r)

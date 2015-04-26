@@ -135,6 +135,7 @@ class MeterView {
         return array_assets
     }
     
+      
     func createBackground(for_speed s: Double, with_size f: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(f, false, 2.0)
         setAxisOrientation()
