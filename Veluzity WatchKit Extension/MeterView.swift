@@ -49,8 +49,7 @@ class MeterView {
     
     var viewBounds: CGRect
     var speed: Double = 0
-    var transitionSpeed: Double = 30
-    var speedUnit: WeatherIcon = .BrokenClouds
+    var transitionSpeed: Double = SpeedGradientConstants.speedAtRedTransition
     
     
     init(bounds: CGRect) {
@@ -58,7 +57,7 @@ class MeterView {
     }
     
     
-    /// The length that the Glance badge image will animate.
+    // MARK: Creation of the pregenerated background and progress meter images
     var animationDuration: NSTimeInterval {
         return Constants.maxDuration
     }
@@ -148,6 +147,14 @@ class MeterView {
     }
     
     
+    // MARK: Indexing pregenerated images
+    
+    class func speedRangeToBackgroundImageRange(start_speed: Double, stop_speed: Double) -> Range<Int> {
+        let startIndex = speedToBackgroundImageIndex(start_speed)
+        let stopIndex = speedToBackgroundImageIndex(stop_speed)
+        return startIndex...stopIndex
+    }
+    
     class func speedToBackgroundImageIndex(s: Double) -> Int {
         let fractionOfDial = speedFractionOfMax(s)
         let backgroundIndex = Int(Double(Constants.numberOfMeterViewAssets) * fractionOfDial)
@@ -158,9 +165,4 @@ class MeterView {
         return s / Constants.maxDialSpeed
     }
     
-    class func speedRangeToBackgroundImageRange(start_speed: Double, stop_speed: Double) -> Range<Int> {
-        let startIndex = speedToBackgroundImageIndex(start_speed)
-        let stopIndex = speedToBackgroundImageIndex(stop_speed)
-        return startIndex...stopIndex
-    }
 }
