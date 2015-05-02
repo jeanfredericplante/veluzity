@@ -14,7 +14,6 @@ import Foundation
 
 public class Settings {
     var defaults: NSUserDefaults?
-    var defaultsWatch: NSUserDefaults?
     public var delegate: SettingsDelegate?
     
     struct Constants {
@@ -22,8 +21,7 @@ public class Settings {
     }
     
     public init () {
-        defaults = NSUserDefaults.standardUserDefaults()
-        defaultsWatch = NSUserDefaults(suiteName: "group.com.fantasticwhalelabs.Veluzity")
+        defaults = NSUserDefaults(suiteName: "group.com.fantasticwhalelabs.Veluzity")
         if maxSpeed == 0 { initSettingsAtFirstLaunch() }
     }
     
@@ -35,15 +33,6 @@ public class Settings {
         }
     }
     
-    public var isMphWatch: Bool {
-        get { return defaultsWatch?.boolForKey("isMph") ?? true }
-        set {
-            defaultsWatch?.setBool(newValue, forKey: "isMph")
-            self.delegate?.didUpdateSettings?()
-            defaultsWatch?.synchronize()
-        }
-    }
-
     
     public var isFahrenheit: Bool {
         get { return (defaults?.boolForKey("isFahrenheit") ?? true) }
@@ -54,14 +43,6 @@ public class Settings {
         }
     }
     
-    public var isFahrenheitWatch: Bool {
-        get { return (defaultsWatch?.boolForKey("isFahrenheit") ?? true) }
-        set {
-            defaultsWatch?.setBool(newValue, forKey: "isFahrenheit")
-            defaultsWatch?.synchronize()
-        }
-    }
-
     
     public func saveDictionary(dictionary: NSDictionary, withKey: String) {
         defaults?.setObject(dictionary, forKey: withKey)
@@ -90,9 +71,9 @@ public class Settings {
                 roundedMph = Double((Settings.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedKmh))) / Params.Conversion.msToKmh
             }
             
- 
             defaults?.setDouble(roundedMph, forKey: "maxSpeed")
             defaults?.synchronize()
+            self.delegate?.didUpdateSettings?()
         }
     }
       
@@ -101,12 +82,9 @@ public class Settings {
     private func initSettingsAtFirstLaunch(){
         // iOS app
         isMph = true; isFahrenheit = true
-        // watch app
-        isMphWatch = true; isFahrenheitWatch = true
 
         maxSpeed = Params.Initialization.maxSpeedUSA
         defaults?.synchronize()
-        defaultsWatch?.synchronize()
     }
     
     public class func roundToNearest(increment: Int = 5, for_value value: Double) -> Int {

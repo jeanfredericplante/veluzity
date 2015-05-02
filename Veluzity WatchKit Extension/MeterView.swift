@@ -19,28 +19,13 @@ class MeterView {
         static let gradientClipWidth: CGFloat = 140
         static let meterWidth: CGFloat = 10
         static let startAngleOffset: Double = M_PI/10
-        static let maxDialSpeed: Double = 50
+        static let maxDialSpeedNormalized: Double = SpeedGradientConstants.speedAtRedTransition / Params.SpeedMeter.maxSpeedFractionOfDial // "normalized" to transition at red, needs refactor to be normalized to 0-1
         static let backgroundGradientIsCircular = false
         static let watch38mmBackgroundSize = CGSize(width: 272, height: 340)
         static let watch42mmBackgroundSize = CGSize(width: 312, height: 390)
 
     }
-    
-    // Speedmeter structure
-    struct Meter {
-        var startAngleRadians: CGFloat
-        var maximumAngleRadians: CGFloat
-        var speedAngleRadians: CGFloat
-        var center: CGPoint
-        var radius: CGFloat
-        
-        var maxAngleRadians: CGFloat  {
-            get { return startAngleRadians+maximumAngleRadians }
-        }
-    }
-    
   
-    
     var frameSize: CGSize {
         get {
             return viewBounds.size
@@ -90,7 +75,7 @@ class MeterView {
 
         let outerRadius = Constants.meterRadius - Constants.meterWidth/2
         let center = CGPointMake(CGRectGetMidX(viewBounds), CGRectGetMidY(viewBounds))
-        let speedPercentage = s/Constants.maxDialSpeed
+        let speedPercentage = speedFractionOfMax(s)
         
         let startAngle =  CGFloat((3*M_PI_2) - Constants.startAngleOffset)
         let endAngle = startAngle - CGFloat((2*M_PI - 2*Constants.startAngleOffset) * speedPercentage)
@@ -129,7 +114,7 @@ class MeterView {
     func createAssetsForCaching() -> [UIImage] {
         var array_assets: [UIImage] = []
         for i in 0..<Constants.numberOfMeterViewAssets {
-            var s: Double = Double(i) * Constants.maxDialSpeed / Double(Constants.numberOfMeterViewAssets)
+            var s: Double = Double(i) * Constants.maxDialSpeedNormalized / Double(Constants.numberOfMeterViewAssets)
             array_assets.append(createBackground(for_speed: s, with_size: frameSize))
         }
         return array_assets
@@ -149,20 +134,21 @@ class MeterView {
     
     // MARK: Indexing pregenerated images
     
-    class func speedRangeToBackgroundImageRange(start_speed: Double, stop_speed: Double) -> Range<Int> {
+     func speedRangeToBackgroundImageRange(start_speed: Double, stop_speed: Double) -> Range<Int> {
         let startIndex = speedToBackgroundImageIndex(start_speed)
         let stopIndex = speedToBackgroundImageIndex(stop_speed)
         return startIndex...stopIndex
     }
     
-    class func speedToBackgroundImageIndex(s: Double) -> Int {
-        let fractionOfDial = speedFractionOfMax(s)
+     func speedToBackgroundImageIndex(s: Double) -> Int {
+        let fractionOfDial = speedFractionOfMax(s) // normalize to max speed set
         let backgroundIndex = Int(Double(Constants.numberOfMeterViewAssets) * fractionOfDial)
         return Int(Double(Constants.numberOfMeterViewAssets) * fractionOfDial)
     }
     
-    class func speedFractionOfMax(s: Double) -> Double {
-        return s / Constants.maxDialSpeed
+     func speedFractionOfMax(s: Double) -> Double {
+        let transition_ratio = SpeedGradientConstants.speedAtRedTransition / transitionSpeed
+        return s * transition_ratio / Constants.maxDialSpeedNormalized
     }
     
 }
