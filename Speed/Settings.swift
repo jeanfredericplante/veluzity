@@ -8,17 +8,20 @@
 
 import Foundation
 
+@objc public protocol SettingsDelegate {
+    optional func didUpdateSettings()
+}
+
 public class Settings {
     var defaults: NSUserDefaults?
+    public var delegate: SettingsDelegate?
     
     struct Constants {
         static let speedResolution: Int = 5 // in mph or kmh, increment to determine max speed
     }
     
-
-    
     public init () {
-        defaults = NSUserDefaults.standardUserDefaults()
+        defaults = NSUserDefaults(suiteName: "group.com.fantasticwhalelabs.Veluzity")
         if maxSpeed == 0 { initSettingsAtFirstLaunch() }
     }
     
@@ -29,13 +32,17 @@ public class Settings {
             defaults?.synchronize()
         }
     }
+    
+    
     public var isFahrenheit: Bool {
         get { return (defaults?.boolForKey("isFahrenheit") ?? true) }
         set {
             defaults?.setBool(newValue, forKey: "isFahrenheit")
+            self.delegate?.didUpdateSettings?()
             defaults?.synchronize()
         }
     }
+    
     
     public func saveDictionary(dictionary: NSDictionary, withKey: String) {
         defaults?.setObject(dictionary, forKey: withKey)
@@ -45,7 +52,9 @@ public class Settings {
         return defaults?.dictionaryForKey(key)
     }
     
-    
+    public var maxSpeedWatch: Double {
+        get { return maxSpeed }
+    }
     
     
     public var maxSpeed: Double {
@@ -62,17 +71,18 @@ public class Settings {
                 roundedMph = Double((Settings.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedKmh))) / Params.Conversion.msToKmh
             }
             
- 
             defaults?.setDouble(roundedMph, forKey: "maxSpeed")
             defaults?.synchronize()
+            self.delegate?.didUpdateSettings?()
         }
     }
       
 
     
     private func initSettingsAtFirstLaunch(){
-        isMph = true
-        isFahrenheit = true
+        // iOS app
+        isMph = true; isFahrenheit = true
+
         maxSpeed = Params.Initialization.maxSpeedUSA
         defaults?.synchronize()
     }
