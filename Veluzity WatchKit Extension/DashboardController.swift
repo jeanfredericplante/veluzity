@@ -35,6 +35,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
                 if isStillAnimating {
                     if let start = lastMeterAnimationStartSpeed, stop = lastMeterAnimationStopSpeed {
                         let timeRatio = elapsedTime / Constants.animationDuration
+                        println("time ratio :%.2f", timeRatio)
                         let interpSpeed = start + (stop - start) * timeRatio
                         return interpSpeed
                     }
@@ -74,8 +75,8 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         println("will activate")
-
-       
+        let locationStatus = userLocation.authorizationStatus()
+        presentAlertIfLocationAuthorizationNotAuthorized(locationStatus)
     }
 
     override func didDeactivate() {
@@ -92,7 +93,6 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
             let fromSpeed = currentAnimationDisplaySpeed ?? meterView.speed
             updateMeterImage(from_speed: fromSpeed, to_speed: userLocation.speed)
             meterView.speed = userLocation.speed
-            
         }
     }
     
@@ -117,6 +117,13 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     
     func didChangeLocationAuthorizationStatus(status: CLAuthorizationStatus) {
         // TODO: handle auth change
+        switch status {
+        case .AuthorizedWhenInUse, .AuthorizedAlways:
+            userLocation.startUpdatingLocation()
+        default:
+            userLocation.stopUpdatingLocation()
+            presentAlertIfLocationAuthorizationNotAuthorized(status)
+        }
     }
     
     func updateMeterImage(from_speed start_speed: Double, to_speed new_speed: Double ) {
@@ -198,6 +205,19 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
             let imageSet = meterView.createAssetsForCaching()
             saveAssetsInCache(imageSet)
         }
+
+    }
+    
+    private func presentAlertIfLocationAuthorizationNotAuthorized(status: CLAuthorizationStatus) {
+        // present controller modally
+        switch status {
+        case .Denied, .Restricted:
+            self.userLocation.stopUpdatingLocation()
+            presentControllerWithName("LocationAlert", context: self)
+            default:
+            break
+        }
+
 
     }
 

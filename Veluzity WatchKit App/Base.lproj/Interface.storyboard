@@ -12,7 +12,7 @@
                     <items>
                         <group width="140" height="140" alignment="center" verticalAlignment="center" id="Ra1-n1-gUo">
                             <items>
-                                <label alignment="center" verticalAlignment="center" text="70" textAlignment="center" numberOfLines="2" id="6RO-vu-Tfa">
+                                <label alignment="center" verticalAlignment="center" text="0" textAlignment="center" numberOfLines="2" id="6RO-vu-Tfa">
                                     <fontDescription key="font" type="system" weight="thin" pointSize="60"/>
                                 </label>
                             </items>
@@ -25,6 +25,20 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="314"/>
+        </scene>
+        <!--Close-->
+        <scene sceneID="ish-0y-Ipz">
+            <objects>
+                <controller identifier="LocationAlert" title="Close" id="l8A-ir-SUX" customClass="WatchLocationAlert">
+                    <items>
+                        <label width="136" alignment="center" verticalAlignment="bottom" text="Location not available" textAlignment="center" numberOfLines="2" id="C7f-t7-kWt">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <label alignment="center" verticalAlignment="bottom" text="Veluzity needs location services to display speed, please enable location access in the iPhone's settings" textAlignment="left" numberOfLines="5" id="yzM-uc-iHl"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="477" y="314"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -54,6 +68,7 @@
             <objects>
                 <controller id="ZSm-2b-N52"/>
             </objects>
+            <point key="canvasLocation" x="747" y="620"/>
         </scene>
     </scenes>
 </document>

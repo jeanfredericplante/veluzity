@@ -13,7 +13,12 @@ import CoreGraphics
 
 class MeterView {
     struct Constants {
+        enum Style {
+            case Round
+            case Square
+        }
         static let numberOfMeterViewAssets = 360
+        static let currentStyle = Style.Round
         static let maxDuration: NSTimeInterval = 0.75
         static let meterRadius: CGFloat = 70
         static let gradientClipWidth: CGFloat = 140

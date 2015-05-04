@@ -387,6 +387,7 @@
 		7EC2456A1A4F486D005F2FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EC245681A4F486D005F2FEA /* Main.storyboard */; };
 		7EC2456C1A4F486D005F2FEA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EC2456B1A4F486D005F2FEA /* Images.xcassets */; };
 		7EC2456F1A4F486D005F2FEA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EC2456D1A4F486D005F2FEA /* LaunchScreen.xib */; };
+		7EC7B0041AF6EB2A00C30D36 /* WatchLocationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7B0031AF6EB2A00C30D36 /* WatchLocationAlert.swift */; };
 		7ECA8A271ACCEFEE0058A5F9 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECA8A261ACCEFEE0058A5F9 /* DashboardController.swift */; };
 		7ECA8A291ACCEFEE0058A5F9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECA8A281ACCEFEE0058A5F9 /* NotificationController.swift */; };
 		7ECA8A2B1ACCEFEE0058A5F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A2A1ACCEFEE0058A5F9 /* Images.xcassets */; };
@@ -859,6 +860,7 @@
 		7EC245891A507E05005F2FEA /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherModel.swift; path = ../Speed/WeatherModel.swift; sourceTree = "<group>"; };
 		7EC2458C1A507E1E005F2FEA /* WeatherModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModelTests.swift; sourceTree = "<group>"; };
 		7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationModelTests.swift; path = ../SpeedTests/LocationModelTests.swift; sourceTree = "<group>"; };
+		7EC7B0031AF6EB2A00C30D36 /* WatchLocationAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchLocationAlert.swift; sourceTree = "<group>"; };
 		7ECA8A211ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Veluzity WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ECA8A241ACCEFEE0058A5F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ECA8A251ACCEFEE0058A5F9 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -1408,6 +1410,7 @@
 				7ECA8A261ACCEFEE0058A5F9 /* DashboardController.swift */,
 				7ECA8A281ACCEFEE0058A5F9 /* NotificationController.swift */,
 				7E7645851AD212EF00A36536 /* MeterView.swift */,
+				7EC7B0031AF6EB2A00C30D36 /* WatchLocationAlert.swift */,
 				7ECA8A2A1ACCEFEE0058A5F9 /* Images.xcassets */,
 				7ECA8A231ACCEFEE0058A5F9 /* Supporting Files */,
 			);
@@ -2105,6 +2108,7 @@
 				7ECA8A291ACCEFEE0058A5F9 /* NotificationController.swift in Sources */,
 				7ECA8A271ACCEFEE0058A5F9 /* DashboardController.swift in Sources */,
 				7E7645861AD212EF00A36536 /* MeterView.swift in Sources */,
+				7EC7B0041AF6EB2A00C30D36 /* WatchLocationAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
