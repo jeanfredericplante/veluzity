@@ -10,12 +10,13 @@
             <objects>
                 <controller id="AgC-eL-Hgc" userLabel="Dashboard Controller" customClass="DashboardController" customModule="Veluzity_WatchKit_Extension">
                     <items>
-                        <group width="1" widthAdjustment="1" height="1" heightAdjustment="1" alignment="center" verticalAlignment="bottom" id="Ra1-n1-gUo">
+                        <group width="1" height="1" alignment="center" backgroundImage="background-103.png" contentMode="bottom" layout="vertical" id="Ra1-n1-gUo">
                             <items>
                                 <label alignment="center" verticalAlignment="center" text="0" textAlignment="center" numberOfLines="2" id="6RO-vu-Tfa">
                                     <fontDescription key="font" type="system" weight="thin" pointSize="60"/>
                                 </label>
                             </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                         </group>
                     </items>
                     <connections>

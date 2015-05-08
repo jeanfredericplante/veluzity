@@ -49,15 +49,18 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
    
     lazy var meterView: MeterView  = {
         let frameSize = WKInterfaceDevice.currentDevice().screenBounds
-        let centerX = CGRectGetMidX(frameSize)
-        let centerY = CGRectGetMidY(frameSize)
-        let width = min(frameSize.width, frameSize.height)
-        return MeterView(bounds: CGRectMake(centerX-width/2, centerY-frameSize.height/2, width, width))
+        return MeterView(bounds: frameSize)
+//        let centerX = CGRectGetMidX(frameSize)
+//        let centerY = CGRectGetMidY(frameSize)
+//        let width = min(frameSize.width, frameSize.height)
+//        return MeterView(bounds: CGRectMake(centerX-width/2, centerY-frameSize.height/2, width, width))
     }()
 
     
     override func awakeWithContext(context: AnyObject?) {
+        // Configure interface objects here.
         super.awakeWithContext(context)
+
         userLocation.delegate = self
         defaults.delegate = self
         meterView.speed = 0
@@ -66,7 +69,6 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
         println("start caching images")
         cacheBackgroundImagesOnWatch()
         println("images cached")
-        // Configure interface objects here.
         
         
     }

@@ -22,9 +22,10 @@ class MeterView {
         static let maxDuration: NSTimeInterval = 0.75
         static let meterRadius: CGFloat = 60
         static let gradientClipWidth: CGFloat = 140
-        static let meterWidth: CGFloat = 10
+        static let meterWidth: CGFloat = 5
         static let startAngleOffset: Double = M_PI/10
         static let maxDialSpeedNormalized: Double = SpeedGradientConstants.speedAtRedTransition / Params.SpeedMeter.maxSpeedFractionOfDial // "normalized" to transition at red, needs refactor to be normalized to 0-1
+        static let timeHeaderHeight: CGFloat = 20
         static let watch38mmBackgroundSize = CGSize(width: 272, height: 340)
         static let watch42mmBackgroundSize = CGSize(width: 312, height: 390)
 
@@ -42,7 +43,7 @@ class MeterView {
     
     
     init(bounds: CGRect) {
-        viewBounds = bounds
+        viewBounds = CGRectMake(0, 0, bounds.width, bounds.height - Constants.timeHeaderHeight)
         println("init meter with view bounds size width \(viewBounds.width) and height \(viewBounds.height)")
 
     }
@@ -73,9 +74,7 @@ class MeterView {
                 let yMin = CGRectGetMidY(viewBounds) - Constants.gradientClipWidth/2
                 CGContextAddEllipseInRect(ctx, CGRectMake(xMin, yMin, Constants.gradientClipWidth, Constants.gradientClipWidth))
             case .Square:
-                println("don't have anything for that yet")
-                let boundingRect = CGRectMake(0, 0, viewBounds.width, viewBounds.height)
-                CGContextAddRect(ctx, boundingRect)
+                CGContextAddRect(ctx, viewBounds)
             default:
                 break
             }
