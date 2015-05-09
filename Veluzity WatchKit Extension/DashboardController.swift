@@ -14,7 +14,7 @@ import VeluzityKit
 class DashboardController: WKInterfaceController, LocationUpdateDelegate, SettingsDelegate {
     struct Constants {
         static let cacheBackgroundName = "background-"
-        static let pregenerateAssetsInDocumentsFolder = false
+        static let pregenerateAssetsInDocumentsFolder = true
         static let usePregeneratedAssets = true
         static let animationDuration: NSTimeInterval = 2
     }
@@ -35,7 +35,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
                 if isStillAnimating {
                     if let start = lastMeterAnimationStartSpeed, stop = lastMeterAnimationStopSpeed {
                         let timeRatio = elapsedTime / Constants.animationDuration
-                        println("time ratio :%.2f", timeRatio)
+                        println("time ratio :\(timeRatio)")
                         let interpSpeed = start + (stop - start) * timeRatio
                         return interpSpeed
                     }
@@ -103,7 +103,6 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     }
     
     private func refreshSettingsDependents() {
-        println("setting max speed for the watch to \(defaults.maxSpeed)")
         meterView.transitionSpeed = defaults.maxSpeedWatch
         
     }
