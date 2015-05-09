@@ -10,7 +10,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" userLabel="Dashboard Controller" customClass="DashboardController" customModule="Veluzity_WatchKit_Extension">
                     <items>
-                        <group width="1" height="1" alignment="center" backgroundImage="background-103.png" contentMode="center" layout="vertical" id="Ra1-n1-gUo">
+                        <group width="1" height="1" alignment="center" backgroundImage="background-0.png" contentMode="center" layout="vertical" id="Ra1-n1-gUo">
                             <items>
                                 <label alignment="center" verticalAlignment="center" text="0" textAlignment="center" numberOfLines="2" id="6RO-vu-Tfa">
                                     <fontDescription key="font" type="system" weight="thin" pointSize="60"/>

@@ -16,6 +16,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
         static let cacheBackgroundName = "background-"
         static let pregenerateAssetsInDocumentsFolder = true
         static let usePregeneratedAssets = true
+        static let meterUpdateSpeedThreshold = 1 / Params.Conversion.msToKmh // (1km/h of speed threshold)
         static let animationDuration: NSTimeInterval = 2
     }
     
@@ -46,14 +47,16 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
             return nil
         }
     }
-   
+    var shouldUpdateMeterImage: Bool {
+        get {
+            return  abs(meterView.speed - userLocation.speed) > Constants.meterUpdateSpeedThreshold
+        }
+    }
+    
     lazy var meterView: MeterView  = {
         let frameSize = WKInterfaceDevice.currentDevice().screenBounds
         return MeterView(bounds: frameSize)
-//        let centerX = CGRectGetMidX(frameSize)
-//        let centerY = CGRectGetMidY(frameSize)
-//        let width = min(frameSize.width, frameSize.height)
-//        return MeterView(bounds: CGRectMake(centerX-width/2, centerY-frameSize.height/2, width, width))
+
     }()
 
     
@@ -90,7 +93,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     // MARK: delegate methods
     
     func didUpdateLocation() {
-        if meterView.speed != userLocation.speed {
+        if shouldUpdateMeterImage {
             updateSpeed()
             let fromSpeed = currentAnimationDisplaySpeed ?? meterView.speed
             updateMeterImage(from_speed: fromSpeed, to_speed: userLocation.speed)
@@ -101,6 +104,8 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     func didUpdateSettings() {
         refreshSettingsDependents()
     }
+    
+
     
     private func refreshSettingsDependents() {
         meterView.transitionSpeed = defaults.maxSpeedWatch
