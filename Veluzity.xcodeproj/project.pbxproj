@@ -882,9 +882,9 @@
 		7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailComposer.swift; sourceTree = "<group>"; };
 		7EEFE7F21AA0560C00565DAA /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Params.swift; path = ../Speed/Params.swift; sourceTree = "<group>"; };
 		7EEFE7F41AA1605000565DAA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Speed/Settings.swift; sourceTree = "<group>"; };
+		7EEFFF911AF6DC3A00D3A6EE /* Veluzity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Veluzity.entitlements; sourceTree = "<group>"; };
 		7EF049731ACED4FC00B168E9 /* SlideOutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutController.swift; sourceTree = "<group>"; };
 		7EF049751AD1949200B168E9 /* AboutUsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsController.swift; sourceTree = "<group>"; };
-		7EF2D1281AED57CE00113F52 /* Veluzity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Veluzity.entitlements; sourceTree = "<group>"; };
 		7EF2D1291AED93D500113F52 /* Settings-Watch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "Settings-Watch.bundle"; sourceTree = "<group>"; };
 		7EF2D12B1AEDA40700113F52 /* Veluzity WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Veluzity WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		7EF7DDBF1A74766A00C74AF0 /* SpeedViewsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedViewsHelper.swift; sourceTree = "<group>"; };
@@ -1365,8 +1365,13 @@
 		7EC245611A4F486D005F2FEA /* Speed */ = {
 			isa = PBXGroup;
 			children = (
-				7EF2D1281AED57CE00113F52 /* Veluzity.entitlements */,
+				7EEFFF911AF6DC3A00D3A6EE /* Veluzity.entitlements */,
 				7ECA8A441ACCF01C0058A5F9 /* iPhoneApp */,
+				7E211ABD1AA5912A0058301F /* Flurry */,
+				7E00F5BB1A746443007C3992 /* Views */,
+				7E00F5BC1A7465FE007C3992 /* Controllers */,
+				7E00F5BD1A74666F007C3992 /* Models */,
+				7EC245621A4F486D005F2FEA /* Supporting Files */,
 			);
 			path = Speed;
 			sourceTree = "<group>";
@@ -1448,11 +1453,6 @@
 		7ECA8A441ACCF01C0058A5F9 /* iPhoneApp */ = {
 			isa = PBXGroup;
 			children = (
-				7E211ABD1AA5912A0058301F /* Flurry */,
-				7E00F5BB1A746443007C3992 /* Views */,
-				7E00F5BC1A7465FE007C3992 /* Controllers */,
-				7E00F5BD1A74666F007C3992 /* Models */,
-				7EC245621A4F486D005F2FEA /* Supporting Files */,
 			);
 			name = iPhoneApp;
 			sourceTree = "<group>";
