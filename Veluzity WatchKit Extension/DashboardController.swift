@@ -14,7 +14,7 @@ import VeluzityKit
 class DashboardController: WKInterfaceController, LocationUpdateDelegate, SettingsDelegate {
     struct Constants {
         static let cacheBackgroundName = "background-"
-        static let pregenerateAssetsInDocumentsFolder = true
+        static let pregenerateAssetsInDocumentsFolder = false
         static let usePregeneratedAssets = true
         static let meterUpdateSpeedThreshold = 1 / Params.Conversion.msToKmh // (1km/h of speed threshold)
         static let animationDuration: NSTimeInterval = 2
@@ -36,11 +36,13 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
                 if isStillAnimating {
                     if let start = lastMeterAnimationStartSpeed, stop = lastMeterAnimationStopSpeed {
                         let timeRatio = elapsedTime / Constants.animationDuration
-                        println("time ratio :\(timeRatio)")
+                        println("time ratio :\(timeRatio), start:\(lastMeterAnimationStartSpeed), stop:\(lastMeterAnimationStopSpeed)")
                         let interpSpeed = start + (stop - start) * timeRatio
+                        println("interpSpeed:\(interpSpeed)")
                         return interpSpeed
                     }
                 } else {
+                    println("animation complete, speed:\(lastMeterAnimationStopSpeed)")
                     return lastMeterAnimationStopSpeed
                 }
             }
@@ -95,6 +97,9 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     func didUpdateLocation() {
         if shouldUpdateMeterImage {
             updateSpeed()
+            if currentAnimationDisplaySpeed == nil {
+                println("no current display speed, fall back on speed \(meterView.speed)")
+            }
             let fromSpeed = currentAnimationDisplaySpeed ?? meterView.speed
             updateMeterImage(from_speed: fromSpeed, to_speed: userLocation.speed)
             meterView.speed = userLocation.speed
@@ -113,7 +118,6 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     }
 
     private func updateSpeed() {
-        println("update speed")
         let speed = String(format: "%.0f",localizeSpeed(userLocation.speed, isMph: defaults.isMph) ?? 0)
         let speedUnit = defaults.isMph ? "mph" : "km/h"
         let font = UIFont.systemFontOfSize(50, weight: UIFontWeightThin)
@@ -137,14 +141,12 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
         var animRange: Range<Int>?
         var speed_is_increasing: Bool?
         refreshSettingsDependents()
-        
+        lastMeterAnimationStartSpeed = start_speed; lastMeterAnimationStopSpeed = new_speed;
         if start_speed < new_speed {
             speed_is_increasing = true
-            lastMeterAnimationStartSpeed = start_speed; lastMeterAnimationStopSpeed = new_speed
             animRange = meterView.speedRangeToBackgroundImageRange(start_speed, stop_speed: new_speed)
         } else if start_speed > new_speed {
             speed_is_increasing = false
-            lastMeterAnimationStartSpeed = new_speed; lastMeterAnimationStopSpeed = start_speed
             animRange = meterView.speedRangeToBackgroundImageRange(new_speed, stop_speed: start_speed)
         }
         if let r = animRange, b = speed_is_increasing {
