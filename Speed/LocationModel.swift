@@ -38,7 +38,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     func setupLocationManager() {
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        self.locationManager.activityType = CLActivityType.AutomotiveNavigation
+        self.locationManager.activityType = CLActivityType.Other
         let currentStatus = CLLocationManager.authorizationStatus()
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
