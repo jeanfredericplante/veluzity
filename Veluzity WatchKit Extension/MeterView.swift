@@ -151,13 +151,18 @@ class MeterView {
      func speedRangeToBackgroundImageRange(start_speed: Double, stop_speed: Double) -> Range<Int> {
         let startIndex = speedToBackgroundImageIndex(start_speed)
         let stopIndex = speedToBackgroundImageIndex(stop_speed)
-        return startIndex...stopIndex
+
+        if startIndex <= startIndex {
+            return 	startIndex...stopIndex
+        } else {
+            return stopIndex...startIndex
+        }
     }
     
      func speedToBackgroundImageIndex(s: Double) -> Int {
         let fractionOfDial = speedFractionOfMax(s) // normalize to max speed set
         let backgroundIndex = Int(Double(Constants.numberOfMeterViewAssets) * fractionOfDial)
-        return Int(Double(Constants.numberOfMeterViewAssets) * fractionOfDial)
+        return max(0, min(Constants.numberOfMeterViewAssets-1, backgroundIndex))
     }
     
      func speedFractionOfMax(s: Double) -> Double {

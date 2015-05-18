@@ -8,5 +8,6 @@ var a: Double?
 
 var b = 1.2
 
-abs(a!-b)>1
+var r: Range<Int> = 3...3
+
 
