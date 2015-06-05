@@ -24,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t8h-yV-Z4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-219" y="1174"/>
+            <point key="canvasLocation" x="-210" y="1164"/>
         </scene>
         <!--Preference Pane-->
         <scene sceneID="oXq-Mw-Vdq">
@@ -843,9 +843,6 @@ Fantastic Whale Labs</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular" ambiguous="YES">
-                                            <rect key="frame" x="456" y="32" width="92" height="24"/>
-                                        </variation>
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="139" y="37" width="209" height="24"/>
                                         </variation>
@@ -855,9 +852,6 @@ Fantastic Whale Labs</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
                                         <color key="textColor" red="0.80000001192092896" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular" ambiguous="YES">
-                                            <rect key="frame" x="51" y="3" width="405" height="59"/>
-                                        </variation>
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="63" y="8" width="76" height="59"/>
                                         </variation>

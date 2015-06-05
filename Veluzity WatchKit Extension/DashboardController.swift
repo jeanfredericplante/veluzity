@@ -70,11 +70,12 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
         defaults.delegate = self
         meterView.speed = 0
         refreshSettingsDependents()
-        pregenerateAssets()
-        println("start caching images")
-        cacheBackgroundImagesOnWatch()
-        println("images cached")
-        
+        if Constants.pregenerateAssetsInDocumentsFolder {
+            pregenerateAssets()
+        }
+        if !Constants.usePregeneratedAssets {
+            cacheBackgroundImagesOnWatch()
+        }
         
     }
 
@@ -177,13 +178,12 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     }
     
     private func cacheBackgroundImagesOnWatch() {
-        if !Constants.usePregeneratedAssets {
+            println("cache images on the watch")
             let device =   WKInterfaceDevice.currentDevice()
             let imageSet = meterView.createAssetsForCaching()
             let backgroundAnimation = UIImage.animatedImageWithImages(imageSet, duration: NSTimeInterval(1.0))
             device.removeAllCachedImages()
             device.addCachedImage(backgroundAnimation, name: Constants.cacheBackgroundName)
-        }
     }
     
     private func saveAssetsInCache(imageArray: [UIImage]?) {
@@ -208,12 +208,10 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     }
     
     private func pregenerateAssets() {
-        if Constants.pregenerateAssetsInDocumentsFolder {
-            println("saving images in cache")
+            println("saving pregenerated assets in documents folder")
             let imageSet = meterView.createAssetsForCaching()
             saveAssetsInCache(imageSet)
-        }
-
+  
     }
     
     private func presentAlertIfLocationAuthorizationNotAuthorized(status: CLAuthorizationStatus) {
