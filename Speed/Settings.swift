@@ -89,7 +89,7 @@ public class Settings {
     
     private func initSettingsAtFirstLaunch(){
         // iOS app
-        isMph = true; isFahrenheit = true; isAlwaysOn = true;
+        isMph = true; isFahrenheit = true;
 
         maxSpeed = Params.Initialization.maxSpeedUSA
         defaults?.synchronize()

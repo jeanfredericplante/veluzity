@@ -19,7 +19,7 @@
 			<key>Key</key>
 			<string>preventSleep</string>
 			<key>DefaultValue</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Titles</key>
