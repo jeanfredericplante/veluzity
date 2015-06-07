@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ApplicationGroupContainerIdentifier</key>
+	<string>group.com.fantasticwhalelabs.Veluzity</string>
 	<key>Title</key>
 	<dict>
 		<key>Type</key>

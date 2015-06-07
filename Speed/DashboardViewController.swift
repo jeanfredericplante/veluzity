@@ -231,6 +231,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     }
     
     func updateSleepMode() {
+        println("always on mode is: \(defaults.isAlwaysOn)")
         switch device.batteryState {
         case .Charging, .Full:
             UIApplication.sharedApplication().idleTimerDisabled = true

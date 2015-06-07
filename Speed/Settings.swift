@@ -34,7 +34,7 @@ public class Settings {
     }
     
     public var isAlwaysOn: Bool {
-        get { return defaults?.boolForKey("preventSleep") ?? true }
+        get { return defaults?.boolForKey("preventSleep") ?? false }
         set {
             defaults?.setBool(newValue, forKey: "preventSleep")
             defaults?.synchronize()
