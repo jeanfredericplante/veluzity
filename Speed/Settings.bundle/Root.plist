@@ -12,6 +12,16 @@
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Prevent Sleep mode</string>
+			<key>Key</key>
+			<string>preventSleep</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
 			<key>Titles</key>
 			<array>
 				<string>MPH</string>

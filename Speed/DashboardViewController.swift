@@ -235,7 +235,11 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         case .Charging, .Full:
             UIApplication.sharedApplication().idleTimerDisabled = true
         default:
-            UIApplication.sharedApplication().idleTimerDisabled = false
+            if defaults.isAlwaysOn {
+                UIApplication.sharedApplication().idleTimerDisabled = true
+            } else {
+                UIApplication.sharedApplication().idleTimerDisabled = false
+            }
         }
     }
     
