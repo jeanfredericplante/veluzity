@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6724" systemVersion="14D131" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
@@ -10,7 +10,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" userLabel="Dashboard Controller" customClass="DashboardController" customModule="Veluzity_WatchKit_Extension">
                     <items>
-                        <group width="1" height="1" alignment="center" backgroundImage="background-0.png" contentMode="center" layout="vertical" id="Ra1-n1-gUo">
+                        <group width="1" height="1" alignment="center" backgroundImage="background-0.png" contentMode="scaleAspectFill" layout="vertical" id="Ra1-n1-gUo">
                             <items>
                                 <label alignment="center" verticalAlignment="center" text="0" textAlignment="center" numberOfLines="2" id="6RO-vu-Tfa">
                                     <fontDescription key="font" type="system" weight="thin" pointSize="60"/>
