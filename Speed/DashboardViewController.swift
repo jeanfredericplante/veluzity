@@ -255,6 +255,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     func applicationWillBecomeActive() {
         locationWeather.restoreState()
+        updateSleepMode()
         userLocation.startUpdatingLocation()
     }
     
@@ -263,7 +264,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         userLocation.stopUpdatingLocation()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool){
         super.viewDidAppear(animated)
         userLocation.startUpdatingLocation()
         let locationStatus = userLocation.authorizationStatus()
@@ -272,6 +273,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         // Set status bar to light
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         self.didUpdateWeather()
+
     }
     
     
