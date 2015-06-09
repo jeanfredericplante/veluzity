@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ApplicationGroupContainerIdentifier</key>
+	<string>group.com.fantasticwhalelabs.Veluzity</string>
 	<key>Title</key>
 	<dict>
 		<key>Type</key>
@@ -11,6 +13,16 @@
 	</dict>
 	<key>PreferenceSpecifiers</key>
 	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Prevent Sleep mode</string>
+			<key>Key</key>
+			<string>preventSleep</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
 		<dict>
 			<key>Titles</key>
 			<array>

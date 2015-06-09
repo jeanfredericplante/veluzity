@@ -33,6 +33,14 @@ public class Settings {
         }
     }
     
+    public var isAlwaysOn: Bool {
+        get { return defaults?.boolForKey("preventSleep") ?? false }
+        set {
+            defaults?.setBool(newValue, forKey: "preventSleep")
+            defaults?.synchronize()
+        }
+    }
+    
     
     public var isFahrenheit: Bool {
         get { return (defaults?.boolForKey("isFahrenheit") ?? true) }
@@ -81,7 +89,7 @@ public class Settings {
     
     private func initSettingsAtFirstLaunch(){
         // iOS app
-        isMph = true; isFahrenheit = true
+        isMph = true; isFahrenheit = true;
 
         maxSpeed = Params.Initialization.maxSpeedUSA
         defaults?.synchronize()
