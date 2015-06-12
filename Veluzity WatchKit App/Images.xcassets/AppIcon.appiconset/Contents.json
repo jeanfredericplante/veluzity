@@ -19,12 +19,14 @@
     {
       "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "CompanionSettings@2x.png",
       "role" : "companionSettings",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "CompanionSettings@3x.png",
       "role" : "companionSettings",
       "scale" : "3x"
     },
@@ -59,13 +61,6 @@
       "filename" : "ShortLook42mm@2x.png",
       "role" : "quickLook",
       "subtype" : "42mm"
-    },
-    {
-      "size" : "40x40",
-      "idiom" : "watch",
-      "unassigned" : true,
-      "role" : "appLauncher",
-      "scale" : "2x"
     }
   ],
   "info" : {
