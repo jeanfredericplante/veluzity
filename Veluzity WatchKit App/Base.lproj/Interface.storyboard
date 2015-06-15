@@ -82,12 +82,5 @@
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
-        <!--Interface Controller-->
-        <scene sceneID="wDt-fo-Mbe">
-            <objects>
-                <controller id="ZSm-2b-N52"/>
-            </objects>
-            <point key="canvasLocation" x="705" y="643"/>
-        </scene>
     </scenes>
 </document>

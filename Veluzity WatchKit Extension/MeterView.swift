@@ -16,14 +16,15 @@ class MeterView {
         enum Style {
             case Round
             case Square
+            case RoundNoBackground
         }
         static let numberOfMeterViewAssets = 180
-        static let currentStyle = Style.Square
+        static let currentStyle = Style.RoundNoBackground
         static let maxDuration: NSTimeInterval = 0.75
-        static let meterRadius: CGFloat = 60
+        static let meterRadius: CGFloat = 75
+        static let meterWidth: CGFloat = 15
         static let gradientClipWidth: CGFloat = 140
-        static let meterWidth: CGFloat = 5
-        static let startAngleOffset: Double = M_PI/10
+        static let startAngleOffset: Double = M_PI/6
         static let maxDialSpeedNormalized: Double = SpeedGradientConstants.speedAtRedTransition / Params.SpeedMeter.maxSpeedFractionOfDial // "normalized" to transition at red, needs refactor to be normalized to 0-1
         static let timeHeaderHeight: CGFloat = 20
         static let watch38mmBackgroundSize = CGSize(width: 272, height: 340)
@@ -83,17 +84,27 @@ class MeterView {
         }
     }
     
+    
     func drawProgressCircleInCurrentContext(for_speed s: Double) {
+        // Setup for dial with gradient background: radius 60, width 5
         // draws background
-        addArcPathInCurrentContext(1.0, opacity: 0.1)
+        addArcPathInCurrentContext(1.0, with_stroke_color: UIColor.whiteColor(), and_opacity: 0.1)
         
         // draws speed
         let speedPercentage = speedFractionOfMax(s)
-        addArcPathInCurrentContext(speedPercentage, opacity: 1.0)
+        switch Constants.currentStyle {
+        case .Square, .Round:
+            addArcPathInCurrentContext(speedPercentage, with_stroke_color: UIColor.whiteColor(), and_opacity: 1.0)
+        case .RoundNoBackground:
+            let dial_color = speedToColor(s, transitionSpeed)
+            addArcPathInCurrentContext(speedPercentage, with_stroke_color: dial_color, and_opacity: 1.0)
+        default:
+            break
+        }
 
     }
     
-    func addArcPathInCurrentContext(speed_percentage: Double, opacity dial_opacity: CGFloat) {
+    func addArcPathInCurrentContext(speed_percentage: Double, with_stroke_color dial_color: UIColor, and_opacity dial_opacity: CGFloat) {
         let path = CGPathCreateMutable()
         let c = UIGraphicsGetCurrentContext()
         
@@ -106,7 +117,7 @@ class MeterView {
         CGPathAddArc(path, nil, center.x, center.y, outerRadius, startAngle, endAngle, true)
         
         // Create stroke
-        let backgroundColor = UIColor(white: 1.0, alpha: dial_opacity)
+        let backgroundColor = dial_color.colorWithAlphaComponent(dial_opacity)
         backgroundColor.set()
         CGContextAddPath(c, path)
         CGContextSetLineWidth(c, Constants.meterWidth)
@@ -152,7 +163,12 @@ class MeterView {
     func createBackground(for_speed s: Double, with_size f: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(f, false, 2.0)
         setAxisOrientation()
-        drawGradientInCurrentContext(for_speed: s)
+        switch Constants.currentStyle {
+        case .Round, .Square:
+            drawGradientInCurrentContext(for_speed: s)
+        default:
+            break
+        }
         drawProgressCircleInCurrentContext(for_speed: s)
         let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
