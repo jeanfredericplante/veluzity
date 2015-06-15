@@ -22,7 +22,8 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     
     @IBOutlet weak var meterGroup: WKInterfaceGroup!
     @IBOutlet weak var speedLabel: WKInterfaceLabel!
-
+    @IBOutlet weak var speedUnit: WKInterfaceLabel!
+    
     let userLocation = LocationModel()
     let defaults = Settings()
     var lastMeterAnimationStartTime: NSDate?
@@ -120,9 +121,9 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
 
     private func updateSpeed() {
         let speed = String(format: "%.0f",localizeSpeed(userLocation.speed, isMph: defaults.isMph) ?? 0)
-        let speedUnit = defaults.isMph ? "mph" : "km/h"
-        let font = UIFont.systemFontOfSize(70, weight: UIFontWeightLight)
-        speedLabel.setAttributedText(speedText(speed, smallText: speedUnit, font: font, ratio: 0.3))
+        let unit = defaults.isMph ? "mph" : "km/h"
+        speedLabel.setText(speed)
+        speedUnit.setText(unit)
     }
     
     
