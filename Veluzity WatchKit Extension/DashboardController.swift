@@ -121,7 +121,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     private func updateSpeed() {
         let speed = String(format: "%.0f",localizeSpeed(userLocation.speed, isMph: defaults.isMph) ?? 0)
         let speedUnit = defaults.isMph ? "mph" : "km/h"
-        let font = UIFont.systemFontOfSize(50, weight: UIFontWeightThin)
+        let font = UIFont.systemFontOfSize(70, weight: UIFontWeightLight)
         speedLabel.setAttributedText(speedText(speed, smallText: speedUnit, font: font, ratio: 0.3))
     }
     

@@ -17,7 +17,7 @@ class MeterView {
             case Round
             case Square
         }
-        static let numberOfMeterViewAssets = 360
+        static let numberOfMeterViewAssets = 180
         static let currentStyle = Style.Square
         static let maxDuration: NSTimeInterval = 0.75
         static let meterRadius: CGFloat = 60
@@ -84,23 +84,35 @@ class MeterView {
     }
     
     func drawProgressCircleInCurrentContext(for_speed s: Double) {
+        // draws background
+        addArcPathInCurrentContext(1.0, opacity: 0.1)
+        
+        // draws speed
+        let speedPercentage = speedFractionOfMax(s)
+        addArcPathInCurrentContext(speedPercentage, opacity: 1.0)
+
+    }
+    
+    func addArcPathInCurrentContext(speed_percentage: Double, opacity dial_opacity: CGFloat) {
         let path = CGPathCreateMutable()
         let c = UIGraphicsGetCurrentContext()
-
+        
         let outerRadius = Constants.meterRadius - Constants.meterWidth/2
         let center = CGPointMake(CGRectGetMidX(viewBounds), CGRectGetMidY(viewBounds))
-        let speedPercentage = speedFractionOfMax(s)
-        
         let startAngle =  CGFloat((3*M_PI_2) - Constants.startAngleOffset)
-        let endAngle = startAngle - CGFloat((2*M_PI - 2*Constants.startAngleOffset) * speedPercentage)
+        let endAngle = startAngle - CGFloat((2*M_PI - 2*Constants.startAngleOffset) * speed_percentage)
         
+        // Creates path
         CGPathAddArc(path, nil, center.x, center.y, outerRadius, startAngle, endAngle, true)
-
-        UIColor.whiteColor().set()
+        
+        // Create stroke
+        let backgroundColor = UIColor(white: 1.0, alpha: dial_opacity)
+        backgroundColor.set()
         CGContextAddPath(c, path)
         CGContextSetLineWidth(c, Constants.meterWidth)
         CGContextSetLineCap(c, kCGLineCapRound)
         CGContextStrokePath(c)
+
     }
     
     func drawSpeedTextInCurrentContext(for_speed s: Double) {
