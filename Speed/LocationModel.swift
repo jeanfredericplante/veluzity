@@ -123,7 +123,11 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     }
     
     public func getHeadingDegrees() -> Double {
-        return self.course!
+        if let c = course {
+            return c
+        } else {
+             return 0
+        }
     }
     
     public func getCardinalDirectionFromHeading(course: Double) -> String {
