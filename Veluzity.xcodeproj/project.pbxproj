@@ -196,7 +196,6 @@
 		7E8810BF1B2E848200345A18 /* background-178@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E88100B1B2E848200345A18 /* background-178@2x.png */; };
 		7E8810C01B2E848200345A18 /* background-179@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E88100C1B2E848200345A18 /* background-179@2x.png */; };
 		7E8D0B251AC523BC00DE627B /* UIApplicationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */; };
-		7E8E40311AD970B2005ED3F0 /* libFlurry_6.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E8E40301AD970B2005ED3F0 /* libFlurry_6.3.0.a */; };
 		7E8E40351AD98FA5005ED3F0 /* SpeedToGradientHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8E40341AD98FA5005ED3F0 /* SpeedToGradientHelpers.swift */; };
 		7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */; };
 		7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */; };
@@ -223,6 +222,10 @@
 		7ED15A211AC8587500F329D0 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */; };
 		7ED15A231AC858A400F329D0 /* LocationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */; };
 		7ED5946C1AC3D17C0047B88E /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */; };
+		7EE5687F1B3681950032DDF9 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE5687E1B3681950032DDF9 /* libFlurry_6.4.0.a */; };
+		7EE568811B3729980032DDF9 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE5687E1B3681950032DDF9 /* libFlurry_6.4.0.a */; };
+		7EE568831B372B620032DDF9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC31AA591500058301F /* SystemConfiguration.framework */; };
+		7EE568841B372B680032DDF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC11AA5913F0058301F /* Security.framework */; };
 		7EF049741ACED4FC00B168E9 /* SlideOutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF049731ACED4FC00B168E9 /* SlideOutController.swift */; };
 		7EF049761AD1949200B168E9 /* AboutUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF049751AD1949200B168E9 /* AboutUsController.swift */; };
 		7EF2D12A1AED93D500113F52 /* Settings-Watch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7EF2D1291AED93D500113F52 /* Settings-Watch.bundle */; };
@@ -479,8 +482,6 @@
 		7E88100B1B2E848200345A18 /* background-178@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-178@2x.png"; sourceTree = "<group>"; };
 		7E88100C1B2E848200345A18 /* background-179@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-179@2x.png"; sourceTree = "<group>"; };
 		7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationUtils.swift; path = ../UIApplicationUtils.swift; sourceTree = "<group>"; };
-		7E8E402F1AD970B2005ED3F0 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = SOURCE_ROOT; };
-		7E8E40301AD970B2005ED3F0 /* libFlurry_6.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_6.3.0.a; path = Flurry/libFlurry_6.3.0.a; sourceTree = SOURCE_ROOT; };
 		7E8E40331AD97107005ED3F0 /* Speed-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Speed-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E8E40341AD98FA5005ED3F0 /* SpeedToGradientHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedToGradientHelpers.swift; sourceTree = "<group>"; };
 		7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedMeter.swift; sourceTree = "<group>"; };
@@ -520,6 +521,10 @@
 		7ED15A131AC8571400F329D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ED15A141AC8571400F329D0 /* VeluzityKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeluzityKitTests.swift; sourceTree = "<group>"; };
 		7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailComposer.swift; sourceTree = "<group>"; };
+		7EE5687C1B3681950032DDF9 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = SOURCE_ROOT; };
+		7EE5687D1B3681950032DDF9 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlurryWatch.h; path = Flurry/FlurryWatch.h; sourceTree = SOURCE_ROOT; };
+		7EE5687E1B3681950032DDF9 /* libFlurry_6.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_6.4.0.a; path = Flurry/libFlurry_6.4.0.a; sourceTree = SOURCE_ROOT; };
+		7EE568821B3729CC0032DDF9 /* Veluzity WatchKit Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Veluzity WatchKit Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		7EEFE7F21AA0560C00565DAA /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Params.swift; path = ../Speed/Params.swift; sourceTree = "<group>"; };
 		7EEFE7F41AA1605000565DAA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Speed/Settings.swift; sourceTree = "<group>"; };
 		7EEFFF911AF6DC3A00D3A6EE /* Veluzity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Veluzity.entitlements; sourceTree = "<group>"; };
@@ -535,10 +540,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EE5687F1B3681950032DDF9 /* libFlurry_6.4.0.a in Frameworks */,
 				7E211AC41AA591500058301F /* SystemConfiguration.framework in Frameworks */,
 				7ED15A181AC8571400F329D0 /* VeluzityKit.framework in Frameworks */,
 				7E211AC21AA5913F0058301F /* Security.framework in Frameworks */,
-				7E8E40311AD970B2005ED3F0 /* libFlurry_6.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +551,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EE568831B372B620032DDF9 /* SystemConfiguration.framework in Frameworks */,
+				7EE568841B372B680032DDF9 /* Security.framework in Frameworks */,
+				7EE568811B3729980032DDF9 /* libFlurry_6.4.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,9 +609,9 @@
 		7E211ABD1AA5912A0058301F /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
+				7EE5687C1B3681950032DDF9 /* Flurry.h */,
+				7EE5687E1B3681950032DDF9 /* libFlurry_6.4.0.a */,
 				7E8E40331AD97107005ED3F0 /* Speed-Bridging-Header.h */,
-				7E8E402F1AD970B2005ED3F0 /* Flurry.h */,
-				7E8E40301AD970B2005ED3F0 /* libFlurry_6.3.0.a */,
 			);
 			path = Flurry;
 			sourceTree = "<group>";
@@ -871,6 +879,7 @@
 		7ECA8A221ACCEFEE0058A5F9 /* Veluzity WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				7EE568801B37286C0032DDF9 /* Flurry */,
 				7EF2D12B1AEDA40700113F52 /* Veluzity WatchKit Extension.entitlements */,
 				7ECA8A261ACCEFEE0058A5F9 /* DashboardController.swift */,
 				7ECA8A281ACCEFEE0058A5F9 /* NotificationController.swift */,
@@ -966,6 +975,15 @@
 				7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		7EE568801B37286C0032DDF9 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				7EE5687D1B3681950032DDF9 /* FlurryWatch.h */,
+				7EE568821B3729CC0032DDF9 /* Veluzity WatchKit Extension-Bridging-Header.h */,
+			);
+			name = Flurry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1568,6 +1586,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Flurry",
+					/Users/jeanfredericplante/Downloads/Flurry,
+					iPhone,
+					SDK,
+					viPhone,
+					"6.4.0/Flurry-iOS-6.4.0/Flurry",
+					"$(PROJECT_DIR)/Veluzity.xcodeproj",
 				);
 				PRODUCT_NAME = Veluzity;
 				PROVISIONING_PROFILE = "";
@@ -1593,6 +1617,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Flurry",
+					/Users/jeanfredericplante/Downloads/Flurry,
+					iPhone,
+					SDK,
+					viPhone,
+					"6.4.0/Flurry-iOS-6.4.0/Flurry",
+					"$(PROJECT_DIR)/Veluzity.xcodeproj",
 				);
 				PRODUCT_NAME = Veluzity;
 				PROVISIONING_PROFILE = "";
@@ -1614,9 +1644,14 @@
 				INFOPLIST_FILE = "Veluzity WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Flurry",
+				);
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Veluzity WatchKit Extension/Veluzity WatchKit Extension-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -1630,9 +1665,14 @@
 				INFOPLIST_FILE = "Veluzity WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Flurry",
+				);
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Veluzity WatchKit Extension/Veluzity WatchKit Extension-Bridging-Header.h";
 			};
 			name = Release;
 		};
