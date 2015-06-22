@@ -17,11 +17,13 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>34</string>
+	<string>35</string>
+	<key>Flurry Watch API Key</key>
+	<string>***REMOVED***</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>
@@ -34,7 +36,5 @@
 	</dict>
 	<key>RemoteInterfacePrincipalClass</key>
 	<string>$(PRODUCT_MODULE_NAME).DashboardController</string>
-    <key>Flurry Watch API Key</key>
-    <string>***REMOVED***</string>
 </dict>
 </plist>

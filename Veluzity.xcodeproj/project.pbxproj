@@ -214,6 +214,7 @@
 		7ECA8A371ACCEFEE0058A5F9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A351ACCEFEE0058A5F9 /* Interface.storyboard */; };
 		7ECA8A391ACCEFEE0058A5F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A381ACCEFEE0058A5F9 /* Images.xcassets */; };
 		7ECA8A3C1ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7ECA8A211ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7ECE700D1B3769A8000734A6 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE5687E1B3681950032DDF9 /* libFlurry_6.4.0.a */; };
 		7ED15A061AC8571400F329D0 /* VeluzityKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED15A051AC8571400F329D0 /* VeluzityKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ED15A0C1AC8571400F329D0 /* VeluzityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED15A011AC8571400F329D0 /* VeluzityKit.framework */; };
 		7ED15A151AC8571400F329D0 /* VeluzityKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15A141AC8571400F329D0 /* VeluzityKitTests.swift */; };
@@ -222,7 +223,6 @@
 		7ED15A211AC8587500F329D0 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */; };
 		7ED15A231AC858A400F329D0 /* LocationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */; };
 		7ED5946C1AC3D17C0047B88E /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */; };
-		7EE5687F1B3681950032DDF9 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE5687E1B3681950032DDF9 /* libFlurry_6.4.0.a */; };
 		7EE568811B3729980032DDF9 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE5687E1B3681950032DDF9 /* libFlurry_6.4.0.a */; };
 		7EE568831B372B620032DDF9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC31AA591500058301F /* SystemConfiguration.framework */; };
 		7EE568841B372B680032DDF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC11AA5913F0058301F /* Security.framework */; };
@@ -540,7 +540,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EE5687F1B3681950032DDF9 /* libFlurry_6.4.0.a in Frameworks */,
+				7ECE700D1B3769A8000734A6 /* libFlurry_6.4.0.a in Frameworks */,
 				7E211AC41AA591500058301F /* SystemConfiguration.framework in Frameworks */,
 				7ED15A181AC8571400F329D0 /* VeluzityKit.framework in Frameworks */,
 				7E211AC21AA5913F0058301F /* Security.framework in Frameworks */,
@@ -1586,7 +1586,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Flurry",
-					/Users/jeanfredericplante/Downloads/Flurry,
 					iPhone,
 					SDK,
 					viPhone,
@@ -1617,7 +1616,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Flurry",
-					/Users/jeanfredericplante/Downloads/Flurry,
 					iPhone,
 					SDK,
 					viPhone,
