@@ -214,7 +214,8 @@
 		7ECA8A371ACCEFEE0058A5F9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A351ACCEFEE0058A5F9 /* Interface.storyboard */; };
 		7ECA8A391ACCEFEE0058A5F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A381ACCEFEE0058A5F9 /* Images.xcassets */; };
 		7ECA8A3C1ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7ECA8A211ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7ECE700D1B3769A8000734A6 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE5687E1B3681950032DDF9 /* libFlurry_6.4.0.a */; };
+		7ECE70181B37D38B000734A6 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECE70171B37D38B000734A6 /* libFlurry_6.4.0.a */; };
+		7ECE70191B37D38B000734A6 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECE70171B37D38B000734A6 /* libFlurry_6.4.0.a */; };
 		7ED15A061AC8571400F329D0 /* VeluzityKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED15A051AC8571400F329D0 /* VeluzityKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ED15A0C1AC8571400F329D0 /* VeluzityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED15A011AC8571400F329D0 /* VeluzityKit.framework */; };
 		7ED15A151AC8571400F329D0 /* VeluzityKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15A141AC8571400F329D0 /* VeluzityKitTests.swift */; };
@@ -223,7 +224,6 @@
 		7ED15A211AC8587500F329D0 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */; };
 		7ED15A231AC858A400F329D0 /* LocationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */; };
 		7ED5946C1AC3D17C0047B88E /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */; };
-		7EE568811B3729980032DDF9 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE5687E1B3681950032DDF9 /* libFlurry_6.4.0.a */; };
 		7EE568831B372B620032DDF9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC31AA591500058301F /* SystemConfiguration.framework */; };
 		7EE568841B372B680032DDF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC11AA5913F0058301F /* Security.framework */; };
 		7EF049741ACED4FC00B168E9 /* SlideOutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF049731ACED4FC00B168E9 /* SlideOutController.swift */; };
@@ -514,6 +514,8 @@
 		7ECA8A381ACCEFEE0058A5F9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7ECA8A451ACD05790058A5F9 /* VeluzityHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VeluzityHelpers.swift; path = ../Speed/VeluzityHelpers.swift; sourceTree = "<group>"; };
 		7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationModel.swift; path = ../Speed/LocationModel.swift; sourceTree = "<group>"; };
+		7ECE70161B37D38B000734A6 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		7ECE70171B37D38B000734A6 /* libFlurry_6.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.4.0.a; sourceTree = "<group>"; };
 		7ED15A011AC8571400F329D0 /* VeluzityKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VeluzityKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED15A041AC8571400F329D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ED15A051AC8571400F329D0 /* VeluzityKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VeluzityKit.h; sourceTree = "<group>"; };
@@ -521,9 +523,7 @@
 		7ED15A131AC8571400F329D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ED15A141AC8571400F329D0 /* VeluzityKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeluzityKitTests.swift; sourceTree = "<group>"; };
 		7ED5946B1AC3D17C0047B88E /* EmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailComposer.swift; sourceTree = "<group>"; };
-		7EE5687C1B3681950032DDF9 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = SOURCE_ROOT; };
 		7EE5687D1B3681950032DDF9 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlurryWatch.h; path = Flurry/FlurryWatch.h; sourceTree = SOURCE_ROOT; };
-		7EE5687E1B3681950032DDF9 /* libFlurry_6.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_6.4.0.a; path = Flurry/libFlurry_6.4.0.a; sourceTree = SOURCE_ROOT; };
 		7EE568821B3729CC0032DDF9 /* Veluzity WatchKit Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Veluzity WatchKit Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		7EEFE7F21AA0560C00565DAA /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Params.swift; path = ../Speed/Params.swift; sourceTree = "<group>"; };
 		7EEFE7F41AA1605000565DAA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Speed/Settings.swift; sourceTree = "<group>"; };
@@ -540,7 +540,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ECE700D1B3769A8000734A6 /* libFlurry_6.4.0.a in Frameworks */,
+				7ECE70181B37D38B000734A6 /* libFlurry_6.4.0.a in Frameworks */,
 				7E211AC41AA591500058301F /* SystemConfiguration.framework in Frameworks */,
 				7ED15A181AC8571400F329D0 /* VeluzityKit.framework in Frameworks */,
 				7E211AC21AA5913F0058301F /* Security.framework in Frameworks */,
@@ -552,8 +552,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EE568831B372B620032DDF9 /* SystemConfiguration.framework in Frameworks */,
+				7ECE70191B37D38B000734A6 /* libFlurry_6.4.0.a in Frameworks */,
 				7EE568841B372B680032DDF9 /* Security.framework in Frameworks */,
-				7EE568811B3729980032DDF9 /* libFlurry_6.4.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,8 +609,8 @@
 		7E211ABD1AA5912A0058301F /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
-				7EE5687C1B3681950032DDF9 /* Flurry.h */,
-				7EE5687E1B3681950032DDF9 /* libFlurry_6.4.0.a */,
+				7ECE70161B37D38B000734A6 /* Flurry.h */,
+				7ECE70171B37D38B000734A6 /* libFlurry_6.4.0.a */,
 				7E8E40331AD97107005ED3F0 /* Speed-Bridging-Header.h */,
 			);
 			path = Flurry;
@@ -834,8 +834,8 @@
 			isa = PBXGroup;
 			children = (
 				7EEFFF911AF6DC3A00D3A6EE /* Veluzity.entitlements */,
-				7ECA8A441ACCF01C0058A5F9 /* iPhoneApp */,
 				7E211ABD1AA5912A0058301F /* Flurry */,
+				7ECA8A441ACCF01C0058A5F9 /* iPhoneApp */,
 				7E00F5BB1A746443007C3992 /* Views */,
 				7E00F5BC1A7465FE007C3992 /* Controllers */,
 				7E00F5BD1A74666F007C3992 /* Models */,
@@ -1586,11 +1586,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Flurry",
-					iPhone,
-					SDK,
-					viPhone,
-					"6.4.0/Flurry-iOS-6.4.0/Flurry",
-					"$(PROJECT_DIR)/Veluzity.xcodeproj",
+					"$(PROJECT_DIR)/Speed/Flurry",
 				);
 				PRODUCT_NAME = Veluzity;
 				PROVISIONING_PROFILE = "";
@@ -1616,11 +1612,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Flurry",
-					iPhone,
-					SDK,
-					viPhone,
-					"6.4.0/Flurry-iOS-6.4.0/Flurry",
-					"$(PROJECT_DIR)/Veluzity.xcodeproj",
+					"$(PROJECT_DIR)/Speed/Flurry",
 				);
 				PRODUCT_NAME = Veluzity;
 				PROVISIONING_PROFILE = "";
@@ -1645,6 +1637,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flurry",
+					"$(PROJECT_DIR)/Speed/Flurry",
 				);
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
@@ -1666,6 +1659,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flurry",
+					"$(PROJECT_DIR)/Speed/Flurry",
 				);
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
