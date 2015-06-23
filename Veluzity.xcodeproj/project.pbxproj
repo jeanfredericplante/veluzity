@@ -482,7 +482,7 @@
 		7E88100B1B2E848200345A18 /* background-178@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-178@2x.png"; sourceTree = "<group>"; };
 		7E88100C1B2E848200345A18 /* background-179@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-179@2x.png"; sourceTree = "<group>"; };
 		7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationUtils.swift; path = ../UIApplicationUtils.swift; sourceTree = "<group>"; };
-		7E8E40331AD97107005ED3F0 /* Speed-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Speed-Bridging-Header.h"; sourceTree = "<group>"; };
+		7E8E40331AD97107005ED3F0 /* Speed-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Speed-Bridging-Header.h"; path = "../../Speed-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E8E40341AD98FA5005ED3F0 /* SpeedToGradientHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedToGradientHelpers.swift; sourceTree = "<group>"; };
 		7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedMeter.swift; sourceTree = "<group>"; };
 		7EA0E3F01A833A3E004C86DF /* ColorGradientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorGradientTests.swift; sourceTree = "<group>"; };
