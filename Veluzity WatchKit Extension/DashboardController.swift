@@ -66,6 +66,8 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     override func awakeWithContext(context: AnyObject?) {
         // Configure interface objects here.
         super.awakeWithContext(context)
+        FlurryWatch.logWatchEvent("Veluzity dashboard event!")
+
 
         userLocation.delegate = self
         defaults.delegate = self

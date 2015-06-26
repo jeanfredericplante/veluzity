@@ -6,4 +6,5 @@
 //  Copyright (c) 2015 Fantastic Whale Labs. All rights reserved.
 //
 
+#import "Flurry.h"
 #import "FlurryWatch.h"
