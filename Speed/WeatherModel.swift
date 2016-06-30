@@ -54,6 +54,7 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
         static let maxTimeBetweenUpdates: NSTimeInterval = 300 // maximum time between updates in seconds
         static let minTimeBetweenUpates: NSTimeInterval = 15
         static let currentWeatherServiceUrl = "http://api.openweathermap.org/data/2.5/weather"
+        static let APIKEY = "***REMOVED***"
 
     }
     
@@ -168,7 +169,8 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
     public func getWeatherFromAPI()
     {
         var requestURL = Constants.currentWeatherServiceUrl + "?lat=" + coordinates.latitude.description +
-        "&lon=" + coordinates.longitude.description
+        "&lon=" + coordinates.longitude.description +
+            "&APPID=" + Constants.APIKEY
         println("url: \(requestURL.debugDescription)")
         let request = NSURLRequest(URL: NSURL(string: requestURL)!)
         

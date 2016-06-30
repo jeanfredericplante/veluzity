@@ -62,9 +62,6 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
     }
     
     
-    
-    
-    
      // MARK: Container view management method
     func addSlideOutViewController() {
         if slideOutController == nil {
@@ -75,7 +72,6 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
         }
     }
     
-
    
     func addChildSlideOutController(preferenceController: SlideOutController) {
         view.insertSubview(preferenceController.view, atIndex: 0)
@@ -212,6 +208,5 @@ private extension UIStoryboard {
     class func aboutUsController() -> AboutUsController? {
         return mainStoryboard().instantiateViewControllerWithIdentifier("AboutUsController") as? AboutUsController
     }
-
 
 }

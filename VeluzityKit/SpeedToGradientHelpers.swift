@@ -34,25 +34,25 @@ public struct SpeedGradientConstants {
         (200, 0xf10638)]
 }
 
-public func speedToColorGradient(#speed: Double, #maxTransitionSpeed: Double) -> (startColor: UIColor, endColor: UIColor)? {
+public func speedToColorGradient(speed: Double, maxTransitionSpeed: Double) -> (startColor: UIColor, endColor: UIColor)? {
     
-    let sc = speedToColor(speed, maxTransitionSpeed)
-    let ec = speedToColor(speed+SpeedGradientConstants.startToEndDeltaSpeed, maxTransitionSpeed )
+    let sc = speedToColor(speed, maxTransitionSpeed: maxTransitionSpeed)
+    let ec = speedToColor(speed+SpeedGradientConstants.startToEndDeltaSpeed, maxTransitionSpeed: maxTransitionSpeed )
     return (sc, ec)
 }
 
 
 
 public func speedToColor(s: Double, maxTransitionSpeed: Double) -> UIColor {
-    let normalizedSpeed = normalizeSpeedToMax(s, maxTransitionSpeed)
+    let normalizedSpeed = normalizeSpeedToMax(s, maxTransitionSpeed: maxTransitionSpeed)
     let firstBigger = SpeedGradientConstants.speedHexLUT.filter{ (lutspeed,_) in lutspeed >= normalizedSpeed }.first
     let lastSmaller = SpeedGradientConstants.speedHexLUT.filter{ (lutspeed,_) in lutspeed <= normalizedSpeed }.last
     let location = (firstBigger, lastSmaller)
     
     switch location {
-    case (nil,.Some(let (s2,h2))):
+    case (nil,.Some(let (_,h2))):
         return hexToUIColor(h2)
-    case (.Some(let (s1,h1)), nil):
+    case (.Some(let (_,h1)), nil):
         return hexToUIColor(h1)
     case (.Some(let (s1,h1)), .Some(let (s2,h2))):
         let rgb1 = hexToRGB(h1)
@@ -75,7 +75,7 @@ public func normalizeSpeedToMax(speed: Double, maxTransitionSpeed: Double) -> Do
     }
 }
 
-public func interp1(#x0: Double, #x1: Double, #y0: CGFloat, #y1: CGFloat, #x: Double) -> CGFloat {
+public func interp1(x0 x0: Double, x1: Double, y0: CGFloat, y1: CGFloat, x: Double) -> CGFloat {
     let slider = CGFloat(Double(x-x0) / Double(x1-x0)) // need to split into as got weird archive error
     let boundedSlider = min(1.0, max(0.0, slider))
     return y0 + (y1 - y0)*boundedSlider
@@ -88,9 +88,9 @@ public func hexToUIColor(hexValue: Int) -> UIColor {
 }
 
 public func hexToRGB(hexValue: Int) -> (r: CGFloat, g: CGFloat, b: CGFloat) {
-    var red   = CGFloat((hexValue & 0xFF0000) >> 16)   / 255.0
-    var green = CGFloat((hexValue & 0x00FF00) >> 8)    / 255.0
-    var blue  = CGFloat(hexValue & 0x0000FF)           / 255.0
+    let red   = CGFloat((hexValue & 0xFF0000) >> 16)   / 255.0
+    let green = CGFloat((hexValue & 0x00FF00) >> 8)    / 255.0
+    let blue  = CGFloat(hexValue & 0x0000FF)           / 255.0
     return (red, green, blue)
 }
 

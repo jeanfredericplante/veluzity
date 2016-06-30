@@ -8,7 +8,7 @@
 
 import Foundation
 
-public func localizeSpeed(speed: Double, #isMph: Bool) -> Double? {
+public func localizeSpeed(speed: Double, isMph: Bool) -> Double? {
     var localizedSpeed: Double?
     
     if speed < 0 {

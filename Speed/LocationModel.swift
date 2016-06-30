@@ -48,15 +48,16 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         return speed * 3.6
     }
     
-    
-    
-    public func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        self.speed = manager.location.speed
-        self.coordinates = manager.location.coordinate
-        self.course = manager.location.course
-        self.getStreetName(manager.location)
-        self.delegate?.didUpdateLocation()
+    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        guard let location = manager.location else {
+            return
+        }
+        self.speed = location.speed
+        self.coordinates = location.coordinate
+        self.course = location.course
+        self.getStreetName(location)
+        self.delegate?.didUpdateLocation()
     }
     
     public func startUpdatingLocation() {
@@ -71,7 +72,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         return CLLocationManager.authorizationStatus()
     }
     
-    public func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         switch status {
         case .AuthorizedAlways, .AuthorizedWhenInUse:
             self.delegate?.didChangeLocationAuthorizationStatus(status)
@@ -87,17 +88,18 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
  
     public func getStreetName(location: CLLocation) {
         locationGeoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
-            if error != nil {
-                println("reverse location failed")
-            } else {
-                if placemarks.count > 0 {
-                    if let placemark: CLPlacemark = placemarks[0] as? CLPlacemark {
-                        self.streetName = placemark.thoroughfare
-                        self.cityName = placemark.locality
-                        self.stateName = placemark.administrativeArea
-                        
-                        self.delegate?.didUpdateLocation()
-                    }
+            guard let placemarks = placemarks where error != nil else {
+                print("reverse location failed")
+                return
+            }
+            
+            if placemarks.count > 0 {
+                if let placemark: CLPlacemark = placemarks[0] as? CLPlacemark {
+                    self.streetName = placemark.thoroughfare
+                    self.cityName = placemark.locality
+                    self.stateName = placemark.administrativeArea
+                    
+                    self.delegate?.didUpdateLocation()
                 }
             }
         }

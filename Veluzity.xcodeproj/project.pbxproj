@@ -1097,6 +1097,7 @@
 		7EC245571A4F486D005F2FEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Fantastic Whale Labs";
 				TargetAttributes = {

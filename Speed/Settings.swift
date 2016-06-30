@@ -95,7 +95,7 @@ public class Settings {
         defaults?.synchronize()
     }
     
-    public class func roundToNearest(increment: Int = 5, for_value value: Double) -> Int {
+    public class func roundToNearest(increment increment: Int = 5, for_value value: Double) -> Int {
         return  increment * Int (max(0, round(value / Double(increment))))
     }
     
