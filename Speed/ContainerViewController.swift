@@ -47,7 +47,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
         // adds tap gesture detection
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
         mainViewController.view.addGestureRecognizer(panGestureRecognizer)
-        println(" supported orientations \(self.supportedInterfaceOrientations())")
+        print(" supported orientations \(self.supportedInterfaceOrientations())")
 
     }
 
@@ -100,7 +100,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
     }
     
 
-    func animateSlideOut(#shouldExpand: Bool) {
+    func animateSlideOut(shouldExpand shouldExpand: Bool) {
         // # is to have the external parameter name match the variable name
         if (shouldExpand) {
             currentState = .PreferenceExpanded
@@ -115,7 +115,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
         }
     }
     
-    func animateMainViewXPosition(#targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
+    func animateMainViewXPosition(targetPosition targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0,
             options: .CurveEaseInOut,
             animations: {
@@ -172,7 +172,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
                     sourceViewController.dismissViewControllerAnimated(true, completion: nil)
 
                 case "dismissPreferencePaneController":
-                    println("in pref pane")
+                    print("in pref pane")
                     sourceViewController.dismissViewControllerAnimated(true, completion: {self.preferenceUpdated()})
                 default:
                     break

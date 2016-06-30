@@ -91,9 +91,9 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
     
     public func shouldUpdateWeather(newCoordinates: CLLocationCoordinate2D) -> Bool {
         
-        var lastUpdateLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
-        var newLocation = CLLocation(latitude: newCoordinates.latitude, longitude: newCoordinates.longitude)
-        var distance = newLocation.distanceFromLocation(lastUpdateLocation)
+        let lastUpdateLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        let newLocation = CLLocation(latitude: newCoordinates.latitude, longitude: newCoordinates.longitude)
+        let distance = newLocation.distanceFromLocation(lastUpdateLocation)
         var shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh: Bool
         var hasPassedMinTimeBetweenCalls: Bool
         if (lastUpdateTime == nil) {
@@ -135,7 +135,7 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
         if let temp = temperature() {
             currentTemp = String(format: "%.0f", temp)
         }
-        var state: Dictionary<String,String> = [
+        let state: Dictionary<String,String> = [
             "icon": getWeatherIcon(),
             "temperature": currentTemp,
             "description": getWeatherDescription()]
@@ -145,7 +145,7 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
     
     public func restoreState() {
         let defaults = Settings()
-        var savedState = defaults.restoreDictionaryForKey("WeatherModel.defaults")
+        let savedState = defaults.restoreDictionaryForKey("WeatherModel.defaults")
         if let state = savedState as? Dictionary<String,String> {
             self.weatherIcon = state["icon"]
             self.weatherDescription = state["description"]
@@ -171,18 +171,22 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
         var requestURL = Constants.currentWeatherServiceUrl + "?lat=" + coordinates.latitude.description +
         "&lon=" + coordinates.longitude.description +
             "&APPID=" + Constants.APIKEY
-        println("url: \(requestURL.debugDescription)")
+        print("url: \(requestURL.debugDescription)")
         let request = NSURLRequest(URL: NSURL(string: requestURL)!)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:
             {
-                (response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
-                self.weatherApiCallCounts++
-                println("number of API calls \(self.weatherApiCallCounts) at \(NSDate())")
-                if error == nil {
+                (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
+                self.weatherApiCallCounts += 1
+                print("number of API calls \(self.weatherApiCallCounts) at \(NSDate())")
+                if let data = data where error == nil {
                     self.parseAndUpdateModelWithJsonFromAPI(data)
                 } else {
-                    println("Error: \(error.localizedDescription)")
+                    if let error = error {
+                        print("Error: \(error.localizedDescription)")
+                    } else {
+                        print("Error sending weather async request")
+                    }
                 }
             }
         )
@@ -190,26 +194,28 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
     }
     
     func parseAndUpdateModelWithJsonFromAPI(json: NSData) {
-        var myError: NSError?
-        var weatherInfo: NSDictionary? = NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.MutableContainers, error: &myError) as? NSDictionary
-        if (myError == nil) {
-            var weatherMain: NSDictionary? = weatherInfo?["main"] as? NSDictionary
-            var temperatureKelvin: Double? = weatherMain?["temp"] as? Double
-            var weatherDescr: NSDictionary? = weatherInfo?["weather"]?[0] as? NSDictionary
-            self.weatherDescription = weatherDescr?["description"] as? String
-            self.weatherIcon = weatherDescr?["icon"] as? String
+        do {
+            let weatherInfo: NSDictionary? = try NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+            let weatherMain: NSDictionary? = weatherInfo?["main"] as? NSDictionary
+            let temperatureKelvin: Double? = weatherMain?["temp"] as? Double
+            let weather: NSDictionary? = weatherInfo?["weather"] as? NSDictionary
+            let weatherDescription: String? = weather?[0]?["description"] as? String
+            let weatherIcon: String? = weather?[0]?["icon"] as? String
+            self.weatherDescription = weatherDescription
+            self.weatherIcon = weatherIcon
             if temperatureKelvin != nil {
                 self.lastReadTemperatureCelsius = temperatureKelvin! - 273.15
                 self.lastUpdateTime = NSDate() // now
                 self.temperatureUpdated!(self)
                 
-                println("temperature updated to \(lastReadTemperatureCelsius?.description)")
+                print("temperature updated to \(lastReadTemperatureCelsius?.description)")
             }
             
-        } else {
-            println("invalid json: \(myError?.localizedDescription)")
-//            println("raw json:\(json.description)")
+        } catch {
+            print("invalid json: \(error)")
+            
         }
+        
     }
     
 }

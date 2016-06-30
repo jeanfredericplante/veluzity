@@ -34,7 +34,7 @@ public struct SpeedGradientConstants {
         (200, 0xf10638)]
 }
 
-public func speedToColorGradient(speed: Double, maxTransitionSpeed: Double) -> (startColor: UIColor, endColor: UIColor)? {
+public func speedToColorGradient(speed speed: Double, maxTransitionSpeed: Double) -> (startColor: UIColor, endColor: UIColor)? {
     
     let sc = speedToColor(speed, maxTransitionSpeed: maxTransitionSpeed)
     let ec = speedToColor(speed+SpeedGradientConstants.startToEndDeltaSpeed, maxTransitionSpeed: maxTransitionSpeed )

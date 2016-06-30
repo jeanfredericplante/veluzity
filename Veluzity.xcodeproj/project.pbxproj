@@ -197,6 +197,8 @@
 		7E8810C01B2E848200345A18 /* background-179@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E88100C1B2E848200345A18 /* background-179@2x.png */; };
 		7E8D0B251AC523BC00DE627B /* UIApplicationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */; };
 		7E8E40351AD98FA5005ED3F0 /* SpeedToGradientHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8E40341AD98FA5005ED3F0 /* SpeedToGradientHelpers.swift */; };
+		7E9AD0071D24EEFE00019120 /* libFlurry_7.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9AD0061D24EEFE00019120 /* libFlurry_7.6.4.a */; };
+		7E9AD0091D24EF6000019120 /* libFlurryWatch_7.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9AD0081D24EF6000019120 /* libFlurryWatch_7.6.4.a */; };
 		7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */; };
 		7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */; };
 		7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417D01A618DC400BE639B /* PreferencePaneController.swift */; };
@@ -214,8 +216,6 @@
 		7ECA8A371ACCEFEE0058A5F9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A351ACCEFEE0058A5F9 /* Interface.storyboard */; };
 		7ECA8A391ACCEFEE0058A5F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ECA8A381ACCEFEE0058A5F9 /* Images.xcassets */; };
 		7ECA8A3C1ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7ECA8A211ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7ECE70181B37D38B000734A6 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECE70171B37D38B000734A6 /* libFlurry_6.4.0.a */; };
-		7ECE70191B37D38B000734A6 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECE70171B37D38B000734A6 /* libFlurry_6.4.0.a */; };
 		7ED15A061AC8571400F329D0 /* VeluzityKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED15A051AC8571400F329D0 /* VeluzityKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ED15A0C1AC8571400F329D0 /* VeluzityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED15A011AC8571400F329D0 /* VeluzityKit.framework */; };
 		7ED15A151AC8571400F329D0 /* VeluzityKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15A141AC8571400F329D0 /* VeluzityKitTests.swift */; };
@@ -300,7 +300,7 @@
 		7E211AC11AA5913F0058301F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7E211AC31AA591500058301F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7E2320C31A78AED40097D2D8 /* ColorGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorGradient.swift; sourceTree = "<group>"; };
-		7E7645851AD212EF00A36536 /* MeterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeterView.swift; sourceTree = "<group>"; };
+		7E7645851AD212EF00A36536 /* MeterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MeterView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7E880F591B2E848100345A18 /* background-0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-0@2x.png"; sourceTree = "<group>"; };
 		7E880F5A1B2E848100345A18 /* background-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-1@2x.png"; sourceTree = "<group>"; };
 		7E880F5B1B2E848100345A18 /* background-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-2@2x.png"; sourceTree = "<group>"; };
@@ -484,28 +484,30 @@
 		7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationUtils.swift; path = ../UIApplicationUtils.swift; sourceTree = "<group>"; };
 		7E8E40331AD97107005ED3F0 /* Speed-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Speed-Bridging-Header.h"; path = "../../Speed-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E8E40341AD98FA5005ED3F0 /* SpeedToGradientHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedToGradientHelpers.swift; sourceTree = "<group>"; };
+		7E9AD0061D24EEFE00019120 /* libFlurry_7.6.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.6.4.a; sourceTree = "<group>"; };
+		7E9AD0081D24EF6000019120 /* libFlurryWatch_7.6.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryWatch_7.6.4.a; sourceTree = "<group>"; };
 		7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedMeter.swift; sourceTree = "<group>"; };
 		7EA0E3F01A833A3E004C86DF /* ColorGradientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorGradientTests.swift; sourceTree = "<group>"; };
-		7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7EA417D01A618DC400BE639B /* PreferencePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencePaneController.swift; sourceTree = "<group>"; };
 		7EAF2BC31ACD0FF7002D9C0C /* VeluzityHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VeluzityHelpers.swift; path = Speed/VeluzityHelpers.swift; sourceTree = SOURCE_ROOT; };
 		7EC2455F1A4F486D005F2FEA /* Veluzity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veluzity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EC245631A4F486D005F2FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EC245641A4F486D005F2FEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7EC245661A4F486D005F2FEA /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		7EC245661A4F486D005F2FEA /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DashboardViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7EC245691A4F486D005F2FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7EC2456B1A4F486D005F2FEA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7EC2456E1A4F486D005F2FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7EC245791A4F486D005F2FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EC2457A1A4F486D005F2FEA /* SpeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTests.swift; sourceTree = "<group>"; };
 		7EC245891A507E05005F2FEA /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherModel.swift; path = ../Speed/WeatherModel.swift; sourceTree = "<group>"; };
-		7EC2458C1A507E1E005F2FEA /* WeatherModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModelTests.swift; sourceTree = "<group>"; };
+		7EC2458C1A507E1E005F2FEA /* WeatherModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WeatherModelTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7EC2458F1A507E34005F2FEA /* LocationModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationModelTests.swift; path = ../SpeedTests/LocationModelTests.swift; sourceTree = "<group>"; };
 		7EC7B0031AF6EB2A00C30D36 /* WatchLocationAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchLocationAlert.swift; sourceTree = "<group>"; };
 		7ECA8A211ACCEFEE0058A5F9 /* Veluzity WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Veluzity WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ECA8A241ACCEFEE0058A5F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ECA8A251ACCEFEE0058A5F9 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		7ECA8A261ACCEFEE0058A5F9 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		7ECA8A261ACCEFEE0058A5F9 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DashboardController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7ECA8A281ACCEFEE0058A5F9 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		7ECA8A2A1ACCEFEE0058A5F9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7ECA8A2E1ACCEFEE0058A5F9 /* Veluzity WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Veluzity WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -515,7 +517,6 @@
 		7ECA8A451ACD05790058A5F9 /* VeluzityHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VeluzityHelpers.swift; path = ../Speed/VeluzityHelpers.swift; sourceTree = "<group>"; };
 		7ECAE1091A50E8F700AB9A5C /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationModel.swift; path = ../Speed/LocationModel.swift; sourceTree = "<group>"; };
 		7ECE70161B37D38B000734A6 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		7ECE70171B37D38B000734A6 /* libFlurry_6.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.4.0.a; sourceTree = "<group>"; };
 		7ED15A011AC8571400F329D0 /* VeluzityKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VeluzityKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED15A041AC8571400F329D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ED15A051AC8571400F329D0 /* VeluzityKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VeluzityKit.h; sourceTree = "<group>"; };
@@ -528,7 +529,7 @@
 		7EEFE7F21AA0560C00565DAA /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Params.swift; path = ../Speed/Params.swift; sourceTree = "<group>"; };
 		7EEFE7F41AA1605000565DAA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Speed/Settings.swift; sourceTree = "<group>"; };
 		7EEFFF911AF6DC3A00D3A6EE /* Veluzity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Veluzity.entitlements; sourceTree = "<group>"; };
-		7EF049731ACED4FC00B168E9 /* SlideOutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutController.swift; sourceTree = "<group>"; };
+		7EF049731ACED4FC00B168E9 /* SlideOutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SlideOutController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7EF049751AD1949200B168E9 /* AboutUsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsController.swift; sourceTree = "<group>"; };
 		7EF2D1291AED93D500113F52 /* Settings-Watch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "Settings-Watch.bundle"; sourceTree = "<group>"; };
 		7EF2D12B1AEDA40700113F52 /* Veluzity WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Veluzity WatchKit Extension.entitlements"; sourceTree = "<group>"; };
@@ -540,10 +541,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ECE70181B37D38B000734A6 /* libFlurry_6.4.0.a in Frameworks */,
 				7E211AC41AA591500058301F /* SystemConfiguration.framework in Frameworks */,
 				7ED15A181AC8571400F329D0 /* VeluzityKit.framework in Frameworks */,
+				7E9AD0071D24EEFE00019120 /* libFlurry_7.6.4.a in Frameworks */,
 				7E211AC21AA5913F0058301F /* Security.framework in Frameworks */,
+				7E9AD0091D24EF6000019120 /* libFlurryWatch_7.6.4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,7 +554,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EE568831B372B620032DDF9 /* SystemConfiguration.framework in Frameworks */,
-				7ECE70191B37D38B000734A6 /* libFlurry_6.4.0.a in Frameworks */,
 				7EE568841B372B680032DDF9 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -610,7 +611,8 @@
 			isa = PBXGroup;
 			children = (
 				7ECE70161B37D38B000734A6 /* Flurry.h */,
-				7ECE70171B37D38B000734A6 /* libFlurry_6.4.0.a */,
+				7E9AD0061D24EEFE00019120 /* libFlurry_7.6.4.a */,
+				7E9AD0081D24EF6000019120 /* libFlurryWatch_7.6.4.a */,
 				7E8E40331AD97107005ED3F0 /* Speed-Bridging-Header.h */,
 			);
 			path = Flurry;

@@ -80,8 +80,6 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
             manager.requestWhenInUseAuthorization()
         case .Restricted, .Denied:
             self.delegate?.didChangeLocationAuthorizationStatus(status)
-        default:
-            break
         }
     }
     
@@ -108,7 +106,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     
     public func getHeading() -> String {
         if course != nil && course >= 0  {
-            var cardHeading = getCardinalDirectionFromHeading(self.course!)
+            let cardHeading = getCardinalDirectionFromHeading(self.course!)
             return String(format: "%.0f° %@", self.course!, cardHeading) }
         else {
             return ""
@@ -133,7 +131,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     }
     
     public func getCardinalDirectionFromHeading(course: Double) -> String {
-        var modCourse = Int(round(course%360))
+        let modCourse = Int(round(course%360))
         switch modCourse   {
         case 0...22:
             return "N"

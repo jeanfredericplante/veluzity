@@ -81,7 +81,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         
         // completion closure, temperature updated
         locationWeather.temperatureUpdated = { lw in
-            println("I got the temperature of \(lw.temperature())")
+            print("I got the temperature of \(lw.temperature())")
             self.didUpdateWeather()
         }
         
@@ -114,7 +114,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
    
     func didUpdateLocation() {
         
-        println("updating location")
+        print("updating location")
   
         // Updates gradient background
         gradientView.direction = userLocation.getHeadingDegrees()
@@ -231,7 +231,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     }
     
     func updateSleepMode() {
-        println("always on mode is: \(defaults.isAlwaysOn)")
+        print("always on mode is: \(defaults.isAlwaysOn)")
         switch device.batteryState {
         case .Charging, .Full:
             UIApplication.sharedApplication().idleTimerDisabled = true

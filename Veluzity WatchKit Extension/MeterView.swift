@@ -45,7 +45,7 @@ class MeterView {
     
     init(bounds: CGRect) {
         viewBounds = CGRectMake(0, 0, bounds.width, bounds.height - Constants.timeHeaderHeight)
-        println("init meter with view bounds size width \(viewBounds.width) and height \(viewBounds.height)")
+        print("init meter with view bounds size width \(viewBounds.width) and height \(viewBounds.height)")
 
     }
     
@@ -80,7 +80,7 @@ class MeterView {
                 break
             }
             CGContextClip(ctx)
-            CGContextDrawLinearGradient(ctx, gradient, startPoint, endPoint, 0)
+            CGContextDrawLinearGradient(ctx, gradient, startPoint, endPoint, CGGradientDrawingOptions(rawValue: 0))
         }
     }
     
@@ -96,10 +96,8 @@ class MeterView {
         case .Square, .Round:
             addArcPathInCurrentContext(speedPercentage, with_stroke_color: UIColor.whiteColor(), and_opacity: 1.0)
         case .RoundNoBackground:
-            let dial_color = speedToColor(s, transitionSpeed)
+            let dial_color = speedToColor(s, maxTransitionSpeed: transitionSpeed)
             addArcPathInCurrentContext(speedPercentage, with_stroke_color: dial_color, and_opacity: 1.0)
-        default:
-            break
         }
 
     }
@@ -121,13 +119,15 @@ class MeterView {
         backgroundColor.set()
         CGContextAddPath(c, path)
         CGContextSetLineWidth(c, Constants.meterWidth)
-        CGContextSetLineCap(c, kCGLineCapRound)
+        CGContextSetLineCap(c, .Round)
         CGContextStrokePath(c)
 
     }
     
     func drawSpeedTextInCurrentContext(for_speed s: Double) {
-        let c = UIGraphicsGetCurrentContext()
+        guard let c = UIGraphicsGetCurrentContext() else {
+            return
+        }
         let speed = String(format: "%.0f",localizeSpeed(s, isMph: true) ?? 0)
         let font = UIFont.systemFontOfSize(50)
         let x = CGRectGetMidX(viewBounds)

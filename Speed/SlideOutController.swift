@@ -47,7 +47,7 @@ class SlideOutController: UITableViewController, UITableViewDelegate {
         case 1:
             
                 if emailView.canSendMail() {
-                    println("row 1 pressed")
+                    print("row 1 pressed")
                     presentFeedbackEmail()
                 } else {
                     cantSendEmailAlert()

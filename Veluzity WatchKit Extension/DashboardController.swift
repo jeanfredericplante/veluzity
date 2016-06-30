@@ -37,13 +37,13 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
                 if isStillAnimating {
                     if let start = lastMeterAnimationStartSpeed, stop = lastMeterAnimationStopSpeed {
                         let timeRatio = elapsedTime / Constants.animationDuration
-                        println("time ratio :\(timeRatio), start:\(lastMeterAnimationStartSpeed), stop:\(lastMeterAnimationStopSpeed)")
+                        print("time ratio :\(timeRatio), start:\(lastMeterAnimationStartSpeed), stop:\(lastMeterAnimationStopSpeed)")
                         let interpSpeed = start + (stop - start) * timeRatio
-                        println("interpSpeed:\(interpSpeed)")
+                        print("interpSpeed:\(interpSpeed)")
                         return interpSpeed
                     }
                 } else {
-                    println("animation complete, speed:\(lastMeterAnimationStopSpeed)")
+                    print("animation complete, speed:\(lastMeterAnimationStopSpeed)")
                     return lastMeterAnimationStopSpeed
                 }
             }
@@ -59,16 +59,16 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     lazy var meterView: MeterView  = {
         let frameSize = WKInterfaceDevice.currentDevice().screenBounds
         return MeterView(bounds: frameSize)
-
+        
     }()
-
+    
     
     override func awakeWithContext(context: AnyObject?) {
         // Configure interface objects here.
         super.awakeWithContext(context)
         FlurryWatch.logWatchEvent("Veluzity dashboard event!")
-
-
+        
+        
         userLocation.delegate = self
         defaults.delegate = self
         meterView.speed = 0
@@ -81,15 +81,15 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
         }
         
     }
-
+    
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        println("will activate")
+        print("will activate")
         let locationStatus = userLocation.authorizationStatus()
         presentAlertIfLocationAuthorizationNotAuthorized(locationStatus)
     }
-
+    
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
@@ -102,7 +102,7 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
         if shouldUpdateMeterImage {
             updateSpeed()
             if currentAnimationDisplaySpeed == nil {
-                println("no current display speed, fall back on speed \(meterView.speed)")
+                print("no current display speed, fall back on speed \(meterView.speed)")
             }
             let fromSpeed = currentAnimationDisplaySpeed ?? meterView.speed
             updateMeterImage(from_speed: fromSpeed, to_speed: userLocation.speed)
@@ -114,13 +114,13 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
         refreshSettingsDependents()
     }
     
-
+    
     
     private func refreshSettingsDependents() {
         meterView.transitionSpeed = defaults.maxSpeedWatch
         
     }
-
+    
     private func updateSpeed() {
         let speed = String(format: "%.0f",localizeSpeed(userLocation.speed, isMph: defaults.isMph) ?? 0)
         let unit = defaults.isMph ? "mph" : "km/h"
@@ -157,17 +157,17 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
             animateBackgroundForRange(r, with_dial_increasing: b)
             meterView.speed = userLocation.speed
         }
-
+        
     }
     
     func speedText(bigText: String, smallText: String,
-        font: UIFont, ratio: CGFloat) -> NSAttributedString {
-            var smallFontSize: CGFloat = round(font.pointSize * ratio)
-            var smallFont = font.fontWithSize(smallFontSize)
-            var bigAttrText = NSMutableAttributedString(string: bigText, attributes: [NSFontAttributeName: font])
-            var smallAttrText = NSMutableAttributedString(string: "\n"+smallText, attributes: [NSFontAttributeName: smallFont])
-            bigAttrText.appendAttributedString(smallAttrText)
-            return bigAttrText
+                   font: UIFont, ratio: CGFloat) -> NSAttributedString {
+        let smallFontSize: CGFloat = round(font.pointSize * ratio)
+        let smallFont = font.fontWithSize(smallFontSize)
+        let bigAttrText = NSMutableAttributedString(string: bigText, attributes: [NSFontAttributeName: font])
+        let smallAttrText = NSMutableAttributedString(string: "\n"+smallText, attributes: [NSFontAttributeName: smallFont])
+        bigAttrText.appendAttributedString(smallAttrText)
+        return bigAttrText
     }
     
     
@@ -181,29 +181,31 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     }
     
     private func cacheBackgroundImagesOnWatch() {
-            println("cache images on the watch")
-            let device =   WKInterfaceDevice.currentDevice()
-            let imageSet = meterView.createAssetsForCaching()
-            let backgroundAnimation = UIImage.animatedImageWithImages(imageSet, duration: NSTimeInterval(1.0))
-            device.removeAllCachedImages()
-            device.addCachedImage(backgroundAnimation, name: Constants.cacheBackgroundName)
+        print("cache images on the watch")
+        let device =   WKInterfaceDevice.currentDevice()
+        let imageSet = meterView.createAssetsForCaching()
+        guard let backgroundAnimation = UIImage.animatedImageWithImages(imageSet, duration: NSTimeInterval(1.0)) else {
+            return
+        }
+        device.removeAllCachedImages()
+        device.addCachedImage(backgroundAnimation, name: Constants.cacheBackgroundName)
     }
     
     private func saveAssetsInCache(imageArray: [UIImage]?) {
         if let allImages = imageArray {
-            for (index,backgroundImage) in enumerate(allImages) {
+            for (index,backgroundImage) in allImages.enumerate() {
                 if let imageData = UIImagePNGRepresentation(backgroundImage) {
                     let fileManager = NSFileManager()
-                    if let docsDir = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first as? NSURL {
+                    if let docsDir = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first {
+                        
                         let filename = Constants.cacheBackgroundName + "\(index)@2x.png"
                         let url = docsDir.URLByAppendingPathComponent(filename)
-                        if let path = url.absoluteString {
-                            if imageData.writeToURL(url, atomically: true) {
-                                println("saved successfully to \(path)")
-                            }
+                        let path = url.absoluteString
+                        if imageData.writeToURL(url, atomically: true) {
+                            print("saved successfully to \(path)")
                         }
                     }
-
+                    
                 }
             }
         }
@@ -211,10 +213,10 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
     }
     
     private func pregenerateAssets() {
-            println("saving pregenerated assets in documents folder")
-            let imageSet = meterView.createAssetsForCaching()
-            saveAssetsInCache(imageSet)
-  
+        print("saving pregenerated assets in documents folder")
+        let imageSet = meterView.createAssetsForCaching()
+        saveAssetsInCache(imageSet)
+        
     }
     
     private func presentAlertIfLocationAuthorizationNotAuthorized(status: CLAuthorizationStatus) {
@@ -223,12 +225,12 @@ class DashboardController: WKInterfaceController, LocationUpdateDelegate, Settin
         case .Denied, .Restricted:
             self.userLocation.stopUpdatingLocation()
             presentControllerWithName("LocationAlert", context: self)
-            default:
+        default:
             break
         }
-
-
+        
+        
     }
-
- 
+    
+    
 }
