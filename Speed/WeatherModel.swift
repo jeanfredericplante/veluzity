@@ -168,7 +168,7 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
         
     public func getWeatherFromAPI()
     {
-        var requestURL = Constants.currentWeatherServiceUrl + "?lat=" + coordinates.latitude.description +
+        let requestURL = Constants.currentWeatherServiceUrl + "?lat=" + coordinates.latitude.description +
         "&lon=" + coordinates.longitude.description +
             "&APPID=" + Constants.APIKEY
         print("url: \(requestURL.debugDescription)")

@@ -153,7 +153,7 @@ class MeterView {
         let transition_ratio = SpeedGradientConstants.speedAtRedTransition / transitionSpeed
 
         for i in 0..<Constants.numberOfMeterViewAssets {
-            var s: Double = Constants.maxDialSpeedNormalized * Double(i) / Double(Constants.numberOfMeterViewAssets) / transition_ratio
+            let s: Double = Constants.maxDialSpeedNormalized * Double(i) / Double(Constants.numberOfMeterViewAssets) / transition_ratio
             array_assets.append(createBackground(for_speed: s, with_size: frameSize))
         }
         return array_assets
