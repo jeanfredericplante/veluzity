@@ -86,7 +86,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
  
     public func getStreetName(location: CLLocation) {
         locationGeoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
-            guard let placemarks = placemarks where error != nil else {
+            guard let placemarks = placemarks where error == nil else {
                 print("reverse location failed")
                 return
             }
