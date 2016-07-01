@@ -82,7 +82,7 @@ extension UIBezierPath {
 
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
     }
@@ -104,7 +104,7 @@ extension UIBezierPath {
 
         // update / create background path
         trackColor.setStroke()
-        speedBackgroundPath.strokeWithBlendMode(kCGBlendModeNormal, alpha: 0.1)
+        speedBackgroundPath.strokeWithBlendMode(.Normal, alpha: 0.1)
         
         // updated speed
         updateSpeed()
@@ -113,7 +113,7 @@ extension UIBezierPath {
     
     
     
-    func setupMeter(rect: CGRect? = nil) {
+    func setupMeter(rect rect: CGRect? = nil) {
         var innerRect: CGRect
         if let meterZone = rect {
              innerRect = CGRectInset(meterZone, trackBorderWidth, trackBorderWidth)

@@ -50,7 +50,7 @@ import VeluzityKit
         self.layer.insertSublayer(gradientLayer, atIndex: 0)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
 
@@ -82,7 +82,7 @@ import VeluzityKit
     
     // MARK : private methods
     
-    private func setupView(rect: CGRect? = nil) {
+    private func setupView(rect rect: CGRect? = nil) {
         setColors()
         if let r = rect {
             gradientLayer.frame = r

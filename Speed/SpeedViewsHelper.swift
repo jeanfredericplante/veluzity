@@ -38,7 +38,7 @@ struct Constants {
 
 class SpeedViewsHelper {
     
-    class func setImageAndTextColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
+    class func setImageAndTextColor(view view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
         if view != nil {
             SpeedViewsHelper.setImageViewsTintColor(view: view, color: color)
             SpeedViewsHelper.setLabelsColor(view: view, color: color)
@@ -46,7 +46,7 @@ class SpeedViewsHelper {
     }
     
     
-    class func setLabelsColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
+    class func setLabelsColor(view view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
         if view != nil {
             let allSubviews = view.subviews
             let allLabels = allSubviews.filter({$0.isKindOfClass(UILabel)}) as! [UILabel]
@@ -61,7 +61,7 @@ class SpeedViewsHelper {
     }
     
     
-    class func setImageViewsTintColor(view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
+    class func setImageViewsTintColor(view view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
         if view != nil {
             let allImageViews = view.subviews.filter({$0.isKindOfClass(UIImageView)}) as! [UIImageView]
             for imageView in allImageViews {
@@ -74,10 +74,10 @@ class SpeedViewsHelper {
     
     class func textWithTwoFontSizes(bigText: String, smallText: String,
         font: UIFont, ratio: CGFloat) -> NSAttributedString {
-            var smallFontSize: CGFloat = round(font.pointSize * ratio)
-            var smallFont = font.fontWithSize(smallFontSize)
-            var bigAttrText = NSMutableAttributedString(string: bigText, attributes: [NSFontAttributeName: font])
-            var smallAttrText = NSMutableAttributedString(string: smallText, attributes: [NSFontAttributeName: smallFont])
+            let smallFontSize: CGFloat = round(font.pointSize * ratio)
+            let smallFont = font.fontWithSize(smallFontSize)
+            let bigAttrText = NSMutableAttributedString(string: bigText, attributes: [NSFontAttributeName: font])
+            let smallAttrText = NSMutableAttributedString(string: smallText, attributes: [NSFontAttributeName: smallFont])
             bigAttrText.appendAttributedString(smallAttrText)
             return bigAttrText
     }
@@ -157,7 +157,7 @@ class SpeedViewsHelper {
         return hexToUIColor(e.toHex())
     }
         
-    class func RGBtoHSV(#r: CGFloat, g:CGFloat, b: CGFloat) -> (h: CGFloat, s: CGFloat, v:CGFloat)? {
+    class func RGBtoHSV(r r: CGFloat, g:CGFloat, b: CGFloat) -> (h: CGFloat, s: CGFloat, v:CGFloat)? {
         let c = UIColor(red: r,green: g,blue: b,alpha: 1)
         var hue : CGFloat = 0
         var saturation : CGFloat = 0

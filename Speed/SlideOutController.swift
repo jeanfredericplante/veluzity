@@ -14,7 +14,8 @@ protocol SlideOutDelegate {
     optional func settingsTapped()
 }
 
-class SlideOutController: UITableViewController, UITableViewDelegate {
+class SlideOutController: UITableViewController {
+    //removed ui table view delegate
     
     let emailView = EmailComposer()
     var delegate: SlideOutDelegate?

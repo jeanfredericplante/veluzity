@@ -15,6 +15,9 @@
 		7E28B95F1AC8E79200095181 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F41AA1605000565DAA /* Settings.swift */; };
 		7E28B9601AC8E7DC00095181 /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFE7F21AA0560C00565DAA /* Params.swift */; };
 		7E7645861AD212EF00A36536 /* MeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7645851AD212EF00A36536 /* MeterView.swift */; };
+		7E7CE16C1D26250A0078D141 /* libFlurry_7.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9AD0061D24EEFE00019120 /* libFlurry_7.6.4.a */; };
+		7E7CE16D1D26252F0078D141 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC31AA591500058301F /* SystemConfiguration.framework */; };
+		7E7CE16E1D2625310078D141 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E211AC11AA5913F0058301F /* Security.framework */; };
 		7E88100D1B2E848200345A18 /* background-0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E880F591B2E848100345A18 /* background-0@2x.png */; };
 		7E88100E1B2E848200345A18 /* background-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E880F5A1B2E848100345A18 /* background-1@2x.png */; };
 		7E88100F1B2E848200345A18 /* background-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E880F5B1B2E848100345A18 /* background-2@2x.png */; };
@@ -198,11 +201,9 @@
 		7E8D0B251AC523BC00DE627B /* UIApplicationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D0B241AC523BC00DE627B /* UIApplicationUtils.swift */; };
 		7E8E40351AD98FA5005ED3F0 /* SpeedToGradientHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8E40341AD98FA5005ED3F0 /* SpeedToGradientHelpers.swift */; };
 		7E9AD0071D24EEFE00019120 /* libFlurry_7.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9AD0061D24EEFE00019120 /* libFlurry_7.6.4.a */; };
-		7E9AD0091D24EF6000019120 /* libFlurryWatch_7.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9AD0081D24EF6000019120 /* libFlurryWatch_7.6.4.a */; };
 		7E9AD00D1D24F07E00019120 /* Flurry.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9AD00C1D24F07E00019120 /* Flurry.h */; };
 		7E9AD00E1D24F5D900019120 /* libFlurry_7.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9AD0061D24EEFE00019120 /* libFlurry_7.6.4.a */; };
 		7E9AD0101D24F66100019120 /* FlurryWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9AD00A1D24F04B00019120 /* FlurryWatch.h */; };
-		7E9AD0111D24F67900019120 /* libFlurryWatch_7.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9AD0081D24EF6000019120 /* libFlurryWatch_7.6.4.a */; };
 		7E9D0E001A6DE6D900672E32 /* SpeedMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D0DFF1A6DE6D900672E32 /* SpeedMeter.swift */; };
 		7EA417CF1A6121DD00BE639B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417CE1A6121DD00BE639B /* ContainerViewController.swift */; };
 		7EA417D11A618DC400BE639B /* PreferencePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA417D01A618DC400BE639B /* PreferencePaneController.swift */; };
@@ -547,9 +548,8 @@
 			files = (
 				7E211AC41AA591500058301F /* SystemConfiguration.framework in Frameworks */,
 				7ED15A181AC8571400F329D0 /* VeluzityKit.framework in Frameworks */,
-				7E9AD0071D24EEFE00019120 /* libFlurry_7.6.4.a in Frameworks */,
 				7E211AC21AA5913F0058301F /* Security.framework in Frameworks */,
-				7E9AD0091D24EF6000019120 /* libFlurryWatch_7.6.4.a in Frameworks */,
+				7E9AD0071D24EEFE00019120 /* libFlurry_7.6.4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +559,7 @@
 			files = (
 				7EE568831B372B620032DDF9 /* SystemConfiguration.framework in Frameworks */,
 				7EE568841B372B680032DDF9 /* Security.framework in Frameworks */,
+				7E7CE16C1D26250A0078D141 /* libFlurry_7.6.4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,8 +567,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E7CE16D1D26252F0078D141 /* SystemConfiguration.framework in Frameworks */,
+				7E7CE16E1D2625310078D141 /* Security.framework in Frameworks */,
 				7E9AD00E1D24F5D900019120 /* libFlurry_7.6.4.a in Frameworks */,
-				7E9AD0111D24F67900019120 /* libFlurryWatch_7.6.4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

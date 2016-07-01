@@ -168,8 +168,8 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
     
     private func setScrollableView() -> Void {
         settingsScrollView.contentSize = CGSize(width: scrollableSettings.bounds.width, height: scrollableSettings.bounds.height)
-        settingsScrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        scrollableSettings.setTranslatesAutoresizingMaskIntoConstraints(false)
+        settingsScrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollableSettings.translatesAutoresizingMaskIntoConstraints = false
    
     }
     

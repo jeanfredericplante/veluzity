@@ -45,7 +45,7 @@ class EmailComposer: MFMailComposeViewController, MFMailComposeViewControllerDel
         let screenSize = UIApplicationUtils.getScreenSize()
         let appVersion = "App Version: \(UIApplicationUtils.getAppVersion()) (\(UIApplicationUtils.getAppBuild()))"
         
-        return "\n".join(["", "", "", appVersion, deviceModel, osVersion, screenSize])
+        return ["", "", "", appVersion, deviceModel, osVersion, screenSize].joinWithSeparator("\n")
     }
     
     
