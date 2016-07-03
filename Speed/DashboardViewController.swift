@@ -159,7 +159,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
             temperature = locationWeather.temperature()
         }
         tempDisplay.text = SpeedViewsHelper.formattedTemperature(temperature)
-        weatherDescription.text = locationWeather.weatherDescription?.lowercaseString
+       weatherDescription.text = locationWeather.weatherDescription?.lowercaseString
         weatherIcon.image = locationWeather.getWeatherIconImage()
         SpeedViewsHelper.setImageAndTextColor(view: weatherView,
             color: SpeedViewsHelper.getWeatherColor())

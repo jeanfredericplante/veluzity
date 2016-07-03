@@ -195,21 +195,28 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
     
     func parseAndUpdateModelWithJsonFromAPI(json: NSData) {
         do {
-            let weatherInfo: NSDictionary? = try NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
-            let weatherMain: NSDictionary? = weatherInfo?["main"] as? NSDictionary
-            let temperatureKelvin: Double? = weatherMain?["temp"] as? Double
-            let weather: NSDictionary? = weatherInfo?["weather"] as? NSDictionary
-            let weatherDescription: String? = weather?[0]?["description"] as? String
-            let weatherIcon: String? = weather?[0]?["icon"] as? String
+            guard let weatherInfo = try NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary else {
+                print("can't pull weather")
+                return
+            }
+            guard let weatherMain = weatherInfo["main"], let temperatureKelvin = weatherMain["temp"] as? Double else {
+                print("can't pull temp")
+                return
+            }
+            self.lastUpdateTime = NSDate() // now
+            self.lastReadTemperatureCelsius = temperatureKelvin - 273.15
+            
+            guard let weather = weatherInfo["weather"] as? [[String: AnyObject]], let weatherDescription = weather[0]["description"] as? String, let weatherIcon = weather[0]["icon"] as? String else {
+                return
+                    print("cant pull weather icon and description")
+            }
+            
             self.weatherDescription = weatherDescription
             self.weatherIcon = weatherIcon
-            if temperatureKelvin != nil {
-                self.lastReadTemperatureCelsius = temperatureKelvin! - 273.15
-                self.lastUpdateTime = NSDate() // now
-                self.temperatureUpdated!(self)
-                
-                print("temperature updated to \(lastReadTemperatureCelsius?.description)")
-            }
+            self.temperatureUpdated!(self)
+            
+            print("temperature updated to \(lastReadTemperatureCelsius?.description)")
+            
             
         } catch {
             print("invalid json: \(error)")
