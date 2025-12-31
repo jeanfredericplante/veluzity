@@ -12,30 +12,28 @@ class UIApplicationUtils: NSObject {
     
     
     class func getAppName() -> String {
-        return (NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleDisplayName") as? String) ?? ""
+        return (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String) ?? ""
     }
     
     class func getAppVersion() -> String {
-        return (NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String) ?? "-"
+        return (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "-"
     }
     
     class func getAppBuild() -> String {
-        return (NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as? String) ?? "-"
+        return (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String) ?? "-"
     }
     
     class func getDeviceModel() -> String {
-        return UIDevice.currentDevice().model
+        return UIDevice.current.model
     }
     
     class func getOSVersion() -> String {
-        return (UIDevice.currentDevice().systemVersion)
+        return (UIDevice.current.systemVersion)
     }
     
     class func getScreenSize() -> String {
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let screenSize: CGRect = UIScreen.main.bounds
         return "Screen size: \(screenSize.width)x\(screenSize.height)"
     }
 
 }
-
-

@@ -10,7 +10,7 @@ import XCTest
 
 class ColorGradientTests: XCTestCase {
    
-    var cg = ColorGradientTests()
+    // var cg = ColorGradientTests() // recursive logic error if it instantiates itself.
     
     
     override func setUp() {

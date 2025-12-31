@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import UIKit
+import MessageUI // Required for MFMailComposeViewController if implicit
+import VeluzityKit // Assuming imports
 
 @objc // makes protocol available from Objective C
 protocol SlideOutDelegate {
-    optional func aboutUsTapped()
-    optional func settingsTapped()
+    @objc optional func aboutUsTapped()
+    @objc optional func settingsTapped()
 }
 
 class SlideOutController: UITableViewController {
@@ -23,7 +26,7 @@ class SlideOutController: UITableViewController {
  
     
     // MARK: transition methods
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        closeSlideOutPanel()
     }
     
@@ -33,15 +36,15 @@ class SlideOutController: UITableViewController {
         let configuredMailComposeViewController = emailView.configuredMailComposeViewController()
         if emailView.canSendMail()
         {
-            presentViewController(configuredMailComposeViewController, animated: true, completion: nil)
+            present(configuredMailComposeViewController, animated: true, completion: nil)
         }
 
     }
     
     // MARK: table view delegate methods
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0:
             delegate?.settingsTapped?()
@@ -61,7 +64,7 @@ class SlideOutController: UITableViewController {
         
     }
     
-    override  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         // customize selected color for table view
         let selectedView = UIView()
@@ -71,16 +74,16 @@ class SlideOutController: UITableViewController {
     
     
     private func cantSendEmailAlert() -> Void {
-        let noemailController = UIAlertController(title: "Oh noooos!", message: "Veluzity can't send an email on your behalf, but here's our email address for feedback: veluzity@gmail.com", preferredStyle: .Alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let noemailController = UIAlertController(title: "Oh noooos!", message: "Veluzity can't send an email on your behalf, but here's our email address for feedback: veluzity@gmail.com", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         noemailController.addAction(defaultAction)
 
-        presentViewController(noemailController, animated: true, completion: nil)
+        present(noemailController, animated: true, completion: nil)
 
     }
     
     private func closeSlideOutPanel() {
-        if let parentVC = self.parentViewController {
+        if let parentVC = self.parent {
             if let parentVC = parentVC as? ContainerViewController {
                 parentVC.closeSlideOut()
             }

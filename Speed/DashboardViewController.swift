@@ -12,7 +12,7 @@ import VeluzityKit
 
 @objc // makes protocol available from Objective C
 protocol ViewControllerDelegate {
-    optional func toggleSlideOut()
+    @objc optional func toggleSlideOut()
 }
 
 extension WeatherModel {
@@ -21,7 +21,7 @@ extension WeatherModel {
         if wi == nil {
             return nil
         } else {
-            var imageName: String = wi!.rawValue + "White.png"
+            let imageName: String = wi!.rawValue + "White.png"
             if let currentImage = UIImage(named: imageName) {
                 return currentImage
             } else {
@@ -53,8 +53,8 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     var userLocation: LocationModel!
     var locationWeather: WeatherModel!
     var defaults: Settings!
-    let device : UIDevice = UIDevice.currentDevice()
-    let nc = NSNotificationCenter.defaultCenter()
+    let device : UIDevice = UIDevice.current
+    let nc = NotificationCenter.default
 
     var delegate: ViewControllerDelegate?
     
@@ -91,19 +91,25 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         
         
         // adds obsever on battery charging state
-        nc.addObserver(self, selector: "deviceBatteryStateChanged", name: UIDeviceBatteryStateDidChangeNotification, object: device)
+        nc.addObserver(self, selector: #selector(deviceBatteryStateChanged), name: UIDevice.batteryStateDidChangeNotification, object: device)
         
         
         // Add enter background observer to save state, stop location updates
-        nc.addObserver(self, selector: Selector("applicationDidEnterBackground"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        nc.addObserver(self, selector: #selector(applicationDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         
         // Add application active observer to restore state, start location updates
-        nc.addObserver(self, selector: Selector("applicationWillBecomeActive"), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        nc.addObserver(self, selector: #selector(applicationWillBecomeActive), name: UIApplication.willEnterForegroundNotification, object: nil)
 
         // Set status bar to light
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        // Note: statusBarStyle is deprecated in iOS 9, should use preferredStatusBarStyle, but keeping for compatibility if possible or update to override.
+        // UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
 
+    }
+
+    // Override preferredStatusBarStyle
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
     override func didReceiveMemoryWarning() {
@@ -159,7 +165,7 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
             temperature = locationWeather.temperature()
         }
         tempDisplay.text = SpeedViewsHelper.formattedTemperature(temperature)
-       weatherDescription.text = locationWeather.weatherDescription?.lowercaseString
+       weatherDescription.text = locationWeather.weatherDescription?.lowercased()
         weatherIcon.image = locationWeather.getWeatherIconImage()
         SpeedViewsHelper.setImageAndTextColor(view: weatherView,
             color: SpeedViewsHelper.getWeatherColor())
@@ -226,20 +232,20 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     // MARK: Utilities
     // TODO: Move to helper class?
     
-    func deviceBatteryStateChanged() {
+    @objc func deviceBatteryStateChanged() {
         updateSleepMode()
     }
     
     func updateSleepMode() {
         print("always on mode is: \(defaults.isAlwaysOn)")
         switch device.batteryState {
-        case .Charging, .Full:
-            UIApplication.sharedApplication().idleTimerDisabled = true
+        case .charging, .full:
+            UIApplication.shared.isIdleTimerDisabled = true
         default:
             if defaults.isAlwaysOn {
-                UIApplication.sharedApplication().idleTimerDisabled = true
+                UIApplication.shared.isIdleTimerDisabled = true
             } else {
-                UIApplication.sharedApplication().idleTimerDisabled = false
+                UIApplication.shared.isIdleTimerDisabled = false
             }
         }
     }
@@ -248,30 +254,28 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         locationWeather.saveState()
     }
     
-    func applicationDidEnterBackground() {
+    @objc func applicationDidEnterBackground() {
         saveState()
         userLocation.stopUpdatingLocation()
     }
     
-    func applicationWillBecomeActive() {
+    @objc func applicationWillBecomeActive() {
         locationWeather.restoreState()
         updateSleepMode()
         userLocation.startUpdatingLocation()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         userLocation.stopUpdatingLocation()
     }
     
-    override func viewDidAppear(animated: Bool){
+    override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
         userLocation.startUpdatingLocation()
         let locationStatus = userLocation.authorizationStatus()
         presentAlertIfLocationAuthorizationNotAuthorized(locationStatus)
 
-        // Set status bar to light
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         self.didUpdateWeather()
 
     }
@@ -281,19 +285,19 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
     
     func didChangeLocationAuthorizationStatus(status: CLAuthorizationStatus) {
         switch status {
-        case .AuthorizedWhenInUse, .AuthorizedAlways:
+        case .authorizedWhenInUse, .authorizedAlways:
             self.userLocation.startUpdatingLocation()
         default:
             presentAlertIfLocationAuthorizationNotAuthorized(status)
         }
     }
     
-    func presentAlertIfLocationAuthorizationNotAuthorized(status: CLAuthorizationStatus) {
+    func presentAlertIfLocationAuthorizationNotAuthorized(_ status: CLAuthorizationStatus) {
         switch status {
-        case .Denied:
+        case .denied:
             self.userLocation.stopUpdatingLocation()
             askUserToTurnOnLocationServices()
-        case .Restricted:
+        case .restricted:
             self.userLocation.stopUpdatingLocation()
             alertUserLocationServicesAreRestricted()
         default:
@@ -307,32 +311,31 @@ class DashboardViewController: UIViewController, LocationUpdateDelegate {
         let alertController = UIAlertController(
             title: "Location Access Disabled",
             message: "Veluzity needs location access in order to get the speed, location and heading. Please open this app's  settings and enable location access.",
-            preferredStyle: .Alert)
+            preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         
-        let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
-            if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
-                UIApplication.sharedApplication().openURL(url)
+        let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+            if let url = URL(string:UIApplication.openSettingsURLString) {
+                UIApplication.shared.openURL(url)
             }
         }
         alertController.addAction(openAction)
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func alertUserLocationServicesAreRestricted() {
         let alertController = UIAlertController(
             title: "Location Access Restricted",
             message: "Veluzity needs location access in order to get the speed, but your device currently restricts the access to location services.",
-            preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
 
     }
     
     
 }
-

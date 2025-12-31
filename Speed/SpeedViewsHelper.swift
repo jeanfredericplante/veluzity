@@ -16,17 +16,17 @@ struct Constants {
     enum ViewColors {
         case Speed, Location, Heading, Weather
         func toHex() -> Int {
-            if hasGradientBackground {
+            if Constants.hasGradientBackground {
                 return 0xFFFFFF // white foreground objects when there is a gradient
             } else {
                 switch self {
-                case Weather:
+                case .Weather:
                     return 0xCCFF66
-                case Location:
+                case .Location:
                     return 0x12FFF7
-                case Heading:
+                case .Heading:
                     return 0x7EFFBB
-                case Speed:
+                case .Speed:
                     return 0x40FFF8
                 default:
                     return 0xFFFFFF
@@ -38,7 +38,7 @@ struct Constants {
 
 class SpeedViewsHelper {
     
-    class func setImageAndTextColor(view view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
+    class func setImageAndTextColor(view: UIView! = nil, color: UIColor! = UIColor.white) {
         if view != nil {
             SpeedViewsHelper.setImageViewsTintColor(view: view, color: color)
             SpeedViewsHelper.setLabelsColor(view: view, color: color)
@@ -46,10 +46,10 @@ class SpeedViewsHelper {
     }
     
     
-    class func setLabelsColor(view view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
+    class func setLabelsColor(view: UIView! = nil, color: UIColor! = UIColor.white) {
         if view != nil {
             let allSubviews = view.subviews
-            let allLabels = allSubviews.filter({$0.isKindOfClass(UILabel)}) as! [UILabel]
+            let allLabels = allSubviews.filter({$0.isKind(of: UILabel.self)}) as! [UILabel]
             for textLabel in allLabels {
                 textLabel.textColor = color
                 if Constants.addShadowsToFont {
@@ -61,29 +61,29 @@ class SpeedViewsHelper {
     }
     
     
-    class func setImageViewsTintColor(view view: UIView! = nil, color: UIColor! = UIColor.whiteColor()) {
+    class func setImageViewsTintColor(view: UIView! = nil, color: UIColor! = UIColor.white) {
         if view != nil {
-            let allImageViews = view.subviews.filter({$0.isKindOfClass(UIImageView)}) as! [UIImageView]
+            let allImageViews = view.subviews.filter({$0.isKind(of: UIImageView.self)}) as! [UIImageView]
             for imageView in allImageViews {
-                imageView.image = imageView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+                imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
                 imageView.tintColor = color
                 
             }
         }
     }
     
-    class func textWithTwoFontSizes(bigText: String, smallText: String,
+    class func textWithTwoFontSizes(_ bigText: String, smallText: String,
         font: UIFont, ratio: CGFloat) -> NSAttributedString {
             let smallFontSize: CGFloat = round(font.pointSize * ratio)
-            let smallFont = font.fontWithSize(smallFontSize)
-            let bigAttrText = NSMutableAttributedString(string: bigText, attributes: [NSFontAttributeName: font])
-            let smallAttrText = NSMutableAttributedString(string: smallText, attributes: [NSFontAttributeName: smallFont])
-            bigAttrText.appendAttributedString(smallAttrText)
+            let smallFont = font.withSize(smallFontSize)
+            let bigAttrText = NSMutableAttributedString(string: bigText, attributes: [NSAttributedString.Key.font: font])
+            let smallAttrText = NSMutableAttributedString(string: smallText, attributes: [NSAttributedString.Key.font: smallFont])
+            bigAttrText.append(smallAttrText)
             return bigAttrText
     }
     
     // MARK: views specific function
-    class func headingViewFormattedText(degrees: Double!, cardinality: String!, font: UIFont) -> NSAttributedString {
+    class func headingViewFormattedText(_ degrees: Double!, cardinality: String!, font: UIFont) -> NSAttributedString {
         var degreesText: String = ""
         var cardinalDirection: String = ""
         if degrees != nil && degrees >= 0  && cardinality != nil
@@ -100,7 +100,7 @@ class SpeedViewsHelper {
     
     
     
-    class func cityAndStateText(city: String?, state: String?) -> String {
+    class func cityAndStateText(_ city: String?, state: String?) -> String {
         if let stateName = state {
             if let cityName = city {
                 return cityName + ", " + stateName
@@ -120,7 +120,7 @@ class SpeedViewsHelper {
     }
     
     
-    class func formattedTemperature(temperature: Double?) -> String {
+    class func formattedTemperature(_ temperature: Double?) -> String {
         var formattedTemp: String
         if let temp = temperature {
             formattedTemp = String(format: "%.0f°", temp)
@@ -135,29 +135,29 @@ class SpeedViewsHelper {
     }
     
     class func isLandscape() -> Bool {
-        return UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)
+        return UIDevice.current.orientation.isPortrait
     }
 
     
     // TODO: how to get rid of all that repetition
     
     class func getWeatherColor() -> UIColor {
-        return hexToUIColor(Constants.ViewColors.Weather.toHex())
+        return hexToUIColor(hexValue: Constants.ViewColors.Weather.toHex())
     }
     
     class func getHeadingColor() -> UIColor {
-        return hexToUIColor(Constants.ViewColors.Heading.toHex())
+        return hexToUIColor(hexValue: Constants.ViewColors.Heading.toHex())
     }
     
     class func getLocationColor() -> UIColor {
-        return hexToUIColor(Constants.ViewColors.Location.toHex())
+        return hexToUIColor(hexValue: Constants.ViewColors.Location.toHex())
     }
     
-    class func getColorForElement(e: Constants.ViewColors) -> UIColor {
-        return hexToUIColor(e.toHex())
+    class func getColorForElement(_ e: Constants.ViewColors) -> UIColor {
+        return hexToUIColor(hexValue: e.toHex())
     }
         
-    class func RGBtoHSV(r r: CGFloat, g:CGFloat, b: CGFloat) -> (h: CGFloat, s: CGFloat, v:CGFloat)? {
+    class func RGBtoHSV(r: CGFloat, g:CGFloat, b: CGFloat) -> (h: CGFloat, s: CGFloat, v:CGFloat)? {
         let c = UIColor(red: r,green: g,blue: b,alpha: 1)
         var hue : CGFloat = 0
         var saturation : CGFloat = 0
@@ -172,7 +172,7 @@ class SpeedViewsHelper {
     }
     
     class func hexToHSV(hexValue: Int) -> (h: CGFloat, s: CGFloat, v:CGFloat)? {
-        let rgb = hexToRGB(hexValue)
+        let rgb = hexToRGB(hexValue: hexValue)
         if let hsv = RGBtoHSV(r: rgb.r, g: rgb.g, b: rgb.b) {
             return (hsv.h, hsv.s, hsv.v)
         } else {
@@ -183,5 +183,3 @@ class SpeedViewsHelper {
     
  
 }
-
-

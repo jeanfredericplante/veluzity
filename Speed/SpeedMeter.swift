@@ -10,9 +10,9 @@ import UIKit
 
 extension UIBezierPath {
     func createArc(center: CGPoint, radius: CGFloat, startAngle: CGFloat, endAngle: CGFloat, width: CGFloat){
-        self.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        self.addArcWithCenter(center, radius: radius-width,  startAngle: endAngle, endAngle: startAngle, clockwise: false)
-        self.closePath()
+        self.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        self.addArc(withCenter: center, radius: radius-width,  startAngle: endAngle, endAngle: startAngle, clockwise: false)
+        self.close()
     }
 }
 
@@ -33,7 +33,7 @@ extension UIBezierPath {
         didSet { setNeedsDisplay() }
     }
     
-    @IBInspectable var trackColor: UIColor = UIColor.whiteColor() {
+    @IBInspectable var trackColor: UIColor = UIColor.white {
         didSet { setNeedsDisplay() }
     }
 
@@ -91,7 +91,7 @@ extension UIBezierPath {
         super.layoutSubviews()
         setupMeter()
         speedBackgroundPath = backgroundMeterPath()
-        setMeterPath(speedCurveLayer)
+        setMeterPath(meter: speedCurveLayer)
         if speedCurveLayer.superlayer == nil {
             self.layer.addSublayer(speedCurveLayer)
         }
@@ -99,12 +99,12 @@ extension UIBezierPath {
         setNeedsDisplay()
     }
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
 
         // update / create background path
         trackColor.setStroke()
-        speedBackgroundPath.strokeWithBlendMode(.Normal, alpha: 0.1)
+        speedBackgroundPath.stroke(with: .normal, alpha: 0.1)
         
         // updated speed
         updateSpeed()
@@ -113,15 +113,15 @@ extension UIBezierPath {
     
     
     
-    func setupMeter(rect rect: CGRect? = nil) {
+    func setupMeter(rect: CGRect? = nil) {
         var innerRect: CGRect
         if let meterZone = rect {
-             innerRect = CGRectInset(meterZone, trackBorderWidth, trackBorderWidth)
+             innerRect = meterZone.insetBy(dx: trackBorderWidth, dy: trackBorderWidth)
         } else {
-             innerRect = CGRectInset(self.bounds, trackBorderWidth, trackBorderWidth)
+             innerRect = self.bounds.insetBy(dx: trackBorderWidth, dy: trackBorderWidth)
         }
-        sm.startAngleRadians = CGFloat(degreesToRadians(startAngle + 90))
-        sm.maximumAngleRadians = CGFloat(sm.startAngleRadians + degreesToRadians(360 - 2*startAngle))
+        sm.startAngleRadians = CGFloat(degreesToRadians(degrees: startAngle + 90))
+        sm.maximumAngleRadians = CGFloat(sm.startAngleRadians + degreesToRadians(degrees: 360 - 2*startAngle))
         sm.center = CGPoint(x:innerRect.midX, y: innerRect.midY)
         sm.radius = innerRect.width / 2.0
         sm.speedAngleRadians = 0
@@ -141,22 +141,22 @@ extension UIBezierPath {
     func backgroundMeterPath() -> UIBezierPath {
         let meterPath = UIBezierPath()
         meterPath.lineWidth = trackBorderWidth
-        meterPath.addArcWithCenter(sm.center, radius: sm.radius, startAngle: sm.startAngleRadians, endAngle: sm.maximumAngleRadians, clockwise: true)
+        meterPath.addArc(withCenter: sm.center, radius: sm.radius, startAngle: sm.startAngleRadians, endAngle: sm.maximumAngleRadians, clockwise: true)
         return meterPath
     }
     
     func setMeterPath(meter: CAShapeLayer) -> Void {
-        meter.path = speedBackgroundPath.CGPath
-        meter.fillColor = UIColor.clearColor().CGColor
+        meter.path = speedBackgroundPath.cgPath
+        meter.fillColor = UIColor.clear.cgColor
         meter.lineWidth = trackBorderWidth
         meter.strokeStart = 0
         meter.strokeEnd = 0
-        meter.strokeColor = trackColor.CGColor
+        meter.strokeColor = trackColor.cgColor
 
     }
     
     
     func degreesToRadians(degrees: Double) -> CGFloat {
-        return CGFloat(degrees * M_PI / 180.0)
+        return CGFloat(degrees * Double.pi / 180.0)
     }
 }

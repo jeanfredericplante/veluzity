@@ -32,20 +32,20 @@ class EmailComposer: MFMailComposeViewController, MFMailComposeViewControllerDel
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
     {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+        controller.dismiss(animated: true, completion: nil)
     }
     
     
     private func gatherDeviceInformationForFeedback() -> String {
-        let spaceBefore = Array(count: 3, repeatedValue: "")
+        // let spaceBefore = Array(count: 3, repeatedValue: "") // Unused variable
         let deviceModel = "Model: \(UIApplicationUtils.getDeviceModel())"
         let osVersion = "OS Version: \(UIApplicationUtils.getOSVersion())"
         let screenSize = UIApplicationUtils.getScreenSize()
         let appVersion = "App Version: \(UIApplicationUtils.getAppVersion()) (\(UIApplicationUtils.getAppBuild()))"
         
-        return ["", "", "", appVersion, deviceModel, osVersion, screenSize].joinWithSeparator("\n")
+        return ["", "", "", appVersion, deviceModel, osVersion, screenSize].joined(separator: "\n")
     }
     
     

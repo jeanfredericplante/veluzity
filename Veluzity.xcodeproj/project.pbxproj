@@ -1109,13 +1109,14 @@
 		7EC245571A4F486D005F2FEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0610;
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Fantastic Whale Labs";
 				TargetAttributes = {
 					7EC2455E1A4F486D005F2FEA = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = ZQEHFBD5JZ;
+						SWIFT_VERSION = 5.0;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1125,6 +1126,7 @@
 					7ECA8A201ACCEFEE0058A5F9 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = ZQEHFBD5JZ;
+						SWIFT_VERSION = 5.0;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1134,13 +1136,16 @@
 					7ECA8A2D1ACCEFEE0058A5F9 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = ZQEHFBD5JZ;
+						SWIFT_VERSION = 5.0;
 					};
 					7ED15A001AC8571400F329D0 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = ZQEHFBD5JZ;
+						SWIFT_VERSION = 5.0;
 					};
 					7ED15A0A1AC8571400F329D0 = {
 						CreatedOnToolsVersion = 6.2;
+						SWIFT_VERSION = 5.0;
 						TestTargetID = 7EC2455E1A4F486D005F2FEA;
 					};
 				};
