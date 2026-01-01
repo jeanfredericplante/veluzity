@@ -20,18 +20,18 @@ class WeatherModelTests: XCTestCase {
     }
     
     func testTemperature() {
-        weatherupdatedExpectation = expectationWithDescription("expect the weather to be udpated")
+        weatherupdatedExpectation = expectation(description: "expect the weather to be udpated")
         wm.getWeatherFromAPI()
         wm.temperatureUpdated = { wm in
             print("completion closure func in test")
             self.weatherupdatedExpectation!.fulfill()
-            var temperature = wm.temperature()
+            var temperature = wm.temperature()!
             XCTAssertTrue(temperature < 100, "Paris shouldn't be that hot")
             XCTAssertTrue(temperature > -20, "Paris shouldn't be that cold")
 
         }
         
-        waitForExpectationsWithTimeout(5) { (error) in
+        waitForExpectations(timeout: 5) { (error) in
             XCTAssertNil(error, "got a timeout when pulling the temperature")
         }
     }
@@ -44,16 +44,16 @@ class WeatherModelTests: XCTestCase {
         wm.setUpdateTime(100)
         wm.lastUpdateTime = nil
         XCTAssertTrue(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"should update the first time because we never updated")
-        wm.lastUpdateTime = NSDate()
+        wm.lastUpdateTime = Date()
         XCTAssertFalse(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"should not update the first time because we just updated")
-        wm.lastUpdateTime = NSDate(timeInterval: -5, sinceDate: NSDate())
+        wm.lastUpdateTime = Date(timeInterval: -5, since: Date())
         XCTAssertFalse(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"should not update the first time because we are below the min update time")
-        wm.lastUpdateTime = NSDate(timeInterval: -600, sinceDate: NSDate())
+        wm.lastUpdateTime = Date(timeInterval: -600, since: Date())
         XCTAssertTrue(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"should update because we've not updated in a long time")
         
         
         // tests based on location
-        wm.lastUpdateTime = NSDate()
+        wm.lastUpdateTime = Date()
         wm.setPosition(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448))
         XCTAssertFalse(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680800, longitude: -117.178448)),"shouldn't need to update weather when we didn't move")
         XCTAssertFalse(wm.shouldUpdateWeather(CLLocationCoordinate2D(latitude: 32.680222, longitude: -117.179632)),"shouldn't need to update weather so close")
@@ -63,18 +63,18 @@ class WeatherModelTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }
     
     func testBogusJsonDoesntBreakThings() {
-        var json = NSData()
-        wm.parseAndUpdateModelWithJsonFromAPI(NSData())
+        var json = Data()
+        wm.parseAndUpdateModelWithJsonFromAPI(json: Data())
     }
     
     func testWeatherReturnsAnIcon() {
-        weatherupdatedExpectation = expectationWithDescription("expect the weather to be udpated")
+        weatherupdatedExpectation = expectation(description: "expect the weather to be udpated")
         wm.getWeatherFromAPI()
         wm.temperatureUpdated = { wm in
             print("completion closure func in test")
@@ -88,7 +88,7 @@ class WeatherModelTests: XCTestCase {
             self.weatherupdatedExpectation!.fulfill()
         }
         
-        waitForExpectationsWithTimeout(5) { (error) in
+        waitForExpectations(timeout: 5) { (error) in
             XCTAssertNil(error, "got a timeout when pulling the temperature")
         }
 

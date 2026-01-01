@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public struct SpeedGradientConstants {
     public static let speedAtRedTransition: Double = 28.5
@@ -34,35 +35,35 @@ public struct SpeedGradientConstants {
         (200, 0xf10638)]
 }
 
-public func speedToColorGradient(speed speed: Double, maxTransitionSpeed: Double) -> (startColor: UIColor, endColor: UIColor)? {
+public func speedToColorGradient(speed: Double, maxTransitionSpeed: Double) -> (startColor: UIColor, endColor: UIColor)? {
     
-    let sc = speedToColor(speed, maxTransitionSpeed: maxTransitionSpeed)
-    let ec = speedToColor(speed+SpeedGradientConstants.startToEndDeltaSpeed, maxTransitionSpeed: maxTransitionSpeed )
+    let sc = speedToColor(s: speed, maxTransitionSpeed: maxTransitionSpeed)
+    let ec = speedToColor(s: speed+SpeedGradientConstants.startToEndDeltaSpeed, maxTransitionSpeed: maxTransitionSpeed )
     return (sc, ec)
 }
 
 
 
 public func speedToColor(s: Double, maxTransitionSpeed: Double) -> UIColor {
-    let normalizedSpeed = normalizeSpeedToMax(s, maxTransitionSpeed: maxTransitionSpeed)
+    let normalizedSpeed = normalizeSpeedToMax(speed: s, maxTransitionSpeed: maxTransitionSpeed)
     let firstBigger = SpeedGradientConstants.speedHexLUT.filter{ (lutspeed,_) in lutspeed >= normalizedSpeed }.first
     let lastSmaller = SpeedGradientConstants.speedHexLUT.filter{ (lutspeed,_) in lutspeed <= normalizedSpeed }.last
     let location = (firstBigger, lastSmaller)
     
     switch location {
-    case (nil,.Some(let (_,h2))):
-        return hexToUIColor(h2)
-    case (.Some(let (_,h1)), nil):
-        return hexToUIColor(h1)
-    case (.Some(let (s1,h1)), .Some(let (s2,h2))):
-        let rgb1 = hexToRGB(h1)
-        let rgb2 = hexToRGB(h2)
+    case (nil,.some(let (_,h2))):
+        return hexToUIColor(hexValue: h2)
+    case (.some(let (_,h1)), nil):
+        return hexToUIColor(hexValue: h1)
+    case (.some(let (s1,h1)), .some(let (s2,h2))):
+        let rgb1 = hexToRGB(hexValue: h1)
+        let rgb2 = hexToRGB(hexValue: h2)
         let ri = interp1(x0: s1, x1: s2, y0: rgb1.r, y1: rgb2.r, x: normalizedSpeed)
         let gi = interp1(x0: s1, x1: s2, y0: rgb1.g, y1: rgb2.g, x: normalizedSpeed)
         let bi = interp1(x0: s1, x1: s2, y0: rgb1.b, y1: rgb2.b, x: normalizedSpeed)
         return UIColor(red: ri, green: gi, blue: bi, alpha: 1)
     default:
-        return UIColor.blackColor()
+        return UIColor.black
         
     }
 }
@@ -75,7 +76,8 @@ public func normalizeSpeedToMax(speed: Double, maxTransitionSpeed: Double) -> Do
     }
 }
 
-public func interp1(x0 x0: Double, x1: Double, y0: CGFloat, y1: CGFloat, x: Double) -> CGFloat {
+public func interp1(x0: Double, x1: Double, y0: CGFloat, y1: CGFloat, x: Double) -> CGFloat {
+    if x1 == x0 { return y0 }
     let slider = CGFloat(Double(x-x0) / Double(x1-x0)) // need to split into as got weird archive error
     let boundedSlider = min(1.0, max(0.0, slider))
     return y0 + (y1 - y0)*boundedSlider
@@ -83,7 +85,7 @@ public func interp1(x0 x0: Double, x1: Double, y0: CGFloat, y1: CGFloat, x: Doub
 
 
 public func hexToUIColor(hexValue: Int) -> UIColor {
-    let (red,green,blue) = hexToRGB(hexValue)
+    let (red,green,blue) = hexToRGB(hexValue: hexValue)
     return UIColor(red: red, green: green, blue: blue, alpha: 1)
 }
 
@@ -93,4 +95,3 @@ public func hexToRGB(hexValue: Int) -> (r: CGFloat, g: CGFloat, b: CGFloat) {
     let blue  = CGFloat(hexValue & 0x0000FF)           / 255.0
     return (red, green, blue)
 }
-

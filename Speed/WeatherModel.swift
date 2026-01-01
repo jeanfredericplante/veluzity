@@ -45,14 +45,14 @@ public enum WeatherIcon: String {
     }
 }
 
-public class WeatherModel: NSObject, NSURLConnectionDelegate {
+public class WeatherModel: NSObject { // URLConnectionDelegate deprecated, handled in closure usually
     // create update delegate type
     public typealias WeatherUpdateDelegate = (WeatherModel) -> ()
     
     struct Constants {
         static let minDistanceToUpdateWeather:Double = 500 // distance to travel before we bug openweathermap again in meters
-        static let maxTimeBetweenUpdates: NSTimeInterval = 300 // maximum time between updates in seconds
-        static let minTimeBetweenUpates: NSTimeInterval = 15
+        static let maxTimeBetweenUpdates: TimeInterval = 300 // maximum time between updates in seconds
+        static let minTimeBetweenUpates: TimeInterval = 15
         static let currentWeatherServiceUrl = "http://api.openweathermap.org/data/2.5/weather"
         static let APIKEY = "***REMOVED***"
 
@@ -62,7 +62,7 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
     public var weatherIcon: String?
     public var weatherDescription: String?
     public var lastReadTemperatureCelsius: Double?
-    public var lastUpdateTime: NSDate?
+    public var lastUpdateTime: Date?
     public var coordinates: CLLocationCoordinate2D
     var weatherResponseData: NSMutableData
     public var temperatureUpdated: WeatherUpdateDelegate?
@@ -74,26 +74,27 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
     public override init() {
         weatherResponseData = NSMutableData()
         coordinates = CLLocationCoordinate2D(latitude: 48, longitude: 3)
-        lastUpdateTime =  NSDate(timeInterval: -Constants.minTimeBetweenUpates, sinceDate: NSDate())
+        // Date(timeInterval:since:) uses Date() by default implicitly in init? No, sinceDate: Date().
+        lastUpdateTime =  Date(timeInterval: -Constants.minTimeBetweenUpates, since: Date())
     }
     
-    public func setPosition(newCoordinates: CLLocationCoordinate2D) -> Void {
+    public func setPosition(_ newCoordinates: CLLocationCoordinate2D) -> Void {
         self.coordinates = newCoordinates
     }
     
-    public func setUpdateTime(time: NSTimeInterval) {
+    public func setUpdateTime(_ time: TimeInterval) {
         maxTimeBetweenUpdates = time
     }
     
-    public func setUpdateDistance(distance: Double) {
+    public func setUpdateDistance(_ distance: Double) {
         minDistanceToUpdateWeather = distance
     }
     
-    public func shouldUpdateWeather(newCoordinates: CLLocationCoordinate2D) -> Bool {
+    public func shouldUpdateWeather(_ newCoordinates: CLLocationCoordinate2D) -> Bool {
         
         let lastUpdateLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
         let newLocation = CLLocation(latitude: newCoordinates.latitude, longitude: newCoordinates.longitude)
-        let distance = newLocation.distanceFromLocation(lastUpdateLocation)
+        let distance = newLocation.distance(from: lastUpdateLocation)
         var shouldUpdateBecauseItHasBeenTooLongSinceLastRefresh: Bool
         var hasPassedMinTimeBetweenCalls: Bool
         if (lastUpdateTime == nil) {
@@ -140,12 +141,12 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
             "temperature": currentTemp,
             "description": getWeatherDescription()]
         
-        defaults.saveDictionary(state as NSDictionary, withKey: "WeatherModel.defaults")
+        defaults.saveDictionary(dictionary: state as NSDictionary, withKey: "WeatherModel.defaults")
     }
     
     public func restoreState() {
         let defaults = Settings()
-        let savedState = defaults.restoreDictionaryForKey("WeatherModel.defaults")
+        let savedState = defaults.restoreDictionaryForKey(key: "WeatherModel.defaults")
         if let state = savedState as? Dictionary<String,String> {
             self.weatherIcon = state["icon"]
             self.weatherDescription = state["description"]
@@ -162,7 +163,7 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
     
     
     public func getWeatherDescription() -> String {
-        return self.weatherDescription?.lowercaseString ?? ""
+        return self.weatherDescription?.lowercased() ?? ""
     }
     
         
@@ -172,15 +173,16 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
         "&lon=" + coordinates.longitude.description +
             "&APPID=" + Constants.APIKEY
         print("url: \(requestURL.debugDescription)")
-        let request = NSURLRequest(URL: NSURL(string: requestURL)!)
+        guard let url = URL(string: requestURL) else { return }
+        let request = URLRequest(url: url)
         
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:
-            {
-                (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
-                self.weatherApiCallCounts += 1
-                print("number of API calls \(self.weatherApiCallCounts) at \(NSDate())")
-                if let data = data where error == nil {
-                    self.parseAndUpdateModelWithJsonFromAPI(data)
+        // NSURLConnection is deprecated, using URLSession
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+             self.weatherApiCallCounts += 1
+            DispatchQueue.main.async {
+                print("number of API calls \(self.weatherApiCallCounts) at \(Date())")
+                if let data = data, error == nil {
+                    self.parseAndUpdateModelWithJsonFromAPI(json: data)
                 } else {
                     if let error = error {
                         print("Error: \(error.localizedDescription)")
@@ -189,21 +191,22 @@ public class WeatherModel: NSObject, NSURLConnectionDelegate {
                     }
                 }
             }
-        )
+        }
+        task.resume()
         
     }
     
-    func parseAndUpdateModelWithJsonFromAPI(json: NSData) {
+    func parseAndUpdateModelWithJsonFromAPI(json: Data) {
         do {
-            guard let weatherInfo = try NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary else {
+            guard let weatherInfo = try JSONSerialization.jsonObject(with: json, options: .mutableContainers) as? NSDictionary else {
                 print("can't pull weather")
                 return
             }
-            guard let weatherMain = weatherInfo["main"], let temperatureKelvin = weatherMain["temp"] as? Double else {
+            guard let weatherMain = weatherInfo["main"] as? NSDictionary, let temperatureKelvin = weatherMain["temp"] as? Double else {
                 print("can't pull temp")
                 return
             }
-            self.lastUpdateTime = NSDate() // now
+            self.lastUpdateTime = Date() // now
             self.lastReadTemperatureCelsius = temperatureKelvin - 273.15
             
             guard let weather = weatherInfo["weather"] as? [[String: AnyObject]], let weatherDescription = weather[0]["description"] as? String, let weatherIcon = weather[0]["icon"] as? String else {

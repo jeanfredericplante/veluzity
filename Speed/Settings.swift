@@ -9,11 +9,11 @@
 import Foundation
 
 @objc public protocol SettingsDelegate {
-    optional func didUpdateSettings()
+    @objc optional func didUpdateSettings()
 }
 
 public class Settings {
-    var defaults: NSUserDefaults?
+    var defaults: UserDefaults?
     public var delegate: SettingsDelegate?
     
     struct Constants {
@@ -21,31 +21,31 @@ public class Settings {
     }
     
     public init () {
-        defaults = NSUserDefaults(suiteName: "group.com.fantasticwhalelabs.Veluzity")
+        defaults = UserDefaults(suiteName: "group.com.fantasticwhalelabs.Veluzity")
         if maxSpeed == 0 { initSettingsAtFirstLaunch() }
     }
     
     public var isMph: Bool {
-        get { return defaults?.boolForKey("isMph") ?? true }
+        get { return defaults?.bool(forKey: "isMph") ?? true }
         set {
-            defaults?.setBool(newValue, forKey: "isMph")
+            defaults?.set(newValue, forKey: "isMph")
             defaults?.synchronize()
         }
     }
     
     public var isAlwaysOn: Bool {
-        get { return defaults?.boolForKey("preventSleep") ?? false }
+        get { return defaults?.bool(forKey: "preventSleep") ?? false }
         set {
-            defaults?.setBool(newValue, forKey: "preventSleep")
+            defaults?.set(newValue, forKey: "preventSleep")
             defaults?.synchronize()
         }
     }
     
     
     public var isFahrenheit: Bool {
-        get { return (defaults?.boolForKey("isFahrenheit") ?? true) }
+        get { return (defaults?.bool(forKey: "isFahrenheit") ?? true) }
         set {
-            defaults?.setBool(newValue, forKey: "isFahrenheit")
+            defaults?.set(newValue, forKey: "isFahrenheit")
             self.delegate?.didUpdateSettings?()
             defaults?.synchronize()
         }
@@ -53,11 +53,11 @@ public class Settings {
     
     
     public func saveDictionary(dictionary: NSDictionary, withKey: String) {
-        defaults?.setObject(dictionary, forKey: withKey)
+        defaults?.set(dictionary, forKey: withKey)
     }
     
     public func restoreDictionaryForKey(key: String) -> NSDictionary? {
-        return defaults?.dictionaryForKey(key)
+        return defaults?.dictionary(forKey: key) as NSDictionary?
     }
     
     public var maxSpeedWatch: Double {
@@ -66,7 +66,7 @@ public class Settings {
     
     
     public var maxSpeed: Double {
-        get { return defaults?.doubleForKey("maxSpeed")  ?? 0 }
+        get { return defaults?.double(forKey: "maxSpeed")  ?? 0 }
         set {
             var roundedMph: Double
             
@@ -79,7 +79,7 @@ public class Settings {
                 roundedMph = Double((Settings.roundToNearest(increment: Constants.speedResolution, for_value: maxSpeedKmh))) / Params.Conversion.msToKmh
             }
             
-            defaults?.setDouble(roundedMph, forKey: "maxSpeed")
+            defaults?.set(roundedMph, forKey: "maxSpeed")
             defaults?.synchronize()
             self.delegate?.didUpdateSettings?()
         }
@@ -95,7 +95,7 @@ public class Settings {
         defaults?.synchronize()
     }
     
-    public class func roundToNearest(increment increment: Int = 5, for_value value: Double) -> Int {
+    public class func roundToNearest(increment: Int = 5, for_value value: Double) -> Int {
         return  increment * Int (max(0, round(value / Double(increment))))
     }
     

@@ -8,7 +8,7 @@
 
 //import UIKit
 import CoreLocation
-import AddressBook
+// import AddressBook // AddressBook is deprecated/removed in newer iOS, but Contacts isn't used here explicitly anyway? Wait, CLPlacemark usage.
 
 @objc
 public protocol LocationUpdateDelegate {
@@ -38,7 +38,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     func setupLocationManager() {
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        self.locationManager.activityType = CLActivityType.Other
+        self.locationManager.activityType = CLActivityType.other
         let currentStatus = CLLocationManager.authorizationStatus()
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
@@ -48,7 +48,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         return speed * 3.6
     }
     
-    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let location = manager.location else {
             return
@@ -72,21 +72,24 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         return CLLocationManager.authorizationStatus()
     }
     
-    public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
-        case .AuthorizedAlways, .AuthorizedWhenInUse:
-            self.delegate?.didChangeLocationAuthorizationStatus(status)
-        case .NotDetermined:
+        case .authorizedAlways, .authorizedWhenInUse:
+            self.delegate?.didChangeLocationAuthorizationStatus(status: status)
+        case .notDetermined:
             manager.requestWhenInUseAuthorization()
-        case .Restricted, .Denied:
-            self.delegate?.didChangeLocationAuthorizationStatus(status)
+        case .restricted, .denied:
+            self.delegate?.didChangeLocationAuthorizationStatus(status: status)
+        @unknown default:
+             break
         }
     }
     
  
-    public func getStreetName(location: CLLocation) {
+    public func getStreetName(_ location: CLLocation) {
         locationGeoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
-            guard let placemarks = placemarks where error == nil else {
+            // Guard with let and boolean condition combined syntax changed in Swift 3
+            guard let placemarks = placemarks, error == nil else {
                 print("reverse location failed")
                 return
             }
@@ -105,8 +108,8 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     
     
     public func getHeading() -> String {
-        if course != nil && course >= 0  {
-            let cardHeading = getCardinalDirectionFromHeading(self.course!)
+        if course != nil && course! >= 0  {
+            let cardHeading = getCardinalDirectionFromHeading(course!)
             return String(format: "%.0f° %@", self.course!, cardHeading) }
         else {
             return ""
@@ -115,7 +118,7 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
     
   
     public func getCardinalDirection() -> String {
-        if course != nil && course >= 0  {
+        if course != nil && course! >= 0  {
             return getCardinalDirectionFromHeading(self.course!)}
         else {
             return ""
@@ -130,8 +133,8 @@ public class LocationModel: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    public func getCardinalDirectionFromHeading(course: Double) -> String {
-        let modCourse = Int(round(course%360))
+    public func getCardinalDirectionFromHeading(_ course: Double) -> String {
+        let modCourse = Int(round(course.truncatingRemainder(dividingBy: 360)))
         switch modCourse   {
         case 0...22:
             return "N"

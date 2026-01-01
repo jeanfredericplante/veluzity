@@ -11,7 +11,7 @@ import VeluzityKit
 
 @objc
 protocol PreferencePaneControllerDelegate {
-    optional func preferenceUpdated()
+    @objc optional func preferenceUpdated()
 }
 
 
@@ -138,20 +138,20 @@ class PreferencePaneController: UIViewController, UIScrollViewDelegate {
 
     
     private func setUISegmentedControlFonts() {
-        var attrSelected: Dictionary<NSObject, AnyObject>
-        var attrNormal: Dictionary<NSObject, AnyObject>
+        var attrSelected: [NSAttributedString.Key: Any]
+        var attrNormal: [NSAttributedString.Key: Any]
         let nonSelectedColor = UIColor(red: 0.39, green: 0.40, blue: 0.43, alpha: 1)
-        let selectedColor = UIColor.whiteColor()
+        let selectedColor = UIColor.white
         if let segFont = UIFont(name: "HelveticaNeue-Thin", size: 21.0) {
-            attrSelected = [NSFontAttributeName: segFont, NSForegroundColorAttributeName:selectedColor]
-            attrNormal = [NSFontAttributeName: segFont, NSForegroundColorAttributeName:nonSelectedColor]
+            attrSelected = [NSAttributedString.Key.font: segFont, NSAttributedString.Key.foregroundColor:selectedColor]
+            attrNormal = [NSAttributedString.Key.font: segFont, NSAttributedString.Key.foregroundColor:nonSelectedColor]
 
         } else {
-            attrSelected = [NSForegroundColorAttributeName : selectedColor]
-            attrNormal = [NSForegroundColorAttributeName : nonSelectedColor]
+            attrSelected = [NSAttributedString.Key.foregroundColor : selectedColor]
+            attrNormal = [NSAttributedString.Key.foregroundColor : nonSelectedColor]
         }
-        UISegmentedControl.appearance().setTitleTextAttributes(attrSelected , forState: .Selected)
-        UISegmentedControl.appearance().setTitleTextAttributes(attrNormal, forState: .Normal)
+        UISegmentedControl.appearance().setTitleTextAttributes(attrSelected , for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes(attrNormal, for: .normal)
 
     }
     

@@ -41,13 +41,13 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
         // Sets up view controller for the dashboard, and hierarchy
         mainViewNavigationController = UINavigationController(rootViewController: mainViewController)
         self.view.addSubview(mainViewController.view)
-        addChildViewController(mainViewController)
-        mainViewController.didMoveToParentViewController(self)
+        addChild(mainViewController)
+        mainViewController.didMove(toParent: self)
         
         // adds tap gesture detection
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         mainViewController.view.addGestureRecognizer(panGestureRecognizer)
-        print(" supported orientations \(self.supportedInterfaceOrientations())")
+        print(" supported orientations \(self.supportedInterfaceOrientations)")
 
     }
 
@@ -56,8 +56,8 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         closeSlideOut()
     }
     
@@ -66,7 +66,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
     func addSlideOutViewController() {
         if slideOutController == nil {
             slideOutController = UIStoryboard.slideOutController()
-            addChildSlideOutController(slideOutController!)
+            addChildSlideOutController(preferenceController: slideOutController!)
             slideOutController!.delegate = self
             
         }
@@ -74,9 +74,9 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
     
    
     func addChildSlideOutController(preferenceController: SlideOutController) {
-        view.insertSubview(preferenceController.view, atIndex: 0)
-        addChildViewController(preferenceController)
-        preferenceController.didMoveToParentViewController(self)
+        view.insertSubview(preferenceController.view, at: 0)
+        addChild(preferenceController)
+        preferenceController.didMove(toParent: self)
     }
 
     
@@ -100,8 +100,7 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
     }
     
 
-    func animateSlideOut(shouldExpand shouldExpand: Bool) {
-        // # is to have the external parameter name match the variable name
+    func animateSlideOut(shouldExpand: Bool) {
         if (shouldExpand) {
             currentState = .PreferenceExpanded
             let targetPosition = expandedOffset()
@@ -115,9 +114,9 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
         }
     }
     
-    func animateMainViewXPosition(targetPosition targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0,
-            options: .CurveEaseInOut,
+    func animateMainViewXPosition(targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0,
+            options: .curveEaseInOut,
             animations: {
                 self.mainViewController.view.frame.origin.x = targetPosition
             }, completion: completion)
@@ -133,24 +132,24 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
     
     
     // MARK: Gesture recognizer
-    func handlePanGesture(sender: UIPanGestureRecognizer) {
-        let gestureIsDraggingFromLeftToRight = (sender.velocityInView(view).x > 0)
+    @objc func handlePanGesture(sender: UIPanGestureRecognizer) {
+        let gestureIsDraggingFromLeftToRight = (sender.velocity(in: view).x > 0)
         
         switch sender.state {
-        case .Began:
+        case .began:
             if (currentState == .PreferenceCollapsed) {
                 if gestureIsDraggingFromLeftToRight {
                     addSlideOutViewController()
-                    showShadowForMainView(true)
+                    showShadowForMainView(shouldShowShadow: true)
                 }
             }
-        case .Changed:
+        case .changed:
             if (slideOutController != nil) {
-                    sender.view!.center.x = sender.view!.center.x + sender.translationInView(view).x
-                    sender.setTranslation(CGPointZero, inView: view)
+                    sender.view!.center.x = sender.view!.center.x + sender.translation(in: view).x
+                    sender.setTranslation(CGPoint.zero, in: view)
 
             }
-        case .Ended:
+        case .ended:
             if (slideOutController != nil) {
                 let hasMovedGreaterThanHalfway = sender.view!.center.x > view.bounds.size.width
                 animateSlideOut(shouldExpand: hasMovedGreaterThanHalfway)
@@ -169,11 +168,11 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
             if let storyboardId = sender.identifier {
                 switch storyboardId {
                 case "dismissAboutUs":
-                    sourceViewController.dismissViewControllerAnimated(true, completion: nil)
+                    sourceViewController.dismiss(animated: true, completion: nil)
 
                 case "dismissPreferencePaneController":
                     print("in pref pane")
-                    sourceViewController.dismissViewControllerAnimated(true, completion: {self.preferenceUpdated()})
+                    sourceViewController.dismiss(animated: true, completion: {self.preferenceUpdated()})
                 default:
                     break
                 }
@@ -191,22 +190,22 @@ class ContainerViewController: UIViewController, ViewControllerDelegate, SlideOu
 }
 
 private extension UIStoryboard {
-    class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()) }
+    class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: Bundle.main) }
     
     class func mainViewController() -> DashboardViewController? {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("MainViewController") as? DashboardViewController
+        return mainStoryboard().instantiateViewController(withIdentifier: "MainViewController") as? DashboardViewController
     }
     
     class func slideOutController() -> SlideOutController? {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("SlideOutController") as? SlideOutController
+        return mainStoryboard().instantiateViewController(withIdentifier: "SlideOutController") as? SlideOutController
     }
     
     class func preferencePaneController() -> PreferencePaneController? {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("PreferencePaneController") as? PreferencePaneController
+        return mainStoryboard().instantiateViewController(withIdentifier: "PreferencePaneController") as? PreferencePaneController
     }
     
     class func aboutUsController() -> AboutUsController? {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("AboutUsController") as? AboutUsController
+        return mainStoryboard().instantiateViewController(withIdentifier: "AboutUsController") as? AboutUsController
     }
 
 }
